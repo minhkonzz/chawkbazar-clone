@@ -1,0 +1,79 @@
+.user-mail-getter {
+  flex-direction: column;
+  background-color: rgb(249, 249, 249);
+  padding: 30px 25px;
+  margin-top: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.left-side h2, .right-side button { font-weight: 600; }
+.left-side h2 { font-size: 20px; }
+
+.left-side p {
+  margin-top: 12px;
+  font-size: 12px;
+}
+
+.right-side div { margin-top: 20px; }
+
+.right-side input, .right-side button {
+  height: 45px; 
+  font-size: 12px;
+  border-radius: 7px;
+}
+
+.right-side input {
+  width: 250px; 
+  padding-left: 15px; 
+  border: 1px solid #e4e4e4;
+  margin-right: 10px;
+}
+
+.right-side button {
+  padding: 0 12px;
+  color: white;
+  border: none; 
+  background-color: black;
+}
+
+@media (min-width: 740px) {
+  .user-mail-getter {
+    flex-direction: column;
+    padding: 40px 50px; 
+    text-align: center;
+  }
+  .left-side h2 { font-size: 23px; }
+  .left-side p {
+    font-size: 13px;
+  }
+  .right-side input, .right-side button { 
+    height: 50px;
+    font-size: 13px; 
+  }
+  .right-side input { width: 350px; }
+  .right-side button { padding: 0 18px; }
+}
+
+@media (min-width: 1024px) {
+  .user-mail-getter {
+    flex-direction: row;
+    padding: 60px 70px;
+    text-align: start;
+  }
+  .left-side h2 { font-size: 26px; }
+  .left-side p {
+    font-size: 15px;
+  }
+  .right-side input, .right-side button { 
+    height: 55px;
+    font-size: 14px; 
+  }
+  .right-side button { padding: 0 30px; }
+  .right-side input { width: 400px; }
+  .right-side div {
+    margin-top: 0; 
+    height: 55px;
+  }
+}
+

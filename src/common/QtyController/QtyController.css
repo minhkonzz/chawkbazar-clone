@@ -1,0 +1,8 @@
+.qty-ctl-btn, .qty { height: 100%; }
+ 
+.qty-ctl-btn { 
+  background-color: transparent;
+  width: 28%;
+}
+ 
+.qty { width: 44%; }

@@ -1,0 +1,109 @@
+.profile-detail {
+   padding-top: 60px;
+}
+
+.tab {
+   margin-bottom: 18px;
+   padding: 15px 0;
+   background-color: #fcfcfc;
+   border-radius: 10px;
+}
+
+.tab ion-icon {
+   font-size: 20px;
+   margin-left: 22px; 
+}
+
+.tab span {
+   margin-left: 12px;
+}
+
+.gentle {
+   font-size: 14px;
+   font-weight: 600;
+}
+
+.radio-group {
+   margin-top: 12px;
+}
+
+.radio-group .container:last-child {
+   margin-left: 20px;
+}
+ 
+ .content-table {
+   border-collapse: collapse;
+   font-size: 0.9em;
+   border-radius: 5px 5px 0 0;
+   overflow: hidden;
+   box-shadow: 0 5px 12px #f3f3f3;
+ }
+ 
+ .content-table thead tr {
+   background-color: #e4e4e4;
+   color: black;
+   text-align: left;
+   font-weight: bold;
+ }
+ 
+ .content-table th,
+ .content-table td {
+   padding: 12px 15px;
+ }
+ 
+ .content-table tbody tr:nth-of-type(even) {
+   background-color: #f5f5f5;
+ }
+ 
+ .content-table tbody tr:last-of-type {
+   border-bottom: none;
+ }
+
+.order {
+   margin-top: 20px; 
+}
+
+.order-part-info:first-child {
+   border-top-left-radius: 8px;
+   border-top-right-radius: 8px;
+}
+
+.order-part-info:last-child {
+   border-bottom-left-radius: 8px;
+   border-bottom-right-radius: 8px;
+}
+
+.order-part-info {
+   position: relative;
+   margin-top: 4px; 
+   height: 55px;
+}
+
+.order-part-info > * {
+   display: inline-block;
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+}
+
+.order-part-info p, .order-part-info h4 {
+   left: 3%;
+}
+
+.order-part-info span {
+   left: 60%;
+}
+
+.outstand { background-color: #eeeeee; }
+
+@media (min-width: 740px) and (max-width: 1023px) {
+   .tab {
+      width: 86%;
+   }
+}
+
+@media (min-width: 1024px) {
+   .tab {
+      width: 82%;
+   }
+}

@@ -1,0 +1,26 @@
+.checkout-detail {
+  padding-top: 60px; 
+}
+
+.checkout-confirm > *:not(h3) {
+  margin-top: 20px; 
+}
+
+.checkout-fields h3 {
+  padding-left: 4px; 
+  margin-bottom: 20px;
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+  .checkout-fields h3 {
+    padding-left: 8px; 
+  }
+}
+
+/* PC */
+
+@media (min-width: 1024px) {
+  .checkout-fields h3 {
+    padding-left: 12px;
+  }
+}

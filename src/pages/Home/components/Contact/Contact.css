@@ -1,0 +1,16 @@
+.contact { padding: 60px 0 35px 0; }
+.contact-w > * {
+   margin: 15px 0;
+}
+
+.contact-w img { 
+   width: 55%;
+}
+
+.title p {
+   font-size: 14px;
+   margin-top: 14px; 
+   opacity: 0.6;
+   line-height: 1.8;
+}
+

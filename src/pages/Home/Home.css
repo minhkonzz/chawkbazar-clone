@@ -1,0 +1,69 @@
+header {
+  position: fixed;
+  z-index: 10000;
+}
+
+/* -------------- Slider -------------- */
+
+.slider {
+  display: flex; 
+  position: relative;
+  height: calc((100vw - 100px) * 0.44); 
+  overflow: hidden; 
+  border-radius: 10px;
+}
+
+.slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: 0.7s;
+}
+
+.nav-btns {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 1000000;
+}
+
+.nav-btn {
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 30px;
+  border: none;
+}
+
+.bg-black {
+  background-color: black;
+}
+.bg-white {
+  background-color: white;
+}
+
+/* -------------- New Collections -------------- */
+
+.new-collection {
+  text-align: center;
+}
+
+.new-collection img { 
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px; 
+}
+
+.new-collection-detail { padding: 0 80px; }
+
+.new-collection-detail h1 {
+  font-size: 30px;
+  margin-bottom: 10px; 
+}
+
+.new-collection-detail p {
+  font-size: 14px;
+  opacity: 0.6;
+  line-height: 2;
+}

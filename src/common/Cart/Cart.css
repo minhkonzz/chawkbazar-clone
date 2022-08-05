@@ -1,0 +1,133 @@
+.cart {
+   position: absolute;
+   right: 0; 
+   width: 90vw; 
+   height: 100vh; 
+   background-color: white;
+}
+
+.cart-top, .cart-bottom {
+   position: relative; 
+}
+
+.cart-top {
+   height: 80px;  
+   border-bottom: 1px solid #f0f0f0; 
+}
+
+.cart-top > *, .cart-bottom button { position: absolute; }
+
+.cart-top > * { 
+   top: 50%; 
+   transform: translateY(-50%);
+}
+
+.cart-top h2 { left: 5% }
+
+.cart-top ion-icon { 
+   right: 5%; 
+   font-size: 24px; 
+}
+
+.cart-center { 
+   height: calc(100% - 180px);
+   padding: 0 30px;  
+   overflow-y: scroll;
+}
+
+.cart-item { 
+   padding: 26px 0; 
+   border-bottom: 1px solid #e4e4e4;
+}
+
+.cart-item-img {
+   position: relative;
+   width: 115px; 
+   height: 115px;
+   border-radius: 10px;
+   overflow: hidden;
+}
+
+.cart-item-img img {
+   position: absolute;
+   transform: translate(-5%, -14%)
+}
+
+.del-icon {
+   opacity: 0;
+   position: absolute;
+   z-index: 1000;
+   background-color: rgba(0,0,0,0.3);
+}
+
+.del-icon ion-icon {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   color: white;
+   font-size: 10px;
+}
+
+.del-icon, .del-icon ion-icon {
+   transition: 0.2s;
+}
+
+.cart-item-img:hover .del-icon { opacity: 1; }
+
+.cart-item-img:hover .del-icon ion-icon { font-size: 26px; }
+
+.item-unit-price {
+   margin-top: 11px;
+   font-size: 13px;
+}
+
+.item-name { font-size: 15px; }
+
+.item-unit-price { 
+   opacity: 0.5;
+   margin-bottom: 12px;
+}
+
+.qty-ctl {
+   width: 120px; 
+   height: 40px; 
+   margin-right: 95px;
+}
+
+.qty-ctl-btn, .qty { height: 100%; }
+
+.qty-ctl-btn { 
+   background-color: transparent;
+   width: 28%;
+   color: white;
+ }
+  
+.qty { width: 44%; }
+
+.cart-bottom {
+   height: 100px; 
+   border-top: 1px solid #f0f0f0; 
+}
+
+.cart-bottom button {
+   width: 80%;
+   height: 60px;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   font-weight: 600;
+   font-size: 14px;
+}
+
+@media (min-width: 740px) {
+   .cart {
+      width: 50vw;
+   }
+}
+
+@media (min-width: 1024px) {
+   .cart {
+      width: 480px;
+   }
+}

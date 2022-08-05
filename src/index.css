@@ -1,13 +1,47 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@300;400;600&display=swap');
+
+html {
+  scroll-behavior: smooth;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open sans', sans-serif;
+}
+
+button, input { border: none }
+
+.col { margin-bottom: 36px; }
+
+.w-100pc { width: 100% }
+.w-full { width: 100vw; }
+.h-full { height: 100vh; }
+.h-100pc { height: 100% }
+.text-center { text-align: center; }
+.blur { opacity: 0.6; }
+
+.d-flex { display: flex; }
+.fd-col { flex-direction: column ;}
+.jc-center { justify-content: center; }
+.jc-sb { justify-content: space-between; }
+.jc-sa { justify-content: space-around; }
+.at-center { align-items: center; }
+.wrap { flex-wrap: wrap; }
+
+.thin-bd-r { border-radius: 7px; }
+.norm-bd-r { border-radius: 14px; }
+.circle-bd-r { border-radius: 10000px; }
+
+.dark-v { color: white; background-color: black; }
+
+.popup-wrapper {
+  position: absolute;
+  z-index: 1000; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  background-color: rgba(0,0,0,0.4);
 }

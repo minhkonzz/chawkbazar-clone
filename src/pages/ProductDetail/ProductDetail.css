@@ -1,0 +1,46 @@
+.product-detail {
+  display: flex;
+  flex-direction: row;
+  width: 960px; 
+  height: 595px; 
+  background-color: white;
+  border-radius: 10px; 
+}
+
+.product-detail img {
+  width: 45%;
+  height: 100.8%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.product-detail-about {
+  padding: 10px 30px 20px 30px;
+}
+
+.product-detail-about > * {
+  margin-top: 20px; 
+}
+
+.product-detail-about p {
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: 0.6;
+}
+
+.addon {
+  width: 44px; 
+  height: 42px; 
+  border: 0.5px solid rgb(212, 212, 212);
+  border-radius: 4px; 
+  margin-left: 10px;
+  transition: 0.2s;
+}
+
+.addon:hover {
+  border: 1px solid black;
+}
+
+.addons {
+  margin-top: 10px; 
+}

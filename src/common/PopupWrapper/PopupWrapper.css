@@ -1,0 +1,5 @@
+.popup-wrapper {
+   position: absolute;
+   z-index: 100000000; 
+   background-color: rgba(0,0,0,0.4);
+}
