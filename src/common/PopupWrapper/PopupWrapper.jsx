@@ -1,21 +1,23 @@
-import './PopupWrapper.css'
 import VerticalNavbar from '../Navbar/VerticalNavBar'
 import Cart from '../Cart/Cart'
+import Auth from '../../pages/Auth/Auth'
+import ProductDetail from '../../pages/ProductDetail/ProductDetail'
 import { useSelector } from 'react-redux'
-// import { useEffect, useRef } from 'react'
 
-const PopupWrapper = () => {
+const Modal = () => {
 
    const state = useSelector(state => state.popup)
 
    return (
-      <>
+      <> 
          {
-            (state.menuSidebar && <div className="popup-wrapper w-full h-full"><VerticalNavbar/></div>) || 
-            (state.cartSidebar && <div className="popup-wrapper w-full h-full"><Cart/></div>)
+            (state.menuSidebar && <div className="popup-wrapper"><VerticalNavbar/></div>) || 
+            (state.cartSidebar && <div className="popup-wrapper"><Cart/></div>) || 
+            (state.authDialog && <div className="popup-wrapper"><Auth/></div>) || 
+            (state.productDialog && <div className="popup-wrapper"><ProductDetail/></div>)
          }
       </>
    )
 }
 
-export default PopupWrapper
+export default Modal

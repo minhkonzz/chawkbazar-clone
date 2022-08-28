@@ -1,0 +1,38 @@
+.dropdown-menu {
+   position: absolute;
+   display: none;
+   background-color: #f9f9f9;
+   top: 100%;
+   transition: 0.4s;
+   padding: 15px 0;
+ }
+ 
+ .dropdown-menu span {
+   display: block;
+   padding: 8px 145px 8px 22px;
+   text-decoration: none;
+   color: black;
+   font-size: 14px;
+   transition: 0.2s;
+ }
+ 
+ .dropdown-menu span:hover {
+   color: white;
+   background-color: black;
+ }
+ 
+ .nav-link:hover .dropdown-menu {
+   display: block;
+   animation: to-high 0.2s linear;
+ }
+ 
+ @keyframes to-high {
+   0% {
+     top: 120%;
+     opacity: 0.2;
+   }
+   100% {
+     top: 100%;
+     opacity: 1;
+   }
+ }

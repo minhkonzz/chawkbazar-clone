@@ -25,7 +25,7 @@ const NewCollections = () => {
          {
             newCollections.map((collection, index) => {
                return (
-                  <div className="col lg-4 md-6 sm-12">
+                  <div key={index} className="col lg-4 md-6 sm-12">
                      <div className="new-collection">
                         <img src={collection.image} alt="collection-img"/>
                         <div className="new-collection-detail">

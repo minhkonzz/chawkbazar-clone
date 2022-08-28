@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
    menuSidebar: false, 
-   cartSidebar: false
+   cartSidebar: false,
+   authDialog: false, 
+   productDialog: false, 
 }
 
 export const PopupReducer = createSlice({
@@ -14,10 +16,22 @@ export const PopupReducer = createSlice({
       },
       touchCartSidebar: state => {
          state.cartSidebar = !state.cartSidebar
+      },
+      touchAuthDialog: state => {
+         state.authDialog = !state.authDialog
+      },
+      touchProductDialog: state => {
+        state.productDialog = !state.productDialog 
       }
    }
 })
 
-export const { touchMenuSidebar, touchCartSidebar } = PopupReducer.actions
+export const { 
+   touchMenuSidebar, 
+   touchCartSidebar, 
+   touchAuthDialog, 
+   touchProductDialog 
+} = PopupReducer.actions
+
 export default PopupReducer.reducer
 

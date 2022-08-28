@@ -85,6 +85,11 @@
   max-width: 75%;
 }
 
+.sm-9-ahalf {
+  flex: 0 0 79.16667%; 
+  max-width: 79.16667%;
+}
+
 .sm-10 {
   flex: 0 0 83.33333%;
   max-width: 83.33333%;
@@ -134,11 +139,6 @@
 
 .sm-offset-9 {
   margin-left: 75%;
-}
-
-.sm-9-ahalf {
-  flex: 0 0 79.16667%; 
-  max-width: 79.16667%;
 }
 
 .sm-offset-10 {

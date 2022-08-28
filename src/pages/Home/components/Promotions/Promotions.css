@@ -1,0 +1,21 @@
+.promotion {
+   display: flex !important;
+   justify-content: center !important;
+   align-items: center !important;
+   width: 900px;
+   height: 400px;
+}
+
+.promotion img {
+   width: 93%;
+   height: 85%; 
+   opacity: 0.8;
+   transition: 0.7s;
+}
+
+.promotion.active img {
+   transform: scale(1.1);
+   opacity: 1;
+   box-shadow: 0 5px 8px rgb(226, 223, 223);
+}
+

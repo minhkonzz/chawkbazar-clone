@@ -2,7 +2,11 @@ const CheckoutConfirm = () => {
   return (
     <div className="row">
       <div className="checkout-confirm col lg-12 md-12 sm-12">
-        <h3>Your order</h3>
+        <div className="row">
+          <div className="col lg-12 md-12 sm-12">
+            <h2>Your order</h2>
+          </div>
+        </div>
         <div className="d-flex jc-sb at-center" style={{ padding: '0 20px', height: 50, backgroundColor: '#e4e4e4', borderRadius: 8 }}>
           <span><b>Product</b></span>
           <span><b>Subtotal</b></span>

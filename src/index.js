@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import Router from './routes';
 import "./grid.css"
 import "./index.css"
 import reportWebVitals from './reportWebVitals';
@@ -10,7 +10,7 @@ import { Provider as StoreProvider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <StoreProvider store={store}>
-      <App />
+      <Router />
    </StoreProvider>
 );
 

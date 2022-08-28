@@ -1,10 +1,16 @@
+header {
+   position: fixed;
+   z-index: 10000;
+}
+
 nav {
-   width: 100vw;
    height: 100px; 
    padding: 0 12px;
    background-color: white;
    transition: 0.4s;
 }
+
+.navbar-left { height: 100%; }
 
 .navbar-left ul {
    display: none;
@@ -13,12 +19,13 @@ nav {
 }
 
 .nav-link { 
+   display: inline;
    margin: 0 26px; 
    padding-top: 2%;
 }
 
 .navbar-left ion-icon {
-   display: inline;
+   display: none;
    font-size: 48px;
    margin-right: 20px;
 }
@@ -94,26 +101,25 @@ nav {
    .vertical-nav {
       width: 50vw;
    }
+   .navbar-left ion-icon {
+      display: inline;
+   }
 }
 
 @media (min-width: 1024px) {
-
    nav {
       padding: 0 calc((100vw - (100vw - 90px)) / 2)
    }
-
    .vertical-nav {
       width: 25%;
    }
-
    .nav-link {
       padding-top: 0px; 
    }
-   
    .navbar-left ul {
       display: flex;
+      height: 100%;
    }
-
    .navbar-left ion-icon {
       display: none;
    }

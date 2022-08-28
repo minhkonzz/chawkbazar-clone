@@ -2,9 +2,9 @@ import './Checkbox.css'
 
 const Checkbox = () => {
    return (
-      <label class="container">Four
+      <label className="container">Four
          <input type="checkbox" />
-         <span class="checkmark"></span>
+         <span className="checkmark"></span>
       </label>
    )
 }

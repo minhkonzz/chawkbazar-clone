@@ -1,9 +1,9 @@
 .checkout-detail {
-  padding-top: 60px; 
+  padding-top: 100px; 
 }
 
-.checkout-confirm > *:not(h3) {
-  margin-top: 20px; 
+.checkout-confirm > *:not(h2) {
+  margin-top: 12px; 
 }
 
 .checkout-fields h3 {

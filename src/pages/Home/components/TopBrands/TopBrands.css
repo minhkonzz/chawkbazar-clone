@@ -1,0 +1,26 @@
+.pt-100pc { padding-top: 100%; }
+
+.top-brand-logo {
+   background-color: rgba(0,0,0,0.4);
+}
+
+.top-brand-logo > img { 
+   width: 48%; 
+   height: auto;
+}
+
+.top-brand:hover .top-brand-img {
+   transform: scale(1.3, 1.3) rotate(8deg);
+}
+
+.top-brand:hover .top-brand-logo {
+   background-color: rgba(0,0,0,0.6);
+}
+
+.top-brand:hover .top-brand-img, .top-brand-logo {
+   transition: 0.5s;
+}
+
+.top-brand:not(:hover) .top-brand-img, .top-brand-logo {
+   transition: 0.4s;
+}

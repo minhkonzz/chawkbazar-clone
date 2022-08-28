@@ -5,10 +5,39 @@
   width: 450px; 
   background-color: white;
   border-radius: 15px; 
-  padding: 0 30px 20px 30px ; 
+  padding: 0 28px 20px 28px ; 
 }
 
 .auth-container > * { margin-top: 18px; }
+
+.auth-container img {
+  width: 150px; 
+  height: 100px;
+  margin-top: 0px; 
+}
+
+.auth-container > button:not(first-child) {
+  height: 50px; 
+  font-weight: 600;
+  color: white;
+}
+
+.auth-container > button:not(first-child) span {
+  margin-left: 18px; 
+}
+
+.auth-container > button:not(first-child) ion-icon {
+  font-size: 25px;
+}
+
+.auth-container > button:first-child {
+  align-self: flex-end;
+  color: black;
+}
+
+.auth-container > button:first-child ion-icon {
+  font-size: 18px;
+}
 
 .auth-container span { margin-top: 10px; }
 

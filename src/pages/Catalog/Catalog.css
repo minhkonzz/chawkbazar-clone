@@ -1,7 +1,5 @@
-header {
-   position: fixed;
-   z-index: 10000;
-}
+.fz-14px { font-size: 14px; }
+.mr-3r { margin-right: 3rem; }
 
 .filters {
    width: 90%;
@@ -63,3 +61,36 @@ header {
    font-size: 15px;
    font-weight: 600;
 }
+
+.dropdown-menu-wrapper {
+   width: 175px; 
+   display: inline-block;
+   position: relative;
+}
+ 
+ .dropdown-btn {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   height: 38px;
+   border-radius: 6px;
+   border: 1px solid #dadada;
+   background-color: white;
+   font-size: 14px;
+   font-weight: bold;
+   padding: 0 5px;
+ }
+ 
+ .up-down-icons ion-icon {
+   display: block;
+   font-size: 13px;
+ }
+ 
+ .dropdown-content {
+   position: absolute;
+   height: 250px;
+   background-color: yellow;
+   margin-top: 5px;
+   border-radius: 8px;
+   z-index: 1
+ }

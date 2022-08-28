@@ -11,7 +11,6 @@ const Slider = () => {
   const [ currentIndex, setCurrentIndex ] = useState(0)
 
   return (
-    <div className="row">
       <div className="col lg-12 md-12 sm-12">
         <div className="slider">
           {sliderImages.map((slide, index) =>
@@ -29,6 +28,7 @@ const Slider = () => {
           <div className="nav-btns">
             {sliderImages.map((slide, index) => 
               <button
+                key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`nav-btn ${index === currentIndex ? "bg-black" : "bg-white"}`}
               />)
@@ -36,7 +36,6 @@ const Slider = () => {
           </div>
         </div>
       </div>
-    </div>
   )
 }
 

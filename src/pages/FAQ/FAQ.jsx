@@ -1,10 +1,11 @@
 import './FAQ.css'
-import { useState } from 'react'
+import { useState, Fragment } from 'react'
+import Navbar from '../../common/Navbar/Navbar'
 import HeaderBackground from '../../common/HeaderBackground/HeaderBackground'
 import UserMailGetter from "../../common/UserMailGetter/UserMailGetter"
 import Footer from "../../common/Footer/Footer"
 
-const AQBox = () => {
+const AQBox = (props) => {
 
    const [ openAnswer, setOpenAnswer ] = useState(false)
 
@@ -12,47 +13,44 @@ const AQBox = () => {
    return (
       <>
          <div className="question">
-            <p><b>How to contact with customer service</b></p>
+            <p><b>{props.data.question}</b></p>
             <button className={`${openAnswer && 'opening'}`} onClick={() => setOpenAnswer(!openAnswer)}>
                <ion-icon name="add" />
             </button>
          </div>
          <div className={`answer ${openAnswer && 'active'}`}>
-            <p className={`${openAnswer && 'visible'}`}>Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.</p>
+            <p className={`${openAnswer && 'visible'}`}>{props.data.answer}</p>
          </div>
       </>
    )
 }
 
+const data = [
+   {
+      question: 'How to contact with Customer Service?',
+      answer: 'Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.'
+   },
+   {
+      question: 'App installation failed, how to update system information?',
+      answer: 'Please read the documentation carefully . We also have some online video tutorials regarding this issue . If the problem remains, Please Open a ticket in the support forum'
+   },
+   {
+      question: 'Website response taking time, how to improve?', 
+      answer: 'At first, Please check your internet connection . We also have some online video tutorials regarding this issue . If the problem remains, Please Open a ticket in the support forum.'
+   },
+   {
+      question: 'How do I create an account?', 
+      answer: 'If you want to open an account for personal use you can do it over the phone or online. Opening an account online should only take a few minutes.'
+   }
+]
+
 const FAQ = () => {
-
-   console.log('render FAQ')
-
    return (
-      <>
-         <header>
-            <HeaderBackground />
-         </header>
-         <div className="grid wide">
-            <main>
-               <div className="faq-detail row">
-                  <div className="col lg-8 lg-offset-2 md-12 sm-12">
-                     <div className="q-a w-100pc">
-                        <AQBox />
-                     </div>
-                     <div className="q-a w-100pc">
-                        <AQBox />
-                     </div>
-                     <div className="q-a w-100pc">
-                        <AQBox />
-                     </div>
-                  </div>
-               </div>
-               <UserMailGetter />
-            </main>
-            <Footer />
+      <div className="faq-detail row">
+         <div className="col lg-8 lg-offset-2 md-12 sm-12">
+         { data.map((d, index) => <div key={index} className="q-a w-100pc"><AQBox data={d}/></div>) }
          </div>
-      </>
+      </div>
    )
 }
 

@@ -5,7 +5,11 @@ const CheckoutFields = () => {
   return (
     <div className="checkout-fields row">
       <div className="col lg-12 md-12 sm-12">
-        <h3>Shipping Address</h3>
+        <div className="row">
+          <div className="col lg-12 md-12 sm-12">
+            <h2>Shipping Address</h2>
+          </div>
+        </div>
         <div className="row">
           <div className="col lg-6 md-12 sm-12">
             <UserInput label="First name *"/>

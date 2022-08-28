@@ -1,6 +1,4 @@
 .product-detail {
-  display: flex;
-  flex-direction: row;
   width: 960px; 
   height: 595px; 
   background-color: white;
@@ -17,6 +15,20 @@
 .product-detail-about {
   padding: 10px 30px 20px 30px;
 }
+
+.product-detail-about > button:first-child {
+  width: 32px;
+  height: 32px;
+  padding-top: 2px;
+  background-color: white;
+}
+
+.product-detail-about > button:first-child ion-icon {
+  font-size: 18px;
+}
+
+.right-0 { right: -3%; }
+.top-n10pc { top: -5%; }
 
 .product-detail-about > * {
   margin-top: 20px; 
@@ -37,10 +49,62 @@
   transition: 0.2s;
 }
 
+.addon span {
+  width: 80%;
+  height: 80%;
+  background-color: gray; 
+}
+
 .addon:hover {
   border: 1px solid black;
 }
 
 .addons {
   margin-top: 10px; 
+}
+
+.add-cart-btn {
+  color: white;
+  padding: 0 35px; 
+  height: 50px;
+  background-color: gray; 
+  font-weight: 600;
+}
+
+.product-detail-about > button:last-child {
+  font-weight: 600;
+  padding: 20px 0;
+}
+
+.product-detail-about .qty-ctl {
+  width: 200px; 
+  height: 50px; 
+  margin-right: 95px;
+  border: 1px solid #cacaca;
+}
+
+.product-detail-about .qty-ctl-btn { 
+  width: 28%;
+  color: black;
+}
+
+.product-detail-about .qty-ctl-btn, .product-detail-about .qty {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.product-detail-about .qty-ctl > button:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.product-detail-about .qty-ctl > button:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+ 
+.product-detail-about .qty { 
+  width: 44%;
+  border-left: 1px solid #cacaca;
+  border-right: 1px solid #cacaca; 
 }
