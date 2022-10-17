@@ -3,9 +3,9 @@ import Navbar from '../../common/Navbar/Navbar'
 import Footer from '../../common/Footer/Footer'
 import UserMailGetter from '../../common/UserMailGetter/UserMailGetter'
 import Modal from '../../common/PopupWrapper/PopupWrapper'
+import BottomMenu from '../../common/BottomMenu/BottomMenu'
 
 const DefaultLayout = ({ children }) => {
-   console.log(children)
    return (
       <>
          <Navbar />
@@ -18,6 +18,7 @@ const DefaultLayout = ({ children }) => {
             <Footer />
          </div>
          <Modal />
+         <BottomMenu />
       </>
    )
 }

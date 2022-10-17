@@ -1,0 +1,1862 @@
+[
+   {
+     "id": "prd1",
+     "name": "Armani Veni Vidi Vici",
+     "brand": "fusion",
+     "category": "woman", 
+     "description": "Fendi began life in 1925 as a fur and leather speciality store in Rome.",
+     "slug": "armani-veni-vidi-vici",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-11.png",
+       "original": "/assets/images/products/p-11-m.png"
+     },
+     "price": 20,
+     "sale_price": 17.99,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd2",
+     "name": "H&M Global Desi",
+     "brand": "tyrant",
+     "category": "kids", 
+     "description": "Blue solid woven regular top, curved hem with tassell detailing has shoulder straps, and sleeveless",
+     "slug": "hm-global-desi",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-22.png",
+       "original": "/assets/images/products/p-22-m.png"
+     },
+     "price": 40,
+     "sale_price": 30,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd3",
+     "name": "Zara Solly White Shirt",
+     "brand": "fusion",
+     "category": "woman", 
+     "description": "For a chic and smart look, don this white shirt from Solly by Allen Solly. Crafted from a cotton-nylon blend with a hint of stretch, this design features a dotted pattern. Wear this 3/4th sleeves shirt with trousers and wedges to a client meeting.",
+     "slug": "zara-solly-white-shirt",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-18.png",
+       "original": "/assets/images/products/p-18-m.png"
+     },
+     "price": 32,
+     "sale_price": 25,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd4",
+     "name": "Hermes  Carlton London",
+     "brand": "sholy",
+     "category": "woman", 
+     "description": "Off-White self-striped knitted midi A-line dress, has a scoop neck, sleeveless, straight hem",
+     "slug": "hermes-carlton-london",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-14.png",
+       "original": "/assets/images/products/p-14-m.png"
+     },
+     "price": 22,
+     "sale_price": 15,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd5",
+     "name": "Scuba Stand Collar Topper Jacket",
+     "brand": "clothingegy",
+     "category": "woman", 
+     "description": "Zara provides only the highest-quality selection of dresses, womens suits, and suited separates.",
+     "slug": "scuba-stand-collar-topper-jacket",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-15.png",
+       "original": "/assets/images/products/p-15-m.png"
+     },
+     "price": 16,
+     "sale_price": 12,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd6",
+     "name": "Armani Wide-Leg Trousers",
+     "brand": "fashadil",
+     "category": "man",
+     "description": "Monochrome elegance. Made with a relaxed wide-leg, these trousers are made from a sustainable soft organic cotton with a mechanical stretch making the garment easily recycled.",
+     "slug": "armani-wide-leg-trousers",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-16.png",
+       "original": "/assets/images/products/p-16-m.png"
+     },
+     "price": 80,
+     "sale_price": 60,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd7",
+     "name": "Short Sleeve Shirts For Men",
+     "brand": "shosio",
+     "category": "man",
+     "description": "From casual days out to parties, dinners and other events that call for a dressier look, a short sleeve shirt is a versatile piece that works for all kinds of occasions.",
+     "slug": "short-sleeve-shirts-for-men",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-17.png",
+       "original": "/assets/images/products/p-17-m.png"
+     },
+     "price": 18.99,
+     "sale_price": 12.99,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd8",
+     "name": "Blazer And A Neck Scarf",
+     "brand": "shoozly",
+     "category": "woman",
+     "description": "blue short sleeve basic midi dress featuring a crew neckline in a jersey fabric.",
+     "slug": "blazer-and-a-neck-scarf",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-13.png",
+       "original": "/assets/images/products/p-13-m.png"
+     },
+     "price": 23,
+     "sale_price": 13,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd9",
+     "name": "Zara Shoes Green",
+     "brand": "club-shoes",
+     "category": "sneakers",
+     "description": "Footwear refers to garments worn on the feet, which originally serves to purpose of protection against adversities of the environment, usually regarding ground textures and temperature.",
+     "slug": "zara-shoes-green",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-19.png",
+       "original": "/assets/images/products/p-19-m.png"
+     },
+     "price": 300,
+     "sale_price": 250,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd10",
+     "name": "Maniac Red Boys",
+     "brand": "hoppister",
+     "category": "kids",
+     "description": "Sporty essentials, these Under Armour athletic shorts are smooth and lightweight in moisture-wicking material.",
+     "slug": "hermes-carlton-london",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-20.png",
+       "original": "/assets/images/products/p-20-m.png"
+     },
+     "price": 20,
+     "sale_price": 15,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd11",
+     "name": "Nike Black",
+     "brand": "blaze-fashion",
+     "category": "man",
+     "description": "Casual wear (casual attire or clothing) may be a Western code that’s relaxed, occasional, spontaneous and fitted to everyday use. Casual wear became popular within the Western world",
+     "slug": "nike-black",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-1.png",
+       "original": "/assets/images/products/p-1-m.png"
+     },
+     "price": 15,
+     "sale_price": 11,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd12",
+     "name": "Hermes Carlton London",
+     "brand": "elegance",
+     "category": "woman",
+     "description": "Off-White self-striped knitted midi A-line dress, has a scoop neck, sleeveless, straight hem",
+     "slug": "hermes-carlton-london",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-2.png",
+       "original": "/assets/images/products/p-2-m.png"
+     },
+     "price": 16.38,
+     "sale_price": 12.3,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd13",
+     "name": "Gucci Carlton UK",
+     "brand": "clothingtastic",
+     "category": "woman",
+     "description": "Knitted midi A-line dress, has a scoop neck, sleeveless, straight hem",
+     "slug": "gucci-carlton-uk",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-8.png",
+       "original": "/assets/images/products/p-8-m.png"
+     },
+     "price": 19.99,
+     "sale_price": 14.99,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd14",
+     "name": "Regular Fit Flannel Shirt",
+     "brand": "fashnetic",
+     "category": "man",
+     "description": "The garments labelled as Committed are products that have been produced using sustainable fibers or processes, reducing their environmental impact. Mango's goal is to support the implementation of practices more committed to the environment.",
+     "slug": "regular-fit-flannel-shirt",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-4.png",
+       "original": "/assets/images/products/p-4-m.png"
+     },
+     "price": 12,
+     "sale_price": 8,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd15",
+     "name": "12 Eco-Friendly Clothing Brands That",
+     "brand": "fashnetic",
+     "category": "woman",
+     "description": "12 Eco-Friendly Clothing Brands That, has a scoop neck, sleeveless, straight hem",
+     "slug": "eco-friendly-clothing-brands-that",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-5.png",
+       "original": "/assets/images/products/p-5-m.png"
+     },
+     "price": 28,
+     "sale_price": 20,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd16",
+     "name": "Oversized W Sweater",
+     "brand": "shovia",
+     "category": "woman",
+     "description": "Constructed in cotton sweat fabric, this lovely piece, lacus eu mattis auctor, dolor lectus venenatis nulla, at tristique eros sem vel ante. Sed leo enim, iaculis ornare tristique non, vulputate sit amet ante.",
+     "slug": "oversized-w-sweater",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-6.png",
+       "original": "/assets/images/products/p-6-m.png"
+     },
+     "price": 70,
+     "sale_price": 55,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd17",
+     "name": "Regular Fit Crew-neck T-shirt",
+     "brand": "pop-clothing",
+     "category": "man",
+     "description": "Self-striped knitted midi A-line dress, has a scoop neck, T-shirt, straight hem",
+     "slug": "regular-fit-crew-neck-t-shirt",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-7.png",
+       "original": "/assets/images/products/p-7-m.png"
+     },
+     "price": 16.38,
+     "sale_price": 12.3,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd18",
+     "name": "Zara Shoes Green",
+     "brand": "hunter-shoes",
+     "category": "sneakers",
+     "description": "Footwear refers to garments worn on the feet, which originally serves to purpose of protection against adversities of the environment, usually regarding ground textures and temperature.",
+     "slug": "zara-shoes-green",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-3.png",
+       "original": "/assets/images/products/p-3-m.png"
+     },
+     "price": 60.99,
+     "sale_price": 50,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd19",
+     "name": "Women Fitted Neck T-Shirt",
+     "brand": "sholy",
+     "category": "woman",
+     "description": "All about the crisp cut and exceptional quality of the cotton, the Women Fitted V Neck Rib L/S T-Shirt won’t be one you’ll be tossing away ever.",
+     "slug": "women-fitted-neck-t-shirt",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-9.png",
+       "original": "/assets/images/products/p-9-m.png"
+     },
+     "price": 30,
+     "sale_price": 28,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   },
+   {
+     "id": "prd20",
+     "name": "NIKE Shoes",
+     "brand": "club-shoes",
+     "category": "sneakers",
+     "description": "NIKE 2020 Black White is a clean and monochromatic colourway of the label’s latest high-technology silhouette. The model first launched late last year and is currently Jordan Brand’s flagship performance pair.",
+     "slug": "nike-shoes",
+     "image": {
+       "id": 1,
+       "thumbnail": "/assets/images/products/p-10.png",
+       "original": "/assets/images/products/p-10-m.png"
+     },
+     "price": 42.99,
+     "sale_price": 39.99,
+     "variations": [
+       {
+         "id": 1,
+         "value": "S",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 2,
+         "value": "M",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 3,
+         "value": "L",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 4,
+         "value": "XL",
+         "attribute": {
+           "id": 1,
+           "name": "Size",
+           "slug": "size"
+         }
+       },
+       {
+         "id": 5,
+         "value": "Orange",
+         "meta": "#e86c25",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 6,
+         "value": "Pink",
+         "meta": "#ffa5b4",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 7,
+         "value": "Purple",
+         "meta": "#8224e3",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       },
+       {
+         "id": 8,
+         "value": "Red",
+         "meta": "#dd3333",
+         "attribute": {
+           "id": 1,
+           "name": "Color",
+           "slug": "color"
+         }
+       }
+     ]
+   }
+ ]

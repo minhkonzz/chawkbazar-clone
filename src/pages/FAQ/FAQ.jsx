@@ -1,9 +1,5 @@
 import './FAQ.css'
-import { useState, Fragment } from 'react'
-import Navbar from '../../common/Navbar/Navbar'
-import HeaderBackground from '../../common/HeaderBackground/HeaderBackground'
-import UserMailGetter from "../../common/UserMailGetter/UserMailGetter"
-import Footer from "../../common/Footer/Footer"
+import { useState } from 'react'
 
 const AQBox = (props) => {
 
@@ -12,14 +8,14 @@ const AQBox = (props) => {
    console.log('render AQBox')
    return (
       <>
-         <div className="question">
-            <p><b>{props.data.question}</b></p>
+         <div className="question posrel">
+            <p className="left-3pc"><b>{props.data.question}</b></p>
             <button className={`${openAnswer && 'opening'}`} onClick={() => setOpenAnswer(!openAnswer)}>
                <ion-icon name="add" />
             </button>
          </div>
          <div className={`answer ${openAnswer && 'active'}`}>
-            <p className={`${openAnswer && 'visible'}`}>{props.data.answer}</p>
+            <p className={`${openAnswer && 'visible '}blur`}>{props.data.answer}</p>
          </div>
       </>
    )
@@ -48,7 +44,7 @@ const FAQ = () => {
    return (
       <div className="faq-detail row">
          <div className="col lg-8 lg-offset-2 md-12 sm-12">
-         { data.map((d, index) => <div key={index} className="q-a w-100pc"><AQBox data={d}/></div>) }
+         { data.map((d, index) => <div key={index} className="q-a thin-bd-r w-100pc"><AQBox data={d}/></div>) }
          </div>
       </div>
    )

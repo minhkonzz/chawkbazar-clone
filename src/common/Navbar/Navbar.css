@@ -3,7 +3,7 @@ header {
    z-index: 10000;
 }
 
-nav {
+header nav {
    height: 100px; 
    padding: 0 12px;
    background-color: white;
@@ -34,15 +34,27 @@ nav {
    font-size: 24px;
 }
 
-.navbar-right > * {
+.navbar-right h4 {
    margin: 0 18px;
+}
+
+.cart-preview, .navbar-right ion-icon { 
+   display: none;
 }
  
 .vertical-nav {
    position: absolute;
-   width: 90vw; 
-   height: 100vh;
+   left: 0; 
+   width: 100%; 
+   height: 100%;
    background-color: white;
+   animation: showSidebar 1s ease;
+   transition: left 1.5s ease;
+}
+
+@keyframes showSidebar {
+   0% { left: -100%; };
+   100% { left: 0; }
 }
 
 .vertical-nav.active {
@@ -76,7 +88,39 @@ nav {
    font-size: 24px;
 }
 
+.vertical-nav-center {
+   padding-top: 25px; 
+}
+
+.vertical-nav-center ul li {
+   line-height: 50px; 
+   padding: 0 30px; 
+}
+
+.vertical-nav-center ul ul li {
+   padding: 0 20px; 
+   line-height: 45px; 
+   font-size: 14px; 
+}
+
+.vertical-nav-center ul li:last-child ion-icon {
+   font-size: 18px;
+}
+
+.vertical-nav-center ul li:last-child ul {
+   overflow: hidden;
+   max-height: 0; 
+   transition: max-height 5s ease-out;
+}
+
+.vertical-nav-center ul li:last-child ul.open {
+   max-height: 10000px; 
+   border-bottom: 0.8px solid #e4e4e4;
+   transition: max-height 5s ease-in;
+}
+
 .vertical-nav-bottom {
+   background-color: white; 
    border-top: 1px solid #f0f0f0;
 }
 
@@ -95,7 +139,7 @@ nav {
 }
 
 @media (min-width: 740px) {
-   nav {
+   header nav {
       padding: 0 calc((100vw - (100vw - 60px)) / 2)
    }
    .vertical-nav {
@@ -104,14 +148,17 @@ nav {
    .navbar-left ion-icon {
       display: inline;
    }
+   .cart-preview, .navbar-right ion-icon { 
+      display: block;
+   }
 }
 
 @media (min-width: 1024px) {
-   nav {
+   header nav {
       padding: 0 calc((100vw - (100vw - 90px)) / 2)
    }
    .vertical-nav {
-      width: 25%;
+      width: 480px;
    }
    .nav-link {
       padding-top: 0px; 
@@ -122,5 +169,8 @@ nav {
    }
    .navbar-left ion-icon {
       display: none;
+   }
+   .cart-preview, .navbar-right ion-icon { 
+      display: block;
    }
 }

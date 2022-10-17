@@ -1,0 +1,2 @@
+export const SET_SECTION_DATA = 'SET_SECTION_DATA'
+export const SET_PRODUCTS = 'SET_PRODUCTS'

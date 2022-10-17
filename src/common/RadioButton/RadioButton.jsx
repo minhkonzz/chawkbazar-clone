@@ -2,9 +2,9 @@ import './RadioButton.css'
 
 const RadioButton = (props) => {
    return (
-      <label class="container">{props.label}
+      <label class="radio-btn-container">{props.label}
          <input type="radio" checked="checked" name="radio" />
-         <span class="checkmark"></span>
+         <span class="radio-checkmark"></span>
       </label>
    )
 }

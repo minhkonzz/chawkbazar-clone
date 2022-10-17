@@ -1,4 +1,4 @@
-import '../../Home.css'
+import './NewCollections.css'
 import NewCollection from './NewCollection'
 
 const newCollections = [ 
@@ -19,26 +19,6 @@ const newCollections = [
    }
 ]
 
-const NewCollections = () => {
-   return (
-      <section className="new-collections row">
-         {
-            newCollections.map((collection, index) => {
-               return (
-                  <div key={index} className="col lg-4 md-6 sm-12">
-                     <div className="new-collection">
-                        <img src={collection.image} alt="collection-img"/>
-                        <div className="new-collection-detail">
-                           <h1>{collection.title}</h1>
-                           <p>{collection.desc}</p>
-                        </div>
-                     </div>
-                  </div>
-               )
-            })
-         }
-      </section>
-   )
-}
+const NewCollections = () => <> { newCollections.map((collection, index) => <NewCollection key={index} collection={collection}/>) } </>
 
 export default NewCollections

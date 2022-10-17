@@ -1,8 +1,8 @@
 .cart {
    position: absolute;
    right: 0; 
-   width: 90vw; 
-   height: 100vh; 
+   width: 100%; 
+   height: 100%; 
    background-color: white;
    animation: showCart 1s ease;
    transition: right 1.5s ease;
@@ -88,6 +88,8 @@
    margin-top: 11px;
    font-size: 13px;
 }
+
+.cart-item-info { width: 64%; }
 
 .item-name { font-size: 15px; }
 

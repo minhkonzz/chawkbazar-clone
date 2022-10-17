@@ -1,0 +1,1 @@
+export const EP_PRODUCTS = 'products'

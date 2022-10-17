@@ -1,11 +1,10 @@
 import './FeaturedProducts.css'
 import FeaturedProduct from './FeaturedProduct'
-import { sectionContext } from '../../Home'
-import { useContext } from 'react'
+import { useCreatedContext } from '../../../../store/Provider'
 
 const FeaturedProducts = () => {
 
-   const sectionData = useContext(sectionContext)
+   const [ state, dispatch ] = useCreatedContext()
 
    return (
       <div className="col lg-12 md-12 sm-12">
@@ -16,17 +15,17 @@ const FeaturedProducts = () => {
          </div>
          <div className="row">
             <div className="col lg-6 md-12 sm-12">
-               <FeaturedProduct data={sectionData[0]}/>
+               <FeaturedProduct largest data={state?.sectionData[0]}/>
             </div>
             <div className="col lg-6 md-12 sm-12">
                <div className="row">
                   <div className="col lg-6 md-6 sm-12">
-                     <FeaturedProduct data={sectionData[1]}/>
-                     <FeaturedProduct data={sectionData[2]}/>
+                     <FeaturedProduct data={state?.sectionData[1]}/>
+                     <FeaturedProduct data={state?.sectionData[2]}/>
                   </div>
                   <div className="col lg-6 md-6 sm-12">
-                     <FeaturedProduct data={sectionData[3]}/>
-                     <FeaturedProduct data={sectionData[4]}/>
+                     <FeaturedProduct data={state?.sectionData[3]}/>
+                     <FeaturedProduct data={state?.sectionData[4]}/>
                   </div>
                </div>
             </div>

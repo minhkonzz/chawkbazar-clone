@@ -1,6 +1,4 @@
-import './Form.css'
 import UserInput from '../../../../common/UserInput/UserInput'
-import Button from '../../../../common/Button/Button'
 
 const Form = () => {
   return (
@@ -31,7 +29,9 @@ const Form = () => {
         </div>
         <div className="row">
           <div className="col lg-12 md-12 sm-12">
-            <Button text="Send message" w={160} h={60}/>
+            <button style={{ width: 160, height: 60 }} className="btn dark-v fw-600 thin-bd-r">
+              Send message
+            </button>
           </div>
         </div>
       </div>

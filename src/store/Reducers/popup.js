@@ -4,7 +4,7 @@ const initialState = {
    menuSidebar: false, 
    cartSidebar: false,
    authDialog: false, 
-   productDialog: false, 
+   productDetailId: "", 
 }
 
 export const PopupReducer = createSlice({
@@ -20,8 +20,8 @@ export const PopupReducer = createSlice({
       touchAuthDialog: state => {
          state.authDialog = !state.authDialog
       },
-      touchProductDialog: state => {
-        state.productDialog = !state.productDialog 
+      touchProductDialog: (state, action) => {
+        state.productDetailId = action.payload || ""
       }
    }
 })

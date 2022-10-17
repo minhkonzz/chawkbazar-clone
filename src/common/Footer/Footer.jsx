@@ -125,7 +125,7 @@ const FooterSection = (props) => {
   return (
     <div className="col lg-2 md-3 sm-6">
       <div className="footer-section">
-        <h4 className="section-title">{props.section.sectionTitle}</h4>
+        <h4 className="fw-600">{props.section.sectionTitle}</h4>
         <div className="section-parts">
           { props.section.paths.map((path, index) => <a key={index} href={path.pathRef}>{path.pathName}</a>) }
         </div>

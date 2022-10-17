@@ -1,5 +1,4 @@
 import './Contact.css'
-import Button from '../../../../common/Button/Button'
 
 const Contact = () => {
    return (
@@ -9,8 +8,10 @@ const Contact = () => {
                <h1>Talk To A Real Person</h1>
                <p>Are you on the fence? Have a question? Need a recommendation?<br/>Member Services is always here to help. Send us a message.</p>
             </div>
-            <img src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fsupport.png&w=1080&q=75"/>
-            <Button text="Chat with member services" w={280}/> 
+            <img src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fsupport.png&w=1080&q=75" alt="members"/>
+            <button style={{ width: 280, height: 55 }} className="dark-v thin-bd-r fw-600">
+               Chat with member services 
+            </button>
          </div>
       </div>
    )

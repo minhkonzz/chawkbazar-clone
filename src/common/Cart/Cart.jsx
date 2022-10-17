@@ -1,11 +1,12 @@
 import './Cart.css'
 import { useRef } from 'react'
-import { useDispatch } from 'react-redux'
-import { touchCartSidebar } from '../../store/reducers/popup'
+import { useDispatch, useSelector } from 'react-redux'
+import { touchCartSidebar } from '../../store/Reducers/popup'
 import CartItem from './components/CartItem'
 
 const Cart = () => {
 
+   const { cartItems, cartTotalPrice } = useSelector(state => state.cart)
    const dispatch = useDispatch()
    const cartRef = useRef(null)
 
@@ -22,22 +23,12 @@ const Cart = () => {
             <h2>Shopping cart</h2>
             <ion-icon name="close" onClick={closeCartModal}/>
          </div>
-         <div className="cart-center">
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
-            <CartItem />
+         <div className="cart-center"> {
+            cartItems.map((cartItem, index) => <CartItem key={index} data={cartItem}/>)
+         }
          </div>
          <div className="cart-bottom">
-            <button className="dark-v thin-bd-r">Proceed to checkout | $831.29</button>
+            <button className="dark-v thin-bd-r">{`Proceed to checkout | $${cartTotalPrice}`}</button>
          </div>
       </div>
    )

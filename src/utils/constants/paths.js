@@ -1,0 +1,7 @@
+export const ROOT_PATH = '/'
+export const CATALOG_PATH = '/catalog'
+export const CHECKOUT_PATH = '/checkout'
+export const CONTACTUS_PATH = '/contactus'
+export const TERMS_PATH = '/terms'
+export const FAQ_PATH = '/faq'
+export const PROFILE_PATH = '/profile'

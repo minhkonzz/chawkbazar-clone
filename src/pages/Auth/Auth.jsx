@@ -2,9 +2,8 @@ import { useState } from 'react'
 import './Auth.css'
 import UserSaver from './UserSaver'
 import UserInput from '../../common/UserInput/UserInput'
-// import Button from '../../common/Button/Button'
 import { useDispatch } from 'react-redux'
-import { touchAuthDialog } from '../../store/reducers/popup'
+import { touchAuthDialog } from '../../store/Reducers/popup'
 
 const Auth = () => {
 
@@ -12,8 +11,8 @@ const Auth = () => {
   const [ isLogin, setIsLogin ] = useState(true)
 
   return (
-    <div className="auth-container posab pos-center">
-      <button onClick={() => dispatch(touchAuthDialog())}><ion-icon name="close" /></button>
+    <div className="auth-container d-flex fd-col at-center posab pos-center">
+      <button className="posab right-0 circle-bd-r top-m4pc" onClick={() => dispatch(touchAuthDialog())}><ion-icon name="close" /></button>
       <img alt="shop-title" src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Flogo.svg&w=96&q=75"/>
       <p className="auth-title">{ isLogin ? 'Login with your email & password' : 'By signing up, you agree to our terms & policy'}</p>
       { !isLogin && <UserInput label="Name"/> }

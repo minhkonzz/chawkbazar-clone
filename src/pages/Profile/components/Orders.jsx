@@ -1,6 +1,6 @@
 const Orders = () => {
    return (
-      <div className="row">
+      <div className="profile-part row">
          <div className="col lg-12 md-12 sm-12">
             <div className="row">
                <div className="col lg-12 md-12 sm-12">
@@ -9,7 +9,7 @@ const Orders = () => {
             </div>
             <div className="row">
                <div className="col lg-12 md-12 sm-12">
-                  <table class="content-table w-100pc">
+                  <table className="content-table w-100pc">
                      <thead>
                         <tr>
                            <th>Rank</th>

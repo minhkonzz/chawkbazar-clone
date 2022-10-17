@@ -1,22 +1,23 @@
 import './Product.css'
-import { useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { touchProductDialog } from '../../../store/reducers/popup'
+import { useElementSize } from 'usehooks-ts'
+import { touchProductDialog } from '../../../store/Reducers/popup'
+import { BaseSource } from '../../../utils/constants' 
 
 const Product = ({ data }) => {
 
-  const ref = useRef(null)
   const dispatch = useDispatch()
+  const [ productRef, { width, height }] = useElementSize()
 
   return (
-    <div ref={ref} className="product-t1 w-100pc thin-bd-r" onClick={() => dispatch(touchProductDialog())}>
+    <div ref={productRef} className="product-t1 w-100pc thin-bd-r" onClick={() => dispatch(touchProductDialog(data?.id))}>
       <div className="posrel pt-168pc">
         <div className="posab top-0 left-0">
-          <img alt="product" src={data?.image.thumbnail}/>
+          <img className="thin-bd-r" alt="product" src={`${BaseSource.PREFIX_API_SOURCE + data?.image?.thumbnail}`}/>
           <div className="product-t1-about">
-            <h4>{data?.name}</h4>
-            <p>Self-striped knitted midi A-line dress...</p>
-            <h3>{data?.price}</h3>
+            <h4 className="fw-600" style={{ fontSize: 0.052 * width, margin: `${0.02 * height}px 0 0 ${0.05 * width}px` }}>{data?.name}</h4>
+            <p className="blur" style={{ fontSize: 0.041 * width, margin: `${0.015 * height}px 0 0 ${0.05 * width}px` }}>Self-striped knitted midi A-line dress...</p>
+            <h4 className="fw-600" style={{ fontSize: 0.06 * width, margin: `${0.03 * height}px 0 0 ${0.05 * width}px` }}>{data?.price}</h4>
           </div>
         </div>
       </div>

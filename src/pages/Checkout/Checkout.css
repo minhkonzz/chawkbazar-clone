@@ -17,8 +17,6 @@
   }
 }
 
-/* PC */
-
 @media (min-width: 1024px) {
   .checkout-fields h3 {
     padding-left: 12px;

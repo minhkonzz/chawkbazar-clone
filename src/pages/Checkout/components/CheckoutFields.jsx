@@ -1,5 +1,4 @@
 import UserInput from '../../../common/UserInput/UserInput'
-import Button from '../../../common/Button/Button'
 
 const CheckoutFields = () => {
   return (
@@ -52,7 +51,9 @@ const CheckoutFields = () => {
         </div>
         <div className="row">
           <div className="col lg-12 md-12 sm-12">
-            <Button text="Place order" w={140} h={55}/>
+            <button style={{ width: 140, height: 55 }} className="dark-v fw-600 thin-bd-r">
+              Place order
+            </button>
           </div>
         </div>
       </div>

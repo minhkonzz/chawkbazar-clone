@@ -1,10 +1,9 @@
 import UserInput from "../../../common/UserInput/UserInput"
 import RadioButton from "../../../common/RadioButton/RadioButton"
-import Button from "../../../common/Button/Button"
 
 const AccountDetail = () => {
    return (
-      <div className="row">
+      <div className="profile-part row">
          <div className="col lg-12 md-12 sm-12">
             <div className="row"> 
                <div className="col lg-12 md-12 sm-12">
@@ -43,7 +42,9 @@ const AccountDetail = () => {
             </div>
             <div className="row"> 
                <div className="col lg-12 md-12 sm-12">
-                  <Button text="Save" w={130}/>
+                  <button style={{ width: 130 }} className="dark-v fw-600 thin-bd-r">
+                     Save
+                  </button>
                </div>
             </div>
          </div>

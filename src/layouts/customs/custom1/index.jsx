@@ -2,6 +2,7 @@ import Navbar from "../../../common/Navbar/Navbar"
 import Footer from "../../../common/Footer/Footer"
 import UserMailGetter from "../../../common/UserMailGetter/UserMailGetter"
 import Modal from "../../../common/PopupWrapper/PopupWrapper"
+import BottomMenu from "../../../common/BottomMenu/BottomMenu"
 
 const Custom1Layout = ({ children }) => {
    return (
@@ -15,6 +16,7 @@ const Custom1Layout = ({ children }) => {
             <Footer />
          </div>
          <Modal />
+         <BottomMenu />
       </>
    )
 }

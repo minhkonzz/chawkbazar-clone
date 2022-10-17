@@ -1,17 +1,11 @@
 .q-a {
    margin-top: 20px;
    background-color: rgba(249, 249, 249, 1);
-   border-radius: 8px;
 }
 
-.faq-detail {
-   padding: 60px 0 24px 0;
-}
+.faq-detail { padding: 60px 0 24px 0; }
 
-.question {
-   position: relative;
-   height: 75px;
-}
+.question { height: 75px; }
 
 .question > * {
    position: absolute;
@@ -19,9 +13,8 @@
    transform: translateY(-50%);
 }
 
-.question p { 
-   left: 3%; 
-}
+.left-3pc { left: 3%; }
+
 .question button {
    font-size: 24px; 
    right: 3%; 
@@ -42,9 +35,10 @@
    transition: 0.3s; 
    font-size: 14px;
    line-height: 2;
-   opacity: 0.7;
 }
+
 .answer p.visible { display: block; }
+
 .answer.active {
    border-top: 1px solid #e4e4e4; 
    padding: 20px 30px;

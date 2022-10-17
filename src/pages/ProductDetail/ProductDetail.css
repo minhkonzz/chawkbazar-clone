@@ -1,13 +1,13 @@
 .product-detail {
   width: 960px; 
-  height: 595px; 
+  height: 550px; 
   background-color: white;
   border-radius: 10px; 
 }
 
 .product-detail img {
-  width: 45%;
-  height: 100.8%;
+  width: 450px; 
+  height: 100%;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 }
@@ -27,8 +27,12 @@
   font-size: 18px;
 }
 
-.right-0 { right: -3%; }
-.top-n10pc { top: -5%; }
+.right-0 { right: -3% !important; }
+.top-n10pc { top: -6%; }
+
+.close-btn {
+  border: 0.5px solid #e4e4e4;
+}
 
 .product-detail-about > * {
   margin-top: 20px; 

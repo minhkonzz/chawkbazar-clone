@@ -1,65 +1,70 @@
-import './Home.css'
-import Slider from './components/Banner/Slider'
-import Promotions from './components/Promotions/Promotions'
-import BestSellers from './components/BestSellers/BestSellers'
+import Slider from './components/Banner'
+import Promotions from './components/Promotions'
+import BestSellers from './components/BestSellers'
 import TopBrands from './components/TopBrands'
-import FeaturedProducts from './components/FeaturedProducts/FeaturedProducts'
-import NewCollections from './components/NewCollections/NewCollections'
-import Contact from './components/Contact/Contact'
-import axiosInstance from '../../utils/axios'
-import { useState, useEffect, useRef, createContext } from 'react'
-
-export const sectionContext = createContext()
+import FeaturedProducts from './components/FeaturedProducts'
+import NewCollections from './components/NewCollections'
+import Contact from './components/Contact'
+import getSectionData from '../../utils/fetch'
+import { BaseSource } from '../../utils/constants'
+import { Provider as HomeSectionProvider } from '../../store'
+import { setSectionData } from '../../store/Actions/HomeSection'
+import { useCreatedContext } from '../../store/Provider'
+import { useEffect, useRef } from 'react'
+import HomeSectionReducer, { initialState } from '../../store/Reducers/homesection'
+import './Home.css'
 
 const Section = (props) => {
 
+  const [ state, dispatch ]  = useCreatedContext()
   const { handleVisible, callAPI, rootClassValue } = props.inputs
-  
   const sectionRef = useRef(null)
-  const [ sectionData, setSectionData ] = useState(![])
 
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       const entry = entries[0]
       const isVisible = !!entry?.isIntersecting
-      // entry?.target.classList.toggle("visible", isVisible)
       if (isVisible) {
         entry?.target.classList.toggle("visible", isVisible)
         if (callAPI) {
-          axiosInstance.get(callAPI?.endpoint)
-          .then(response => {
-            const dataResponse = response?.data
-            if (Array.isArray(dataResponse) && dataResponse.length > 0) setSectionData(dataResponse)
+          getSectionData({
+            prefix: BaseSource?.BASE_URL, 
+            endpoint: callAPI?.endpoint || 'error'
+          })
+          .then(responseData => {
+            if (Array.isArray(responseData) && responseData.length > 0) 
+              dispatch(setSectionData(responseData))
           })
           .catch(err => console.log(err))
         }
-        else setSectionData(!sectionData)
+        else dispatch(setSectionData(!state?.sectionData))
         handleVisible()
         observer.unobserve(entry?.target)
       }
+    }, {
+      threshold: 0.5
     })
     observer.observe(sectionRef?.current)
   }, [])
 
   return (
-    <sectionContext.Provider value={sectionData}>
-      <section className={`h-sec row ${rootClassValue}`} ref={sectionRef}>
-        { sectionData && props.children }
-      </section>
-    </sectionContext.Provider>
+    <section className={`h-sec row${rootClassValue || ''}`} ref={sectionRef}>
+      { props.children }
+    </section>
   )
 }
+
+// { component: Promotions, handleVisible: () => {}, rootClassValue: ' promotions' },
 
 const Home = () => {
 
   const sections = [
     { component: Slider, handleVisible: () => {} }, 
     { component: FeaturedProducts, handleVisible: () => {}, callAPI: { endpoint: 'featuredproducts' } }, 
-    { component: Promotions, handleVisible: () => {}, rootClassValue: 'promotions' },
     { component: BestSellers, handleVisible: () => {}, callAPI: { endpoint: 'bestsellers' } },
-    { component: NewCollections, handleVisible: () => {} },
+    { component: NewCollections, handleVisible: () => {}, rootClassValue: ' new-collections' },
     { component: TopBrands, handleVisible: () => {}, callAPI: { endpoint: 'topbrands' } },
-    { component: Contact, handleVisible: () => {}, rootClassValue: 'contact' }
+    { component: Contact, handleVisible: () => {}, rootClassValue: ' contact' }
   ]
 
   return (
@@ -67,11 +72,15 @@ const Home = () => {
       sections.map((section, index) => {
         const { component: SectionComponent, handleVisible, callAPI, rootClassValue } = section
         return (
-          <Section 
+          <HomeSectionProvider
             key={index}
-            inputs={{ handleVisible, callAPI, rootClassValue }}>
-            <SectionComponent />
-          </Section>
+            reducer={HomeSectionReducer}
+            initialState={initialState}>
+            <Section
+              inputs={{ handleVisible, callAPI, rootClassValue }}>
+              <SectionComponent />
+            </Section>
+          </HomeSectionProvider>
         )
       })}
     </>

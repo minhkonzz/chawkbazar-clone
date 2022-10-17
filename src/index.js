@@ -4,14 +4,14 @@ import Router from './routes';
 import "./grid.css"
 import "./index.css"
 import reportWebVitals from './reportWebVitals';
-import store from './store';
-import { Provider as StoreProvider } from 'react-redux';
+import store from './store/ReduxStore';
+import { Provider as ReduxStoreProvider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-   <StoreProvider store={store}>
+   <ReduxStoreProvider store={store}>
       <Router />
-   </StoreProvider>
+   </ReduxStoreProvider>
 );
 
 reportWebVitals();

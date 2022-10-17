@@ -14,7 +14,7 @@ const Modal = () => {
             (state.menuSidebar && <div className="popup-wrapper"><VerticalNavbar/></div>) || 
             (state.cartSidebar && <div className="popup-wrapper"><Cart/></div>) || 
             (state.authDialog && <div className="popup-wrapper"><Auth/></div>) || 
-            (state.productDialog && <div className="popup-wrapper"><ProductDetail/></div>)
+            (state.productDetailId && <div className="popup-wrapper"><ProductDetail productId={state.productDetailId} /></div>)
          }
       </>
    )

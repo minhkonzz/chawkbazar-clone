@@ -1,7 +1,4 @@
 .auth-container {
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
   width: 450px; 
   background-color: white;
   border-radius: 15px; 
@@ -13,7 +10,6 @@
 .auth-container img {
   width: 150px; 
   height: 100px;
-  margin-top: 0px; 
 }
 
 .auth-container > button:not(first-child) {
@@ -22,33 +18,26 @@
   color: white;
 }
 
-.auth-container > button:not(first-child) span {
-  margin-left: 18px; 
-}
+.auth-container > button:not(first-child) span { margin-left: 18px; }
 
-.auth-container > button:not(first-child) ion-icon {
-  font-size: 25px;
-}
+.auth-container > button:not(first-child) ion-icon { font-size: 25px; }
 
 .auth-container > button:first-child {
-  align-self: flex-end;
+  width: 32px; 
+  height: 32px; 
+  background-color: white;
   color: black;
 }
 
-.auth-container > button:first-child ion-icon {
-  font-size: 18px;
-}
+.top-m4pc { top: -4%; }
+
+.auth-container > button:first-child ion-icon { font-size: 18px; }
 
 .auth-container span { margin-top: 10px; }
 
 .auth-title {
   color: #5f5e5e;
   font-size: 14px; 
-}
-
-.user-saver {
-  display: flex;
-  align-items: center;
 }
 
 .user-saver-title {
@@ -59,7 +48,6 @@
 
 .toggle {
   width: 42px; 
-  border-radius: 50px;
   transition: 0.3s;
 }
 

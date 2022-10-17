@@ -6,17 +6,13 @@
    padding-top: 4px;
 }
 
-.filter {
-   display: block;
-   border-bottom: 0.8px solid #e4e4e4; 
-   padding-top: 22px; 
-}
+.filter { padding-top: 22px; }
 
 .filter h4 { margin-bottom: 32px; }
 
 .checkbox-selector { margin-bottom: 28px; }
 
-.filters-header { border-bottom: 0.8px solid #e4e4e4; }
+.filter, .filters-header { border-bottom: 0.8px solid #e4e4e4; }
 
 .filters-header p, .filters-header span { font-size: 13px; }
 
@@ -56,41 +52,32 @@
 .load-more {
    width: 120px; 
    height: 50px; 
-   background-color: black;
-   color: white; 
    font-size: 15px;
-   font-weight: 600;
 }
 
-.dropdown-menu-wrapper {
-   width: 175px; 
-   display: inline-block;
-   position: relative;
-}
+.dropdown-menu-wrapper { width: 175px; }
  
  .dropdown-btn {
-   display: flex;
-   justify-content: space-around;
-   align-items: center;
    height: 38px;
-   border-radius: 6px;
    border: 1px solid #dadada;
    background-color: white;
    font-size: 14px;
-   font-weight: bold;
    padding: 0 5px;
  }
  
- .up-down-icons ion-icon {
-   display: block;
-   font-size: 13px;
- }
+ .up-down-icons ion-icon { font-size: 13px; }
  
  .dropdown-content {
-   position: absolute;
-   height: 250px;
-   background-color: yellow;
+   border: 0.8px solid #e4e4e4;
+   background-color: white;
    margin-top: 5px;
-   border-radius: 8px;
-   z-index: 1
+   padding: 5px 0;
  }
+
+ .dropdown-content p {
+   font-size: 14px;
+   padding: 10px 0 10px 20px;
+   color: #3b3b3b;
+ }
+
+ .dropdown-content p:hover { background-color: #e4e4e4; }

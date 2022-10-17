@@ -1,0 +1,28 @@
+.slider { height: calc((100vw - 100px) * 0.44); }
+ 
+.slider img { transition: 0.7s; }
+ 
+/* .nav-btns {
+   position: absolute;
+   left: 50%;
+   bottom: 1rem;
+   transform: translateX(-50%);
+} */
+
+.z-5 { z-index: 5; }
+.bottom-1r { bottom: 1rem; }
+ 
+.nav-btn {
+   width: 20px;
+   height: 20px;
+   margin: 0 5px;
+   border-radius: 30px;
+   border: none;
+}
+ 
+.bg-black { background-color: black; }
+.bg-white { background-color: white; }
+
+@media (max-width: 739px) {
+   .slider { height: calc((100vw - 0px) * 0.44); }
+}

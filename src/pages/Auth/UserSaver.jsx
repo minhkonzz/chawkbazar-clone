@@ -6,8 +6,8 @@ const UserSaver = () => {
   const [ toggled, setToggled ] = useState(false)
 
   return (
-    <div className="user-saver" onClick={() => setToggled(!toggled)}>
-      <div className={`toggle ${toggled ? 'toggled' : 'not-toggled'}`}>
+    <div className="d-flex at-center" onClick={() => setToggled(!toggled)}>
+      <div className={`toggle ${toggled ? 'toggled' : 'not-toggled'} circle-bd-r`}>
         <div style={{ 
           width: 16, 
           height: 16, 

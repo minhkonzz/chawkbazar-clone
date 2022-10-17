@@ -1,6 +1,6 @@
 import './Profile.css'
-import Order from './components/Order'
 import TabsMenu from './components/TabsMenu'
+import { Outlet } from 'react-router-dom'
 
 const Profile = () => (
    <div className="profile-detail row">
@@ -8,7 +8,7 @@ const Profile = () => (
          <TabsMenu />
       </div>
       <div className="col lg-5 md-8 sm-12">
-         <Order />
+         <Outlet />
       </div>
    </div>
 )

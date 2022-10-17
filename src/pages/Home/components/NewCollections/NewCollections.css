@@ -1,0 +1,40 @@
+.new-collection { text-align: center; }
+ 
+.collection-img { 
+   width: 100%;
+   border-radius: 8px;
+   margin-bottom: 20px; 
+}
+
+.new-collection-detail h1 { margin-bottom: 10px; }
+ 
+.new-collection-detail p {
+   opacity: 0.6;
+   line-height: 2;
+}
+
+.view-collection-btn {
+   width: 30%; 
+   height: 10%;
+   font-weight: 600;
+}
+
+.collection-img:hover img {
+   transform: scale(1.07);
+   opacity: 0.9;
+}
+
+.collection-img:not(:hover) img, 
+.collection-img:hover img, 
+.collection-img:not(:hover) .view-collection-btn, 
+.collection-img:hover .view-collection-btn {
+   transition: 0.3s;
+}
+
+.collection-img:hover .view-collection-btn {
+   bottom: 4%;
+   opacity: 1;
+}
+
+.bottom-m10pc { bottom: -10%; }
+.right-3pc { right: 3%; }
