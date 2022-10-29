@@ -1,9 +1,9 @@
-import HeaderBackground from '../../common/HeaderBackground/HeaderBackground'
+import HeaderBackground from '../../common/HeaderBackground'
 import Navbar from '../../common/Navbar/Navbar'
-import Footer from '../../common/Footer/Footer'
-import UserMailGetter from '../../common/UserMailGetter/UserMailGetter'
-import Modal from '../../common/PopupWrapper/PopupWrapper'
-import BottomMenu from '../../common/BottomMenu/BottomMenu'
+import Footer from '../../common/Footer'
+import UserMailGetter from '../../common/UserMailGetter'
+import Modal from '../../common/PopupWrapper'
+import BottomMenu from '../../common/BottomMenu'
 
 const DefaultLayout = ({ children }) => {
    return (

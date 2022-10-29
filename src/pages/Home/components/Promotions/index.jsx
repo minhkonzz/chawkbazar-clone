@@ -1,17 +1,9 @@
-import './Promotions.css'
+import './index.css'
 import { useState } from 'react'
+import { promotions } from './data'
 import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-
-const data = [ 
-   'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fsmall%2Fbanner-1.jpg&w=1200&q=100',
-   'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fsmall%2Fbanner-2.jpg&w=640&q=100', 
-   'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fsmall%2Fbanner-3.jpg&w=1200&q=100',
-   'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fsmall%2Fbanner-1.jpg&w=1200&q=100',
-   'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fsmall%2Fbanner-2.jpg&w=640&q=100', 
-   'https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fsmall%2Fbanner-3.jpg&w=1200&q=100'
-]
 
 const Promotions = () => {
 
@@ -54,7 +46,7 @@ const Promotions = () => {
       <div className="col lg-12 md-12 sm-12">
          <div className="promotions-wrapper">
             <Slider { ...settings }> {
-               data.map((d, index) => {
+               promotions.map((d, index) => {
                   return (
                      <div key={index} className={`promotion ${index === focusIndex ? 'active' : ''}`}>
                         <img className="thin-bd-r" src={d} alt="promo-img" />

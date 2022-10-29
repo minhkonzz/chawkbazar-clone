@@ -2,11 +2,7 @@ import Filter from "./Filter"
 import { useState, useEffect } from 'react'
 import { fetchAll as getFiltersData } from '../../../utils/fetch'
 
-const selects = [
-   'T-Shirt', 
-   'Kids', 
-   'T-Shirt'
-]
+const selects = ["T-shirt", "Coat"]; 
 
 const urls = [
    'https://630fa0ec498924524a92aac4.mockapi.io/categories',

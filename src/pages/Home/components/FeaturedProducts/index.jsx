@@ -1,5 +1,5 @@
-import './FeaturedProducts.css'
-import FeaturedProduct from './FeaturedProduct'
+import './index.css'
+import FeaturedProduct from './components/FeaturedProduct'
 import { useCreatedContext } from '../../../../store/Provider'
 
 const FeaturedProducts = () => {

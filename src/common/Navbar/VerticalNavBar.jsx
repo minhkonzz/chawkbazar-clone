@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { BaseSource } from "../../utils/constants"
 import { useDispatch } from "react-redux"
-import { touchMenuSidebar } from "../../store/Reducers/popup"
+import { touchMenuSidebar } from "../../store/Reducers/global/popup"
 
 const VerticalNavbar = () => {
 

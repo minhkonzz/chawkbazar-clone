@@ -1,9 +1,9 @@
 import { useState } from "react"
-import './Auth.css'
+import './index.css'
 
 const UserSaver = () => {
 
-  const [ toggled, setToggled ] = useState(false)
+  const [ toggled, setToggled ] = useState(false); 
 
   return (
     <div className="d-flex at-center" onClick={() => setToggled(!toggled)}>

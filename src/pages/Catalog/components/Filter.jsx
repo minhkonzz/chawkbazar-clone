@@ -1,39 +1,35 @@
-import Checkbox from "../../../common/Checkbox/Checkbox"
+import Checkbox from "../../../common/Checkbox"
+import { useCreatedContext } from "../../../store/Provider";
 import { useSearchParams } from "react-router-dom";
+import { addFilter, removeFilter } from "../../../store/Reducers/internal/-M_CatalogProducts/actions";
 
 const Filter = ({ data }) => {
 
-   const [ searchParams ,setSearchParams ] = useSearchParams();
+   const [ searchParams, setSearchParams ] = useSearchParams();
+   const [ state, dispatch ] = useCreatedContext(); 
+   console.log('render Filter component');
 
    const selectHandler = (event, val) => {
-      setSearchParams((prevSearchParams) => {
-         console.log(typeof prevSearchParams); 
-         const valueExistPrev = prevSearchParams.get(data.urlParam);
-         if (event.target.checked) {
-            if (valueExistPrev) {
-               prevSearchParams.set(
-                  data.urlParam, 
-                  valueExistPrev + `p2c${val}`
-               )
-               return prevSearchParams;
-            }
-            console.log("go here");
-            prevSearchParams.append(data.urlParam, val);
-            return prevSearchParams;
-         } 
-         if (valueExistPrev.includes(val)) {
-            if (valueExistPrev === val) {
-               prevSearchParams.delete(data.urlPram);
-               return prevSearchParams;
-            }
-            prevSearchParams.set(
-               data.urlParam, 
-               valueExistPrev.replace(valueExistPrev.includes(`p2c${val}`) ? `p2c${val}` : `${val}p2c`, "")
-            );
-            return prevSearchParams;
-         }
-         // else searchParams.delete(data.urlParam);
-      }, { replace: false })
+      const paramsObj = Object.fromEntries(searchParams.entries());
+      if (event.target.checked) {
+         if (paramsObj[data.urlParam]) paramsObj[data.urlParam] += `p2c${val}`; 
+         else paramsObj[data.urlParam] = val; 
+         dispatch(addFilter({ title: data.urlParam, option: val }));
+         setSearchParams(paramsObj);
+         return;
+      }
+      if (paramsObj[data.urlParam].includes("p2c")) {
+         paramsObj[data.urlParam] = paramsObj[data.urlParam].replace(
+            paramsObj[data.urlParam].includes(`p2c${val}`) ? `p2c${val}` : `${val}p2c`, 
+            ""
+         );
+         dispatch(removeFilter({ title: data.urlParam, option: val }));
+         setSearchParams(paramsObj);
+         return;
+      }
+      dispatch(removeFilter({ title: data.urlParam, option: val }));
+      delete paramsObj[data.urlParam];
+      setSearchParams(paramsObj);
    }
 
    return (

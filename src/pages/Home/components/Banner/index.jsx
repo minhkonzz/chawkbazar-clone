@@ -1,15 +1,22 @@
-import { useState } from 'react'
-import './Slider.css'
-
-const sliderImages = [
-  "https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fhero%2Fbanner-1.jpg&w=1920&q=100",
-  "https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fhero%2Fbanner-2.jpg&w=1920&q=100",
-  "https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fhero%2Fbanner-3.jpg&w=1920&q=100"
-];
+import React, { useState, useEffect } from 'react'
+import { sliderImages } from './data'
+import './index.css'
 
 const Slider = () => {
 
-  const [ currentIndex, setCurrentIndex ] = useState(0)
+  const [ currentIndex, setCurrentIndex ] = useState(0);
+
+  useEffect(() => {
+    const onNextSlide = () => {
+      if (currentIndex === 2) {
+        setCurrentIndex(0); 
+        return;
+      }
+      setCurrentIndex(currentIndex + 1);
+    }
+    const slideTimeout = setInterval(onNextSlide, 6000); 
+    return () => clearTimeout(slideTimeout); 
+  }, [currentIndex]);
 
   return (
     <div className="col lg-12 md-12 sm-12">
@@ -27,16 +34,6 @@ const Slider = () => {
             src={slide}
           />
         )}
-        <div className="nav-btns posab left-50pc z-5 bottom-1r"> {
-          sliderImages.map((slide, index) => 
-            <button
-              key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`nav-btn ${index === currentIndex ? "bg-black" : "bg-white"}`}
-            />
-          )
-        }
-        </div>
       </div>
     </div>
   )

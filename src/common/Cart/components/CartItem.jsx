@@ -1,8 +1,8 @@
-import '../Cart.css'
+import '../index.css'
 // import { PREFIX_API_SOURCE, INCREASE_ONCE, DECREASE_ONCE } from '../../../utils/constants'
 import { BaseSource, MeanVars } from '../../../utils/constants'
 import { useDispatch } from 'react-redux'
-import { removeFromCart, adjustAmount } from '../../../store/Reducers/cart'
+import { removeFromCart, adjustAmount } from '../../../store/Reducers/global/cart'
 
 const CartItem = ({ data }) => {
 

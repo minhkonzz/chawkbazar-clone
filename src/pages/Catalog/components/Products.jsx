@@ -1,25 +1,26 @@
 import { useState, useEffect } from 'react'
 import { useCreatedContext } from "../../../store/Provider"
-import Product from "../../../common/Product/type-1/Product"
+import Product from "../../../common/Product/type-1"
 import getProducts from '../../../utils/fetch'
-import { setProducts } from '../../../store/Actions/Products'
+import { setProducts } from '../../../store/Reducers/internal/-M_CatalogProducts/actions'
 import { BaseSource, endpoints } from '../../../utils/constants'
 
 const Products = () => {
 
-   const [ state, dispatch ] = useCreatedContext()
+   const [ state, dispatch ] = useCreatedContext(); 
+   console.log('render Products component'); 
    const [ fetching, setFetching ] = useState({
       isFetching: true, 
       timesFetched: 0
-   })
+   }); 
 
    const handleFetchProducts = () => {
       getProducts({
          prefix: BaseSource.BASE_URL,
          endpoint: endpoints?.EP_PRODUCTS,
-         isLimit: {
-            times: fetching.timesFetched + 1, 
-            itemsPerFetch: 10
+         queryParams: {
+            page: fetching.timesFetched + 1, 
+            limit: 10
          }
       })
       .then(responseData => {
@@ -42,7 +43,7 @@ const Products = () => {
          {
             fetching.isFetching === false &&
             <div className="row"> { 
-               state?.products.map((product, index) => 
+               state?.currProducts.map((product, index) => 
                   <div key={product?.id || index} className="col lg-2-4 md-4 sm-6"><Product data={product}/></div>)
             }
             </div>

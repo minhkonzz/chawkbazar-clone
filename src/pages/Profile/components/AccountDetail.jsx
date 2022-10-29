@@ -1,5 +1,5 @@
-import UserInput from "../../../common/UserInput/UserInput"
-import RadioButton from "../../../common/RadioButton/RadioButton"
+import UserInput from "../../../common/UserInput"
+import RadioButton from "../../../common/RadioButton"
 
 const AccountDetail = () => {
    return (

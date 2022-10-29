@@ -1,8 +1,0 @@
-.h-sec.visible {
-   animation: section-show-up 1s ease-in;
-}
-
-@keyframes section-show-up {
-   0% { margin-left: -50px; opacity: 0; }
-   100% { margin-left: 0; opacity: 1; }
-}

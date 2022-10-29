@@ -1,0 +1,104 @@
+@keyframes showAuth {
+  0% { transform: translate(-50%, -50%) scale(1.1, 1.1); };
+  100% { transform: scale(1, 1); }
+}
+
+@keyframes closeAuth {
+  0% { transform: scale(1, 1); }
+  100% { transform: translate(-50%, -50%) scale(1.1, 1.1); }
+}
+
+.auth-container {
+  width: 450px; 
+  background-color: white;
+  border-radius: 15px; 
+  padding: 0 28px 20px 28px;
+  animation: showAuth 0.4s ease;
+  transition: transform 0.6s ease, opacity 0.5s ease; 
+}
+
+.auth-container > * { margin-top: 18px; }
+
+.auth-container img {
+  width: 150px; 
+  height: 100px;
+}
+
+.auth-container > button:not(first-child) {
+  height: 50px; 
+  font-weight: 600;
+  color: white;
+}
+
+.auth-container > button:not(first-child) span { margin-left: 18px; }
+
+.auth-container > button:not(first-child) ion-icon { font-size: 25px; }
+
+.auth-container > button:first-child {
+  width: 32px; 
+  height: 32px; 
+  background-color: white;
+  color: black;
+}
+
+.top-m4pc { top: -4%; }
+
+.auth-container > button:first-child ion-icon { font-size: 18px; }
+.auth-container > button:first-child:hover { opacity: 0.9; }
+.auth-container > button:first-child:hover,
+.auth-container > button:first-child:not(:hover) { transition: 0.3s; }
+
+.auth-container span { margin-top: 10px; }
+
+.auth-title {
+  color: #5f5e5e;
+  font-size: 14px; 
+}
+
+.user-saver-title {
+  color: black;
+  font-size: 14px;
+  margin-left: 10px; 
+}
+
+.toggle {
+  width: 42px; 
+  transition: 0.3s;
+}
+
+.toggled {
+  background-color: black;
+  padding: 3px 0 3px 22px;
+}
+
+.not-toggled {
+  background-color: #e4e4e4;
+  padding: 3px 0 3px 4px;
+}
+
+.btn-fb { background-color: rgb(66, 103, 178); }
+.btn-google { background-color: rgb(100, 150, 210); }
+
+.btn-log-to:hover, 
+.btn-fb:hover, 
+.btn-google:hover { 
+  opacity: 0.8; 
+}
+
+.btn-log-to:hover, 
+.btn-log-to:not(:hover),
+.btn-fb:hover,
+.btn-fb:not(:hover)
+.btn-google:hover, 
+.btn-google:not(:hover) { 
+  transition: opacity 0.2s; 
+}
+
+.warn-title {
+  /* display: none; */
+  color: rgb(254, 58, 58);
+  font-size: 14px;
+  align-self: flex-start;
+  margin-top: 12px;
+}
+

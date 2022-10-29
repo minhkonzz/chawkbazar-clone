@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { paths } from '../utils/constants/index'
-import Home from "../pages/Home/Home";
+import Home from "../pages/Home";
 import DefaultLayout from '../layouts/default'
 import Custom1Layout from "../layouts/customs/custom1";
-import Catalog from "../pages/Catalog/Catalog";
-import Checkout from "../pages/Checkout/Checkout";
-import ContactUs from "../pages/ContactUs/ContactUs";
-import FAQ from "../pages/FAQ/FAQ";
-import Terms from "../pages/Terms/Terms";
-import Profile from '../pages/Profile/Profile'
+import Catalog from "../pages/Catalog";
+import Checkout from "../pages/Checkout";
+import ContactUs from "../pages/ContactUs";
+import FAQ from "../pages/FAQ";
+import Terms from "../pages/Terms";
+import Profile from '../pages/Profile'
 import AccountDetail from "../pages/Profile/components/AccountDetail";
 import Orders from '../pages/Profile/components/Orders'
 import PasswordUpdate from '../pages/Profile/components/PasswordUpdate'
@@ -56,8 +56,7 @@ const Router = () => {
                         <Layout>
                            <Component />
                         </Layout>
-                     }
-                  >
+                     }>
                      {
                         route.nestLayouts && route.nestLayouts.map((layout, index) => {
                            const NestLayout = layout.component

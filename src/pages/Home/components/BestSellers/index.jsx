@@ -1,4 +1,4 @@
-import Product from "../../../../common/Product/type-1/Product"
+import Product from "../../../../common/Product/type-1"
 import { useCreatedContext } from "../../../../store/Provider"
 
 const BestSellers = () => {

@@ -1,4 +1,4 @@
-import './TopBrands.css'
+import './index.css'
 import { BaseSource } from '../../../../utils/constants'
 import { useCreatedContext } from '../../../../store/Provider'
 

@@ -1,4 +1,4 @@
-import UserInput from "../../../common/UserInput/UserInput"
+import UserInput from "../../../common/UserInput"
 
 const PasswordUpdate = () => {
    return (
