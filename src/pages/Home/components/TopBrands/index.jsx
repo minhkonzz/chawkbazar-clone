@@ -1,10 +1,10 @@
 import './index.css'
 import { BaseSource } from '../../../../utils/constants'
-import { useCreatedContext } from '../../../../store/Provider'
+import { useCreatedContext } from "../../../../services/context/provider"
 
 const TopBrands = () => {
 
-   const [ state, dispatch ] = useCreatedContext()
+   const [ state, dispatch ] = useCreatedContext();
 
    return (
       <div className="col lg-12 md-12 sm-12">

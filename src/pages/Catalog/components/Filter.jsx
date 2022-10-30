@@ -1,7 +1,7 @@
-import Checkbox from "../../../common/Checkbox"
-import { useCreatedContext } from "../../../store/Provider";
+import Checkbox from "../../../common/components/Checkbox"
+import { useCreatedContext } from "../../../services/context/provider";
 import { useSearchParams } from "react-router-dom";
-import { addFilter, removeFilter } from "../../../store/Reducers/internal/-M_CatalogProducts/actions";
+import { addFilter, removeFilter } from "../../../services/redux/actions/catalog.actions"
 
 const Filter = ({ data }) => {
 

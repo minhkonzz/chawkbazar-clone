@@ -1,10 +1,10 @@
 import './index.css'
-import { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { touchProductDialog } from '../../store/Reducers/global/popup'
-import getProductDetail from '../../utils/fetch'
-import { BaseSource, endpoints } from '../../utils/constants'
-import { addCart } from '../../store/Reducers/global/cart'
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { touchProductDialog } from '../../services/redux/store/reducers/popup.reducer';
+import getProductDetail from '../../utils/fetch';
+import { BaseSource, endpoints } from '../../utils/constants';
+import { addCart } from "../../services/redux/store/reducers/cart.reducer";
 
 const ProductDetail = ({ productId }) => {
 

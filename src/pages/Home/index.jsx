@@ -7,11 +7,12 @@ import NewCollections from './components/NewCollections'
 import Contact from './components/Contact'
 import getSectionData from '../../utils/fetch'
 import { BaseSource } from '../../utils/constants'
-import { Provider as HomeSectionProvider } from '../../store'
-import { setSectionData } from '../../store/Reducers/internal/-M_HomeSectionData/actions'
-import { useCreatedContext } from '../../store/Provider'
+import { Provider as HomeSectionProvider } from '../../services/context'
+import { setSectionData } from '../../services/redux/actions/home_section.actions'
+import { useCreatedContext } from '../../services/context/provider'
 import { useEffect, useRef } from 'react'
-import HomeSectionReducer, { initialState } from '../../store/Reducers/internal/-M_HomeSectionData'
+import HomeSectionReducer, { initialState } from "../../services/redux/store/reducers/home_section.reducer"
+import { getAllRecords } from '../../services/firebase/common'
 import './index.css'
 
 const Section = (props) => {
@@ -35,6 +36,8 @@ const Section = (props) => {
               dispatch(setSectionData(responseData))
           })
           .catch(err => console.log(err))
+          getAllRecords("brands")
+          .then(() => {});
         }
         else dispatch(setSectionData(!state.sectionData));
         observer.unobserve(entry?.target);

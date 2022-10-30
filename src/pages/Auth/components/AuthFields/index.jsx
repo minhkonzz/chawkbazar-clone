@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { updateCurrentUser } from "../../../../store/Reducers/global/currentUser"
+import { updateCurrentUser } from "../../../../services/redux/store/reducers/currentUser.reducer";
 import UserSaver from "../../UserSaver";
-import UserInput from "../../../../common/UserInput";
-import { AuthService } from "../../../../services/auth"
+import UserInput from "../../../../common/components/UserInput"
+import { AuthService } from "../../../../services/firebase/auth"
 
 const AuthFields = () => {
 

@@ -1,2 +1,0 @@
-folder_names:
-    -M_A: Manage A

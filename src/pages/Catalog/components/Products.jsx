@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
-import { useCreatedContext } from "../../../store/Provider"
-import Product from "../../../common/Product/type-1"
-import getProducts from '../../../utils/fetch'
-import { setProducts } from '../../../store/Reducers/internal/-M_CatalogProducts/actions'
-import { BaseSource, endpoints } from '../../../utils/constants'
+import { useState, useEffect } from "react";
+import { useCreatedContext } from "../../../services/context/provider";
+import Product from "../../../common/components/Product/type-1";
+import getProducts from "../../../utils/fetch";
+import { setProducts } from "../../../services/redux/actions/catalog.actions"
+import { BaseSource, endpoints } from "../../../utils/constants"
 
 const Products = () => {
 

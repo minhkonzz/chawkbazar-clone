@@ -3,7 +3,7 @@ import Auth3rdProviders from './components/Auth3rdProviders'
 import AuthFields from './components/AuthFields'
 import './index.css'
 import { useDispatch } from "react-redux"
-import { touchAuthDialog } from "../../store/Reducers/global/popup"
+import { touchAuthDialog } from "../../services/redux/store/reducers/popup.reducer"
 import { LOGO_SHOP_PATH } from "../../utils/constants/base-source"
 
 const Auth = () => {

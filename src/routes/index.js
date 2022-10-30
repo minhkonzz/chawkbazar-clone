@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { paths } from '../utils/constants/index'
 import Home from "../pages/Home";
-import DefaultLayout from '../layouts/default'
-import Custom1Layout from "../layouts/customs/custom1";
+import DefaultLayout from "../common/layouts/default"
+import Custom1Layout from "../common/layouts/customs/custom1";
 import Catalog from "../pages/Catalog";
 import Checkout from "../pages/Checkout";
 import ContactUs from "../pages/ContactUs";

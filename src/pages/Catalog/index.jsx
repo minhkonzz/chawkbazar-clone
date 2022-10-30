@@ -2,8 +2,8 @@ import './index.css'
 import Products from './components/Products'
 import Filters from "./components/Filters"
 import SortingOptions from './components/SortingOptions'
-import { Provider as ProductsProvider } from '../../store'
-import ProductsReducer, { initialState } from '../../store/Reducers/internal/-M_CatalogProducts'
+import { Provider as ProductsProvider } from "../../services/context"
+import ProductsReducer, { initialState } from "../../services/redux/store/reducers/catalog.reducer"
 
 const Catalog = () => {
    return (

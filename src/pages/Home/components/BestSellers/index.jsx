@@ -1,5 +1,5 @@
-import Product from "../../../../common/Product/type-1"
-import { useCreatedContext } from "../../../../store/Provider"
+import Product from "../../../../common/components/Product/type-1"
+import { useCreatedContext } from "../../../../services/context/provider"
 
 const BestSellers = () => {
 
