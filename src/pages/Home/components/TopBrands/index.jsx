@@ -20,9 +20,9 @@ const TopBrands = () => {
                      <div className="top-brand w-100pc thin-bd-r o-h">
                         <div className="posrel pt-100pc">
                            <div className="posab top-0 left-0">
-                              <img className="top-brand-img" src={`${BaseSource.PREFIX_API_SOURCE + brand?.background_image?.thumbnail}`} alt="brand_image"/>
+                              <img className="top-brand-img" src={`${BaseSource.PREFIX_API_SOURCE + brand?.background_image}`} alt="brand_image"/>
                               <div className="top-brand-logo posab top-0 left-0 right-0 bottom-0">
-                                 <img className="posab pos-center" src={`${BaseSource.PREFIX_API_SOURCE + brand?.image?.thumbnail}`} alt="brand_logo"/>
+                                 <img className="posab pos-center" src={`${BaseSource.PREFIX_API_SOURCE + brand?.logo}`} alt="brand_logo"/>
                               </div>
                            </div>
                         </div>

@@ -1,56 +1,51 @@
 import { useState, useEffect } from "react";
 import { useCreatedContext } from "../../../services/context/provider";
 import Product from "../../../common/components/Product/type-1";
-import getProducts from "../../../utils/fetch";
-import { setProducts } from "../../../services/redux/actions/catalog.actions"
-import { BaseSource, endpoints } from "../../../utils/constants"
+import { ProductsService } from "../../../services/firebase/products"
+import { setProducts, loadMore } from "../../../services/redux/actions/catalog.actions"
 
 const Products = () => {
 
    const [ state, dispatch ] = useCreatedContext(); 
-   console.log('render Products component'); 
-   const [ fetching, setFetching ] = useState({
-      isFetching: true, 
-      timesFetched: 0
-   }); 
+   const [ fetching, setFetching ] = useState(true);
 
    const handleFetchProducts = () => {
-      getProducts({
-         prefix: BaseSource.BASE_URL,
-         endpoint: endpoints?.EP_PRODUCTS,
-         queryParams: {
-            page: fetching.timesFetched + 1, 
-            limit: 10
-         }
+      ProductsService.getFilteredProducts(state.filter)
+      .then((productsResponse) => {
+         dispatch(setProducts(productsResponse, state.filter));
       })
-      .then(responseData => {
-         if (Array.isArray(responseData) && responseData.length > 0) 
-            dispatch(setProducts(responseData))
+      .catch((err) => console.error(err.message))
+      .finally(() => { setFetching(false); });
+   }
+
+   const loadMoreProducts = () => {
+      if (fetching === false) setFetching(true); 
+      ProductsService.loadMoreFilteredProducts(state.currProducts, state.filter) 
+      .then((productsResponse) => {
+         console.log("current filter:", state.filter);
+         dispatch(loadMore(productsResponse, state.filter));
       })
-      .catch(err => console.log(err))
-      .finally(() => setFetching({
-         isFetching: false,
-         timesFetched: fetching.timesFetched + 1
-      }))
+      .catch((err) => console.error(err.message))
+      .finally(() => { setFetching(false); })
    }
 
    useEffect(() => {
-      handleFetchProducts()
+      handleFetchProducts();
    }, [])
 
    return (
       <>
          {
-            fetching.isFetching === false &&
+            fetching === false &&
             <div className="row"> { 
                state?.currProducts.map((product, index) => 
-                  <div key={product?.id || index} className="col lg-2-4 md-4 sm-6"><Product data={product}/></div>)
+                  <div key={index} className="col lg-2-4 md-4 sm-6"><Product data={product}/></div>)
             }
             </div>
          }
          <div className="row">
             <div className="col lg-12 md-12 sm-12 d-flex jc-center at-center">
-               <button className="load-more dark-v fw-600 thin-bd-r" onClick={handleFetchProducts}>Load more</button>
+               <button className="load-more dark-v fw-600 thin-bd-r" onClick={loadMoreProducts}>Load more</button>
             </div>
          </div>
       </>

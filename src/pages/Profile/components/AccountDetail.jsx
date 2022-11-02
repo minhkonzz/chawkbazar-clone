@@ -42,7 +42,7 @@ const AccountDetail = () => {
             </div>
             <div className="row"> 
                <div className="col lg-12 md-12 sm-12">
-                  <button style={{ width: 130 }} className="dark-v fw-600 thin-bd-r">
+                  <button className="w-130px h-50px dark-v fw-600 thin-bd-r">
                      Save
                   </button>
                </div>

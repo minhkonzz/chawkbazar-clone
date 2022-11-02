@@ -107,6 +107,11 @@
 }
 
 .outstand { background-color: #eeeeee; }
+.h-50px { height: 50px; }
+.w-130px { width: 130px; }
+.radio-group .radio-btn-container:last-child {
+   margin-left: 18px; 
+}
 
 @media (min-width: 740px) and (max-width: 1023px) {
    .tab {

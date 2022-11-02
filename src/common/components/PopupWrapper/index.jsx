@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 
 const Modal = () => {
 
-   const state = useSelector(state => state.popup)
+   const state = useSelector(state => state.popup);
 
    return (
       <> 
@@ -17,7 +17,7 @@ const Modal = () => {
             (state.productDetailId && <div className="popup-wrapper"><ProductDetail productId={state.productDetailId} /></div>)
          }
       </>
-   )
-}
+   );
+};
 
 export default Modal

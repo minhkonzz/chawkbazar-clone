@@ -33,8 +33,14 @@ const Checkbox = (props) => {
          <input 
             ref={ref}
             type="checkbox"
-            value={cbVal} 
-            onChange={(e) => onSelectChange()(e, e.target.value)}/> 
+            value={cbVal.optionName} 
+            onChange={(e) => {
+               onSelectChange()(e, cbVal)
+               .then(() => {
+                  console.log("filter thanh cong"); 
+               })
+               .catch((err) => console.error(err.message)); 
+            }}/> 
          <span className="checkbox-checkmark"></span>
       </label>
    )

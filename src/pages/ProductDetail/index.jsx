@@ -2,22 +2,26 @@ import './index.css'
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { touchProductDialog } from '../../services/redux/store/reducers/popup.reducer';
-import getProductDetail from '../../utils/fetch';
-import { BaseSource, endpoints } from '../../utils/constants';
+import { ProductsService } from "../../services/firebase/products" 
 import { addCart } from "../../services/redux/store/reducers/cart.reducer";
 
 const ProductDetail = ({ productId }) => {
 
-  const {
-    BASE_URL, 
-    PREFIX_API_SOURCE
-  } = BaseSource;
-
   const dispatch = useDispatch()
-  const [ productSelected, setProductSelected ] = useState(null)
-  const [ amount, setAmount ] = useState(1)
+  const [ productSelected, setProductSelected ] = useState(null); 
+  const [ colorSelected, setColorSelected ] = useState(""); 
+  const [ sizeSelected, setSizeSelected ] = useState(""); 
+  const [ amount, setAmount ] = useState(1);
 
   const handleAddToCart = () => {
+    if (!!colorSelected === false) {
+      alert("vui long chon mau"); 
+      return; 
+    }
+    if(!!sizeSelected === false) {
+      alert("Vui long chon size"); 
+      return; 
+    }
     dispatch(addCart({
       ...productSelected,
       qty: amount
@@ -25,20 +29,17 @@ const ProductDetail = ({ productId }) => {
   }
 
   const increaseAmount = () => { setAmount(amount + 1) }
-  const decreaseAmount = () => { setAmount(amount - 1) }
+  const decreaseAmount = () => {
+    if (amount === 1) return;  
+    setAmount(amount - 1); 
+  };
 
   useEffect(() => {
-    getProductDetail({
-      prefix: BASE_URL,
-      endpoint: `${endpoints?.EP_PRODUCTS}/${productId}`
+    ProductsService.getProductDetail(productId)
+    .then((productResponse) => {
+      setProductSelected(productResponse); 
     })
-    .then(responseData => {
-      if (responseData) {
-        console.log(responseData)
-        setProductSelected(responseData)
-      }
-    })
-    .catch(err => console.error(err))
+    .catch((err) => console.error(err.message)); 
   }, [])
 
   return (

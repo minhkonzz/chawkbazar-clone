@@ -7,7 +7,8 @@ import { BaseSource } from '../../../../utils/constants'
 const Product = ({ data }) => {
 
   const dispatch = useDispatch()
-  const [ productRef, { width, height }] = useElementSize()
+  const [ productRef, { width, height }] = useElementSize();
+  console.log(window.location.href); 
 
   return (
     <div ref={productRef} className="product-t1 w-100pc thin-bd-r" onClick={() => dispatch(touchProductDialog(data?.id))}>

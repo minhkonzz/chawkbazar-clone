@@ -5,8 +5,6 @@ import TopBrands from './components/TopBrands'
 import FeaturedProducts from './components/FeaturedProducts'
 import NewCollections from './components/NewCollections'
 import Contact from './components/Contact'
-import getSectionData from '../../utils/fetch'
-import { BaseSource } from '../../utils/constants'
 import { Provider as HomeSectionProvider } from '../../services/context'
 import { setSectionData } from '../../services/redux/actions/home_section.actions'
 import { useCreatedContext } from '../../services/context/provider'
@@ -18,33 +16,25 @@ import './index.css'
 const Section = (props) => {
 
   const [ state, dispatch ]  = useCreatedContext(); 
-  const { callAPI, rootClassValue } = props.inputs
-  const sectionRef = useRef(null)
+  const { isAsync, rootClassValue } = props.inputs;
+  const sectionRef = useRef(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
+    const observer = new IntersectionObserver((entries) => {
       const entry = entries[0]; 
-      const isVisible = !!entry?.isIntersecting
+      const isVisible = !!entry?.isIntersecting;
       if (isVisible) {
-        entry?.target.classList.toggle("visible", isVisible)
-        if (callAPI) {
-          getSectionData({
-            prefix: BaseSource?.BASE_URL, 
-            endpoint: callAPI?.endpoint || 'error'
-          })
-          .then(responseData => {
-              dispatch(setSectionData(responseData))
-          })
-          .catch(err => console.log(err))
-          getAllRecords("brands")
-          .then(() => {});
+        entry?.target.classList.toggle("visible", isVisible);
+        if (isAsync) {
+          getAllRecords(isAsync.collectionName || "error")
+          .then((responseData) => {
+            dispatch(setSectionData(responseData)); 
+          });
         }
         else dispatch(setSectionData(!state.sectionData));
         observer.unobserve(entry?.target);
       }
-    }, {
-      threshold: 0.4
-    });
+    }, { threshold: 0.4 });
     observer.observe(sectionRef.current)
   }, [])
 
@@ -58,27 +48,26 @@ const Section = (props) => {
 // { component: Promotions, handleVisible: () => {}, rootClassValue: ' promotions' },
 
 const Home = () => {
-
+    // { component: FeaturedProducts, callAPI: { endpoint: 'featuredproducts' } }, 
   const sections = [
     { component: Slider }, 
-    { component: FeaturedProducts, callAPI: { endpoint: 'featuredproducts' } }, 
-    { component: BestSellers, callAPI: { endpoint: 'bestsellers' } },
+    { component: BestSellers, isAsync: { collectionName: 'products' } },
     { component: NewCollections, rootClassValue: ' new-collections' },
-    { component: TopBrands, callAPI: { endpoint: 'topbrands' } },
+    { component: TopBrands, isAsync: { collectionName: 'brands' } },
     { component: Contact, rootClassValue: ' contact' }
   ]
 
   return (
     <> {
       sections.map((section, index) => {
-        const { component: SectionComponent, handleSectionVisible, callAPI, rootClassValue } = section
+        const { component: SectionComponent, isAsync, rootClassValue } = section
         return (
           <HomeSectionProvider
             key={index}
             reducer={HomeSectionReducer}
             initialState={initialState}>
             <Section
-              inputs={{ handleSectionVisible, callAPI, rootClassValue }}>
+              inputs={{ isAsync, rootClassValue }}>
               <SectionComponent />
             </Section>
           </HomeSectionProvider>
