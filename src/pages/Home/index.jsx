@@ -5,17 +5,19 @@ import TopBrands from './components/TopBrands'
 import FeaturedProducts from './components/FeaturedProducts'
 import NewCollections from './components/NewCollections'
 import Contact from './components/Contact'
-import { Provider as HomeSectionProvider } from '../../services/context'
+import { Provider as HomeSectionProvider } from '../../context'
 import { setSectionData } from '../../services/redux/actions/home_section.actions'
-import { useCreatedContext } from '../../services/context/provider'
+import { useCreatedContext } from '../../context/provider'
 import { useEffect, useRef } from 'react'
 import HomeSectionReducer, { initialState } from "../../services/redux/store/reducers/home_section.reducer"
 import { getAllRecords } from '../../services/firebase/common'
+import { AuthService } from "../../services/firebase/auth"
 import './index.css'
 
 const Section = (props) => {
 
-  const [ state, dispatch ]  = useCreatedContext(); 
+  const [ state, dispatch ] = useCreatedContext();
+  console.log("check state in Home Page", state);  
   const { isAsync, rootClassValue } = props.inputs;
   const sectionRef = useRef(null);
 
@@ -48,7 +50,8 @@ const Section = (props) => {
 // { component: Promotions, handleVisible: () => {}, rootClassValue: ' promotions' },
 
 const Home = () => {
-    // { component: FeaturedProducts, callAPI: { endpoint: 'featuredproducts' } }, 
+    // { component: FeaturedProducts, callAPI: { endpoint: 'featuredproducts' } },
+    
   const sections = [
     { component: Slider }, 
     { component: BestSellers, isAsync: { collectionName: 'products' } },

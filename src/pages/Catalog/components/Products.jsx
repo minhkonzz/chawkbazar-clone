@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useCreatedContext } from "../../../services/context/provider";
+import { useCreatedContext } from "../../../context/provider";
 import Product from "../../../common/components/Product/type-1";
 import { ProductsService } from "../../../services/firebase/products"
 import { setProducts, loadMore } from "../../../services/redux/actions/catalog.actions"
@@ -8,6 +8,7 @@ const Products = () => {
 
    const [ state, dispatch ] = useCreatedContext(); 
    const [ fetching, setFetching ] = useState(true);
+   console.log("check state in catalog products component:", state);
 
    const handleFetchProducts = () => {
       ProductsService.getFilteredProducts(state.filter)

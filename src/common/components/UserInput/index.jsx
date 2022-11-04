@@ -20,9 +20,11 @@ const UserInput = (props) => {
       {
         isTextArea ?
         <textarea 
+          value={inputValue}
           style={{ paddingTop: 8 }}
           className="input w-100pc" 
           placeholder={placeHolder ? placeHolder : ''}
+          onChange={(e) => onChangeText(e.target.value)}
           rows={rows} cols={cols}/> : 
         <input 
           className="input w-100pc"

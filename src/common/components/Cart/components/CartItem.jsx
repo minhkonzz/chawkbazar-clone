@@ -8,11 +8,11 @@ const CartItem = ({ data }) => {
    const {
       DECREASE_ONCE, 
       INCREASE_ONCE
-   } = MeanVars
+   } = MeanVars;
 
-   const { PREFIX_API_SOURCE } = BaseSource
+   const { PREFIX_API_SOURCE } = BaseSource;
 
-   const dispatch = useDispatch()
+   const dispatch = useDispatch();
    const changeAmount = changeType => {
       dispatch(adjustAmount({
          itemAdjust: data, 
@@ -29,7 +29,7 @@ const CartItem = ({ data }) => {
             </div>
          </div>
          <div className="cart-item-info">
-            <p className="item-name">{data?.name}</p>
+            <p className="item-name">{`${data?.name} - ${data?.sizeSelected.value}, ${data?.colorSelected.value}`}</p>
             <p className="item-unit-price">{`Unit price: ${data?.price}`}</p>
             <div className="d-flex w-100pc jc-sb at-center">
                <div className="qty-ctl d-flex dark-v thin-bd-r">

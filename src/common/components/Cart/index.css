@@ -129,6 +129,11 @@
    font-size: 14px;
 }
 
+.cart-bottom button:hover, 
+.cart-bottom button:not(:hover) { transition: 0.2s; }
+
+.cart-bottom button:hover { opacity: 0.9; }
+
 @media (min-width: 740px) {
    .cart {
       width: 50vw;

@@ -1,4 +1,8 @@
+import { useEffect } from "react"; 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { updateCurrentUserInstance } from "../services/redux/actions/currentUser.actions";
+import { useCreatedContext } from "../context/provider"
+import { AuthService } from "../services/firebase/auth"
 import { paths } from '../utils/constants/index'
 import Home from "../pages/Home";
 import DefaultLayout from "../common/layouts/default"
@@ -41,6 +45,22 @@ const routes = [
 ]
 
 const Router = () => {
+
+   const [ state, dispatch ] = useCreatedContext();  
+
+   const onUserSignIn = (currentUser) => {
+      console.log("current user now:", currentUser);
+      dispatch(updateCurrentUserInstance(currentUser))
+   };
+
+   const onUserSignOut = () => {
+      alert("User logged out");
+   };
+
+   useEffect(() => {
+      AuthService.listenToAuthState(onUserSignIn, onUserSignOut); 
+   }, [])
+
    return (
       <BrowserRouter>
          <Routes>

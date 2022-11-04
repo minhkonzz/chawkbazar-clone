@@ -1,6 +1,6 @@
 import './index.css'
 import { BaseSource } from '../../../../utils/constants'
-import { useCreatedContext } from "../../../../services/context/provider"
+import { useCreatedContext } from "../../../../context/provider"
 
 const TopBrands = () => {
 

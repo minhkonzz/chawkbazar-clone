@@ -1,19 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { ReduxActions } from "../../../../utils/constants"
 
-const initialState = {
-   userLoggedIn: JSON.parse(localStorage.getItem("currentUser"))  
-}
+export const initialState = {
+   userLoggedIn: null, 
+   referencesAdvance: null
+}; 
 
-export const currentUserReducer = createSlice({
-   name: "currentUser", 
-   initialState, 
-   reducers: {
-      updateCurrentUser: (state, action) => {
-         state.userLoggedIn = action.payload; 
-         localStorage.setItem("currentUser", JSON.stringify(action.payload))
+const currentUserReducer = (state, action) => {
+   switch (action.type) {
+      case ReduxActions.UPDATE_CURRENT_USER_INSTANCE: {
+         return {
+            ...state, 
+            userLoggedIn: action.payload
+         }
+      }
+      case ReduxActions.UPDATE_CURRENT_USER_ADVANCE_REFS: {
+         return {
+            ...state, 
+            referencesAdvance: action.payload
+         }
       }
    }
-})
+}
 
-export const { updateCurrentUser } = currentUserReducer.actions
-export default currentUserReducer.reducer
+export default currentUserReducer; 

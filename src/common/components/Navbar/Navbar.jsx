@@ -8,7 +8,7 @@ import './Dropdown.css'
 
 const Navbar = () => {
   
-  const userLoggedIn = useSelector(state => state.currentUser.userLoggedIn); 
+  // const userLoggedIn = useSelector(state => state.currentUser.userLoggedIn); 
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const navbarRef = useRef(null)
@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-right d-flex at-center">
           <ion-icon name="search"/>
-          <h4 onClick={() => dispatch(touchAuthDialog())}>{userLoggedIn ? userLoggedIn.email : "Login"}</h4>
+          <h4 onClick={() => dispatch(touchAuthDialog())}>Login</h4>
           <div className="cart-preview" onClick={() => dispatch(touchCartSidebar())}>
             <ion-icon name="bag-handle-outline" />
           </div>

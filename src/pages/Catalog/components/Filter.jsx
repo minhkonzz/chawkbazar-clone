@@ -1,5 +1,5 @@
 import Checkbox from "../../../common/components/Checkbox"
-import { useCreatedContext } from "../../../services/context/provider";
+import { useCreatedContext } from "../../../context/provider";
 import { useSearchParams } from "react-router-dom";
 // import { addFilter, removeFilter } from "../../../services/redux/actions/catalog.actions"
 import { setProducts } from "../../../services/redux/actions/catalog.actions"

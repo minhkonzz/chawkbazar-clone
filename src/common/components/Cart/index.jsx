@@ -9,6 +9,7 @@ const Cart = () => {
    const { cartItems, cartTotalPrice } = useSelector(state => state.cart);
    const dispatch = useDispatch();
    const cartRef = useRef(null);
+   console.log("cart:", cartItems);
 
    const closeCartModal = () => {
       cartRef.current.style.right = '-100%';

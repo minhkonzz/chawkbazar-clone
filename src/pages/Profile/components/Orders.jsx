@@ -1,4 +1,19 @@
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { CustomerService } from "../../../services/firebase/customer";
+
 const Orders = () => {
+
+   const userLoggedIn = useSelector((state) => state.currentUser.userLoggedIn); 
+
+   useEffect(() => {
+      CustomerService.getOrdersOfCustomer(userLoggedIn.uid)
+      .then(() => {
+         console.log("success fetched user's orders"); 
+      })
+      .catch((err) => console.error(err.message))
+   }, []); 
+
    return (
       <div className="profile-part row">
          <div className="col lg-12 md-12 sm-12">
@@ -46,4 +61,4 @@ const Orders = () => {
    )
 }
 
-export default Orders 
+export default Orders; 

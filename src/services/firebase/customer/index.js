@@ -1,0 +1,1 @@
+export * as CustomerService from "./customer.service";

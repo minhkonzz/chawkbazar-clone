@@ -4,8 +4,16 @@ import { getAllRecords } from "../common"
 import { isProductInFiltered } from "../../../functions"
 
 export const getProductDetail = async(productId) => {
-    const productDoc = await getDoc(doc(firestoreRef, "products", productId)); 
-    return productDoc.exists() && productDoc.data();
+    const productDoc = await getDoc(doc(firestoreRef, "products", productId));
+    if (productDoc.exists()) {
+        const { brand, category } = productDoc.data(); 
+        return {
+            ...productDoc.data(), 
+            brand: brand.id,
+            category: category.id
+        }
+    }
+    return null;
 }
 
 export const getProductRefferences = async() => { 
