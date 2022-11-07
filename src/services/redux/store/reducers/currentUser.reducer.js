@@ -1,4 +1,4 @@
-import { ReduxActions } from "../../../../utils/constants"
+import { ReduxActions } from "../../../../utils/constants";
 
 export const initialState = {
    userLoggedIn: null, 
@@ -7,16 +7,19 @@ export const initialState = {
 
 const currentUserReducer = (state, action) => {
    switch (action.type) {
-      case ReduxActions.UPDATE_CURRENT_USER_INSTANCE: {
-         return {
-            ...state, 
-            userLoggedIn: action.payload
+      case ReduxActions.UPDATE_CURRENT_USER: {
+         if (action.payload) {
+            const { currentUserInstance, currentUserRefs } = action.payload; 
+            return {
+               ...state, 
+               userLoggedIn: currentUserInstance, 
+               referencesAdvance: currentUserRefs
+            } 
          }
-      }
-      case ReduxActions.UPDATE_CURRENT_USER_ADVANCE_REFS: {
          return {
             ...state, 
-            referencesAdvance: action.payload
+            userLoggedIn: null, 
+            referencesAdvance: null
          }
       }
    }

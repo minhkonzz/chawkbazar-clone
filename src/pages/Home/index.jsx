@@ -11,13 +11,11 @@ import { useCreatedContext } from '../../context/provider'
 import { useEffect, useRef } from 'react'
 import HomeSectionReducer, { initialState } from "../../services/redux/store/reducers/home_section.reducer"
 import { getAllRecords } from '../../services/firebase/common'
-import { AuthService } from "../../services/firebase/auth"
 import './index.css'
 
 const Section = (props) => {
 
   const [ state, dispatch ] = useCreatedContext();
-  console.log("check state in Home Page", state);  
   const { isAsync, rootClassValue } = props.inputs;
   const sectionRef = useRef(null);
 

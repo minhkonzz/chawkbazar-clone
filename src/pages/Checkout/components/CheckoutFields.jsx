@@ -1,15 +1,17 @@
-import { useState } from "react"; 
+import { useState, useContext } from "react"; 
 import { useSelector } from "react-redux";
-import { CustomerService } from "../../../services/firebase/customer"
-import UserInput from "../../../common/components/UserInput"
+import { CurrentUserContext } from "../../../context/currentUser.provider"
+import { CustomerService } from "../../../services/firebase/customer";
+import UserInput from "../../../common/components/UserInput";
 
 const CheckoutFields = () => {
 
-  const userLoggedIn = useSelector((state) => state.currentUser.userLoggedIn); 
+  const currentUser = useContext(CurrentUserContext); 
+  const { userLoggedIn, referencesAdvance } = currentUser; 
   const cartItems = useSelector((state) => state.cart.cartItems); 
-  const [ firstName, setFirstName ] = useState((userLoggedIn && userLoggedIn.firstName) || ""); 
-  const [ lastName, setLastName ] = useState((userLoggedIn && userLoggedIn.lastName) || "");
-  const [ address, setAddress ] = useState((userLoggedIn && userLoggedIn.address) || "");
+  const [ firstName, setFirstName ] = useState((referencesAdvance && referencesAdvance.firstName) || ""); 
+  const [ lastName, setLastName ] = useState((referencesAdvance && referencesAdvance.lastName) || "");
+  const [ address, setAddress ] = useState((referencesAdvance && referencesAdvance.address) || "");
   const [ phone, setPhone ] = useState((userLoggedIn && userLoggedIn.phone) || "");
   const [ email, setEmail ] = useState((userLoggedIn && userLoggedIn.email) || "");   
   const [ city, setCity ] = useState(""); 

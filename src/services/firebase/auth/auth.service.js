@@ -3,16 +3,30 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthState
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export const listenToAuthState = (onSignIn, onLogout) => {
-    onAuthStateChanged(auth, (currentUser) => (
-        currentUser ? onSignIn(currentUser) : onLogout()
-    )); 
+    onAuthStateChanged(auth, (currentUser) => {
+        console.log("call AuthStateChange");
+        if (currentUser) {
+            console.log("has currentuser"); 
+            getDoc(doc(firestoreRef, "customers", currentUser.uid))
+            .then((loggingCustomerDoc) => (
+                loggingCustomerDoc.exists() &&
+                onSignIn({
+                    currentUserInstance: currentUser, 
+                    currentUserRefs: { ...loggingCustomerDoc.data() }
+                })
+            ))
+            .catch((err) => console.error(err.message)); 
+        }
+        else {
+            console.log("No has currentuser");
+            onLogout();
+        }
+    }); 
 }
 
 export const signIn = async(_email, password) => {
     const userCredential = await signInWithEmailAndPassword(auth, _email, password);
-    const { uid: customerUID } = userCredential.user;
-    const loggingCustomerDoc = await getDoc(doc(firestoreRef, "customers", customerUID)); 
-    return loggingCustomerDoc.exists() && { ...loggingCustomerDoc.data() }; 
+    return userCredential.user.uid; 
 }; 
 
 export const signUp = async(_email, password) => {

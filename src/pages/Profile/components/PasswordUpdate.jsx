@@ -1,6 +1,23 @@
-import UserInput from "../../../common/components/UserInput"
+import { useState, useContext } from "react"; 
+import UserInput from "../../../common/components/UserInput";
+import { CustomerService } from "../../../services/firebase/customer";
+import { CurrentUserContext } from "../../../context/currentUser.provider";
 
 const PasswordUpdate = () => {
+
+   const { currentUser } = useContext(CurrentUserContext); 
+   const { userLoggedIn } = currentUser; 
+   const [ oldPassword, setOldPassword ] = useState(""); 
+   const [ newPassword, SetNewPassword ] = useState("");
+
+   const updateNewPassword = () => {
+      CustomerService.updateCustomerPassword(userLoggedIn, newPassword)
+      .then(() => {
+         alert("Update password success"); 
+      })
+      .catch((err) => console.error(err.message)); 
+   }
+
    return (
       <div className="profile-part row">
          <div className="col lg-12 md-12 sm-12">
@@ -11,18 +28,17 @@ const PasswordUpdate = () => {
             </div>
             <div className="row">
                <div className="col lg-12 md-12 sm-12">
-                  <UserInput label="Old password"/>  
+                  <UserInput label="Old password" inputValue={oldPassword} onChangeText={setOldPassword} />  
                </div>
             </div>
             <div className="row">
                <div className="col lg-12 md-12 sm-12">
-                  <UserInput label="New password"/>  
+                  <UserInput label="New password" inputValue={newPassword} onChangeText={SetNewPassword} />  
                </div>
             </div>
             <div className="row">
                <div className="col lg-12 md-12 sm-12">
-                  {/* <Button text="Change password" w={160}/>   */}
-                  <button style={{ width: 160, height: 52 }} className="dark-v fw-600 thin-bd-r">
+                  <button style={{ width: 160, height: 52 }} className="dark-v fw-600 thin-bd-r" onClick={updateNewPassword}>
                      Change password
                   </button>
                </div>

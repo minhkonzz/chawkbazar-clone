@@ -6,13 +6,12 @@ import "./common/styles/grid.css"
 import reportWebVitals from './reportWebVitals';
 import store from "./services/redux/store";
 import { Provider as ReduxStoreProvider } from 'react-redux';
-import { Provider as CurrentUserProvider } from "./context"
-import currentUserReducer, { initialState } from './services/redux/store/reducers/currentUser.reducer';
+import CurrentUserProvider from "./context/currentUser.provider";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
    <ReduxStoreProvider store={store}>
-      <CurrentUserProvider reducer={currentUserReducer} initialState={initialState}>
+      <CurrentUserProvider>
          <Router />
       </CurrentUserProvider>
    </ReduxStoreProvider>

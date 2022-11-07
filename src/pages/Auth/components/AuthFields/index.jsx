@@ -1,13 +1,10 @@
 import { useState } from "react";
-import { useCreatedContext } from "../../../../context/provider"; 
-import { updateCurrentUserReferences } from "../../../../services/redux/actions/currentUser.actions";
 import UserSaver from "../../UserSaver";
 import UserInput from "../../../../common/components/UserInput"
 import { AuthService } from "../../../../services/firebase/auth"
 
 const AuthFields = () => {
 
-    const [ state, dispatch ] = useCreatedContext(); 
     const [ isAuth, setIsAuth ] = useState(0);
     const [ isLogin, setIsLogin ] = useState(true);
     const [ name, setName ] = useState(""); 
@@ -17,8 +14,8 @@ const AuthFields = () => {
     const onAuthRequest = () => {
         if (isLogin) {
             AuthService.signIn(email, password)
-            .then((currentUserReferences) => {
-                dispatch(updateCurrentUserReferences(currentUserReferences)); 
+            .then((currentUserUID) => {
+                if (currentUserUID) alert("Dang nhap thanh cong"); 
             }) 
             .catch((err) => console.error(err.message))
         }  

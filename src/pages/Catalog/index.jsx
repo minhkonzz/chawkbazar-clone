@@ -1,16 +1,16 @@
 import './index.css'
-import { useEffect } from "react"
+import { useEffect, useContext } from "react"
 import Products from './components/Products'
 import Filters from "./components/Filters"
 import SortingOptions from './components/SortingOptions'
-import { useCreatedContext } from "../../context/provider"
 import { Provider as ProductsProvider } from "../../context"
 import ProductsReducer, { initialState } from "../../services/redux/store/reducers/catalog.reducer";
+import { CurrentUserContext } from '../../context/currentUser.provider'
 
 const Catalog = () => {
 
-   const [ state, dispatch ] = useCreatedContext(); 
-   console.log("check state in Catalog page:", state); 
+   const { currentUser } = useContext(CurrentUserContext);
+   console.log("catalog:", currentUser.userLoggedIn);
 
    return (
       <ProductsProvider reducer={ProductsReducer} initialState={initialState}>

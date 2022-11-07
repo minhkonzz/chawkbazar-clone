@@ -1,4 +1,10 @@
+import { useParams } from "react-router-dom"
+
 const Order = () => {
+
+   const param = useParams(); 
+   console.log(param);
+
    return (
       <div className="row">
          <div className="col lg-12 md-12 sm-12">

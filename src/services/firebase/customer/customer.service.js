@@ -1,7 +1,6 @@
-import { collection, query, where, getDocs, limit, startAfter, doc, getDoc, addDoc } from "firebase/firestore";
-import { updatePassword } from "firebase/auth"
+import { collection, query, where, getDocs, doc, getDoc, addDoc, setDoc } from "firebase/firestore";
+import { updatePassword, updateProfile, updateEmail } from "firebase/auth";
 import { firestoreRef } from "../../../configs/firebase.config";
-import { getAllRecords } from "../common";
 
 export const placeOrder = async(checkoutDetail, customerId) => {
     const {
@@ -17,24 +16,18 @@ export const placeOrder = async(checkoutDetail, customerId) => {
         paymentMethod, 
         note 
     } = checkoutDetail; 
-    const productsOrder = cartItems.map((orderItem) => ({
-        productId: orderItem.id, 
-        size: orderItem.sizeSelected, 
-        color: orderItem.colorSelected, 
-        quantity: orderItem.qty  
-    }));
     const newOrder = await addDoc(collection(firestoreRef, "orders"), {
-        customer: {
-            id: customerId ? customerId : "None", 
+        customerId: customerId ? customerId : "None", 
+        customerRefs: {
             firstName, 
             lastName, 
             address, 
             phone, 
             email
-        }, 
+        },
         date: new Date().toJSON().slice(0,10).replace(/-/g,'/'), 
         state: "waiting", 
-        products: productsOrder, 
+        products: cartItems, 
         city, 
         postCode,
         shipFee, 
@@ -45,13 +38,67 @@ export const placeOrder = async(checkoutDetail, customerId) => {
 }
 
 export const getOrdersOfCustomer = async(customerId) => {
-    const q = query(collection(firestoreRef, "orders"), where("customer/id", "==", customerId)); 
-    const orderSnapShot = await getDocs(q); 
-    orderSnapShot.forEach((doc) => {
-        console.log(doc.id, doc.data()); 
-    })
+    const q = query(collection(firestoreRef, "orders"), where("customerId", "==", customerId)); 
+    const orderSnapShot = await getDocs(q);
+    let allOrders = []; 
+    orderSnapShot.forEach((orderDoc) => {
+        const { products, shipFee, state, date } = { ...orderDoc.data() };
+        let orderSubtotal = 0; 
+        let orderTotalQuantity = 0; 
+        products.forEach((product) => {
+            const { sale_price, price, qty } = product; 
+            orderSubtotal += (sale_price || price) * qty; 
+            orderTotalQuantity += qty; 
+        })
+        const orderTotalPay = orderSubtotal + shipFee;
+        allOrders = [ ...allOrders, { 
+            orderId: orderDoc.id, 
+            orderDate: date, 
+            orderState: state, 
+            orderTotalPay, 
+            orderTotalQuantity
+        }];
+    });
+    return allOrders;
+};
+
+export const getOrderOfCustomer = async(orderId) => {
+    const orderDoc = await getDoc(doc(firestoreRef, "orders", orderId)); 
+    if (orderDoc.exists()) {
+        const { products, shipFee, paymentMethod, note } = { ...orderDoc.data() };
+        const productsList = products.map((product) => ({
+            productName: product.name, 
+            colorSelected: product.colorSelected.value, 
+            sizeSelected: product.sizeSelected.value, 
+            quantity: product.qty
+        }));
+        const orderSubtotal = products.reduce((prevProduct, currProduct) => {
+            return ((prevProduct.sale_price || prevProduct.price) * prevProduct.qty) + ((currProduct.sale_price || currProduct.price) * currProduct.qty); 
+        }, 0); 
+        const orderTotal = orderSubtotal + shipFee; 
+        return {
+            productsList, 
+            shipFee, 
+            paymentMethod, 
+            note, 
+            orderSubtotal, 
+            orderTotal
+        }
+    }
+    return null; 
 }
 
-export const updateCustomerPassword = async(currentUser) => {
-    await updatePassword(currentUser, "abcde");    
+export const updateCustomerPassword = async(currentCustomer, newPassword) => {
+    await updatePassword(currentCustomer, newPassword); 
+}
+
+export const updateCustomerAccountDetail = async(currentCustomer, newProfile) => {
+    const { firstName, lastName, displayName, phone, email } = newProfile; 
+    await updateProfile(currentCustomer, { displayName, photoURL: "" }); 
+    await updateEmail(currentCustomer, email); 
+    await setDoc(
+        doc(firestoreRef, "customers", currentCustomer.uid),
+        { firstName, lastName }, 
+        { merge: true } 
+    );
 }

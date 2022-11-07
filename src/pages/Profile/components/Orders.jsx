@@ -1,18 +1,28 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../../../context/currentUser.provider";
 import { CustomerService } from "../../../services/firebase/customer";
 
 const Orders = () => {
 
-   const userLoggedIn = useSelector((state) => state.currentUser.userLoggedIn); 
+   const navigate = useNavigate();
+   const { currentUser } = useContext(CurrentUserContext);
+   const { userLoggedIn } = currentUser; 
+   console.log(userLoggedIn); 
+   console.log("render Orders component");
+   const [ orders, setOrders ] = useState(""); 
 
    useEffect(() => {
-      CustomerService.getOrdersOfCustomer(userLoggedIn.uid)
-      .then(() => {
-         console.log("success fetched user's orders"); 
+      CustomerService.getOrdersOfCustomer((userLoggedIn && userLoggedIn.uid) || "")
+      .then((customerOrders) => {
+         setOrders(customerOrders); 
       })
-      .catch((err) => console.error(err.message))
+      .catch((err) => console.error(err.message));
    }, []); 
+
+   const viewOrderDetail = (orderId) => {
+      navigate(`/profile/orders/${orderId}`); 
+   }
 
    return (
       <div className="profile-part row">
@@ -27,32 +37,31 @@ const Orders = () => {
                   <table className="content-table w-100pc">
                      <thead>
                         <tr>
-                           <th>Rank</th>
-                           <th>Name</th>
-                           <th>Points</th>
-                           <th>Team</th>
+                           <th>Order</th>
+                           <th>Date</th>
+                           <th>Status</th>
+                           <th>Total</th>
+                           <th>Action</th>
                         </tr>
                      </thead>
-                     <tbody>
-                        <tr>
-                           <td>1</td>
-                           <td>Domenic</td>
-                           <td>88,110</td>
-                           <td>dcode</td>
-                        </tr>
-                        <tr>
-                           <td>2</td>
-                           <td>Sally</td>
-                           <td>72,400</td>
-                           <td>Students</td>
-                        </tr>
-                        <tr>
-                           <td>3</td>
-                           <td>Nick</td>
-                           <td>52,300</td>
-                           <td>dcode</td>
-                        </tr>
-                     </tbody>
+                     {
+                        orders ? 
+                        <tbody>
+                           {
+                              orders.map((order, index) => {
+                                 return (
+                                    <tr key={index}>
+                                       <td>{order.orderId}</td>
+                                       <td>{order.orderDate}</td>
+                                       <td>{order.orderState}</td>
+                                       <td>{`$${order.orderTotalPay} for ${order.orderTotalQuantity} products`}</td>
+                                       <td><button className="dark-v thin-bd-r fw-600" onClick={() => viewOrderDetail(order.orderId)}>View</button></td>
+                                    </tr>
+                                 )
+                              })
+                           }
+                        </tbody> : <></>
+                     }
                   </table>
                </div>
             </div>
