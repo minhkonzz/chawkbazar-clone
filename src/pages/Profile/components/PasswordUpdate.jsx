@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"; 
 import UserInput from "../../../common/components/UserInput";
 import { CustomerService } from "../../../services/firebase/customer";
-import { CurrentUserContext } from "../../../context/currentUser.provider";
+import { CurrentUserContext } from "../../../context/provider/currentUser.provider";
 
 const PasswordUpdate = () => {
 

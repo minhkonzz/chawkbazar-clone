@@ -1,7 +1,7 @@
 import { useState, useContext } from "react"; 
 import UserInput from "../../../common/components/UserInput";
 import RadioButton from "../../../common/components/RadioButton";
-import { CurrentUserContext } from "../../../context/currentUser.provider";
+import { CurrentUserContext } from "../../../context/provider/currentUser.provider";
 import { CustomerService } from "../../../services/firebase/customer";
 
 const AccountDetail = () => {

@@ -1,9 +1,10 @@
+import { useContext } from "react";
 import Product from "../../../../common/components/Product/type-1"
-import { useCreatedContext } from "../../../../context/provider"
+import { HomeSectionContext } from "../../../../context/provider/homeSection.provider"
 
 const BestSellers = () => {
 
-   const [ state, dispatch ] = useCreatedContext()
+   const { sectionData } = useContext(HomeSectionContext);
 
    return (
       <div className="col lg-12 md-12 sm-12">
@@ -13,7 +14,7 @@ const BestSellers = () => {
             </div>
          </div>
          <div className="row"> {   
-            state?.sectionData.map((product, index) => (
+            sectionData.map((product, index) => (
                <div key={index} className="col lg-2-4 md-4 sm-6"><Product data={product}/></div>
             ))}
          </div>

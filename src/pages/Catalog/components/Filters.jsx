@@ -6,7 +6,7 @@ const selects = ["T-shirt", "Coat"];
 
 const Filters = () => {
 
-   const [ filterSections, setFilterSections ] = useState(![])
+   const [ filterSections, setFilterSections ] = useState(![]);
 
    useEffect(() => {
       ProductsService.getProductRefferences()

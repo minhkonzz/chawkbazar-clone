@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import './index.css'
 import { BaseSource } from '../../../../utils/constants'
-import { useCreatedContext } from "../../../../context/provider"
+import { HomeSectionContext } from "../../../../context/provider/homeSection.provider";
 
 const TopBrands = () => {
 
-   const [ state, dispatch ] = useCreatedContext();
+   const { sectionData } = useContext(HomeSectionContext);
 
    return (
       <div className="col lg-12 md-12 sm-12">
@@ -14,7 +15,7 @@ const TopBrands = () => {
             </div>
          </div>
          <div className="row"> {
-            state?.sectionData.map(brand => {
+            sectionData.map(brand => {
                return (
                   <div key={brand?.id} className="col lg-3 md-4 sm-6">
                      <div className="top-brand w-100pc thin-bd-r o-h">
@@ -35,4 +36,4 @@ const TopBrands = () => {
    )
 }
 
-export default TopBrands
+export default TopBrands;

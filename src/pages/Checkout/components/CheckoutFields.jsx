@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"; 
 import { useSelector } from "react-redux";
-import { CurrentUserContext } from "../../../context/currentUser.provider"
+import { CurrentUserContext } from "../../../context/provider/currentUser.provider"
 import { CustomerService } from "../../../services/firebase/customer";
 import UserInput from "../../../common/components/UserInput";
 

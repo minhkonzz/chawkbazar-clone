@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import Slider from './components/Banner'
 import Promotions from './components/Promotions'
 import BestSellers from './components/BestSellers'
@@ -5,17 +6,13 @@ import TopBrands from './components/TopBrands'
 import FeaturedProducts from './components/FeaturedProducts'
 import NewCollections from './components/NewCollections'
 import Contact from './components/Contact'
-import { Provider as HomeSectionProvider } from '../../context'
-import { setSectionData } from '../../services/redux/actions/home_section.actions'
-import { useCreatedContext } from '../../context/provider'
 import { useEffect, useRef } from 'react'
-import HomeSectionReducer, { initialState } from "../../services/redux/store/reducers/home_section.reducer"
-import { getAllRecords } from '../../services/firebase/common'
+import HomeSectionProvider, { HomeSectionContext } from "../../context/provider/homeSection.provider";
 import './index.css'
 
 const Section = (props) => {
 
-  const [ state, dispatch ] = useCreatedContext();
+  const { updateSectionData } = useContext(HomeSectionContext);
   const { isAsync, rootClassValue } = props.inputs;
   const sectionRef = useRef(null);
 
@@ -25,13 +22,7 @@ const Section = (props) => {
       const isVisible = !!entry?.isIntersecting;
       if (isVisible) {
         entry?.target.classList.toggle("visible", isVisible);
-        if (isAsync) {
-          getAllRecords(isAsync.collectionName || "error")
-          .then((responseData) => {
-            dispatch(setSectionData(responseData)); 
-          });
-        }
-        else dispatch(setSectionData(!state.sectionData));
+        updateSectionData(isAsync);
         observer.unobserve(entry?.target);
       }
     }, { threshold: 0.4 });
@@ -63,10 +54,7 @@ const Home = () => {
       sections.map((section, index) => {
         const { component: SectionComponent, isAsync, rootClassValue } = section
         return (
-          <HomeSectionProvider
-            key={index}
-            reducer={HomeSectionReducer}
-            initialState={initialState}>
+          <HomeSectionProvider key={index}>
             <Section
               inputs={{ isAsync, rootClassValue }}>
               <SectionComponent />

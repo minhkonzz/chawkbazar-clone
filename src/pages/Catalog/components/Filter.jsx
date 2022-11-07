@@ -1,19 +1,18 @@
-import Checkbox from "../../../common/components/Checkbox"
-import { useCreatedContext } from "../../../context/provider";
+import { useContext } from "react";
+import Checkbox from "../../../common/components/Checkbox";
+import { CatalogContext } from "../../../context/provider/catalog.provider";
 import { useSearchParams } from "react-router-dom";
-// import { addFilter, removeFilter } from "../../../services/redux/actions/catalog.actions"
-import { setProducts } from "../../../services/redux/actions/catalog.actions"
-import { ProductsService } from "../../../services/firebase/products"
+import { ProductsService } from "../../../services/firebase/products";
 
 const Filter = ({ data }) => {
 
    const [ searchParams, setSearchParams ] = useSearchParams();
-   const [ state, dispatch ] = useCreatedContext();
-   console.log("render Filter component"); 
+   const { catalogData, handleFilteredProducts } = useContext(CatalogContext);
+   const { filter } = catalogData;
 
    const selectHandler = async(event, val) => {
       const paramsObj = Object.fromEntries(searchParams.entries());
-      const newFilter = { ...state.filter }; 
+      const newFilter = { ...filter }; 
       if (event.target.checked) {
          paramsObj[data.urlParam] = paramsObj[data.urlParam] ? paramsObj[data.urlParam] + `p2c${val.optionName}` : val.optionName;
          newFilter[data.urlParam] = newFilter[data.urlParam] ? [ ...newFilter[data.urlParam], val.optionId ] : [val.optionId]; 
@@ -29,8 +28,7 @@ const Filter = ({ data }) => {
          if (newFilter[data.urlParam].length === 1) delete newFilter[data.urlParam];
          else newFilter[data.urlParam] = newFilter[data.urlParam].filter((selectedOptId) => selectedOptId !== val.optionId); 
       }
-      const resProducts = await ProductsService.getFilteredProducts(newFilter);
-      dispatch(setProducts(resProducts, newFilter));  
+      await handleFilteredProducts(newFilter); 
       setSearchParams(paramsObj);
    }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../../../context/currentUser.provider";
+import { CurrentUserContext } from "../../../context/provider/currentUser.provider";
 import { CustomerService } from "../../../services/firebase/customer";
 
 const Orders = () => {
