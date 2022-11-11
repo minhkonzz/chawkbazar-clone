@@ -41,7 +41,7 @@
   color: black;
 }
 
-.top-m4pc { top: -4%; }
+.top-m24px { top: -24px; }
 
 .auth-container > button:first-child ion-icon { font-size: 18px; }
 .auth-container > button:first-child:hover { opacity: 0.9; }
@@ -100,5 +100,19 @@
   font-size: 14px;
   align-self: flex-start;
   margin-top: 12px;
+}
+
+.auth-success-status {
+  margin-top: 7px; 
+}
+
+.auth-success-status p { 
+  margin-left: 8px; 
+  font-size: 18px; 
+}
+
+.auth-success-status ion-icon {
+  color: rgb(81, 196, 81); 
+  font-size: 27px; 
 }
 

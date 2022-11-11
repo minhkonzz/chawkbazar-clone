@@ -1,7 +1,8 @@
-import { useRef } from 'react'
-import { BaseSource } from "../../../utils/constants"
-import { useDispatch } from "react-redux"
-import { touchMenuSidebar } from "../../../services/redux/store/reducers/popup.reducer"
+import { useRef } from "react";
+import { BaseSource } from "../../../../../utils/constants";
+import { useDispatch } from "react-redux";
+import { touchMenuSidebar } from "../../../../../services/redux/store/reducers/popup.reducer";
+import "./index.css";
 
 const VerticalNavbar = () => {
 
@@ -57,4 +58,4 @@ const VerticalNavbar = () => {
    )
 }
 
-export default VerticalNavbar
+export default VerticalNavbar;

@@ -1,8 +1,8 @@
-import VerticalNavbar from '../Navbar/VerticalNavBar'
-import Cart from '../Cart'
-import Auth from '../../../pages/Auth'
-import ProductDetail from '../../../pages/ProductDetail'
-import { useSelector } from 'react-redux'
+import VerticalNavbar from "../Navbar/components/VerticalNavbar";
+import Cart from "../Cart";
+import Auth from "../../../pages/Auth";
+import ProductDetail from "../../../pages/ProductDetail";
+import { useSelector } from "react-redux";
 
 const Modal = () => {
 
@@ -20,4 +20,4 @@ const Modal = () => {
    );
 };
 
-export default Modal
+export default Modal;

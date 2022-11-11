@@ -5,11 +5,12 @@ import SortingOptions from "./components/SortingOptions";
 import CatalogProvider from "../../context/provider/catalog.provider";
 
 const Catalog = () => {
+
    return (
       <>
          <div className="row">
             <div className="col lg-12 md-12 sm-12">
-               <img src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fbanner-4.jpg&w=1920&q=100"/>
+               <img src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fbanner-4.jpg&w=1920&q=100" alt="catalog_banner"/>
             </div>
          </div>
          <div className="row">

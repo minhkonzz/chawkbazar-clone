@@ -1,5 +1,5 @@
-import { useState, useEffect, createContext } from "react";
-import { getAllRecords } from "../../services/firebase/common"
+import { useState, createContext } from "react";
+import { getAllRecords } from "../../services/firebase/common";
 
 export const HomeSectionContext = createContext(); 
 

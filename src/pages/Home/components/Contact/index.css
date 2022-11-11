@@ -1,16 +1,27 @@
 .contact { padding: 60px 0 35px 0; }
-.contact-w > * {
-   margin: 15px 0;
-}
+.contact-w > * { margin: 15px 0; }
 
 .contact-w img { 
    width: 55%;
 }
 
+.title h1 {
+   font-size: 30px;
+}
+
 .title p {
-   font-size: 14px;
+   font-size: 17px;
    margin-top: 14px; 
    opacity: 0.6;
    line-height: 1.8;
 }
+
+.chat-members-btn {
+   width: 300px; 
+   height: 60px; 
+   font-size: 16px; 
+}
+
+.chat-members-btn:hover, .chat-members-btn:not(:hover) { transition: 0.25s; }
+.chat-members-btn:hover { opacity: 0.8; }
 

@@ -30,7 +30,7 @@ const Section = (props) => {
   }, [])
 
   return (
-    <section id="sectiond" className={`h-sec row${rootClassValue || ''}`} ref={sectionRef}>
+    <section className={`h-sec row${rootClassValue || ''}`} ref={sectionRef}>
       { props.children }
     </section>
   )

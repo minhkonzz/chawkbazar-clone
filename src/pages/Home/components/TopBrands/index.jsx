@@ -8,13 +8,11 @@ const TopBrands = () => {
    const { sectionData } = useContext(HomeSectionContext);
 
    return (
-      <div className="col lg-12 md-12 sm-12">
-         <div className="row">
-            <div className="col lg-12 md-12 sm-12">
-               <h1>Top brands</h1>
-            </div>
+      <>
+         <div className="col lg-12 md-12 sm-12">
+            <h1>Top brands</h1>
          </div>
-         <div className="row"> {
+         {
             sectionData.map(brand => {
                return (
                   <div key={brand?.id} className="col lg-3 md-4 sm-6">
@@ -30,9 +28,9 @@ const TopBrands = () => {
                      </div>
                   </div>
                )
-            })}
-         </div>
-      </div>
+            }
+         )}
+      </>
    )
 }
 
