@@ -1,8 +1,12 @@
-export const isInt = (value) => {
-    return Number(value) === value && value % 1 === 0; 
-}
+export const isInt = (value) => Number(value) === value && value % 1 === 0; 
 
 export const isProductInFiltered = (product, filter) => {
-    const keyChecks = Object.keys(filter).map((key) => filter[key].includes(product[key].id)); 
+    const keyChecks = Object.keys(filter).map((key) => {
+        const filterKeySelects = filter[key];
+        for (let i = 0; i < filterKeySelects.length; i++) {
+            if (filterKeySelects[i].optionId === product[key].id) return true;
+        }
+        return false; 
+    }); 
     return !keyChecks.includes(false); 
 }

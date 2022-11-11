@@ -20,16 +20,18 @@ const Cart = () => {
 
    return (
       <div className="cart" ref={cartRef}>
-         <div className="cart-top">
-            <h2>Shopping cart</h2>
-            <ion-icon name="close" onClick={closeCartModal}/>
+         <div className="cart-top posrel">
+            <h2 className="posab top-50pc left-5pc">Shopping cart</h2>
+            <span className="posab top-50pc right-5pc">
+               <ion-icon name="close" onClick={closeCartModal}/>
+            </span>
          </div>
          <div className="cart-center"> {
             cartItems.map((cartItem, index) => <CartItem key={index} data={cartItem}/>)
          }
          </div>
-         <div className="cart-bottom">
-            <button className="dark-v thin-bd-r">{`Proceed to checkout | $${cartTotalPrice}`}</button>
+         <div className="cart-bottom posrel">
+            <button className="posab pos-center dark-v thin-bd-r fw-600">{`Proceed to checkout | $${Number(cartTotalPrice).toFixed(2)}`}</button>
          </div>
       </div>
    )

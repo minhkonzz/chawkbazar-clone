@@ -2,7 +2,6 @@ import { useContext } from "react";
 import Checkbox from "../../../common/components/Checkbox";
 import { CatalogContext } from "../../../context/provider/catalog.provider";
 import { useSearchParams } from "react-router-dom";
-import { ProductsService } from "../../../services/firebase/products";
 
 const Filter = ({ data }) => {
 
@@ -14,13 +13,13 @@ const Filter = ({ data }) => {
       const paramsObj = Object.fromEntries(searchParams.entries());
       const newFilter = { ...filter }; 
       if (event.target.checked) {
-         paramsObj[data.urlParam] = paramsObj[data.urlParam] ? paramsObj[data.urlParam] + `p2c${val.optionName}` : val.optionName;
-         newFilter[data.urlParam] = newFilter[data.urlParam] ? [ ...newFilter[data.urlParam], val.optionId ] : [val.optionId]; 
+         paramsObj[data.urlParam] = paramsObj[data.urlParam] ? paramsObj[data.urlParam] + `p2c${val.optionSlug}` : val.optionSlug;
+         newFilter[data.urlParam] = newFilter[data.urlParam] ? [ ...newFilter[data.urlParam], { optionId: val.optionId, optionName: val.optionName } ] : [ { optionId: val.optionId, optionName: val.optionName } ]; 
       }
       else {
          if (paramsObj[data.urlParam].includes("p2c")) {
             paramsObj[data.urlParam] = paramsObj[data.urlParam].replace(
-               paramsObj[data.urlParam].includes(`p2c${val.optionName}`) ? `p2c${val.optionName}` : `${val.optionName}p2c`, 
+               paramsObj[data.urlParam].includes(`p2c${val.optionSlug}`) ? `p2c${val.optionSlug}` : `${val.optionSlug}p2c`, 
                ""
             );
          }
@@ -42,7 +41,7 @@ const Filter = ({ data }) => {
                      onSelectChange={() => selectHandler}
                      key={index}
                      cbVal={
-                        { optionId: option.id, optionName: option.slug || 
+                        { optionId: option.id, optionSlug: option.slug, optionName: option.name || 
                            (option.min && !option.max 
                            ? `${option.min}-` :
                            option.max && !option.min

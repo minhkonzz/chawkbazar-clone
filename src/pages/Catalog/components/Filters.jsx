@@ -1,11 +1,11 @@
-import Filter from "./Filter"
-import { useState, useEffect } from 'react'
-import { ProductsService } from "../../../services/firebase/products"
-
-const selects = ["T-shirt", "Coat"]; 
+import Filter from "./Filter";
+import { useState, useEffect, useContext } from 'react';
+import { ProductsService } from "../../../services/firebase/products";
+import { CatalogContext } from "../../../context/provider/catalog.provider";
 
 const Filters = () => {
 
+   const { catalogData } = useContext(CatalogContext); 
    const [ filterSections, setFilterSections ] = useState(![]);
 
    useEffect(() => {
@@ -13,6 +13,17 @@ const Filters = () => {
       .then((response) => setFilterSections(response))
       .catch(err => console.error(err))
    }, []);
+
+   const getFiltersName = () => {
+      let filterNames = [];
+      Object.keys(catalogData.filter).forEach((filterSectionName) => {
+         const filterKeySelects = catalogData.filter[filterSectionName]; 
+         for (let i = 0; i < filterKeySelects.length; i++) {
+            filterNames = [ ...filterNames, filterKeySelects[i].optionName ]
+         }
+      });
+      return filterNames; 
+   }
 
    return (
       <div className="filters">
@@ -23,10 +34,10 @@ const Filters = () => {
                <span className="blur">Clear all</span>
             </div>
             <div className="checkbox-selected d-flex wrap"> {
-               selects.map((select, index) => {
+               getFiltersName().map((filterName, index) => {
                   return (
                      <button key={index} className="selected-category thin-bd-r">
-                        {select}
+                        { filterName }
                         <ion-icon name="close" />
                      </button>
                   )
@@ -42,4 +53,4 @@ const Filters = () => {
    )
 }
 
-export default Filters 
+export default Filters;

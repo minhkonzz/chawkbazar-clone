@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef, useContext } from 'react'
-import { CurrentUserContext } from "../../context/provider/currentUser.provider"
-import AuthFields from './components/AuthFields'
-import Auth3rdProviders from './components/Auth3rdProviders'
-import './index.css'
-import { useDispatch } from "react-redux"
-import { touchAuthDialog } from "../../services/redux/store/reducers/popup.reducer"
-import { LOGO_SHOP_PATH } from "../../utils/constants/base-source"
+import { useState, useEffect, useRef, useContext } from "react";
+import { CurrentUserContext } from "../../context/provider/currentUser.provider";
+import AuthFields from "./components/AuthFields";
+import Auth3rdProviders from "./components/Auth3rdProviders";
+import './index.css';
+import { useDispatch } from "react-redux";
+import { touchAuthDialog } from "../../services/redux/store/reducers/popup.reducer";
+import { LOGO_SHOP_PATH } from "../../utils/constants/base-source";
 
 const Auth = () => {
 
@@ -29,7 +29,7 @@ const Auth = () => {
 
   return (
     <div className="auth-container d-flex fd-col at-center posab pos-center" ref={authRef}>
-      <button className="posab right-0 circle-bd-r top-m24px" onClick={closeAuthDialog}>
+      <button className="posab right-0 circle-bd-r top-n24px" onClick={closeAuthDialog}>
         <ion-icon name="close" />
       </button>
       <img alt="shop-title" src={LOGO_SHOP_PATH}/>

@@ -28,7 +28,7 @@ const CatalogProvider = ({ children }) => {
         ProductsService.loadMoreFilteredProducts(currentProducts, filter)
         .then((productsResponse) => {
             setCurrentProducts({
-                ...catalogData,
+                filterDetail: filter,
                 resProducts: [ ...currentProducts, ...productsResponse ]
             }); 
         })
