@@ -38,9 +38,6 @@ const AccountDetail = () => {
          {
             userLoggedIn && referencesAdvance && 
             <div className="profile-part row">
-               {
-                  console.log("render orders jsx")
-               }
                <div className="col lg-12 md-12 sm-12">
                   <div className="row"> 
                      <div className="col lg-12 md-12 sm-12">
@@ -70,7 +67,7 @@ const AccountDetail = () => {
                   </div>
                   <div className="row"> 
                      <div className="col lg-12 md-12 sm-12">
-                        <span className="gentle">Gender</span>  
+                        <span className="gentle fw-600">Gender</span>  
                         <div className="d-flex radio-group">
                            <RadioButton label="Male" />
                            <RadioButton label="Female"/>

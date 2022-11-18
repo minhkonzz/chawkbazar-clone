@@ -38,7 +38,7 @@ const PasswordUpdate = () => {
             </div>
             <div className="row">
                <div className="col lg-12 md-12 sm-12">
-                  <button style={{ width: 160, height: 52 }} className="dark-v fw-600 thin-bd-r" onClick={updateNewPassword}>
+                  <button className="btn-save-passwd dark-v fw-600 thin-bd-r" onClick={updateNewPassword}>
                      Change password
                   </button>
                </div>

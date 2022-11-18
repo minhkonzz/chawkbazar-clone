@@ -26,6 +26,11 @@
   padding-right: 4px;
 }
 
+.col-f {
+  padding-left: 0px; 
+  padding-right: 0px; 
+}
+
 .sm-0 {
   display: none;
 }

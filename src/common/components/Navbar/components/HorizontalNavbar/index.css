@@ -82,7 +82,7 @@ header nav {
     header nav {
        padding: 0 calc((100vw - (100vw - 60px)) / 2)
     }
-    .navbar-left ion-icon {
+    .navbar-left button {
        display: inline;
     }
     .cart-preview, .navbar-right ion-icon { 
@@ -102,7 +102,7 @@ header nav {
        display: flex;
        height: 100%;
     }
-    .navbar-left ion-icon {
+    .navbar-left button {
        display: none;
     }
     .cart-amount {

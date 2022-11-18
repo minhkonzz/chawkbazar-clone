@@ -2,20 +2,22 @@ import VerticalNavbar from "../Navbar/components/VerticalNavbar";
 import Cart from "../Cart";
 import Auth from "../../../pages/Auth";
 import ProductDetail from "../../../pages/ProductDetail";
+import MessageBox from "../MessageBox";
 import { useSelector } from "react-redux";
 
 const Modal = () => {
 
-   const state = useSelector(state => state.popup);
+   const popup = useSelector((state) => state.popup);
 
    return (
       <> 
          {
-            (state.menuSidebar && <div className="popup-wrapper"><VerticalNavbar/></div>) || 
-            (state.cartSidebar && <div className="popup-wrapper"><Cart/></div>) || 
-            (state.authDialog && <div className="popup-wrapper"><Auth/></div>) || 
-            (state.productDetailId && <div className="popup-wrapper"><ProductDetail productId={state.productDetailId} /></div>)
+            (popup.menuSidebar && <div className="popup-wrapper-d"><VerticalNavbar/></div>) || 
+            (popup.cartSidebar && <div className="popup-wrapper-d"><Cart/></div>) || 
+            (popup.authDialog && <div className="popup-wrapper-d"><Auth/></div>) || 
+            (popup.productDetailId && <div className="popup-wrapper-d"><ProductDetail productId={popup.productDetailId} /></div>)
          }
+         { (popup.message && <div className="popup-wrapper"><MessageBox message={popup.message}/></div>) }
       </>
    );
 };

@@ -37,7 +37,7 @@ const TabsMenu = () => {
    return (
       <> { 
          profileTabs.map((tab, index) => (
-            <div key={index} className={`tab${selectedIndex === index ? ' selected' : ''}`} onClick={() => {
+            <div key={index} className={`tab thin-bd-r${selectedIndex === index ? ' selected' : ''}`} onClick={() => {
                setSelectedIndex(index)
                navigate(tab?.path) 
             }}>

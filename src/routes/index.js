@@ -1,18 +1,19 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { paths } from '../utils/constants/index'
 import Home from "../pages/Home";
-import DefaultLayout from "../common/layouts/default"
+import DefaultLayout from "../common/layouts/default"; 
 import Custom1Layout from "../common/layouts/customs/custom1";
 import Catalog from "../pages/Catalog";
 import Checkout from "../pages/Checkout";
 import ContactUs from "../pages/ContactUs";
 import FAQ from "../pages/FAQ";
 import Terms from "../pages/Terms";
-import Profile from '../pages/Profile'
+import Profile from "../pages/Profile";
 import AccountDetail from "../pages/Profile/components/AccountDetail";
-import Orders from '../pages/Profile/components/Orders'
-import Order from "../pages/Profile/components/Order"
-import PasswordUpdate from '../pages/Profile/components/PasswordUpdate'
+import Orders from "../pages/Profile/components/Orders";
+import Order from "../pages/Profile/components/Order"; 
+import PasswordUpdate from "../pages/Profile/components/PasswordUpdate";
 
 const routes = [
    { path: paths.ROOT_PATH, component: Home, layout: Custom1Layout },
@@ -45,39 +46,47 @@ const routes = [
    }
 ]
 
-const Router = () => {
+const AnimateRoutes = () => {
+   const location = useLocation(); 
+   return (
+      <AnimatePresence>
+         <Routes location={location} key={location.pathname}>
+            {
+               routes.map((route, index) => {
+                  const Component = route.component
+                  const Layout = route.layout || DefaultLayout
+                  return (
+                     <Route 
+                        key={`${route.path}-${index}`}
+                        path={route.path} 
+                        element={
+                           <Layout>
+                              <Component />
+                           </Layout>
+                        }>
+                        {
+                           route.nestLayouts && route.nestLayouts.map((layout, index) => {
+                              const NestLayout = layout.component
+                              return (
+                                 <Route key={`${layout.path}-${index}`} path={layout.path} element={<NestLayout />}/>
+                              )
+                           })
+                        }
+                     </Route>
+                  )
+               })
+            }
+         </Routes>
+      </AnimatePresence>
+   )
+}
 
+const Router = () => {
    return (
       <BrowserRouter>
-         <Routes>
-         {
-            routes.map((route, index) => {
-               const Component = route.component
-               const Layout = route.layout || DefaultLayout
-               return (
-                  <Route 
-                     key={`${route.path}-${index}`}
-                     path={route.path} 
-                     element={
-                        <Layout>
-                           <Component />
-                        </Layout>
-                     }>
-                     {
-                        route.nestLayouts && route.nestLayouts.map((layout, index) => {
-                           const NestLayout = layout.component
-                           return (
-                              <Route key={`${layout.path}-${index}`} path={layout.path} element={<NestLayout />}/>
-                           )
-                        })
-                     }
-                  </Route>
-               )
-            })
-         }
-         </Routes>
+         <AnimateRoutes />
       </BrowserRouter>
    )
 }
 
-export default Router 
+export default Router;

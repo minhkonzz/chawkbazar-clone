@@ -6,7 +6,7 @@ export const listenToAuthState = (onSignIn, onLogout) => {
     onAuthStateChanged(auth, (currentUser) => {
         console.log("call AuthStateChange");
         if (currentUser) {
-            console.log("has currentuser"); 
+            console.log("Has current user"); 
             getDoc(doc(firestoreRef, "customers", currentUser.uid))
             .then((loggingCustomerDoc) => (
                 loggingCustomerDoc.exists() &&
@@ -18,7 +18,7 @@ export const listenToAuthState = (onSignIn, onLogout) => {
             .catch((err) => console.error(err.message)); 
         }
         else {
-            console.log("No has currentuser");
+            console.log("None current user"); 
             onLogout();
         }
     }); 

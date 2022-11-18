@@ -8,15 +8,11 @@ const Orders = () => {
    const navigate = useNavigate();
    const { currentUser } = useContext(CurrentUserContext);
    const { userLoggedIn } = currentUser; 
-   console.log(userLoggedIn); 
-   console.log("render Orders component");
    const [ orders, setOrders ] = useState(""); 
 
    useEffect(() => {
       CustomerService.getOrdersOfCustomer((userLoggedIn && userLoggedIn.uid) || "")
-      .then((customerOrders) => {
-         setOrders(customerOrders); 
-      })
+      .then((customerOrders) => { setOrders(customerOrders); })
       .catch((err) => console.error(err.message));
    }, []); 
 
@@ -33,8 +29,9 @@ const Orders = () => {
                </div>
             </div>
             <div className="row">
-               <div className="col lg-12 md-12 sm-12">
-                  <table className="content-table w-100pc">
+               <div className="col lg-12 md-12 sm-12"> { 
+                  Array.isArray(orders) && orders.length > 0 ? 
+                  <table className="content-table w-100pc o-h">
                      <thead>
                         <tr>
                            <th>Order</th>
@@ -43,26 +40,24 @@ const Orders = () => {
                            <th>Total</th>
                            <th>Action</th>
                         </tr>
-                     </thead>
-                     {
-                        orders ? 
-                        <tbody>
-                           {
-                              orders.map((order, index) => {
-                                 return (
-                                    <tr key={index}>
-                                       <td>{order.orderId}</td>
-                                       <td>{order.orderDate}</td>
-                                       <td>{order.orderState}</td>
-                                       <td>{`$${order.orderTotalPay} for ${order.orderTotalQuantity} products`}</td>
-                                       <td><button className="dark-v thin-bd-r fw-600" onClick={() => viewOrderDetail(order.orderId)}>View</button></td>
-                                    </tr>
-                                 )
-                              })
-                           }
-                        </tbody> : <></>
+                     </thead> 
+                     <tbody> {
+                        orders.map((order, index) => (
+                           <tr key={index}>
+                              <td>{order.orderId}</td>
+                              <td>{order.orderDate}</td>
+                              <td>{order.orderState}</td>
+                              <td>{`$${order.orderTotalPay} for ${order.orderTotalQuantity} products`}</td>
+                              <td><button className="dark-v thin-bd-r fw-600" onClick={() => viewOrderDetail(order.orderId)}>View</button></td>
+                           </tr>
+                        ))
                      }
-                  </table>
+                     </tbody>
+                  </table> : 
+                  <div className="text-center blur fw-600">
+                     <p>Bạn chưa có đơn hàng nào</p>
+                  </div>   
+               }
                </div>
             </div>
          </div>

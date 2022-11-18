@@ -1,9 +1,10 @@
-import './index.css';
-import { useState, useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { touchProductDialog } from '../../services/redux/store/reducers/popup.reducer';
+import "./index.css";
+import { useState, useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { touchProductDialog } from "../../services/redux/store/reducers/popup.reducer";
 import { ProductsService } from "../../services/firebase/products" 
 import { addCart } from "../../services/redux/store/reducers/cart.reducer";
+import { touchMessageBox } from "../../services/redux/store/reducers/popup.reducer"; 
 import { BaseSource } from "../../utils/constants";
 
 const ProductDetail = ({ productId }) => {
@@ -42,7 +43,10 @@ const ProductDetail = ({ productId }) => {
 
   const handleAddToCart = () => {
     if (!!(color.colorSelected.value) === false || !!(size.sizeSelected.value) === false) {
-      alert("please choose color and size"); 
+      dispatch(touchMessageBox({
+        type: "warn", 
+        content: "Please choose color and size first"
+      })); 
       return; 
     }
     dispatch(addCart({
@@ -50,7 +54,11 @@ const ProductDetail = ({ productId }) => {
       qty: amount, 
       sizeSelected: size.sizeSelected, 
       colorSelected: color.colorSelected
-    }))
+    })); 
+    dispatch(touchMessageBox({
+      type: "success", 
+      content: "Added product to cart"
+    }));
   };
 
   const increaseAmount = () => { setAmount(amount + 1) }
@@ -68,9 +76,6 @@ const ProductDetail = ({ productId }) => {
       }); 
     })
     .catch((err) => console.error(err.message)); 
-    return () => {
-      console.log("ProductDetail unmounted");
-    }
   }, [])
 
   const onSelectAddon = (addonDetail, selectedIndex) => {
@@ -108,12 +113,15 @@ const ProductDetail = ({ productId }) => {
         <div className="product-detail d-flex posab pos-center" ref={productDetailRef}>
           <img alt="product" src={`${PREFIX_API_SOURCE}/${productSelected?.image?.original}`}/>
           <div className="product-detail-about posrel">
-            <button className="close-btn circle-bd-r posab right-2pc top-n3pc" onClick={closeProductDetailDialog}>
+            <button className="close-btn circle-bd-r posab right-1d5pc top-n2pc" onClick={closeProductDetailDialog}>
               <ion-icon name="close"/>
             </button>
             <h2>{productSelected?.name}</h2>
             <p>{productSelected?.description}</p>
-            <h2>{`$${productSelected?.price}`}</h2>
+            <div className="product-detail-prices d-flex">
+              { productSelected.sale_price && <h2>{`$${Number(productSelected.sale_price).toFixed(2)}`}</h2> }
+              <h2>{`$${Number(productSelected?.price).toFixed(2)}`}</h2>
+            </div>
             <p>Size</p>
             <div className="addons d-flex"> {
               productSelected.variations
@@ -160,4 +168,4 @@ const ProductDetail = ({ productId }) => {
   )
 }
 
-export default ProductDetail
+export default ProductDetail;

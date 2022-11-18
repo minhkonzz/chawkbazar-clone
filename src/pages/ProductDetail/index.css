@@ -36,16 +36,12 @@
   font-size: 18px;
 }
 
-.right-2pc { right: 2% !important; }
-.top-n3pc { top: -3%; }
+.right-1d5pc { right: 1.5% !important; }
+.top-n2pc { top: -2%; }
 
-.close-btn {
-  border: 0.5px solid #e4e4e4;
-}
+.close-btn { border: 0.5px solid #e4e4e4; }
 
-.product-detail-about > * {
-  margin-top: 20px; 
-}
+.product-detail-about > * { margin-top: 20px; }
 
 .product-detail-about p {
   font-size: 14px;
@@ -53,14 +49,21 @@
   opacity: 0.6;
 }
 
+.product-detail-prices h2:last-child {
+  margin-left: 16px; 
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
 .addon {
   width: 44px; 
   height: 42px; 
   border: 0.5px solid rgb(212, 212, 212);
   border-radius: 4px; 
-  margin-left: 10px;
   transition: 0.2s;
 }
+
+.addon:not(:first-child) { margin-left: 12px; }
 
 .addon span {
   width: 80%;

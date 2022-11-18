@@ -1,16 +1,16 @@
+import './index.css';
+import { useDispatch } from "react-redux";
 import { useState, useEffect, useRef, useContext } from "react";
 import { CurrentUserContext } from "../../context/provider/currentUser.provider";
 import AuthFields from "./components/AuthFields";
-import Auth3rdProviders from "./components/Auth3rdProviders";
-import './index.css';
-import { useDispatch } from "react-redux";
 import { touchAuthDialog } from "../../services/redux/store/reducers/popup.reducer";
 import { LOGO_SHOP_PATH } from "../../utils/constants/base-source";
 
 const Auth = () => {
 
   const currentUserValue = useContext(CurrentUserContext);
-  const [ isLogin, setIsLogin ] = useState(true); 
+  const [ isLogin, setIsLogin ] = useState(true);  
+  const [ isAuthFailed, setIsAuthFailed ] = useState(false);   
   const dispatch = useDispatch();
   const authRef = useRef(null); 
 
@@ -21,7 +21,7 @@ const Auth = () => {
   };
 
   useEffect(() => {
-    if (currentUserValue) 
+    if (currentUserValue || isAuthFailed) 
       setTimeout(() => {
         if (authRef.current) closeAuthDialog(); 
       }, 4000);
@@ -32,24 +32,21 @@ const Auth = () => {
       <button className="posab right-0 circle-bd-r top-n24px" onClick={closeAuthDialog}>
         <ion-icon name="close" />
       </button>
-      <img alt="shop-title" src={LOGO_SHOP_PATH}/>
-      {
+      <img alt="shop-title" src={LOGO_SHOP_PATH}/> {
         currentUserValue ? 
-        <>
-          <div className="auth-success-status d-flex">
+        <div className="auth-status d-flex">
+          <span className="success checkmark">
             <ion-icon name="checkmark-circle" />
-            <p>{`${isLogin ? "Login" : "Sign up" } success`} </p>
-          </div>
-        </> : 
-        <>
-          <p className="auth-title">{ isLogin ? 'Login with your email & password' : 'By signing up, you agree to our terms & policy'}</p>
-          <AuthFields isLogin={isLogin}/>
-          <p>Dont have any account? <b onClick={() => setIsLogin(!isLogin)}>{ isLogin ? 'Register' : 'Login' }</b></p>
-          <Auth3rdProviders />
-        </>
+          </span>
+          <p>{`${isLogin ? "Login" : "Sign up" } success`} </p>
+        </div> : 
+        <AuthFields 
+          isLogin={isLogin}
+          setIsLogin={setIsLogin}
+          authState={{ isAuthFailed, setIsAuthFailed }}/>
       }
     </div>
   )
 }
 
-export default Auth
+export default Auth;

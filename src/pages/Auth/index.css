@@ -76,18 +76,14 @@
 
 .btn-log-to:hover, 
 .btn-fb:hover, 
-.btn-google:hover { 
-  opacity: 0.8; 
-}
+.btn-google:hover { opacity: 0.8; }
 
 .btn-log-to:hover, 
 .btn-log-to:not(:hover),
 .btn-fb:hover,
 .btn-fb:not(:hover)
 .btn-google:hover, 
-.btn-google:not(:hover) { 
-  transition: opacity 0.2s; 
-}
+.btn-google:not(:hover) { transition: opacity 0.2s; }
 
 .warn-title {
   /* display: none; */
@@ -97,17 +93,12 @@
   margin-top: 12px;
 }
 
-.auth-success-status {
-  margin-top: 7px; 
-}
+.auth-status { margin-top: 7px; }
 
-.auth-success-status p { 
+.auth-status p { 
   margin-left: 8px; 
   font-size: 18px; 
 }
 
-.auth-success-status ion-icon {
-  color: rgb(81, 196, 81); 
-  font-size: 27px; 
-}
+.auth-status span ion-icon { font-size: 27px; }
 

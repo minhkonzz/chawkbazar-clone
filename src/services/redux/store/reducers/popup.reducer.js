@@ -5,6 +5,7 @@ const initialState = {
    cartSidebar: false,
    authDialog: false, 
    productDetailId: "", 
+   message: null
 }
 
 export const PopupReducer = createSlice({
@@ -22,6 +23,9 @@ export const PopupReducer = createSlice({
       },
       touchProductDialog: (state, action) => {
         state.productDetailId = action.payload || ""
+      }, 
+      touchMessageBox: (state, action) => {
+         state.message = action.payload || null
       }
    }
 })
@@ -30,8 +34,9 @@ export const {
    touchMenuSidebar, 
    touchCartSidebar, 
    touchAuthDialog, 
-   touchProductDialog 
-} = PopupReducer.actions
+   touchProductDialog, 
+   touchMessageBox 
+} = PopupReducer.actions; 
 
-export default PopupReducer.reducer
+export default PopupReducer.reducer; 
 

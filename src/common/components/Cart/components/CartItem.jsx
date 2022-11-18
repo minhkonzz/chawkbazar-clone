@@ -5,6 +5,8 @@ import { removeFromCart, adjustAmount } from "../../../../services/redux/store/r
 
 const CartItem = ({ data }) => {
 
+   console.log("cart_item:", data); 
+
    const {
       DECREASE_ONCE, 
       INCREASE_ONCE

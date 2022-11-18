@@ -1,6 +1,8 @@
-import { memo } from "react"
+import { memo } from "react"; 
 
 const Auth3rdProviders = () => {
+
+    console.log("Render Auth3rdProviders"); 
 
     return (
         <>
