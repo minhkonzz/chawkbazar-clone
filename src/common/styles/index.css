@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -8,14 +9,14 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 button, input { border: none; }
 button { background-color: transparent; }
 nav ul { list-style: none; }
 
-.col { margin-bottom: 36px; }
+/* .col { margin-bottom: 36px; } */
 
 .w-100pc { width: 100% }
 .w-full { width: 100vw; }

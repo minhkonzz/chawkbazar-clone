@@ -1,1 +1,1 @@
-export * as ProductsService from "./products.service"
+export * as ProductsService from "./products.service";

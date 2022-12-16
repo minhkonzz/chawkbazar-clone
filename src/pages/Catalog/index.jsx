@@ -1,4 +1,4 @@
-import "./index.css"
+import "./index.css";
 import Products from "./components/Products";
 import Filters from "./components/Filters";
 import SortingOptions from "./components/SortingOptions";

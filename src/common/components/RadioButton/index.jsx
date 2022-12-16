@@ -1,4 +1,4 @@
-import './index.css'
+import './index.css';
 
 const RadioButton = (props) => {
    return (
@@ -9,4 +9,4 @@ const RadioButton = (props) => {
    )
 }
 
-export default RadioButton
+export default RadioButton;

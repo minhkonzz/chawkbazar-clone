@@ -7,7 +7,7 @@
   width: 450px; 
   background-color: white;
   border-radius: 15px; 
-  padding: 0 28px 20px 28px;
+  padding: 0 24px 20px 24px;
   animation: showAuth 0.4s ease;
   transition: transform 0.6s ease, opacity 0.5s ease; 
 }
@@ -19,15 +19,14 @@
   height: 100px;
 }
 
-.auth-container > button:not(first-child) {
+.auth-container > button {
   height: 50px; 
-  font-weight: 600;
   color: white;
 }
 
-.auth-container > button:not(first-child) span { margin-left: 18px; }
+.auth-container > button:nth-child(3), .auth-container > button:nth-child(4) { text-align: left; }
 
-.auth-container > button:not(first-child) ion-icon { font-size: 25px; }
+.auth-container > button:not(:first-child) ion-icon { font-size: 25px; }
 
 .auth-container > button:first-child {
   width: 32px; 
@@ -37,13 +36,16 @@
 }
 
 .top-n24px { top: -24px; }
+.right-n10px { right: -10px; }
+.left-23pc { left: 23%; }
+.left-25pc { left: 25%; }
 
 .auth-container > button:first-child ion-icon { font-size: 18px; }
 .auth-container > button:first-child:hover { opacity: 0.9; }
 .auth-container > button:first-child:hover,
 .auth-container > button:first-child:not(:hover) { transition: 0.3s; }
 
-.auth-container span { margin-top: 10px; }
+.auth-container > span { margin-top: 10px; }
 
 .auth-title {
   color: #5f5e5e;
@@ -74,6 +76,7 @@
 .btn-fb { background-color: rgb(66, 103, 178); }
 .btn-google { background-color: rgb(100, 150, 210); }
 
+.btn-log-to { font-size: 15px; }
 .btn-log-to:hover, 
 .btn-fb:hover, 
 .btn-google:hover { opacity: 0.8; }
@@ -84,6 +87,8 @@
 .btn-fb:not(:hover)
 .btn-google:hover, 
 .btn-google:not(:hover) { transition: opacity 0.2s; }
+
+.btn-fb > span, .btn-google > span { font-size: 14px; }
 
 .warn-title {
   /* display: none; */

@@ -29,7 +29,7 @@ const Auth = () => {
 
   return (
     <div className="auth-container d-flex fd-col at-center posab pos-center" ref={authRef}>
-      <button className="posab right-0 circle-bd-r top-n24px" onClick={closeAuthDialog}>
+      <button className="posab right-n10px circle-bd-r top-n24px" onClick={closeAuthDialog}>
         <ion-icon name="close" />
       </button>
       <img alt="shop-title" src={LOGO_SHOP_PATH}/> {

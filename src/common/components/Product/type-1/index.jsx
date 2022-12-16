@@ -1,9 +1,8 @@
 import './index.css'
-import { isInt } from "../../../../functions"
-import { useDispatch } from 'react-redux'
-import { useElementSize } from 'usehooks-ts'
-import { touchProductDialog } from '../../../../services/redux/store/reducers/popup.reducer'
-import { BaseSource } from '../../../../utils/constants' 
+import { useDispatch } from 'react-redux';
+import { useElementSize } from 'usehooks-ts';
+import { touchProductDialog } from '../../../../services/redux/store/reducers/popup.reducer'; 
+import { BaseSource } from '../../../../utils/constants';
 
 const Product = ({ data }) => {
 
