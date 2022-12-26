@@ -46,8 +46,8 @@ export const getProductRefferences = async() => {
   ];
 }
 
-export const getFilteredProducts = async(filterDetail, resLimit = 10) => {
-  let resProducts = []; 
+export const getFilteredProducts = async(filterDetail, resLimit) => {
+  let res = []; 
   const firstProductsQuery = await getDocs(
     query (
       collection(firestoreRef, "products"), 
@@ -55,13 +55,13 @@ export const getFilteredProducts = async(filterDetail, resLimit = 10) => {
     )
   );
   firstProductsQuery.forEach((productDoc) => { 
-    resProducts = [ ...resProducts, { ...productDoc.data(), id: productDoc.id } ] 
+    res = [ ...res, { ...productDoc.data(), id: productDoc.id } ] 
   });
-  return resProducts.filter((product) => isProductInFiltered(product, filterDetail))
+  return res.filter((product) => isProductInFiltered(product, filterDetail))
 }
 
-export const loadMoreFilteredProducts = async(currentProducts, filterDetail, resLimit = 10) => {
-  let resProducts = []; 
+export const loadMoreFilteredProducts = async(currentProducts, filterDetail) => {
+  let res = []; 
   const lastCurrentProductDoc = await getDoc(
     doc (
       collection(firestoreRef, "products"), 
@@ -72,12 +72,12 @@ export const loadMoreFilteredProducts = async(currentProducts, filterDetail, res
     query (
       collection(firestoreRef, "products"), 
       startAfter(lastCurrentProductDoc), 
-      limit(resLimit)
+      limit(10)
     )
   ); 
   nextProductsQuery.forEach((productDoc) => { 
-    resProducts = [ ...resProducts, { ...productDoc.data(), id: productDoc.id }]
-  });        
-  return resProducts.filter((product) => isProductInFiltered(product, filterDetail));
+    res = [ ...res, { ...productDoc.data(), id: productDoc.id }]
+  });     
+  return res.filter((product) => isProductInFiltered(product, filterDetail));
 }
 

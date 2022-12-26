@@ -37,11 +37,11 @@ const CatalogProvider = ({ children }) => {
 
   useEffect(() => {
     const initFilters = {};
-      handleFilteredProducts(initFilters)
-      .then(() => {
-        console.log("init catalog products success"); 
-      })
-      .catch((err) => console.error(err.message)); 
+    handleFilteredProducts(initFilters)
+    .then(() => {
+      console.log("init catalog products success"); 
+    })
+    .catch((err) => console.error(err.message)); 
   }, []); 
 
   return (

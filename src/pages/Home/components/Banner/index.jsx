@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { sliderImages } from './data'
-import './index.css'
+import React, { useState, useEffect } from 'react';
+import { sliderImages } from './data';
+import './index.css';
 
 const Slider = () => {
 
@@ -39,4 +39,4 @@ const Slider = () => {
   )
 }
 
-export default Slider
+export default Slider;

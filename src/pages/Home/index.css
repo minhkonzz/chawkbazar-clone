@@ -1,11 +1,14 @@
-.h-sec { opacity: 0; }
+.h-sec {
+  margin-bottom: 70px; 
+  opacity: 0; 
+}
 
 .h-sec.visible {
-   opacity: 1;
-   animation: section-show-up 1s ease-in;
+  opacity: 1;
+  animation: section-show-up 1s ease-in;
 }
 
 @keyframes section-show-up {
-   0% { margin-left: -50px; opacity: 0; }
-   100% { margin-left: 0; opacity: 1; }
+  0% { margin-left: -50px; opacity: 0; }
+  100% { margin-left: 0; opacity: 1; }
 }

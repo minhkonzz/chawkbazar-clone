@@ -6,4 +6,4 @@ export const getAllRecords = async(collectionName) => {
   const docs = await getDocs(collection(firestoreRef, collectionName)); 
   docs.forEach((doc) => { res = [ ...res, {...doc.data(), id: doc.id } ]});
   return res;
-}
+};

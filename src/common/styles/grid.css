@@ -26,14 +26,8 @@
   padding-right: 4px;
 }
 
-.col.mb-36px {
-  margin-bottom: 36px; 
-}
-
-/* .col-f {
-  padding-left: 0px; 
-  padding-right: 0px; 
-} */
+.col.mb-24px { margin-bottom: 24px; }
+.col.mb-36px { margin-bottom: 36px; }
 
 .sm-0 {
   display: none;

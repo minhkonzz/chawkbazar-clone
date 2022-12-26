@@ -1,9 +1,9 @@
 .fz-14px { font-size: 14px; }
 .mr-3r { margin-right: 3rem; }
 .mb-32px { margin-bottom: 32px; }
+.left-6pc { left: 6%; }
 
 .filters {
-   width: 90%;
    padding-top: 4px;
 }
 
@@ -83,3 +83,54 @@
  }
 
  .dropdown-content p:hover { background-color: #e4e4e4; }
+
+ .filter-sidebar-btn {
+   padding: 10px 20px;
+   background-color: gray;
+ }
+
+.filters-sidebar {
+  position: absolute;
+  left: 0; 
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  animation: showFiltersSidebar 1s ease;
+  transition: left 1.5s ease;
+}
+
+.filters-sidebar-top {
+   height: 80px; 
+}
+
+.filters-sidebar-top ion-icon {
+   font-size: 22px;
+}
+
+.filters-sidebar-center {
+   height: calc(100% - 140px); 
+   padding: 0 30px; 
+   overflow-y: auto;
+}
+
+.filters-sidebar-bottom {
+   background-color: rgb(39, 39, 39);
+   height: 60px; 
+}
+
+@keyframes showFiltersSidebar {
+  0% { left: -100%; };
+  100% { left: 0; }
+}
+
+.catalog-products-header h2 { display: none; }
+
+@media (min-width: 740px) {
+  .filters-sidebar { width: 50vw; }
+}
+
+@media (min-width: 1024px) {
+  .catalog-products-header h2 { display: block; }
+  .filtersSidebar { width: 480px; }
+  .filter-sidebar-btn { display: none; }
+}

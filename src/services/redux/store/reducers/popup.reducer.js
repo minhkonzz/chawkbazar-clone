@@ -1,31 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-   menuSidebar: false, 
-   cartSidebar: false,
-   authDialog: false, 
-   productDetailId: "", 
-   message: null
-}
-
 export const PopupReducer = createSlice({
    name: "Popup", 
-   initialState, 
+   initialState: {
+     menuSidebar: false, 
+     cartSidebar: false,
+     filtersSidebar: false, 
+     authDialog: false, 
+     productDetailId: "", 
+     message: null
+   }, 
    reducers: {
       touchMenuSidebar: state => {
-         state.menuSidebar = !state.menuSidebar
+         state.menuSidebar = !state.menuSidebar;
       },
       touchCartSidebar: state => {
-         state.cartSidebar = !state.cartSidebar
+         state.cartSidebar = !state.cartSidebar;
+      },
+      touchFiltersSidebar: state => {
+         state.filtersSidebar = !state.filtersSidebar;
       },
       touchAuthDialog: state => {
-         state.authDialog = !state.authDialog
+         state.authDialog = !state.authDialog;
       },
       touchProductDialog: (state, action) => {
-        state.productDetailId = action.payload || ""
+        state.productDetailId = action.payload || "";
       }, 
       touchMessageBox: (state, action) => {
-         state.message = action.payload || null
+         state.message = action.payload || null;
       }
    }
 })
@@ -33,6 +35,7 @@ export const PopupReducer = createSlice({
 export const { 
    touchMenuSidebar, 
    touchCartSidebar, 
+   touchFiltersSidebar,
    touchAuthDialog, 
    touchProductDialog, 
    touchMessageBox 
