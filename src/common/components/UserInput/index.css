@@ -1,9 +1,9 @@
-.label {
+.input__label {
   color: black;
   font-size: 14px; 
 }
 
-.input {
+.input__text {
   border-radius: 8px; 
   border: 1.5px solid #e4e4e4;
   margin-top: 10px;

@@ -3,22 +3,22 @@ import { useState } from 'react'
 
 const AQBox = (props) => {
 
-   const [ openAnswer, setOpenAnswer ] = useState(false)
+  const [ openAnswer, setOpenAnswer ] = useState(false)
 
-   console.log('render AQBox')
-   return (
-      <>
-         <div className="question posrel">
-            <p className="left-3pc"><b>{props.data.question}</b></p>
-            <button className={`${openAnswer && 'opening'}`} onClick={() => setOpenAnswer(!openAnswer)}>
-               <ion-icon name="add" />
-            </button>
-         </div>
-         <div className={`answer ${openAnswer && 'active'}`}>
-            <p className={`${openAnswer && 'visible '}blur`}>{props.data.answer}</p>
-         </div>
-      </>
-   )
+  console.log('render AQBox')
+  return (
+    <>
+      <div className="question posrel">
+        <p className="left-3pc"><b>{props.data.question}</b></p>
+        <button className={`${openAnswer && 'opening'}`} onClick={() => setOpenAnswer(!openAnswer)}>
+          <ion-icon name="add" />
+        </button>
+      </div>
+      <div className={`answer ${openAnswer && 'active'}`}>
+        <p className={`${openAnswer && 'visible '}blur`}>{props.data.answer}</p>
+      </div>
+    </>
+  )
 }
 
 const data = [
@@ -41,13 +41,13 @@ const data = [
 ]
 
 const FAQ = () => {
-   return (
-      <div className="faq-detail row">
-         <div className="col lg-8 lg-offset-2 md-12 sm-12">
-         { data.map((d, index) => <div key={index} className="q-a thin-bd-r w-100pc"><AQBox data={d}/></div>) }
-         </div>
+  return (
+    <div className="faq-detail row">
+      <div className="col lg-8 lg-offset-2 md-12 sm-12">
+        { data.map((d, index) => <div key={index} className="q-a thin-bd-r w-100pc"><AQBox data={d}/></div>) }
       </div>
-   )
+    </div>
+  )
 }
 
-export default FAQ
+export default FAQ;
