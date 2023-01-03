@@ -2,7 +2,7 @@ import './index.css';
 import { Outlet } from 'react-router-dom';
 
 const Checkout = () => (
-  <div className="checkout-detail row">
+  <div className="checkout row">
     <Outlet />
   </div>
 );

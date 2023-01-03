@@ -1,7 +1,7 @@
 import Filter from "./Filter";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { ProductsService } from "../../../services/firebase/products";
+import { ProductsService } from "services/firebase/products";
 
 const Filters = () => {
 

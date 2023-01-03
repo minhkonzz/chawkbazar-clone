@@ -1,11 +1,11 @@
-import BagSvg from "../../../common/svgs/bag"
+import BagSvg from "common/svgs/bag";
 
 const CheckoutSuccess = () => {
   return (
     <div className="col lg-12 md-12 sm-12">
-      <div className="checkout-success d-flex fd-col at-center">
+      <div className="checkout__success d-flex fd-col at-center">
         <BagSvg />
-        <div className="checkout-success-title d-flex at-center">
+        <div className="checkout__success-title d-flex at-center">
           <ion-icon name="checkmark-circle" />
           <p className="fw-700">Cảm ơn bạn đã mua sản phẩm</p>
         </div>

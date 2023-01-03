@@ -1,6 +1,12 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+:root {
+  --primary-color: rgb(32, 32, 32);
+  --button-hover-color: rgb(64, 64, 64);
+  --error-color: rgb(239, 64, 64);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -15,8 +21,6 @@ html {
 button, input { border: none; }
 button { background-color: transparent; }
 nav ul { list-style: none; }
-
-/* .col { margin-bottom: 36px; } */
 
 .w-100pc { width: 100% }
 .w-full { width: 100vw; }
@@ -74,12 +78,12 @@ nav ul { list-style: none; }
 .right-0 { right: 0; }
 .bottom-0 { bottom: 0; }
 
-.thin-bd-r { border-radius: 8px; }
-.norm-bd-r { border-radius: 14px; }
+.thin-bd-r { border-radius: 12px; }
+.norm-bd-r { border-radius: 16px; }
 .circle-bd-r { border-radius: 10000px; }
 
-.dark-v { color: white; background-color: black; }
-.light-v { color: black; background-color: white; }
+.dark-v { color: white; background-color: var(--primary-color); }
+.light-v { color: var(--primary-color); background-color: white; }
 
 .o-h { overflow: hidden; }
 .z-1 { z-index: 1 }

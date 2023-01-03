@@ -1,12 +1,12 @@
 import "./index.css";
 import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { touchProductDialog } from "../../services/redux/store/reducers/popup.reducer";
-import { ProductsService } from "../../services/firebase/products"; 
-import { addCart } from "../../services/redux/store/reducers/cart.reducer";
-import { touchMessageBox } from "../../services/redux/store/reducers/popup.reducer"; 
-import { BaseSource } from "../../utils/constants";
-import { fixDecimal, isInt } from "../../functions";
+import { touchProductDialog } from "services/redux/store/reducers/popup.reducer";
+import { ProductsService } from "services/firebase/products"; 
+import { addCart } from "services/redux/store/reducers/cart.reducer";
+import { touchMessageBox } from "services/redux/store/reducers/popup.reducer"; 
+import { BaseSource } from "utils/constants";
+import { fixDecimal, isInt } from "functions";
 
 const ProductDetail = ({ productId }) => {
 

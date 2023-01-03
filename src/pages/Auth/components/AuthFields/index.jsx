@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import UserSaver from "../../UserSaver";
-import UserInput from "../../../../common/components/UserInput";
+import UserInput from "common/components/UserInput";
 import Auth3rdProviders from "../Auth3rdProviders";
-import { AuthService } from "../../../../services/firebase/auth";
+import { AuthService } from "services/firebase/auth";
 
 const AuthFields = ({ isLogin, setIsLogin, authState }) => {
     // console.log("render AuthFields component"); 

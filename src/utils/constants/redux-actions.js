@@ -1,6 +1,0 @@
-export const SET_SECTION_DATA = "SET_SECTION_DATA";
-export const LOAD_MORE = "LOAD_MORE";
-export const APPEND_PRODUCTS = "APPEND_PRODUCTS";
-export const ADD_FILTER = "ADD_FILTER";
-export const REMOVE_FILTER = "REMOVE_FILTER";
-export const UPDATE_CURRENT_USER = "UPDATE_CURRENT_USER"; 

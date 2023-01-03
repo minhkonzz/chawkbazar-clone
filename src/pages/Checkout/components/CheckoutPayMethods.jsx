@@ -40,11 +40,11 @@ const CheckoutPayMethods = (props) => {
   }, [ isOnlinePaySelected ])
 
   return (
-    <div className="checkout-payments">
+    <div className="checkout__payments">
       <div className="row">
         <div className="col lg-12 md-12 sm-12">
           <h3>Payment methods</h3>
-          <select className="payment-options thin-bd-r fw-600" onChange={(e) => onPaymentTypeChange(e.target.value)}>
+          <select className="checkout__payments-select thin-bd-r fw-600" onChange={(e) => onPaymentTypeChange(e.target.value)}>
             <option value="pay_on_cash">Thanh toán khi nhận sản phẩm</option>
             <option value="pay_online">Thanh toán online</option>
           </select> 

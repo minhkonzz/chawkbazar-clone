@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { ProductsService } from "../../../firebase/products";
+import { ProductsService } from "services/firebase/products";
 
 export const getFilteredProducts = createAsyncThunk("catalog/getByFilter", async(params, { rejectWithValue }) => {
   const { newFilter, currentProductsLength } = params;

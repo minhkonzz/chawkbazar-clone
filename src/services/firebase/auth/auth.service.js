@@ -1,12 +1,10 @@
-import { auth, firestoreRef, googleAuthProvider } from "../../../configs/firebase.config";
+import { auth, firestoreRef, googleAuthProvider } from "configs/firebase.config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export const listenToAuthState = (onSignIn, onLogout) => {
   onAuthStateChanged(auth, (currentUser) => {
-    // console.log("call AuthStateChange");
     if (currentUser) {
-    //   console.log("Has current user"); 
       getDoc(doc(firestoreRef, "customers", currentUser.uid))
       .then((loggingCustomerDoc) => (
         loggingCustomerDoc.exists() &&
@@ -18,7 +16,6 @@ export const listenToAuthState = (onSignIn, onLogout) => {
       .catch((err) => console.error(err.message)); 
     }
     else {
-    // console.log("None current user"); 
       onLogout();
     }
   }); 

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Product from "../../../../common/components/Product/type-1";
-import { HomeSectionContext } from "../../../../context/provider/homeSection.provider";
+import Product from "common/components/Product/type-1";
+import { HomeSectionContext } from "context/provider/homeSection.provider";
 
 const BestSellers = () => {
 

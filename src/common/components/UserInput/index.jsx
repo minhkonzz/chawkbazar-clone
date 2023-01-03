@@ -10,13 +10,14 @@ const UserInput = (props) => {
     rows, 
     cols,
     inputValue,
-    onChangeText, 
+    onChangeText,
+    errorMessage, 
     w, h 
   } = props
 
   return (
     <div style={{ width: w ? w : '100%' }}> 
-      <label className="input__label"><b>{label}</b></label><br/>
+      <label className="input__label fw-600">{label}</label><br/>
       {
         isTextArea ?
         <textarea 
@@ -27,7 +28,7 @@ const UserInput = (props) => {
           onChange={(e) => onChangeText(e.target.value)}
           rows={rows} cols={cols}/> : 
         <input 
-          className="input__text w-100pc"
+          className="input__text w-100pc thin-bd-r"
           style={{ height: h ? h : 50 }} 
           type={isPassword ? "password" : "text"} 
           value={inputValue}
@@ -35,6 +36,7 @@ const UserInput = (props) => {
           onChange={(e) => onChangeText(e.target.value)}
         />
       }      
+      { errorMessage && <p className="input__error">{errorMessage}</p> }
     </div>
   )
 }

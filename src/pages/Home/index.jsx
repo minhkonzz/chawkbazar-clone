@@ -7,7 +7,7 @@ import FeaturedProducts from './components/FeaturedProducts'
 import NewCollections from './components/NewCollections'
 import Contact from './components/Contact'
 import { useEffect, useRef } from 'react'
-import HomeSectionProvider, { HomeSectionContext } from "../../context/provider/homeSection.provider";
+import HomeSectionProvider, { HomeSectionContext } from "context/provider/homeSection.provider";
 import './index.css'
 
 const Section = (props) => {

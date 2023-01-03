@@ -1,21 +1,21 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { paths } from '../utils/constants/index'
-import Home from "../pages/Home";
-import DefaultLayout from "../common/layouts/default"; 
-import Custom1Layout from "../common/layouts/customs/custom1";
-import Catalog from "../pages/Catalog";
-import Checkout from "../pages/Checkout";
-import CheckoutDetail from "../pages/Checkout/components/CheckoutDetail";
-import CheckoutSuccess from "../pages/Checkout/components/CheckoutSuccess";
-import ContactUs from "../pages/ContactUs";
-import FAQ from "../pages/FAQ";
-import Terms from "../pages/Terms";
-import Profile from "../pages/Profile";
-import AccountDetail from "../pages/Profile/components/AccountDetail";
-import Orders from "../pages/Profile/components/Orders";
-import Order from "../pages/Profile/components/Order"; 
-import PasswordUpdate from "../pages/Profile/components/PasswordUpdate";
+import { paths } from 'utils/constants/index'
+import Home from "pages/Home";
+import DefaultLayout from "common/layouts/default"; 
+import Custom1Layout from "common/layouts/customs/custom1";
+import Catalog from "pages/Catalog";
+import Checkout from "pages/Checkout";
+import CheckoutDetail from "pages/Checkout/components/CheckoutDetail";
+import CheckoutSuccess from "pages/Checkout/components/CheckoutSuccess";
+import ContactUs from "pages/ContactUs";
+import FAQ from "pages/FAQ";
+import Terms from "pages/Terms";
+import Profile from "pages/Profile";
+import AccountDetail from "pages/Profile/components/AccountDetail";
+import Orders from "pages/Profile/components/Orders";
+import Order from "pages/Profile/components/Order"; 
+import PasswordUpdate from "pages/Profile/components/PasswordUpdate";
 
 const routes = [
   { path: paths.ROOT_PATH, component: Home, layout: Custom1Layout },

@@ -1,4 +1,4 @@
-import UserInput from "../../../../common/components/UserInput";
+import UserInput from "common/components/UserInput";
 
 const Form = () => {
   return (

@@ -1,8 +1,8 @@
 import '../index.css';
-import { BaseSource, MeanVars } from '../../../../utils/constants';
-import { fixDecimal } from '../../../../functions';
+import { BaseSource, MeanVars } from 'utils/constants';
+import { fixDecimal } from 'functions';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, adjustAmount } from "../../../../services/redux/store/reducers/cart.reducer";
+import { removeFromCart, adjustAmount } from "services/redux/store/reducers/cart.reducer";
 
 const CartItem = ({ data }) => {
 

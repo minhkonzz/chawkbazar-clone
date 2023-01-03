@@ -1,10 +1,10 @@
 import './index.css';
 import { useDispatch } from "react-redux";
 import { useState, useEffect, useRef, useContext } from "react";
-import { CurrentUserContext } from "../../context/provider/currentUser.provider";
+import { CurrentUserContext } from "context/provider/currentUser.provider";
 import AuthFields from "./components/AuthFields";
-import { touchAuthDialog } from "../../services/redux/store/reducers/popup.reducer";
-import { LOGO_SHOP_PATH } from "../../utils/constants/base-source";
+import { touchAuthDialog } from "services/redux/store/reducers/popup.reducer";
+import { LOGO_SHOP_PATH } from "utils/constants/base-source";
 
 const Auth = () => {
 

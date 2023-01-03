@@ -88,7 +88,8 @@
 .btn-google:hover, 
 .btn-google:not(:hover) { transition: opacity 0.2s; }
 
-.btn-fb > span, .btn-google > span { font-size: 14px; }
+.btn-fb > span, .btn-google > span { font-size: 14px; margin: 0 4px; }
+
 
 .warn-title {
   /* display: none; */

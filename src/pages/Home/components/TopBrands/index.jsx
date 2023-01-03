@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import './index.css'
-import { BaseSource } from '../../../../utils/constants'
-import { HomeSectionContext } from "../../../../context/provider/homeSection.provider";
+import './index.css';
+import { BaseSource } from 'utils/constants';
+import { HomeSectionContext } from "context/provider/homeSection.provider";
 
 const TopBrands = () => {
 

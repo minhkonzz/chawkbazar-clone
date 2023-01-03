@@ -1,7 +1,7 @@
-import Checkbox from "../../../common/components/Checkbox";
+import Checkbox from "common/components/Checkbox";
 import { useSearchParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getFilteredProducts } from "../../../services/redux/store/reducers/catalog.slice";
+import { getFilteredProducts } from "services/redux/store/reducers/catalog.slice";
 
 const Filter = ({ data }) => {
 

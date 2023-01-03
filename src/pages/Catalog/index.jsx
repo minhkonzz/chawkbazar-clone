@@ -1,4 +1,4 @@
-import { CATALOG_BANNER } from "../../utils/constants/base-source";
+import { CATALOG_BANNER } from "utils/constants/base-source";
 import "./index.css";
 import Products from "./components/Products";
 import Filters from "./components/Filters";

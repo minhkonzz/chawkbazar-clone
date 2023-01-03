@@ -1,43 +1,48 @@
-.profile-detail { padding-top: 60px; }
+.profile { padding-top: 60px; }
 
-.profile-part { animation: profile-part-anim 0.5s ease-in; }
+.profile__content { animation: profile-part-anim 0.5s ease-in; }
 
 @keyframes profile-part-anim {
-   0% { margin-top: 30px; opacity: 0; }
-   100% { margin-top: 0; opacity: 1; }
+  0% { margin-top: 30px; opacity: 0; }
+  100% { margin-top: 0; opacity: 1; }
 }
 
 .tab {
-   margin-bottom: 18px;
-   padding: 15px 0;
+  margin-bottom: 18px;
+  padding: 15px 0;
 }
 
 .tab:hover { transition: 0.5s; background-color: #f7f7f7; }
 .tab.selected { background-color: #e9e9e9; }
 .tab ion-icon {
-   font-size: 20px;
-   margin-left: 22px; 
+  font-size: 20px;
+  margin-left: 22px; 
 }
 
 .tab span { margin-left: 12px; }
 
-.gentle { font-size: 14px; }
+.account-details__gender-title { font-size: 14px; }
 
-.radio-group { margin-top: 12px; }
-.radio-group .container:last-child { margin-left: 20px; }
+.account-details__gender-radios { margin-top: 16px; }
  
+.account-details__save-button {
+  width: 150px;
+  height: 55px;
+  font-size: 14px; 
+}
+
 .content-table {
-   border-collapse: collapse;
-   font-size: 1em;
-   border-radius: 5px 5px 0 0;
-   box-shadow: 0 5px 12px #f3f3f3;
+  border-collapse: collapse;
+  font-size: 1em;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 5px 12px #f3f3f3;
 }
  
 .content-table thead tr {
-   background-color: #e4e4e4;
-   color: black;
-   text-align: left;
-   font-weight: bold;
+  background-color: #e4e4e4;
+  color: black;
+  text-align: left; 
+  font-weight: bold;
 }
  
 .content-table th,
@@ -46,67 +51,81 @@
 .content-table tbody tr:last-of-type { border-bottom: none; }
 .content-table tbody tr td:last-child button { padding: 11px 22px; }
 
-.order {
-   margin-top: 20px; 
-}
+.order { margin-top: 20px; }
 
 .order-part-info:first-child {
-   border-top-left-radius: 8px;
-   border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .order-part-info:last-child {
-   border-bottom-left-radius: 8px;
-   border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .order-part-info {
-   position: relative;
-   margin-top: 4px; 
-   height: 55px;
+  position: relative;
+  margin-top: 4px; 
+  height: 55px;
 }
 
 .order-part-info > * {
-   display: inline-block;
-   position: absolute;
-   top: 50%;
-   transform: translateY(-50%);
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .order-part-info p, .order-part-info h4 {
-   left: 3%;
+  left: 3%;
 }
 
 .order-part-info span {
-   left: 60%;
+  left: 60%;
 }
 
 .outstand { background-color: #eeeeee; }
-.h-50px { height: 50px; }
-.w-130px { width: 130px; }
-.radio-group .radio-btn-container:last-child {
-   margin-left: 18px; 
+
+.account-details__gender-radios .radio-btn-container:last-child {
+  margin-left: 36px; 
 }
 
-.btn-save-passwd {
-   width: 200px; 
-   height: 60px;
-   font-size: 16px;
+.change-password__button {
+  width: 200px; 
+  height: 60px;
+  font-size: 16px;
+  transition: all .2s;
 }
 
-.btn-save-passwd:hover, 
-.btn-save-passwd:not(:hover) { transition: 0.3s; }
+.change-password__button:hover { opacity: 0.8; }
 
-.btn-save-passwd:hover { opacity: 0.8; }
 
+/* =============== Tablet ================ */
 @media (min-width: 740px) and (max-width: 1023px) {
-   .tab {
-      width: 86%;
-   }
+  .tab {
+    width: 86%;
+  }
+  .account-details__gender-title { font-size: 15px; }
+  .account-details__save-button {
+    width: 152px;
+    height: 60px;
+    font-size: 15px; 
+  }
 }
 
+/* =============== PC ================ */
 @media (min-width: 1024px) {
-   .tab {
-      width: 82%;
-   }
+  .tab {
+    width: 82%;
+  }
+  .account-details__gender-title { font-size: 16px; }
+  .account-details__save-button {
+    width: 160px;
+    height: 64px;
+    font-size: 16px; 
+    transition: all .2s ease-in;
+  }
+  .account-details__save-button:hover {
+    background-color: var(--button-hover-color);
+  }
 }

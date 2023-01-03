@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getFilteredProducts, loadMore } from "../../../services/redux/store/reducers/catalog.slice";
-import { ProductsService } from "../../../services/firebase/products";
-import Product from "../../../common/components/Product/type-1";
+import { getFilteredProducts, loadMore } from "services/redux/store/reducers/catalog.slice";
+import { ProductsService } from "services/firebase/products";
+import Product from "common/components/Product/type-1";
 import SortingOptions from "./SortingOptions";
-import { touchFiltersSidebar } from "../../../services/redux/store/reducers/popup.reducer";
+import { touchFiltersSidebar } from "services/redux/store/reducers/popup.reducer";
 
 const Products = () => {
 

@@ -2,8 +2,8 @@ import './index.css';
 import { useRef } from 'react'; 
 import { useDispatch, useSelector } from 'react-redux'; 
 import { useNavigate } from 'react-router-dom';
-import { touchCartSidebar } from "../../../services/redux/store/reducers/popup.reducer"; 
-import { fixDecimal } from '../../../functions';
+import { touchCartSidebar } from "services/redux/store/reducers/popup.reducer"; 
+import { fixDecimal } from 'functions';
 import BagSvg from "../../svgs/bag";
 import CartItem from './components/CartItem';
 

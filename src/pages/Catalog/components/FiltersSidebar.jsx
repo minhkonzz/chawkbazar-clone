@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { touchFiltersSidebar } from "../../../services/redux/store/reducers/popup.reducer";
+import { touchFiltersSidebar } from "services/redux/store/reducers/popup.reducer";
 import Filters from "./Filters";
 
 const FiltersSidebar = () => {

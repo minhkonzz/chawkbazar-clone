@@ -1,6 +1,8 @@
 export const isInt = (value) => Number(value) === value && value % 1 === 0; 
 
-export const fixDecimal = (value, fixTo) => Number(value.toFixed(fixTo));
+export const fixDecimal = (value, fixTo) => {
+  return isInt(value) ? value : Number(value.toFixed(fixTo));
+}
 
 export const isProductInFiltered = (product, filter) => {
   const keyChecks = Object.keys(filter).map((key) => {
