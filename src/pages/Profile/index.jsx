@@ -1,16 +1,57 @@
 import './index.css';
-import TabsMenu from './components/TabsMenu';
-import { Outlet } from 'react-router-dom';
+import { useState } from "react";
+import AccountDetail from "./components/AccountDetail";
+import Orders from "./components/Orders";
+import PasswordUpdate from "./components/PasswordUpdate";
 
-const Profile = () => (
-  <div className="profile row">
-    <div className="col lg-3 lg-offset-1 md-4 sm-12"> 
-      <TabsMenu />
+const profileTabs = [
+  {
+    icon: 'home-outline', 
+    title: 'Dashboard'
+  },
+  {
+    icon: 'cart-outline', 
+    title: 'Orders'
+  },
+  {
+    icon: 'person-outline', 
+    title: 'Account Details'
+  },
+  {
+    icon: 'settings-outline', 
+    title: 'Change Password',
+  },
+  {
+    icon: 'log-out-outline', 
+    title: 'Logout'
+  }
+];
+
+const Profile = () => {
+
+  const [ selectedIndex, setSelectedIndex ] = useState(0);
+
+  return (
+    <div className="profile row">
+      <div className="col lg-3 lg-offset-1 md-4 sm-12 mb-36px"> {
+        profileTabs.map((tab, index) => (
+          <div key={index} className={`tab thin-bd-r${selectedIndex === index ? ' selected' : ''}`} onClick={() => setSelectedIndex(index)}>
+            <ion-icon name={tab?.icon}/>
+            <span>{tab?.title}</span>
+          </div>
+        )) 
+      }
+      </div>
+      <div className="col lg-7 md-8 sm-12 mb-36px"> {
+        (selectedIndex === 0 && <></>) ||
+        (selectedIndex === 1 && <Orders />) ||
+        (selectedIndex === 2 && <AccountDetail />) || 
+        (selectedIndex === 3 && <PasswordUpdate />) || 
+        (selectedIndex === 4 && <></>)
+      }
+      </div>
     </div>
-    <div className="col lg-7 md-8 sm-12">
-      <Outlet />
-    </div>
-  </div>
-)
+  )
+}
 
 export default Profile;

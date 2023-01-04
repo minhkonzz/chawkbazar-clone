@@ -43,7 +43,7 @@ export const getOrdersOfCustomer = async(customerId) => {
   const orderSnapShot = await getDocs(q);
   let allOrders = []; 
   orderSnapShot.forEach((orderDoc) => {
-    const { products, shipFee, state, date } = { ...orderDoc.data() };
+    const { products, shipFee, state, date, payment, note } = { ...orderDoc.data() };
     let orderSubtotal = 0; 
     let orderTotalQuantity = 0; 
     products.forEach((product) => {
@@ -56,8 +56,13 @@ export const getOrdersOfCustomer = async(customerId) => {
       orderId: orderDoc.id, 
       orderDate: date, 
       orderState: state, 
+      orderProducts: products,
+      orderPaymentType: payment.type,
+      orderSubtotal: orderSubtotal, 
+      orderFee: shipFee,
       orderTotalPay, 
-      orderTotalQuantity
+      orderTotalQuantity,
+      orderNote: note
     }];
   });
   return allOrders;

@@ -35,8 +35,7 @@ export const signUp = async(_email, password) => {
   const userCredential = await createUserWithEmailAndPassword(auth, _email, password);
   const customerUID = userCredential.user.uid; 
   await setDoc(
-    doc(firestoreRef, "customers", customerUID),
-    {
+    doc(firestoreRef, "customers", customerUID), {
       firstName: "",
       lastName: "",
       gender: ""

@@ -9,12 +9,9 @@ import CheckoutConfirm from "./CheckoutConfirm";
 const CheckoutDetail = () => {
 
   const navigate = useNavigate();
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext) || { currentUser: null };
   const { userLoggedIn, referencesAdvance } = currentUser || { userLoggedIn: null, referencesAdvance: null }; 
   const cart = useSelector((state) => state.cart); 
-  console.log("currentUser:", currentUser);
-  console.log("refs:", referencesAdvance);
-  console.log("userLoggedIn:", userLoggedIn);
 
   const [ isOnlinePaySelected, setIsOnlinePaySelected ] = useState(false);
   const [ firstName, setFirstName ] = useState((referencesAdvance && referencesAdvance.firstName) || ""); 
@@ -25,8 +22,6 @@ const CheckoutDetail = () => {
   const [ city, setCity ] = useState(""); 
   const [ postCode, setPostCode ] = useState(""); 
   const [ orderNote, setOrderNote ] = useState("");
-
-  console.log("first name:", firstName);
 
   const createOrder = (paymentInstance) => {
     CustomerService.placeOrder({

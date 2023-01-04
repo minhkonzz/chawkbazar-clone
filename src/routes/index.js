@@ -12,10 +12,6 @@ import ContactUs from "pages/ContactUs";
 import FAQ from "pages/FAQ";
 import Terms from "pages/Terms";
 import Profile from "pages/Profile";
-import AccountDetail from "pages/Profile/components/AccountDetail";
-import Orders from "pages/Profile/components/Orders";
-import Order from "pages/Profile/components/Order"; 
-import PasswordUpdate from "pages/Profile/components/PasswordUpdate";
 
 const routes = [
   { path: paths.ROOT_PATH, component: Home, layout: Custom1Layout },
@@ -37,28 +33,7 @@ const routes = [
   { path: paths.CONTACTUS_PATH, component: ContactUs },
   { path: paths.FAQ_PATH, component: FAQ }, 
   { path: paths.TERMS_PATH, component: Terms }, 
-  { 
-    path: paths.PROFILE_PATH, 
-    component: Profile, 
-    nestLayouts: [
-      {
-        path: 'account-details', 
-        component: AccountDetail
-      }, 
-      {
-        path: 'orders', 
-        component: Orders
-      },
-      {
-        path: "orders/:id", 
-        component: Order
-      },
-      {
-        path: 'change-password', 
-        component: PasswordUpdate
-      }
-    ] 
-  }
+  { path: paths.PROFILE_PATH, component: Profile }
 ];
 
 const AnimateRoutes = () => {

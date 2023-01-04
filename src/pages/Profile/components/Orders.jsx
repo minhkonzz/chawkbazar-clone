@@ -1,12 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-// import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "context/provider/currentUser.provider";
 import { CustomerService } from "services/firebase/customer";
 import Order from "./Order";
 
 const Orders = () => {
 
-  // const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext);
   const { userLoggedIn } = currentUser; 
   const [ orders, setOrders ] = useState(""); 
@@ -17,10 +15,6 @@ const Orders = () => {
     .then((customerOrders) => { setOrders(customerOrders); })
     .catch((err) => console.error(err.message));
   }, []); 
-
-  // const viewOrderDetail = (orderId) => {
-  //   navigate(`/profile/orders/${orderId}`); 
-  // }
 
   if (order) return <Order {...{order, setOrder}}/>
 
