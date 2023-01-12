@@ -1,5 +1,6 @@
 import "./index.css";
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
 import { useProductOptions } from "hooks/useProductOptions.hook";
 import { touchProductDialog } from "services/redux/store/reducers/popup.reducer";
 import { BaseSource } from "utils/constants";
@@ -9,6 +10,8 @@ const ProductDetail = ({ productId }) => {
 
   const { PREFIX_API_SOURCE } = BaseSource;
   const productDetailRef = useRef(null);
+  const dispatch = useDispatch();
+  
   const {
     productSelected,
     amount, 

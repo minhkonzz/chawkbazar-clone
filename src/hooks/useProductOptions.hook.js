@@ -82,7 +82,7 @@ export function useProductOptions(productId) {
     }
     dispatch(addCart({
       ...productSelected,
-      qty: Number(amount) || 1,                 // amount default is 1
+      qty: Number(amount) || 1, // amount default is 1
       sizeSelected: size.sizeSelected, 
       colorSelected: color.colorSelected
     })); 
