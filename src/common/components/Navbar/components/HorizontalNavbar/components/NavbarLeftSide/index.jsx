@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { BaseSource } from "../../../../../../../utils/constants";
-import { touchMenuSidebar } from "../../../../../../../services/redux/store/reducers/popup.reducer"; 
-import { CurrentUserContext } from "../../../../../../../context/provider/currentUser.provider";
+import { BaseSource } from "utils/constants";
+import { touchMenuSidebar } from "services/redux/store/reducers/popup.reducer"; 
+import { CurrentUserContext } from "context/provider/currentUser.provider";
 
 const NavbarLeftSide = () => {
 
@@ -22,7 +22,7 @@ const NavbarLeftSide = () => {
           </g>
         </svg>
       </button>
-      <img alt="logo-shop" src={BaseSource.LOGO_SHOP_PATH}/>
+      <img alt="logo-shop" src={BaseSource.LOGO_SHOP_PATH} onClick={() => navigate("/")}/>
       <ul className="d-flex">
         <li className="nav-link d-flex at-center fw-600" onClick={() => navigate('/catalog')}>Products</li>
         <li className="nav-link d-flex at-center fw-600">

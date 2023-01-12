@@ -13,7 +13,7 @@ const Order = ({ order, setOrder }) => {
 
   return (
     <div className="row">
-      <div className="col lg-12 md-12 sm-12">
+      <div className="col lg-12 md-12 sm-12 mb-36px">
         <button onClick={() => setOrder(null)}>Back</button>
         <h2>Order Detail</h2>
         <div className="order">

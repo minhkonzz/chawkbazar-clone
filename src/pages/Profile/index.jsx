@@ -3,29 +3,7 @@ import { useState } from "react";
 import AccountDetail from "./components/AccountDetail";
 import Orders from "./components/Orders";
 import PasswordUpdate from "./components/PasswordUpdate";
-
-const profileTabs = [
-  {
-    icon: 'home-outline', 
-    title: 'Dashboard'
-  },
-  {
-    icon: 'cart-outline', 
-    title: 'Orders'
-  },
-  {
-    icon: 'person-outline', 
-    title: 'Account Details'
-  },
-  {
-    icon: 'settings-outline', 
-    title: 'Change Password',
-  },
-  {
-    icon: 'log-out-outline', 
-    title: 'Logout'
-  }
-];
+import { profileTabs } from './static-data';
 
 const Profile = () => {
 

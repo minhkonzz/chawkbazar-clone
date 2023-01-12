@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import UserInput from "common/components/UserInput";
 import Checkbox from "common/components/Checkbox";
+import { regex } from "utils/constants";
 
 const CheckoutFields = (props) => {
 
@@ -37,16 +38,18 @@ const CheckoutFields = (props) => {
   }
 
   const getErrors = () => {
-    const firstNameRegexExtract = firstName.match(/[A-Za-z]/g);
-    const lastNameRegexExtract = lastName.match(/[A-Za-z]/g);
-    const addressRegexExtract = address.match(/[A-Za-z0-9]/g);
-    const phoneRegexExtract = phone.match(/[0-9]/g);
-    const emailRegexExtract = email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
-    const firstNameError = (firstNameRegexExtract === null && "Vui lòng thêm First name") || (firstNameRegexExtract.length < firstName.length && "Chỉ được phép ký tự là chữ") || "";
-    const lastNameError = (lastNameRegexExtract === null && "Vui lòng thêm Last name") || (lastNameRegexExtract.length < lastName.length && "Chỉ được phép ký tự là chữ") || "";
-    const addressError = (addressRegexExtract === null && "Vui lòng thêm Address") || "";
-    const phoneError =  (phoneRegexExtract === null && "Vui lòng thêm Phone") || (phoneRegexExtract.length < phone.length && "Chỉ được phép ký tự là số" ) || "";
-    const emailError = (emailRegexExtract === null && "Email không hợp lệ") || "";
+
+    const { EMAIL_REGEX, NAME_REGEX, ALPHANUMERIC_REGEX, NUMERIC_REGEX } = regex;
+    const firstNameRegexExtract = firstName.match(NAME_REGEX);
+    const lastNameRegexExtract = lastName.match(NAME_REGEX);
+    const addressRegexExtract = address.match(ALPHANUMERIC_REGEX);
+    const phoneRegexExtract = phone.match(NUMERIC_REGEX);
+    const emailRegexExtract = email.match(EMAIL_REGEX);
+    const firstNameError = (firstName.length === 0 && "Vui lòng thêm First name") || (firstNameRegexExtract === null && "Chỉ được phép ký tự là chữ") || "";
+    const lastNameError = (lastName.length === 0 && "Vui lòng thêm Last name") || (lastNameRegexExtract === null && "Chỉ được phép ký tự là chữ") || "";
+    const addressError = (address.length === 0 && "Vui lòng thêm Address") || (addressRegexExtract === null && "Chỉ được phép ký tự là chữ hoặc số") || "";
+    const phoneError =  (phone.length === 0 && "Vui lòng thêm Phone") || (phoneRegexExtract === null && "Chỉ được phép ký tự là số" ) || "";
+    const emailError = (email.length === 0 && "Vui lòng thêm Email") || (emailRegexExtract === null && "Email không hợp lệ") || "";
 
     if (firstNameError || lastNameError || addressError || phoneError || emailError) {
       return {

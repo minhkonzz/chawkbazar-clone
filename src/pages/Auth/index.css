@@ -3,7 +3,7 @@
   100% { transform: scale(1, 1); }
 }
 
-.auth-container {
+.auth {
   width: 450px; 
   background-color: white;
   border-radius: 15px; 
@@ -12,23 +12,23 @@
   transition: transform 0.6s ease, opacity 0.5s ease; 
 }
 
-.auth-container > * { margin-top: 18px; }
+.auth > * { margin-top: 18px; }
 
-.auth-container img {
+.auth img {
   width: 150px; 
   height: 100px;
 }
 
-.auth-container > button {
+.auth > button {
   height: 50px; 
   color: white;
 }
 
-.auth-container > button:nth-child(3), .auth-container > button:nth-child(4) { text-align: left; }
+.auth > button:nth-child(3), .auth-container > button:nth-child(4) { text-align: left; }
 
-.auth-container > button:not(:first-child) ion-icon { font-size: 25px; }
+.auth > button:not(:first-child) ion-icon { font-size: 25px; }
 
-.auth-container > button:first-child {
+.auth > button:first-child {
   width: 32px; 
   height: 32px; 
   background-color: white;
@@ -40,12 +40,12 @@
 .left-23pc { left: 23%; }
 .left-25pc { left: 25%; }
 
-.auth-container > button:first-child ion-icon { font-size: 18px; }
-.auth-container > button:first-child:hover { opacity: 0.9; }
-.auth-container > button:first-child:hover,
-.auth-container > button:first-child:not(:hover) { transition: 0.3s; }
+.auth > button:first-child ion-icon { font-size: 18px; }
+.auth > button:first-child:hover { opacity: 0.9; }
+.auth > button:first-child:hover,
+.auth > button:first-child:not(:hover) { transition: 0.3s; }
 
-.auth-container > span { margin-top: 10px; }
+.auth > span { margin-top: 10px; }
 
 .auth-title {
   color: #5f5e5e;
@@ -108,3 +108,37 @@
 
 .auth-status span ion-icon { font-size: 27px; }
 
+.auth__status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 55px;
+  border-radius: 7px;
+}
+
+.auth__status-text {
+  opacity: 0.8;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.auth__status ion-icon {
+  font-size: 24px;
+  color: rgb(100, 100, 100);
+}
+
+.auth__status.success {
+  background-color: rgb(169, 237, 169);
+}
+
+.auth__status.success .auth__status-text {
+  color: rgb(54, 120, 54);
+}
+
+.auth__status.failed {
+  background-color: rgb(254, 188, 188);
+}
+
+.auth__status.failed .auth__status-text {
+  color: rgb(134, 53, 53);
+}

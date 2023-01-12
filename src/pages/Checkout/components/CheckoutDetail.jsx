@@ -1,13 +1,15 @@
 import { useState, useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "context/provider/currentUser.provider";
 import { CustomerService } from "services/firebase/customer";
+import { touchMessageBox } from "services/redux/store/reducers/popup.reducer"; 
 import CheckoutFields from "./CheckoutFields";
 import CheckoutConfirm from "./CheckoutConfirm";
 
 const CheckoutDetail = () => {
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { currentUser } = useContext(CurrentUserContext) || { currentUser: null };
   const { userLoggedIn, referencesAdvance } = currentUser || { userLoggedIn: null, referencesAdvance: null }; 
@@ -24,6 +26,13 @@ const CheckoutDetail = () => {
   const [ orderNote, setOrderNote ] = useState("");
 
   const createOrder = (paymentInstance) => {
+    if (cart.cartItems.length === 0) {
+      dispatch(touchMessageBox({
+        type: "warn", 
+        content: "Vui lòng thêm sản phẩm vào giỏ"
+      }));
+      return; 
+    }
     CustomerService.placeOrder({
       firstName, lastName, address, 
       phone, email, city, 

@@ -19,6 +19,11 @@ const Cart = () => {
     setTimeout(() => { dispatch(touchCartSidebar()); }, 500); 
   }; 
 
+  const redirectToCheckout = () => {
+    closeCartModal();
+    navigate("/checkout/detail");
+  }
+
   return (
     <div className="cart" ref={cartRef}>
       <div className="cart-top posrel">
@@ -37,7 +42,7 @@ const Cart = () => {
       }
       </div>
       <div className="cart-bottom posrel">
-        <button className="posab pos-center dark-v thin-bd-r fw-600" onClick={() => navigate("/checkout/detail")}>{`Proceed to checkout | $${cartItems.length === 0 ? 0 : fixDecimal(cartTotalPrice, 2)}`}</button>
+        <button className="posab pos-center dark-v thin-bd-r fw-600" onClick={redirectToCheckout}>{`Proceed to checkout | $${cartItems.length === 0 ? 0 : fixDecimal(cartTotalPrice, 2)}`}</button>
       </div>
     </div>
   )

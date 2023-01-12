@@ -1,8 +1,8 @@
 import './index.css'
 import { useDispatch } from 'react-redux';
 import { useElementSize } from 'usehooks-ts';
-import { touchProductDialog } from '../../../../services/redux/store/reducers/popup.reducer'; 
-import { BaseSource } from '../../../../utils/constants';
+import { touchProductDialog } from 'services/redux/store/reducers/popup.reducer'; 
+import { BaseSource } from 'utils/constants';
 
 const Product = ({ data }) => {
 

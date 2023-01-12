@@ -5,27 +5,26 @@ const Checkbox = (props) => {
 
   const {
     children, 
+    isChecked,
     cbVal, 
     onSelectChange
   } = props;
 
   const ref = useRef(null);
 
+  const onCheckboxChange = (checkboxElement, isChecked) => {
+    checkboxElement.checked = isChecked;
+    if (isChecked) {
+      checkboxElement.setAttribute("checked", "");
+      return;
+    }
+    checkboxElement.removeAttribute("checked");
+  }
+
   useEffect(() => {
-    const checkboxRef = ref.current;
-    function onCheckboxChange(e) {
-      const inp = e.target;
-      if (inp.checked) {
-        inp.setAttribute("checked", "");
-        return;
-      }
-      inp.removeAttribute("checked");
-    }
-    checkboxRef.addEventListener("change", onCheckboxChange);
-    return () => {
-      checkboxRef.removeEventListener("change", onCheckboxChange);
-    }
-  }, [])
+    const checkboxElement = ref.current;
+    onCheckboxChange(checkboxElement, isChecked);
+  }, [isChecked]);
 
   return (
     <label className="checkbox-container">
@@ -34,13 +33,8 @@ const Checkbox = (props) => {
         ref={ref}
         type="checkbox"
         value={cbVal?.optionName} 
-        onChange={(e) => {
-          onSelectChange()(e, cbVal)
-          .then(() => {
-            console.log("filter thanh cong"); 
-          })
-          .catch((err) => console.error(err.message)); 
-        }} /> 
+        onChange={(e) => onSelectChange()(e, cbVal)} 
+      /> 
       <span className="checkbox-checkmark"></span>
     </label>
   )

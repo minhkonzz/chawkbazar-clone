@@ -27,8 +27,8 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="catalog-products">
-      <div className="catalog-products-header d-flex jc-sb at-center mb-32px">
+    <div className="catalog__products">
+      <div className="catalog__products-header d-flex jc-sb at-center mb-32px">
         <h2 className="fw-600">Casual wear</h2>
         <button className="filter-sidebar-btn" onClick={() => dispatch(touchFiltersSidebar())}>Open filter sidebar</button>
         <div className="d-flex at-center">

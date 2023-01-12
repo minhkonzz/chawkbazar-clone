@@ -21,30 +21,28 @@ const Auth = () => {
   };
 
   useEffect(() => {
-    if (currentUserValue || isAuthFailed) 
+    if (currentUserValue) 
       setTimeout(() => {
         if (authRef.current) closeAuthDialog(); 
       }, 4000);
   })
 
   return (
-    <div className="auth-container d-flex fd-col at-center posab pos-center" ref={authRef}>
+    <div className="auth d-flex fd-col at-center posab pos-center" ref={authRef}>
       <button className="posab right-n10px circle-bd-r top-n24px" onClick={closeAuthDialog}>
         <ion-icon name="close" />
       </button>
-      <img alt="shop-title" src={LOGO_SHOP_PATH}/> {
+      <img alt="shop-title" src={LOGO_SHOP_PATH}/> {        
         currentUserValue ? 
-        <div className="auth-status d-flex">
-          <span className="success checkmark">
-            <ion-icon name="checkmark-circle" />
-          </span>
-          <p>{`${isLogin ? "Login" : "Sign up" } success`} </p>
-        </div> : 
-        <AuthFields 
-          isLogin={isLogin}
-          setIsLogin={setIsLogin}
-          authState={{ isAuthFailed, setIsAuthFailed }}/>
-      }
+        <div className={`auth__status w-100pc success`}>
+          <ion-icon name="checkmark-circle-outline" />
+          <p className="auth__status-text fw-600">Đăng nhập thành cong</p>
+        </div> :
+      <AuthFields 
+        isLogin={isLogin}
+        setIsLogin={setIsLogin}
+        authState={{ isAuthFailed, setIsAuthFailed }}/> }
+      {/* <AuthFields {...{ isLogin, setIsLogin }} /> */}
     </div>
   )
 }

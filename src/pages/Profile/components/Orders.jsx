@@ -19,15 +19,15 @@ const Orders = () => {
   if (order) return <Order {...{order, setOrder}}/>
 
   return (
-    <div className="profile-part row">
+    <div className="profile__content row">
       <div className="col lg-12 md-12 sm-12">
         <div className="row">
-          <div className="col lg-12 md-12 sm-12">
+          <div className="col lg-12 md-12 sm-12 mb-36px">
             <h2>Orders</h2>
           </div>
         </div>
         <div className="row">
-          <div className="col lg-12 md-12 sm-12"> { 
+          <div className="col lg-12 md-12 sm-12 mb-36px"> { 
             Array.isArray(orders) && orders.length > 0 ? 
             <table className="content-table w-100pc o-h">
               <thead>

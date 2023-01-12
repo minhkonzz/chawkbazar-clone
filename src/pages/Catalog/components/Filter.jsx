@@ -1,37 +1,30 @@
 import Checkbox from "common/components/Checkbox";
-import { useSearchParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getFilteredProducts } from "services/redux/store/reducers/catalog.slice";
 
-const Filter = ({ data }) => {
+const Filter = (props) => {
 
+  const { data, currentProducts, filter } = props;
   const dispatch = useDispatch();
-  const [ searchParams, setSearchParams ] = useSearchParams();
-  const { currentProducts, filter } = useSelector((state) => state.catalog);
 
-  const selectHandler = async(event, val) => {
-    const paramsObj = Object.fromEntries(searchParams.entries());
-    const newFilter = { ...filter }; 
+  const modifySelection = (event, val) => {
+    const newFilter = {...filter};
+    const optionsTitle = data.urlParam; 
     if (event.target.checked) {
-      paramsObj[data.urlParam] = paramsObj[data.urlParam] ? paramsObj[data.urlParam] + `p2c${val.optionSlug}` : val.optionSlug;
-      newFilter[data.urlParam] = newFilter[data.urlParam] ? [ ...newFilter[data.urlParam], { optionId: val.optionId, optionName: val.optionName } ] : [ { optionId: val.optionId, optionName: val.optionName } ]; 
+      const newOption = {
+        optionId: val.optionId, 
+        optionName: val.optionName
+      }
+      newFilter[optionsTitle] = newFilter[optionsTitle] ? [...newFilter[optionsTitle], newOption ] : [ newOption ];
     }
     else {
-      if (paramsObj[data.urlParam].includes("p2c")) {
-        paramsObj[data.urlParam] = paramsObj[data.urlParam].replace(
-          paramsObj[data.urlParam].includes(`p2c${val.optionSlug}`) ? `p2c${val.optionSlug}` : `${val.optionSlug}p2c`, 
-          ""
-        );
-      }
-      else delete paramsObj[data.urlParam];
-      if (newFilter[data.urlParam].length === 1) delete newFilter[data.urlParam];
-      else newFilter[data.urlParam] = newFilter[data.urlParam].filter((selectedOptId) => selectedOptId !== val.optionId); 
+      if (newFilter[optionsTitle].length === 1) delete newFilter[optionsTitle];
+      else newFilter[optionsTitle] = newFilter[optionsTitle].filter((selectedOptId) => selectedOptId !== val.optionId);
     }
     dispatch(getFilteredProducts({
-      newFilter, 
+      newFilter,
       currentProductsLength: currentProducts.length
     }));
-    setSearchParams(paramsObj);
   }
 
   return (
@@ -40,8 +33,9 @@ const Filter = ({ data }) => {
       <div className="checkbox-selector"> {
         data.filtersList.map((option, index) => {
           return (
-            <Checkbox 
-              onSelectChange={() => selectHandler}
+            <Checkbox
+              isChecked={!!filter[data.urlParam] && filter[data.urlParam].map((option) => option.optionName).includes(option.name)}
+              onSelectChange={() => modifySelection}
               key={index}
               cbVal={
                 { optionId: option.id, optionSlug: option.slug, optionName: option.name || 

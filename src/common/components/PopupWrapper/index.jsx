@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { PC_VIEW } from "../../../utils/constants/meaning-vars";
+import { PC_VIEW } from "utils/constants/meaning-vars";
 import VerticalNavbar from "../Navbar/components/VerticalNavbar";
 import Cart from "../Cart";
-import Auth from "../../../pages/Auth";
-import FiltersSidebar from "../../../pages/Catalog/components/FiltersSidebar";
-import ProductDetail from "../../../pages/ProductDetail";
+import Auth from "pages/Auth";
+import FiltersSidebar from "pages/Catalog/components/FiltersSidebar";
+import ProductDetail from "pages/ProductDetail";
 import MessageBox from "../MessageBox";
 
 const Modal = () => {
@@ -26,7 +26,7 @@ const Modal = () => {
       bodyStyle.overflowY = isModalOpen ? "hidden" : "scroll"; // on PC
       return; 
     }
-    // on Tablet or Phone
+
     if (isModalOpen) {
       document.body.style.position = "fixed";
       document.body.style.top = `-${window.scrollY}px`; 

@@ -24,7 +24,7 @@ const CheckoutConfirm = (props) => {
               Array.isArray(cartItems) && cartItems.length > 0 ?
               cartItems.map((cartItem, index) => {
                 return (
-                  <div className="checkout__confirm-item w-100pc d-flex jc-center at-center" key={index}>
+                  <div className="checkout__confirm-item w-100pc d-flex jc-sb at-center" key={index}>
                     <div className="checkout__confirm-item__image__name d-flex at-center">
                       <img className="checkout__confirm-item__image" src={`${BaseSource.PREFIX_API_SOURCE}${cartItem?.image?.thumbnail}`} alt=""/>
                       <p className="checkout__confirm-item__name">{`${cartItem?.name} - ${cartItem?.sizeSelected.value}, ${cartItem?.colorSelected.value}`}</p>
@@ -38,7 +38,7 @@ const CheckoutConfirm = (props) => {
             <div>
               <div className="checkout__confirm-fee d-flex jc-sb at-center">
                 <span><b>Shipping</b></span>
-                <span><b>Free</b></span>
+                <span><b>$2.99</b></span>
               </div>
               <div className="checkout__confirm-total d-flex jc-sb at-center">
                 <span><b>Total</b></span>

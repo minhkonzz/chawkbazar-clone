@@ -104,7 +104,7 @@ export const updateCustomerAccountDetail = async(currentCustomer, newProfile) =>
   await updateEmail(currentCustomer, email); 
   await setDoc(
     doc(firestoreRef, "customers", currentCustomer.uid),
-    { firstName, lastName }, 
+    { firstName, lastName, phone }, 
     { merge: true } 
   );
 }

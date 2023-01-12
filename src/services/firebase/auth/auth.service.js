@@ -16,6 +16,7 @@ export const listenToAuthState = (onSignIn, onLogout) => {
       .catch((err) => console.error(err.message)); 
     }
     else {
+      localStorage.removeItem("user_pwd");
       onLogout();
     }
   }); 
@@ -31,14 +32,16 @@ export const signInWithGoogle = async() => {
   return result.user;
 }
 
-export const signUp = async(_email, password) => {
+export const signUp = async(_email, password, name) => {
   const userCredential = await createUserWithEmailAndPassword(auth, _email, password);
   const customerUID = userCredential.user.uid; 
+  const nameParts = name.split(" ").filter((namePart) => namePart !== ""); 
   await setDoc(
     doc(firestoreRef, "customers", customerUID), {
-      firstName: "",
-      lastName: "",
-      gender: ""
+      firstName: nameParts[0],
+      lastName: nameParts[nameParts.length - 1],
+      gender: "",
+      phone: ""
     }
   );
 }; 

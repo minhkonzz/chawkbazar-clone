@@ -6,7 +6,7 @@ const SortingOptions = () => {
 
   return (
     <div className="dropdown-menu-wrapper posrel d-ib">
-      <button className="dropdown-btn d-flex jc-sa at-center w-100pc thin-bd-r fw-600" onClick={() => setIsHide(!isHide)}>
+      <button className="dropdown-btn d-flex jc-sa at-center w-100pc fw-600" onClick={() => setIsHide(!isHide)}>
         Sorting Options
         <div className="up-down-icons">
           <ion-icon className="d-b" name="chevron-up" />

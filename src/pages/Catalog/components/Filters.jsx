@@ -1,12 +1,16 @@
 import Filter from "./Filter";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { ProductsService } from "services/firebase/products";
+import { getFilteredProducts } from "services/redux/store/reducers/catalog.slice";
 
 const Filters = () => {
 
+  const dispatch = useDispatch();
+  const setSearchParams = useSearchParams()[1];
   const [ filterSections, setFilterSections ] = useState(![]);
-  const filters = useSelector((state) => state.catalog.filter);
+  const { currentProducts, filter } = useSelector((state) => state.catalog);
 
   useEffect(() => {
     ProductsService.getProductRefferences()
@@ -14,29 +18,36 @@ const Filters = () => {
     .catch(err => console.error(err))
   }, []);
 
-  const getFiltersName = () => {
-    let filterNames = [];
-    Object.keys(filters).forEach((filterSectionName) => {
-      const filterKeySelects = filters[filterSectionName]; 
-      for (let i = 0; i < filterKeySelects.length; i++) {
-        filterNames = [ ...filterNames, filterKeySelects[i].optionName ]
+  useEffect(() => {
+    setSearchParams(Object.keys(filter).reduce((acc, cur) => {
+      return {
+        ...acc, 
+        [cur]: filter[cur].map((option) => option.optionName.toLowerCase()).join("-")
       }
-    });
-    return filterNames; 
+    }, {}));
+  }, [filter]);
+
+  const getFilterNames = () => {
+    return (!!filter && Object.keys(filter).reduce((acc, cur) => {
+      return [
+        ...acc, 
+        ...filter[cur].map((option) => option.optionName)
+      ]
+    }, [])) || [];
   }
   
   return (
-    <div className="filters">
-      <div className="filters-header">
-        <p>Home / Search</p>
-        <div className="d-flex jc-sb at-center">
-          <h2>Filters</h2>
-          <span className="blur">Clear all</span>
+    <div className="catalog__filters">
+      <div className="catalog__filters-header">
+        <p className="catalog__filters-header__path">Home / Search</p>
+        <div className="catalog__filters-header__title d-flex jc-sb at-center">
+          <h2 className="catalog__filters-header__title-text">Filters</h2>
+          <span className="catalog__filters-header__clear blur" onClick={() => dispatch(getFilteredProducts({ newFilter: {} }))}>Clear all</span>
         </div>
-        <div className="checkbox-selected d-flex wrap"> {
-          getFiltersName().map((filterName, index) => {
+        <div className="catalog__filters-header__selects d-flex wrap"> {
+          getFilterNames().map((filterName, index) => {
             return (
-              <button key={index} className="selected-category thin-bd-r">
+              <button key={index} className="selected-category">
                 { filterName }
                 <ion-icon name="close" />
               </button>
@@ -45,8 +56,15 @@ const Filters = () => {
         </div>
       </div>
       {
-        filterSections && 
-        filterSections.map((filterSection, index) => <Filter key={index} data={filterSection}/>)
+        filterSections && filterSections.map((filterSection, index) => {
+          const props = {
+            key: index, 
+            data: filterSection,
+            currentProducts, 
+            filter
+          }
+          return <Filter {...props} />
+        })
       }
     </div>
   )

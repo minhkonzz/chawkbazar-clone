@@ -21,4 +21,4 @@ const UserMailGetter = () => {
   )
 }
 
-export default UserMailGetter 
+export default UserMailGetter;

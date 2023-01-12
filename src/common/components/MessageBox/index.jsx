@@ -1,7 +1,7 @@
 import "./index.css"; 
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { touchMessageBox } from "../../../services/redux/store/reducers/popup.reducer"; 
+import { touchMessageBox } from "services/redux/store/reducers/popup.reducer"; 
 
 const MessageBox = ({ message }) => {
 
@@ -30,9 +30,9 @@ const MessageBox = ({ message }) => {
   }, [])
 
   return (
-    <div className="popup__message d-ib thin-bd-r" ref={messageBoxRef}>
+    <div className="popup__message posab left-50pc top-6pc thin-bd-r" ref={messageBoxRef}>
       { getMessageMark(type) }
-      <p className="popup__message-content d-i fw-600">{content}</p>
+      <p className="popup__message-content posab top-50pc fw-600">{content}</p>
     </div>
   )
 }
