@@ -4,7 +4,6 @@ const CheckoutPayMethods = (props) => {
 
   const paypalRef = useRef(null);
   const { isOnlinePaySelected, setIsOnlinePaySelected, createOrder } = props; 
-  console.log("render CheckoutPayMethods");
 
   const onPaymentTypeChange = (paymentType) => {
     if (paymentType === "pay_online") {

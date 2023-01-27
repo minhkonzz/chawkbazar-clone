@@ -17,7 +17,7 @@ const NavbarRightSide = () => {
       <ion-icon name="search"/>
       <h4 onClick={() => currentUserValue ? navigate("/profile") : dispatch(touchAuthDialog())}>{ currentUserValue ? currentUserValue.currentUser.userLoggedIn.displayName : "Login"}</h4>
       <div className="cart-preview posrel" onClick={() => dispatch(touchCartSidebar())}>
-        <span className="d-flex jc-center at-center cart-amount dark-v posab circle-bd-r fw-600">{cartItemsAmount}</span>
+        { cartItemsAmount > 0 && <span className="d-flex jc-center at-center cart-amount dark-v posab circle-bd-r fw-600">{cartItemsAmount}</span> }
         <ion-icon name="bag-handle-outline" />
       </div>
     </div>

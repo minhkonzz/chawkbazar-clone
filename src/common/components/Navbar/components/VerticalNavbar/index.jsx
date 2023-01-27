@@ -1,11 +1,13 @@
 import { useRef } from "react";
 import { BaseSource } from "utils/constants";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { touchMenuSidebar } from "services/redux/store/reducers/popup.reducer";
 import "./index.css";
 
 const VerticalNavbar = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const nestSidebarMenu = useRef(null)
   const menuSidebarRef = useRef(null)
@@ -29,18 +31,18 @@ const VerticalNavbar = () => {
       </div>   
       <div className="vertical-nav-center">
         <ul>
-          <li className="fw-500">Products</li>
+          <li className="fw-500" onClick={() => { navigate("/catalog"); closeSidebar() }}>Products</li>
           <li className="fw-500 posrel">
             <div className="d-flex at-center jc-sb">
               Pages
               <ion-icon name="chevron-down" onClick={touchNestSidebarMenu}/>
             </div>
             <ul ref={nestSidebarMenu}>
-              <li className="fw-500 blur">My Account</li>
-              <li className="fw-500 blur">FAQ</li>
-              <li className="fw-500 blur">Terms & Conditions</li>
-              <li className="fw-500 blur">Contact us</li>
-              <li className="fw-500 blur">Checkout</li>
+              <li className="fw-500 blur" onClick={() => { navigate("/profile"); closeSidebar(); }}>My Account</li>
+              <li className="fw-500 blur" onClick={() => { navigate("/faq"); closeSidebar(); }}>FAQ</li>
+              <li className="fw-500 blur" onClick={() => { navigate("/terms"); closeSidebar(); }}>Terms & Conditions</li>
+              <li className="fw-500 blur" onClick={() => { navigate("/contactus"); closeSidebar(); }}>Contact us</li>
+              <li className="fw-500 blur" onClick={() => { navigate("/checkout/detail"); closeSidebar(); }}>Checkout</li>
             </ul>
           </li>
         </ul>

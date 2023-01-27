@@ -17,7 +17,7 @@ const routes = [
   { path: paths.ROOT_PATH, component: Home, layout: Custom1Layout },
   { path: paths.CATALOG_PATH, component: Catalog, layout: Custom1Layout },
   { 
-    path: paths.CHECKOUT_PATH, 
+    path: "checkout", 
     component: Checkout, 
     nestLayouts: [
       {

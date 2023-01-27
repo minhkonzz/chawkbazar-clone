@@ -39,7 +39,7 @@ const CheckoutDetail = () => {
       postCode,
       note: orderNote,
       cartItems: cart.cartItems,
-      shipFee: 100, 
+      shipFee: 2.99, 
       payment: {
         type: paymentInstance ? "pay_online" : "cash_on_delivery",
         isPaid: !!paymentInstance

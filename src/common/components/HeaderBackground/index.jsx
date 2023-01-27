@@ -1,6 +1,6 @@
 import './index.css';
 import { useLocation } from 'react-router-dom';
-import { paths } from '../../../utils/constants';
+import { paths } from 'utils/constants';
 
 const HeaderBackground = () => {
 

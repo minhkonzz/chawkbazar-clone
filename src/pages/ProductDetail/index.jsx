@@ -78,9 +78,9 @@ const ProductDetail = ({ productId }) => {
           </div>
           <div className="product-detail__quantity__add-cart d-flex jc-sb w-100pc">
             <div className="product-detail__quantity d-flex thin-bd-r">
-              <button className="product-detail__quantity-btn increase h-100pc fw-600" onClick={inDecreaseAmount("DECREASE")}><ion-icon name="remove"/></button>
+              <button className="product-detail__quantity-btn increase h-100pc fw-600" onClick={() => inDecreaseAmount("DECREASE")}><ion-icon name="remove"/></button>
               <input className="product-detail__quantity-value fw-600" onKeyDown={(e) => isEnteredAmount(e)} value={amount} onChange={(e) => onModifyingAmount(e.target.value) } />
-              <button className="product-detail__quantity-btn decrease h-100pc fw-600" onClick={inDecreaseAmount("INCREASE")}><ion-icon name="add"/></button>
+              <button className="product-detail__quantity-btn decrease h-100pc fw-600" onClick={() => inDecreaseAmount("INCREASE")}><ion-icon name="add"/></button>
             </div>
             <button className="product-detail__add-cart thin-bd-r fw-600" onClick={handleAddToCart}>Add to cart</button>
           </div>

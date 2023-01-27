@@ -18,6 +18,7 @@ export function useProductOptions(productId) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("Hello1");
     ProductsService.getProductDetail(productId)
     .then((productResponse) => {
       setProductSelected({
@@ -29,6 +30,7 @@ export function useProductOptions(productId) {
   }, [])
 
   useEffect(() => {
+    console.log("Hello2");
     const addonsError = !!errors && errors.addonsError; 
     if (addonsError) {
       dispatch(touchMessageBox({

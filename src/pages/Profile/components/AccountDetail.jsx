@@ -1,5 +1,6 @@
-import { useState, useEffect, useContext } from "react"; 
+import { useState, useContext } from "react"; 
 import { useDispatch } from "react-redux";
+import { useInputsValidation } from "hooks/useInputsChecker.hook";
 import UserInput from "common/components/UserInput";
 // import RadioButton from "common/components/RadioButton";
 import { CurrentUserContext } from "context/provider/currentUser.provider";
@@ -18,18 +19,8 @@ const AccountDetail = () => {
   const [ displayName, setDisplayName ] = useState((userLoggedIn && userLoggedIn.displayName) || "");
   const [ phone, setPhone ] = useState((referencesAdvance && referencesAdvance.phone) || ""); 
   const [ email, setEmail ] = useState((userLoggedIn && userLoggedIn.email) || "");
-  const [ errors, setErrors ] = useState(null);
-
-  useEffect(() => {
-    if (errors) setErrors(null);
-  }, [firstName, lastName, displayName, phone, email]);
 
   const updateCustomerProfile = () => {
-    const errs = getErrors();
-    if (errs) {
-      setErrors(errs);
-      return;
-    }
     CustomerService.updateCustomerAccountDetail(
       userLoggedIn, 
       { firstName, lastName, displayName, phone, email } 
@@ -52,31 +43,43 @@ const AccountDetail = () => {
     .catch((err) => console.error(err.message)); 
   }
 
-  const getErrors = () => {
-
-    const { EMAIL_REGEX, NAME_REGEX, USERNAME_REGEX, NUMERIC_REGEX } = regex;
-    const firstNameRegexExtract = firstName.match(NAME_REGEX);
-    const lastNameRegexExtract = lastName.match(NAME_REGEX);
-    const displayNameRegexExtract = displayName.match(USERNAME_REGEX);
-    const phoneRegexExtract = phone.match(NUMERIC_REGEX);
-    const emailRegexExtract = email.match(EMAIL_REGEX);
-    const firstNameError = (firstName.length === 0 && "Vui lòng thêm First name") || (firstNameRegexExtract === null && "Chỉ được phép ký tự là chữ") || "";
-    const lastNameError = (lastName.length === 0 && "Vui lòng thêm Last name") || (lastNameRegexExtract === null && "Chỉ được phép ký tự là chữ") || "";
-    const displayNameError = (displayName.length === 0 && "Vui lòng thêm Display name") || (displayNameRegexExtract === null && "Chỉ được phép ký tự là chữ hoặc số") || "";
-    const phoneError =  (phone.length === 0 && "Vui lòng thêm Phone") || (phoneRegexExtract === null && "Chỉ được phép ký tự là số" ) || "";
-    const emailError = (email.length === 0 && "Vui lòng thêm Email") || (emailRegexExtract === null && "Email không hợp lệ") || "";
-
-    if (firstNameError || lastNameError || displayNameError || phoneError || emailError) {
-      return {
-        firstNameError,
-        lastNameError,
-        displayNameError,
-        phoneError,
-        emailError
-      }
+  const { errors, handleAfterValidate: updateAccountDetail } = useInputsValidation([
+    {
+      fieldTitle: "First name", 
+      inputValue: firstName, 
+      pattern: regex.NAME_REGEX, 
+      errorIdentifier: "firstNameError", 
+      errorMessage: "Chỉ được phép ký tự là chữ"
+    },
+    {
+      fieldTitle: "Last name", 
+      inputValue: lastName, 
+      pattern: regex.NAME_REGEX, 
+      errorIdentifier: "lastNameError", 
+      errorMessage: "Chỉ được phép ký tự là chữ"
+    },
+    {
+      fieldTitle: "Display name", 
+      inputValue: displayName, 
+      pattern: regex.USERNAME_REGEX, 
+      errorIdentifier: "displayNameError", 
+      errorMessage: "Chỉ được phép ký tự là chữ hoặc số"
+    },
+    {
+      fieldTitle: "Phone", 
+      inputValue: phone, 
+      pattern: regex.NUMERIC_REGEX, 
+      errorIdentifier: "phoneError", 
+      errorMessage: "Chỉ được phép ký tự là số"
+    },
+    {
+      fieldTitle: "Email", 
+      inputValue: email, 
+      pattern: regex.EMAIL_REGEX, 
+      errorIdentifier: "emailError", 
+      errorMessage: "Email không hợp lệ"
     }
-    return null;
-  }
+  ], updateCustomerProfile);
 
   return (
     <> {
@@ -90,23 +93,23 @@ const AccountDetail = () => {
           </div>
           <div className="row"> 
             <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={errors?.firstNameError}/>
+              <UserInput h={62} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={(!!errors && errors["firstNameError"]) || ""}/>
             </div>
             <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={errors?.lastNameError}/>
+              <UserInput h={62} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={(!!errors && errors["lastNameError"]) || ""}/>
             </div>
           </div>
           <div className="row"> 
             <div className="col lg-12 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Display name *" inputValue={displayName} onChangeText={setDisplayName} errorMessage={errors?.displayNameError}/>
+              <UserInput h={62} label="Display name *" inputValue={displayName} onChangeText={setDisplayName} errorMessage={(!!errors && errors["displayNameError"]) || ""}/>
             </div>
           </div>
           <div className="row"> 
             <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={errors?.phoneError}/>  
+              <UserInput h={62} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={(!!errors && errors["phoneError"]) || ""}/>  
             </div>
             <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={errors?.emailError}/>  
+              <UserInput h={62} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={(!!errors && errors["emailError"]) || ""}/>  
             </div>
           </div>
           {/* <div className="row"> 
@@ -120,7 +123,7 @@ const AccountDetail = () => {
           </div> */}
           <div className="row"> 
             <div className="col lg-12 md-12 sm-12 mb-36px">
-              <button className="account-details__save-button dark-v fw-600 thin-bd-r" onClick={updateCustomerProfile}>
+              <button className="account-details__save-button dark-v fw-600 thin-bd-r" onClick={updateAccountDetail}>
                 Save
               </button>
             </div>

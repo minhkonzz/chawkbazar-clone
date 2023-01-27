@@ -4,7 +4,8 @@ import { fixDecimal } from "functions";
 
 const CheckoutConfirm = (props) => {
 
-  const { cartItems, cartTotalPrice } = props.cart; 
+  const { cartItems, cartTotalPrice } = props.cart;
+  const shipFee = 2.99; 
 
   return (
     <div className="checkout__confirm row">
@@ -29,7 +30,7 @@ const CheckoutConfirm = (props) => {
                       <img className="checkout__confirm-item__image" src={`${BaseSource.PREFIX_API_SOURCE}${cartItem?.image?.thumbnail}`} alt=""/>
                       <p className="checkout__confirm-item__name">{`${cartItem?.name} - ${cartItem?.sizeSelected.value}, ${cartItem?.colorSelected.value}`}</p>
                     </div>
-                    <span>{`$${fixDecimal(cartItem?.price, 2)}`}</span>
+                    <span>{`$${fixDecimal(cartItem.sale_price || cartItem.price, 2)}`}</span>
                   </div>
                 )
               }) : <p>Your cart is empty</p>
@@ -38,11 +39,11 @@ const CheckoutConfirm = (props) => {
             <div>
               <div className="checkout__confirm-fee d-flex jc-sb at-center">
                 <span><b>Shipping</b></span>
-                <span><b>$2.99</b></span>
+                <span><b>{`$${shipFee}`}</b></span>
               </div>
               <div className="checkout__confirm-total d-flex jc-sb at-center">
                 <span><b>Total</b></span>
-                <span>{`$${fixDecimal(cartTotalPrice, 2)}`}</span>
+                <span>{`$${fixDecimal(cartTotalPrice + shipFee, 2)}`}</span>
               </div>
             </div>
             <CheckoutPayMethods {...props} />

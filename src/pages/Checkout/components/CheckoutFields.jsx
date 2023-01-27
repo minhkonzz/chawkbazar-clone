@@ -31,79 +31,38 @@ const CheckoutFields = (props) => {
       fieldTitle: "First name", 
       inputValue: firstName, 
       pattern: regex.NAME_REGEX, 
-      errorIdentifer: "firstNameError", 
+      errorIdentifier: "firstNameError", 
       errorMessage: "Chỉ được phép ký tự là chữ"
     },
     {
       fieldTitle: "Last name", 
       inputValue: lastName, 
       pattern: regex.NAME_REGEX, 
-      errorIdentifer: "lastNameError", 
+      errorIdentifier: "lastNameError", 
       errorMessage: "Chỉ được phép ký tự là chữ"
     },
     {
       fieldTitle: "Address", 
       inputValue: address, 
       pattern: regex.ALPHANUMERIC_REGEX, 
-      errorIdentifer: "addressError", 
+      errorIdentifier: "addressError", 
       errorMessage: "Chỉ được phép ký tự là chữ hoặc số"
     },
     {
       fieldTitle: "Phone", 
       inputValue: phone, 
       pattern: regex.NUMERIC_REGEX, 
-      errorIdentifer: "phoneError", 
+      errorIdentifier: "phoneError", 
       errorMessage: "Chỉ được phép ký tự là số"
     },
     {
       fieldTitle: "Email", 
       inputValue: email, 
       pattern: regex.EMAIL_REGEX, 
-      errorIdentifer: "emailError", 
+      errorIdentifier: "emailError", 
       errorMessage: "Email không hợp lệ1"
     }
   ], createOrder);
-
-  // const [ errors, setErrors ] = useState(null);
-
-  // const placeOrder = () => {
-  //   const errs = getErrors();
-  //   if (errs) {
-  //     setErrors(errs);
-  //     return;
-  //   }
-  //   createOrder();
-  // }
-
-  // const getErrors = () => {
-
-  //   const { EMAIL_REGEX, NAME_REGEX, ALPHANUMERIC_REGEX, NUMERIC_REGEX } = regex;
-  //   const firstNameRegexExtract = firstName.match(NAME_REGEX);
-  //   const lastNameRegexExtract = lastName.match(NAME_REGEX);
-  //   const addressRegexExtract = address.match(ALPHANUMERIC_REGEX);
-  //   const phoneRegexExtract = phone.match(NUMERIC_REGEX);
-  //   const emailRegexExtract = email.match(EMAIL_REGEX);
-  //   const firstNameError = (firstName.length === 0 && "Vui lòng thêm First name") || (firstNameRegexExtract === null && "Chỉ được phép ký tự là chữ") || "";
-  //   const lastNameError = (lastName.length === 0 && "Vui lòng thêm Last name") || (lastNameRegexExtract === null && "Chỉ được phép ký tự là chữ") || "";
-  //   const addressError = (address.length === 0 && "Vui lòng thêm Address") || (addressRegexExtract === null && "Chỉ được phép ký tự là chữ hoặc số") || "";
-  //   const phoneError =  (phone.length === 0 && "Vui lòng thêm Phone") || (phoneRegexExtract === null && "Chỉ được phép ký tự là số" ) || "";
-  //   const emailError = (email.length === 0 && "Vui lòng thêm Email") || (emailRegexExtract === null && "Email không hợp lệ") || "";
-
-  //   if (firstNameError || lastNameError || addressError || phoneError || emailError) {
-  //     return {
-  //       firstNameError,
-  //       lastNameError,
-  //       addressError,
-  //       phoneError,
-  //       emailError
-  //     }
-  //   }
-  //   return null;
-  // }
-
-  // useEffect(() => {
-  //   if (errors) setErrors(null);
-  // }, [firstName, lastName, address, phone, email]);
 
   return (
     <div className="checkout__fields row">
@@ -117,23 +76,23 @@ const CheckoutFields = (props) => {
             </div>
             <div className="row">
               <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={errors["firstNameError"]}/>
+                <UserInput h={62} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={(!!errors && errors["firstNameError"]) || ""}/>
               </div>
               <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={errors["lastNameError"]}/>
+                <UserInput h={62} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={(!!errors && errors["lastNameError"]) || ""}/>
               </div>
             </div>
             <div className="row">
               <div className="col mb-36px lg-12 md-12 sm-12">
-                <UserInput h={62} label="Address *" inputValue={address} onChangeText={setAddress} errorMessage={errors["addressError"]}/>
+                <UserInput h={62} label="Address *" inputValue={address} onChangeText={setAddress} errorMessage={(!!errors && errors["addressError"]) || ""}/>
               </div>
             </div>
             <div className="row">
               <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={errors["phoneError"]}/>
+                <UserInput h={62} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={(!!errors && errors["phoneError"]) || ""}/>
               </div>
               <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={errors["emailError"]}/>
+                <UserInput h={62} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={(!!errors && errors["emailError"]) || ""}/>
               </div>
             </div>
             <div className="row">

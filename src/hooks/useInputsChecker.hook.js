@@ -1,19 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useInputsValidation(fields, cb) {
-  /*
-    fields: fields need to be checked
-     - fields: [
-        {
-          fieldTitle
-          inputValue:
-          pattern:
-          errorIdentifier: 
-          errorMessage: ""
-        }
-      ]
-    cb: action or event need to do after validate fields success 
-  */  
+
   const [ errors, setErrors ] = useState(null); 
 
   useEffect(() => {
@@ -22,7 +10,6 @@ export function useInputsValidation(fields, cb) {
   
   const handleAfterValidate = () => {
     const errs = getErrors();
-    console.log("errors:", errs);
     if (errs) {
       setErrors(errs);
       return; 
@@ -42,7 +29,7 @@ export function useInputsValidation(fields, cb) {
       const isValid = inputValue.match(pattern);
       const fieldError = (inputValue.length === 0 && `Vui lòng thêm ${fieldTitle}`) || (!isValid && errorMessage)
       return !!fieldError && {
-        errorMessage, 
+        fieldError, 
         errorIdentifier
       } || null;
     })
@@ -51,12 +38,13 @@ export function useInputsValidation(fields, cb) {
       return {
         ...fieldInputsErrors.reduce((acc, cur) => {
           if (cur !== null) {
-            const { errorMessage, errorIdentifier } = cur;
+            const { fieldError, errorIdentifier } = cur;
             return {
               ...acc, 
-              [errorIdentifier]: errorMessage
-            }
+              [errorIdentifier]: fieldError
+            };
           }
+          return acc;
         }, {})
       }
     }
