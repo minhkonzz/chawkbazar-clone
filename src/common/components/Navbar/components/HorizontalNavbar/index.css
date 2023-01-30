@@ -1,72 +1,78 @@
 header {
+  width: 100%;
   position: fixed;
   z-index: 10000;
-}
- 
-header nav {
-  height: 100px; 
-  padding: 0 12px;
-  background-color: white;
-  transition: 0.4s;
-}
- 
-.navbar-left { height: 100%; }
- 
-.navbar-left ul {
-  display: none;
-  list-style: none;
-  margin-left: 30px; 
+  transition: var(--short-delay);
+  background-color: #fff;
 }
 
-.navbar-left img {
-  margin-left: 18px;
-}
- 
-.nav-link { 
-  display: inline;
-  margin: 0 26px; 
-  padding-top: 2%;
-}
- 
-.navbar-left ion-icon {
-  display: none;
-  font-size: 48px;
-  margin-right: 20px;
+nav, 
+.navbar-left, 
+.navbar-right, 
+.navbar-left__menu {
+  display: flex;
 }
 
-.navbar-right ion-icon { font-size: 24px; }
- 
-.cart-preview, .navbar-right ion-icon {  display: none; }
+nav {
+  justify-content: space-between;
+  height: var(--header-height);
+}
 
-.dropdown-menu {
+.navbar-left__logoshop {
+  width: 100px;
+  height: auto;
+}
+
+.navbar-left, 
+.navbar-right, 
+.navbar-left__menu {
+  align-items: center;
+}
+
+.navbar-left__menu {
+  margin-left: 45px;
+}
+
+.navbar-left__menu, 
+.navbar-right {
+  column-gap: 2rem;
+}
+
+.navbar-left__menu__link {
+  font-weight: 500;
+}
+
+.navbar-left__menu__link__menu-dropdown {
   position: absolute;
   display: none;
-  background-color: white;
+  background-color: #fff;
   top: 100%;
   transition: 0.4s;
   padding: 15px 0;
+  border: 1px solid #000;
 }
   
-.dropdown-menu span {
+.navbar-left__menu__link__menu-dropdown span {
   display: block;
   padding: 8px 145px 8px 22px;
   text-decoration: none;
-  color: black;
+  color: #000;
   font-size: 14px;
   transition: 0.2s;
 }
   
-.dropdown-menu span:hover {
-  color: white;
-  background-color: black;
+.navbar-left__menu__link__menu-dropdown span:hover {
+  color: #fff;
+  background-color: #000;
 }
   
-.nav-link:hover .dropdown-menu {
+.navbar-left__menu__link:hover 
+.navbar-left__menu__link__menu-dropdown {
   display: block;
   animation: to-high 0.2s linear;
 }
 
-.cart-amount {
+.navbar-right__cart-preview__amount {
   width: 18px; 
   height: 18px;
   font-size: 11px; 
@@ -86,41 +92,10 @@ header nav {
   }
 }
 
-
-/* ----------- For Tablet ----------- */
-@media (min-width: 740px) {
-  header nav {
-    padding: 0 calc((100vw - (100vw - 45px)) / 2)
-  }
-  .navbar-left button {
-    display: inline;
-  }
-  .navbar-right h4 { margin: 0 30px; }
-  .cart-preview, .navbar-right ion-icon { 
-    display: block;
-  }
-}
-
-/*------------ For PC ------------- */
-@media (min-width: 1024px) {
-  header nav {
-    padding: 0 calc((100vw - (100vw - 100px)) / 2)
-  }
-  .nav-link {
-    padding-top: 0px; 
-  }
-  .navbar-left ul {
-    display: flex;
-    height: 100%;
-  }
-  .navbar-left button {
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+  .navbar-left__menu-lpc-button {
     display: none;
   }
-  .navbar-left img {
-    margin-left: 0;
-  }
-  .navbar-right h4 { margin: 0 30px; }
-  .cart-preview, .navbar-right ion-icon { 
-    display: block;
-  }
+  .navbar-right ion-icon { font-size: 22px; }
 }

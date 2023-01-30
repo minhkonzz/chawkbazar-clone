@@ -13,13 +13,15 @@ const NavbarRightSide = () => {
   const cartItemsAmount = useSelector((state) => state.cart.cartItems.length); 
 
   return (
-    <div className="navbar-right d-flex at-center">
-      <ion-icon name="search"/>
-      <h4 onClick={() => currentUserValue ? navigate("/profile") : dispatch(touchAuthDialog())}>{ currentUserValue ? currentUserValue.currentUser.userLoggedIn.displayName : "Login"}</h4>
-      <div className="cart-preview posrel" onClick={() => dispatch(touchCartSidebar())}>
-        { cartItemsAmount > 0 && <span className="d-flex jc-center at-center cart-amount dark-v posab circle-bd-r fw-600">{cartItemsAmount}</span> }
+    <div className="navbar-right">
+      <button className="navbar-right__search-button">
+        <ion-icon name="search"/>
+      </button>
+      <h4 className="navbar-right__username" onClick={() => currentUserValue ? navigate("/profile") : dispatch(touchAuthDialog())}>{ currentUserValue ? currentUserValue.currentUser.userLoggedIn.displayName : "Login"}</h4>
+      <button className="navbar-right__cart-preview" onClick={() => dispatch(touchCartSidebar())}>
+        { cartItemsAmount > 0 && <span className="navbar-right__cart-preview__amount">{cartItemsAmount}</span> }
         <ion-icon name="bag-handle-outline" />
-      </div>
+      </button>
     </div>
   )
 };

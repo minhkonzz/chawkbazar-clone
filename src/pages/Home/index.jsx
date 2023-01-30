@@ -1,19 +1,20 @@
 import { useContext } from "react";
-import Slider from './components/Banner'
-import Promotions from './components/Promotions'
-import BestSellers from './components/BestSellers'
-import TopBrands from './components/TopBrands'
-import FeaturedProducts from './components/FeaturedProducts'
-import NewCollections from './components/NewCollections'
-import Contact from './components/Contact'
-import { useEffect, useRef } from 'react'
+import Slider from './components/Banner';
+import Promotions from './components/Promotions';
+import BestSellers from './components/BestSellers';
+import TopBrands from './components/TopBrands';
+import FeaturedProducts from './components/FeaturedProducts';
+import NewCollections from './components/NewCollections';
+import Contact from './components/Contact';
+import { useEffect, useRef } from 'react';
 import HomeSectionProvider, { HomeSectionContext } from "context/provider/homeSection.provider";
 import './index.css'
 
 const Section = (props) => {
 
   const { updateSectionData } = useContext(HomeSectionContext);
-  const { isAsync, rootClassValue } = props.inputs;
+  console.log("props:", props);
+  const { isAsync, sectionClassName } = props;
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -27,36 +28,33 @@ const Section = (props) => {
       }
     }, { threshold: 0.4 });
     observer.observe(sectionRef.current)
-  }, [])
+  }, []);
 
   return (
-    <section className={`h-sec row${rootClassValue || ''}`} ref={sectionRef}>
+    <section className={`home__section ${sectionClassName}`} ref={sectionRef}>
       { props.children }
     </section>
   )
 }
 
-// { component: Promotions, handleVisible: () => {}, rootClassValue: ' promotions' },
-
 const Home = () => {
-    // { component: FeaturedProducts, callAPI: { endpoint: 'featuredproducts' } },
-    
+
   const sections = [
-    { component: Slider }, 
-    { component: BestSellers, isAsync: { collectionName: 'products' } },
-    { component: NewCollections, rootClassValue: ' new-collections' },
-    { component: TopBrands, isAsync: { collectionName: 'brands' } },
-    { component: Contact, rootClassValue: ' contact' }
+    { component: Slider, sectionClassName: "home__banner" }, 
+    { component: BestSellers, sectionClassName: "home__best-sellers", isAsync: { collectionName: 'products' } },
+    // { component: NewCollections, sectionClassName: "home__new-collections" },
+    // { component: TopBrands, sectionClassName: "home__top-brands", isAsync: { collectionName: 'brands' } },
+    // { component: Contact, sectionClassName: "home__contact"}
   ]
 
   return (
     <> {
       sections.map((section, index) => {
-        const { component: SectionComponent, isAsync, rootClassValue } = section
+        const { component: SectionComponent, isAsync, sectionClassName } = section
         return (
           <HomeSectionProvider key={index}>
             <Section
-              inputs={{ isAsync, rootClassValue }}>
+              {...{ isAsync, sectionClassName }}>
               <SectionComponent />
             </Section>
           </HomeSectionProvider>

@@ -14,8 +14,8 @@ const HorizontalNavbar = () => {
   }, []);
 
   return (
-    <header>
-      <nav ref={navbarRef} className="d-flex jc-sb at-center w-full">
+    <header ref={navbarRef}>
+      <nav>
         <NavbarLeftSide />
         <NavbarRightSide />
       </nav>

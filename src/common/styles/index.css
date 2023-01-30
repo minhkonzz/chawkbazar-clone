@@ -1,12 +1,17 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+/* ============== REUSABLE VALUES ============== */
 :root {
   --primary-color: rgb(32, 32, 32);
   --button-hover-color: rgb(64, 64, 64);
   --error-color: rgb(239, 64, 64);
+  --header-height: 95px;
+  --main-container-width: calc(100vw - 80px);
+  --short-delay: all .3s;
+  --long-delay: all 2s;
 }
 
+/* ============== BASE SETUP ============== */
 html {
   scroll-behavior: smooth;
 }
@@ -18,10 +23,26 @@ html {
   font-family: 'Montserrat', sans-serif;
 }
 
-button, input { border: none; }
-button { background-color: transparent; }
+button, input, select { 
+  border: none; 
+  outline: none;
+  background: transparent;
+}
+
 nav ul { list-style: none; }
 
+main, nav {
+  max-width: 1600px;
+  width: var(--main-container-width);
+  margin: 0 auto;
+}
+
+main {
+  height: auto;
+  padding-top: var(--header-height);
+}
+
+/* ============== REUSABLE CLASSES ============== */
 .w-100pc { width: 100% }
 .w-full { width: 100vw; }
 .h-full { height: 100vh; }
@@ -108,3 +129,19 @@ nav ul { list-style: none; }
   0% { opacity: 0; }; 
   100% { opacity: 1; }
 }
+
+/* ============== BREAKPOINTS ============== */
+/* Extra small devices (phones, 600px and down) */
+@media screen and (max-width: 600px) {}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {}

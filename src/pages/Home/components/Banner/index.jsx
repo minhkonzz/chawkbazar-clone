@@ -19,22 +19,19 @@ const Slider = () => {
   }, [currentIndex]);
 
   return (
-    <div className="col lg-12 md-12 sm-12">
-      <div className="slider d-flex posrel w-100pc o-h thin-bd-r"> {
-        sliderImages.map((slide, index) =>
-          <img
-            className="posab w-100pc h-100pc"
-            alt="slide_img"
-            key={index}
-            style={{
-              opacity: index === currentIndex ? 1 : 0,
-              zIndex: index === currentIndex ? 10 : -10,
-              transform: index === currentIndex ? "scale(1, 1)" : "scale(0.4, 0.4)"
-            }}
-            src={slide}
-          />
-        )}
-      </div>
+    <div className="home__banner__slider thin-bd-r"> {
+      sliderImages.map((slide, i) =>
+        <img
+          alt="home__banner__img"
+          key={i}
+          style={{
+            opacity: i === currentIndex ? 1 : 0,
+            zIndex: i === currentIndex ? 10 : -10,
+            transform: i === currentIndex ? "scale(1, 1)" : "scale(0.4, 0.4)"
+          }}
+          src={slide}
+        />
+      )}
     </div>
   )
 }

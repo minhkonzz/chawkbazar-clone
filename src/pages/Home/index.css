@@ -1,9 +1,8 @@
-.h-sec {
-  margin-bottom: 70px; 
+.home__section {
   opacity: 0; 
 }
 
-.h-sec.visible {
+.home__section.visible {
   opacity: 1;
   animation: section-show-up 1s ease-in;
 }
