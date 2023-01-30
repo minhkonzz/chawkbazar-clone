@@ -2,7 +2,7 @@ export const isInt = (value) => Number(value) === value && value % 1 === 0;
 export const isDecimal = (value) => Number(value) === value && value % 1 !== 0; 
 
 export const fixDecimal = (value, fixTo) => {
-  return isInt(value) ? value : Number(value.toFixed(fixTo));
+  return Number(value).toFixed(fixTo);
 }
 
 export const isProductInFiltered = (product, filter) => {

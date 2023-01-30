@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Product from "common/components/Product/type-1";
 import { HomeSectionContext } from "context/provider/homeSection.provider";
+import "./best-sellers.css"
 
 const BestSellers = () => {
 
@@ -8,13 +9,12 @@ const BestSellers = () => {
 
   return (
     <>
-      <div className="col lg-12 md-12 sm-12 mb-24px">
-        <h1>Best Sellers</h1>
+      <span className="home__section__title">Best Sellers</span>
+      <div className="home__best-sellers__items">
+        {sectionData.map((product, i) => 
+          <Product key={i} data={product}/>
+        )}
       </div>
-      {
-        sectionData.map((product, index) => (
-          <div key={index} className="col lg-2-4 md-4 sm-6 mb-36px"><Product data={product}/></div>
-      ))}
     </>
   )
 };

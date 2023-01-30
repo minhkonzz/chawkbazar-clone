@@ -13,7 +13,6 @@ import './index.css'
 const Section = (props) => {
 
   const { updateSectionData } = useContext(HomeSectionContext);
-  console.log("props:", props);
   const { isAsync, sectionClassName } = props;
   const sectionRef = useRef(null);
 

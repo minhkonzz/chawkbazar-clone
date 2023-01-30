@@ -13,9 +13,9 @@ const Custom1Layout = ({ children }) => {
         { children }
         {/* <UserMailGetter /> */}
       </main>
-      {/* <Footer />
+      {/* <Footer /> */}
       <Modal />
-      <BottomMenu /> */}
+      {/* <BottomMenu /> */}
     </>
   )
 }
