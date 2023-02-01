@@ -2,9 +2,10 @@
   display: block;
   position: relative;
   padding-left: 35px;
-  margin-bottom: 18px;
+  height: auto;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 500;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -23,19 +24,19 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 23px;
-  width: 23px;
+  height: 22px;
+  width: 22px;
   border: 0.7px solid #afafaf;
   border-radius: 5px; 
   transition: 0.4s;
 }
 
 .checkbox-container:hover input ~ .checkbox-checkmark {
-  border-color: black;
+  border-color: var(--primary-color);
 }
  
 .checkbox-container input:checked ~ .checkbox-checkmark {
-  background-color: black;
+  background-color: var(--primary-color);
   border-color: transparent;
 }
  

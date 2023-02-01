@@ -65,67 +65,22 @@ const CheckoutFields = (props) => {
   ], createOrder);
 
   return (
-    <div className="checkout__fields row">
-      <div className="col mb-36px lg-12 md-12 sm-12">
-        <div className="row">
-          <div className="col mb-36px lg-12 md-12 sm-12">
-            <div className="row">
-              <div className="col mb-36px lg-12 md-12 sm-12">
-                <h2 className="checkout__title">Shipping Address</h2>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={(!!errors && errors["firstNameError"]) || ""}/>
-              </div>
-              <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={(!!errors && errors["lastNameError"]) || ""}/>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col mb-36px lg-12 md-12 sm-12">
-                <UserInput h={62} label="Address *" inputValue={address} onChangeText={setAddress} errorMessage={(!!errors && errors["addressError"]) || ""}/>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={(!!errors && errors["phoneError"]) || ""}/>
-              </div>
-              <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={(!!errors && errors["emailError"]) || ""}/>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="City/Town" inputValue={city} onChangeText={setCity} />
-              </div>
-              <div className="col mb-36px lg-6 md-12 sm-12">
-                <UserInput h={62} label="Postcode" inputValue={postCode} onChangeText={setPostCode} />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col mb-36px lg-12 md-12 sm-12">
-                <Checkbox>
-                  Save this information for the next time
-                </Checkbox>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col mb-36px lg-12 md-12 sm-12">
-                <UserInput label="Order notes (Optional)" inputValue={orderNote} onChangeText={setOrderNote} isTextArea rows={7} />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col mb-36px lg-12 md-12 sm-12">
-                { !isOnlinePaymentSelected && 
-                  <button className="checkout__fields-order-button dark-v fw-600 thin-bd-r" onClick={placeOrder}>
-                    Place order
-                  </button>
-                }
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className="checkout__fields">
+      <span className="checkout__title">Shipping Address</span>
+      <div className="checkout__fields__form">
+        <UserInput h={55} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={(!!errors && errors["firstNameError"]) || ""}/>
+        <UserInput h={55} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={(!!errors && errors["lastNameError"]) || ""}/>
+        <UserInput h={55} label="Address *" inputValue={address} onChangeText={setAddress} errorMessage={(!!errors && errors["addressError"]) || ""}/>
+        <UserInput h={55} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={(!!errors && errors["phoneError"]) || ""}/>
+        <UserInput h={55} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={(!!errors && errors["emailError"]) || ""}/>
+        <UserInput h={55} label="City/Town" inputValue={city} onChangeText={setCity} />
+        <UserInput h={55} label="Postcode" inputValue={postCode} onChangeText={setPostCode} />
+        <Checkbox>Save this information for the next time</Checkbox>
+        <UserInput label="Order notes (Optional)" inputValue={orderNote} onChangeText={setOrderNote} isTextArea rows={7} />
+        { !isOnlinePaymentSelected && 
+          <button className="checkout__fields-order-button dark-v fw-600 thin-bd-r" onClick={placeOrder}>
+            Place order
+          </button> }
       </div>
     </div>
   )

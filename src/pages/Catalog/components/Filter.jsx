@@ -28,15 +28,15 @@ const Filter = (props) => {
   }
 
   return (
-    <div className="filter">
-      <h4>{data.title}</h4>
-      <div className="checkbox-selector"> {
-        data.filtersList.map((option, index) => {
+    <div className="catalog__filter">
+      <span className="catalog__filter__title">{data.title}</span>
+      <div className="catalog__filter__options"> {
+        data.filtersList.map((option, i) => {
           return (
             <Checkbox
               isChecked={!!filter[data.urlParam] && filter[data.urlParam].map((option) => option.optionName).includes(option.name)}
               onSelectChange={() => modifySelection}
-              key={index}
+              key={i}
               cbVal={
                 { optionId: option.id, optionSlug: option.slug, optionName: option.name || 
                  (option.min && !option.max 

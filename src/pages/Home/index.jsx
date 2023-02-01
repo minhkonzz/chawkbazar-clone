@@ -41,9 +41,9 @@ const Home = () => {
   const sections = [
     { component: Slider, sectionClassName: "home__banner" }, 
     { component: BestSellers, sectionClassName: "home__best-sellers", isAsync: { collectionName: 'products' } },
-    // { component: NewCollections, sectionClassName: "home__new-collections" },
-    // { component: TopBrands, sectionClassName: "home__top-brands", isAsync: { collectionName: 'brands' } },
-    // { component: Contact, sectionClassName: "home__contact"}
+    { component: NewCollections, sectionClassName: "home__new-collections" },
+    { component: TopBrands, sectionClassName: "home__top-brands", isAsync: { collectionName: 'brands' } },
+    { component: Contact, sectionClassName: "home__contact" }
   ]
 
   return (

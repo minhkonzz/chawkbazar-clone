@@ -15,11 +15,10 @@
 
 .product__list-item__name {
   font-size: 15px;
-  font-weight: 500;
 }
 
 .product__list-item__description {
-  font-size: 13px;
+  font-size: 12px;
   margin-top: 6px;
 }
 
@@ -38,13 +37,7 @@
 .product__list-item__price {
   text-decoration: line-through;
   color: gray;
-  font-weight: 500;
   margin-left: 12px;
-}
-
-.product__list-item__image {
-  width: 100%;
-  height: auto;
 }
 
 .product__list-item__image img {
@@ -52,4 +45,10 @@
   height: auto;
   overflow: hidden;
 }
+
+.product__list-item__name,
+.product__list-item__price {
+  font-weight: 500;
+}
+
 

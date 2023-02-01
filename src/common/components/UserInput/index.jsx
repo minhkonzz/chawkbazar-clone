@@ -16,7 +16,7 @@ const UserInput = (props) => {
   } = props
 
   return (
-    <div style={{ width: w ? w : '100%' }}> 
+    <div className="text-input" style={{ width: w ? w : '100%' }}> 
       <label className="input__label fw-600">{label}</label><br/>
       {
         isTextArea ?

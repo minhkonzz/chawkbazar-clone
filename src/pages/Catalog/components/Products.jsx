@@ -28,21 +28,20 @@ const Products = () => {
 
   return (
     <div className="catalog__products">
-      <div className="catalog__products-header d-flex jc-sb at-center mb-32px">
-        <h2 className="fw-600">Casual wear</h2>
-        <button className="filter-sidebar-btn" onClick={() => dispatch(touchFiltersSidebar())}>Open filter sidebar</button>
-        <div className="d-flex at-center">
-          <p className="blur fz-14px mr-3r">9,608 items</p>
+      <div className="catalog__products__header">
+        <span className="catalog__products__header__title">Casual wear</span>
+        {/* <button className="catalog__products__header__filter-sidebar-button" onClick={() => dispatch(touchFiltersSidebar())}>Open filter sidebar</button> */}
+        <div className="catalog__products__header__sorts">
+          <p className="catalog__products__header__total-items">9,608 items</p>
           <SortingOptions />
         </div>
       </div>
-      <div className="row"> { 
-        currentProducts.map((product, index) => 
-         <div key={index} className="col lg-2-4 md-4 sm-6 mb-36px"><Product data={product}/></div>)
+      <div className="catalog__products__items"> { 
+        currentProducts.map((product, i) => <Product key={i} data={product}/>)
       }
       </div>
-      <div className="d-flex jc-center at-center">
-        <button className="load-more dark-v fw-600 thin-bd-r" onClick={handleLoadMore}>Load more</button>
+      <div className="catalog__products__load-more">
+        <button className="catalog__products__load-more__button" onClick={handleLoadMore}>Load more</button>
       </div>
     </div>
   )

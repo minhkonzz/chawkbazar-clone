@@ -31,7 +31,7 @@ button, input, select {
 
 nav ul { list-style: none; }
 
-main, nav {
+main, nav, footer {
   max-width: 1600px;
   width: var(--main-container-width);
   margin: 0 auto;

@@ -53,40 +53,36 @@ const CheckoutDetail = () => {
 
   return (
     <>
-      <div className="col lg-7 md-6 sm-12">
-        <CheckoutFields {
-          ... { 
-            firstName,
-            setFirstName,
-            lastName,
-            setLastName,
-            address,
-            setAddress,
-            phone, 
-            setPhone, 
-            email, 
-            setEmail, 
-            city, 
-            setCity, 
-            postCode, 
-            setPostCode, 
-            orderNote, 
-            setOrderNote,
-            isOnlinePaySelected, 
-            createOrder 
-          }
-        } />
-      </div>
-      <div className="col lg-5 md-6 sm-12">
-        <CheckoutConfirm {
-          ... { 
-            isOnlinePaySelected, 
-            setIsOnlinePaySelected, 
-            cart, 
-            createOrder 
-          }
-        } />
-      </div>
+      <CheckoutFields {
+        ... { 
+          firstName,
+          setFirstName,
+          lastName,
+          setLastName,
+          address,
+          setAddress,
+          phone, 
+          setPhone, 
+          email, 
+          setEmail, 
+          city, 
+          setCity, 
+          postCode, 
+          setPostCode, 
+          orderNote, 
+          setOrderNote,
+          isOnlinePaySelected, 
+          createOrder 
+        }
+      } />
+      <CheckoutConfirm {
+        ... { 
+          isOnlinePaySelected, 
+          setIsOnlinePaySelected, 
+          cart, 
+          createOrder 
+        }
+      } />
     </>
   )
 }

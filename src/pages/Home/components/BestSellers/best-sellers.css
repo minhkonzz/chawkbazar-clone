@@ -1,14 +1,10 @@
-.home__best-sellers {
-  border: 1px solid #000;
-}
-
 .home__section__title {
-  border: 1px solid #000;
   margin-bottom: 16px;
 }
 
 .home__best-sellers__items {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
+  row-gap: 2rem;
+  column-gap: 1.5rem;
 }

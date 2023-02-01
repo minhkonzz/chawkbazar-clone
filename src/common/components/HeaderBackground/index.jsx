@@ -7,7 +7,7 @@ const HeaderBackground = () => {
   const location = useLocation();
 
   const getHeaderBackgroundTitle = () => {
-    switch(location.pathname) {
+    switch (location.pathname) {
       case paths.PROFILE_PATH:
         return 'My Account' 
       case paths.FAQ_PATH:
@@ -24,15 +24,13 @@ const HeaderBackground = () => {
   }
 
   return (
-    <div className="bg-header">
-      <div className="transparent">
-        <div className="bg-header-titles posab pos-center">
-          <h5>Explore</h5>
-          <p>{getHeaderBackgroundTitle()}</p>
-        </div>
+    <div className="banner-default">
+      <div className="banner-default__titles">
+        <span className="banner-default__title-above">Explore</span>
+        <span className="banner-default__title-under">{getHeaderBackgroundTitle()}</span>
       </div>
     </div>
   )
 }
 
-export default HeaderBackground
+export default HeaderBackground;

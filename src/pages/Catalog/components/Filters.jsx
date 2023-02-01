@@ -39,15 +39,14 @@ const Filters = () => {
   return (
     <div className="catalog__filters">
       <div className="catalog__filters-header">
-        <p className="catalog__filters-header__path">Home / Search</p>
-        <div className="catalog__filters-header__title d-flex jc-sb at-center">
-          <h2 className="catalog__filters-header__title-text">Filters</h2>
-          <span className="catalog__filters-header__clear blur" onClick={() => dispatch(getFilteredProducts({ newFilter: {} }))}>Clear all</span>
+        <div className="catalog__filters-header__title">
+          <span className="catalog__filters-header__title-text">Filters</span>
+          <span className="catalog__filters-header__clear" onClick={() => dispatch(getFilteredProducts({ newFilter: {} }))}>Clear all</span>
         </div>
-        <div className="catalog__filters-header__selects d-flex wrap"> {
-          getFilterNames().map((filterName, index) => {
+        <div className="catalog__filters-header__options"> {
+          getFilterNames().map((filterName, i) => {
             return (
-              <button key={index} className="selected-category">
+              <button key={i} className="catalog__filters-header__option">
                 { filterName }
                 <ion-icon name="close" />
               </button>
@@ -56,9 +55,9 @@ const Filters = () => {
         </div>
       </div>
       {
-        filterSections && filterSections.map((filterSection, index) => {
+        filterSections && filterSections.map((filterSection, i) => {
           const props = {
-            key: index, 
+            key: i, 
             data: filterSection,
             currentProducts, 
             filter
