@@ -78,7 +78,7 @@ const CheckoutFields = (props) => {
         <Checkbox>Save this information for the next time</Checkbox>
         <UserInput label="Order notes (Optional)" inputValue={orderNote} onChangeText={setOrderNote} isTextArea rows={7} />
         { !isOnlinePaymentSelected && 
-          <button className="checkout__fields-order-button dark-v fw-600 thin-bd-r" onClick={placeOrder}>
+          <button className="checkout__fields-order-button" onClick={placeOrder}>
             Place order
           </button> }
       </div>

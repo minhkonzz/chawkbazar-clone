@@ -12,47 +12,49 @@ const Order = ({ order, setOrder }) => {
   } = order; 
 
   return (
-    <div className="row">
-      <div className="col lg-12 md-12 sm-12 mb-36px">
-        <button onClick={() => setOrder(null)}>Back</button>
-        <h2>Order Detail</h2>
-        <div className="order">
-          <div className="order-part-info outstand">
-            <h4>Product</h4>
-            <span><b>Total</b></span>
-          </div>
-          {
-            !!orderProducts && 
-            orderProducts.map((productOrder, i) => {
-              const { name, colorSelected, sizeSelected, qty, price, sale_price } = productOrder;
-              return (
-                <div key={i} className="order-part-info">
-                  <p>{`${name} - ${colorSelected.value}, ${sizeSelected.value} * ${qty}`}</p>
-                  <span>{`$${fixDecimal((sale_price || price) * qty, 2)}`}</span>
-                </div>
-              )
-            })
-          }
-          <div className="order-part-info outstand">
-            <h4>Subtotal:</h4>
-            <span><b>{`$${fixDecimal(orderSubtotal, 2)}`}</b></span>
-          </div>
-          <div className="order-part-info">
-            <h4>Shipping:</h4>
-            <span><b>{`$${fixDecimal(orderFee, 2)}`}</b></span>
-          </div>
-          <div className="order-part-info outstand">
-            <h4>Payment method:</h4>
-            <span><b>{orderPaymentType}</b></span>
-          </div>
-          <div className="order-part-info">
-            <h4>Total:</h4>
-            <span><b>{`$${fixDecimal(orderTotalPay, 2)}`}</b></span>
-          </div>
-          <div className="order-part-info outstand">
-            <h4>Note:</h4>
-            <span><b>{orderNote}</b></span>
-          </div>
+    <div className="profile__order">
+      <div className="profile__order__header">
+        <button className="profile__order__back-button" onClick={() => setOrder(null)}>
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </button>
+        <span className="profile__title">Order Detail</span>
+      </div>
+      <div className="profile__order__detail">
+        <div className="profile__order__detail-part outstand">
+          <span className="profile__order__detail-part__title">Product</span>
+          <span className="profile__order__detail-part__value">Total</span>
+        </div>
+        {
+          !!orderProducts && 
+          orderProducts.map((productOrder, i) => {
+            const { name, colorSelected, sizeSelected, qty, price, sale_price } = productOrder;
+            return (
+              <div key={i} className="profile__order__detail-part product">
+                <p className="profile__order__detail-part__title">{`${name} - ${colorSelected.value}, ${sizeSelected.value} * ${qty}`}</p>
+                <span className="profile__order__detail-part__value">{`$${fixDecimal((sale_price || price) * qty, 2)}`}</span>
+              </div>
+            )
+          })
+        }
+        <div className="profile__order__detail-part outstand">
+          <span className="profile__order__detail-part__title">Subtotal</span>
+          <span className="profile__order__detail-part__value">{`$${fixDecimal(orderSubtotal, 2)}`}</span>
+        </div>
+        <div className="profile__order__detail-part">
+          <span className="profile__order__detail-part__title">Shipping</span>
+          <span className="profile__order__detail-part__value">{`$${fixDecimal(orderFee, 2)}`}</span>
+        </div>
+        <div className="profile__order__detail-part outstand">
+          <span className="profile__order__detail-part__title">Payment method</span>
+          <span className="profile__order__detail-part__value">{orderPaymentType}</span>
+        </div>
+        <div className="profile__order__detail-part">
+          <span className="profile__order__detail-part__title">Total</span>
+          <span className="profile__order__detail-part__value">{`$${fixDecimal(orderTotalPay, 2)}`}</span>
+        </div>
+        <div className="profile__order__detail-part outstand">
+          <span className="profile__order__detail-part__title">Note</span>
+          <span className="profile__order__detail-part__value">{orderNote}</span>
         </div>
       </div>
     </div>

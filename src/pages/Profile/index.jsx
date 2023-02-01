@@ -10,17 +10,17 @@ const Profile = () => {
   const [ selectedIndex, setSelectedIndex ] = useState(0);
 
   return (
-    <div className="profile row">
-      <div className="col lg-3 lg-offset-1 md-4 sm-12 mb-36px"> {
-        profileTabs.map((tab, index) => (
-          <div key={index} className={`tab thin-bd-r${selectedIndex === index ? ' selected' : ''}`} onClick={() => setSelectedIndex(index)}>
-            <ion-icon name={tab?.icon}/>
-            <span>{tab?.title}</span>
+    <div className="profile">
+      <div className="profile__tabs"> {
+        profileTabs.map((tab, i) => (
+          <div key={i} className={`profile__tab${selectedIndex === i ? ' selected' : ''}`} onClick={() => setSelectedIndex(i)}>
+            <ion-icon name={tab?.icon} />
+            <span className="profile__tab__title">{tab?.title}</span>
           </div>
         )) 
       }
       </div>
-      <div className="col lg-7 md-8 sm-12 mb-36px"> {
+      <div className="profile__content"> {
         (selectedIndex === 0 && <></>) ||
         (selectedIndex === 1 && <Orders />) ||
         (selectedIndex === 2 && <AccountDetail />) || 

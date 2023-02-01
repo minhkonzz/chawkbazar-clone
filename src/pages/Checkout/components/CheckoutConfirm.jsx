@@ -26,17 +26,17 @@ const CheckoutConfirm = (props) => {
               <span>{`$${fixDecimal(cartItem.sale_price || cartItem.price, 2)}`}</span>
             </div>
           )
-        }) : <p>Your cart is empty</p>
+        }) : <p className="checkout__confirm-items__empty-status">Your cart is empty</p>
       }
       </div>
-      <div>
-        <div className="checkout__confirm-fee d-flex jc-sb at-center">
-          <span><b>Shipping</b></span>
-          <span><b>{`$${shipFee}`}</b></span>
+      <div className="checkout__confirm__prices">
+        <div className="checkout__confirm-fee">
+          <span className="checkout__confirm-fee__title">Shipping</span>
+          <span className="checkout__confirm-fee__value">{`$${shipFee}`}</span>
         </div>
-        <div className="checkout__confirm-total d-flex jc-sb at-center">
-          <span><b>Total</b></span>
-          <span>{`$${fixDecimal(cartTotalPrice + shipFee, 2)}`}</span>
+        <div className="checkout__confirm-total">
+          <span className="checkout__confirm-total__title">Total</span>
+          <span className="checkout__confirm-total__value">{`$${fixDecimal(cartTotalPrice + shipFee, 2)}`}</span>
         </div>
       </div>
       <CheckoutPayMethods {...props} />

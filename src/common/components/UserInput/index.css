@@ -15,5 +15,5 @@
 .input__error {
   color: var(--error-color);
   margin-top: 11px; 
-  font-size: 11px;
+  font-size: 13px;
 }

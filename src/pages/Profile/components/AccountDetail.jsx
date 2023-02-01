@@ -84,50 +84,17 @@ const AccountDetail = () => {
   return (
     <> {
       userLoggedIn && referencesAdvance && 
-      <div className="profile__content account-details row">
-        <div className="col lg-12 md-12 sm-12">
-          <div className="row"> 
-            <div className="col lg-12 md-12 sm-12 mb-36px">
-              <h2 className="profile__content-title">Account Details</h2>
-            </div>
-          </div>
-          <div className="row"> 
-            <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={(!!errors && errors["firstNameError"]) || ""}/>
-            </div>
-            <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={(!!errors && errors["lastNameError"]) || ""}/>
-            </div>
-          </div>
-          <div className="row"> 
-            <div className="col lg-12 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Display name *" inputValue={displayName} onChangeText={setDisplayName} errorMessage={(!!errors && errors["displayNameError"]) || ""}/>
-            </div>
-          </div>
-          <div className="row"> 
-            <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={(!!errors && errors["phoneError"]) || ""}/>  
-            </div>
-            <div className="col lg-6 md-12 sm-12 mb-36px">
-              <UserInput h={62} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={(!!errors && errors["emailError"]) || ""}/>  
-            </div>
-          </div>
-          {/* <div className="row"> 
-            <div className="col lg-12 md-12 sm-12 mb-36px">
-              <span className="account-details__gender-title fw-600">Gender</span>  
-              <div className="account-details__gender-radios d-flex">
-                <RadioButton label="Male" />
-                <RadioButton label="Female" />
-              </div>
-            </div>
-          </div> */}
-          <div className="row"> 
-            <div className="col lg-12 md-12 sm-12 mb-36px">
-              <button className="account-details__save-button dark-v fw-600 thin-bd-r" onClick={updateAccountDetail}>
-                Save
-              </button>
-            </div>
-          </div>
+      <div className="profile__account-details">
+        <span className="profile__title">Account Details</span>
+        <div className="profile__account-details__form">
+          <UserInput h={55} label="First name *" inputValue={firstName} onChangeText={setFirstName} errorMessage={(!!errors && errors["firstNameError"]) || ""}/>
+          <UserInput h={55} label="Last name *" inputValue={lastName} onChangeText={setLastName} errorMessage={(!!errors && errors["lastNameError"]) || ""}/>
+          <UserInput h={55} label="Display name *" inputValue={displayName} onChangeText={setDisplayName} errorMessage={(!!errors && errors["displayNameError"]) || ""}/>
+          <UserInput h={55} label="Phone/Mobile *" inputValue={phone} onChangeText={setPhone} errorMessage={(!!errors && errors["phoneError"]) || ""}/>  
+          <UserInput h={55} label="Email *" inputValue={email} onChangeText={setEmail} errorMessage={(!!errors && errors["emailError"]) || ""}/>  
+          <button className="profile__account-details__save-button" onClick={updateAccountDetail}>
+            Save
+          </button>
         </div>
       </div>
       }
