@@ -10,7 +10,7 @@ const Catalog = () => {
         <img className="catalog__banner__image" src={CATALOG_BANNER} alt="catalog_banner"/>
       </div>
       <div className="catalog-main">
-        <Filters />
+        <div className="catalog__filters-aside"><Filters /></div>
         <Products />
       </div>
     </>

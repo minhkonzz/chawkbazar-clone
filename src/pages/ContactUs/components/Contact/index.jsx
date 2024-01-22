@@ -1,15 +1,15 @@
 const Contact = () => {
   return (
-    <div className="d-flex">
-      <div className="contact-icon posrel thin-bd-r">
+    <div className="contact-us__location__detail">
+      <div className="contact-us__location__detail__icon">
         <ion-icon name="location" />
       </div>
-      <div className="contact-detail">
-        <span><b>Address</b></span>
-        <p className="blur">PO Box 14122 Collins Street West.Victoria</p>
+      <div className="contact-us__location__detail__address">
+        <span className="contact-us__location__detail__address__title">Address</span>
+        <p className="contact-us__location__detail__address__value">PO Box 14122 Collins Street West.Victoria</p>
       </div>
     </div>
   )
 }
 
-export default Contact
+export default Contact;

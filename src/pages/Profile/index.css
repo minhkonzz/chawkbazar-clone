@@ -3,20 +3,15 @@
   100% { margin-top: 0; opacity: 1; }
 }
 
-.profile, 
-.profile__account-details__form {
-  display: grid;
-}
-
 .profile {
-  grid-template-columns: 1fr 3fr;
-  column-gap: 4rem;
-  padding: 75px 50px 0 50px;
+  padding: var(--page-section-dist-max380) 15px 0 15px;
 }
 
 .profile__title {
+  display: block;
   font-weight: 700;
-  font-size: 21px;
+  font-size: 18px;
+  text-align: center;
 }
 
 .profile__order,
@@ -55,19 +50,22 @@
   margin-left: 12px; 
 }
 
-/* =========== Account Detail =========== */
-.profile__account-details__form {
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 30px;
+.profile__account-details {
+  margin-top: 40px;
 }
 
-.profile__account-details__form > *:nth-of-type(3) {
-  grid-column: 1 / 3;
+.profile__account-details__form {
+  margin-top: 25px;
+}
+
+.profile__account-details__form > *:not(:last-child) {
+  margin-bottom: 25px;
 }
 
 .profile__account-details__save-button {
-  width: 150px;
+  /* width: 150px;
+  height: 55px; */
+  width: 100%;
   height: 55px;
   border-radius: 8px;
   color: #fff;
@@ -86,7 +84,7 @@
 }
  
 .profile__orders__detail tr th {
-  background-color: #e4e4e4;
+  background-color: #f1f1f1;
   color: #000;
   text-align: left; 
 }
@@ -220,4 +218,76 @@
 .profile__change-password__form .text-input:nth-of-type(2),
 .profile__change-password__button {
   margin-top: 15px;
+}
+
+@media screen and (min-width: 380px) {
+  .profile {
+    padding: var(--page-section-dist-min380) 25px 0 25px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+  .profile {
+    padding: var(--page-section-dist-min600) 35px 0 35px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  .profile, 
+  .profile__account-details__form {
+    display: grid;
+  }
+
+  .profile {
+    grid-template-columns: 1fr 1.5fr;
+    column-gap: 3.5rem;
+    padding: var(--page-section-dist-min768) 40px 0 40px;
+  }
+
+  .profile__title {
+    display: initial;
+    font-size: 21px;
+    text-align: start;
+  }
+
+  .profile__account-details {
+    margin-top: 0;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+  .profile {
+    grid-template-columns: 1fr 2fr;
+    padding: var(--page-section-dist-min992) 45px 0 45px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  .profile {
+    grid-template-columns: 1fr 3fr;
+    column-gap: 5rem;
+    padding: var(--page-section-dist-min1200) 50px 0 50px;
+  }
+
+  .profile__account-details__form {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .profile__account-details__form > *:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .profile__account-details__form > *:nth-of-type(3) {
+    grid-column: 1 / 3;
+  }
+
+  .profile__account-details__save-button {
+    width: 150px;
+    height: 55px; 
+  }
 }

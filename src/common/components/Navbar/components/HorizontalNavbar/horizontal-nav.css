@@ -6,16 +6,20 @@ header {
   background-color: #fff;
 }
 
-nav, 
+.nav-horizontal, 
 .navbar-left, 
-.navbar-right, 
-.navbar-left__menu {
+.navbar-right {
   display: flex;
 }
 
-nav {
+.nav-horizontal {
   justify-content: space-between;
-  height: var(--header-height);
+  height: var(--header-height-max380);
+}
+
+.navbar-left__menu-lpc-button,
+.navbar-left__menu {
+  display: none;
 }
 
 .navbar-left__logoshop {
@@ -49,7 +53,6 @@ nav {
   top: 100%;
   transition: 0.4s;
   padding: 15px 0;
-  border: 1px solid #000;
 }
   
 .navbar-left__menu__link__menu-dropdown span {
@@ -72,6 +75,11 @@ nav {
   animation: to-high 0.2s linear;
 }
 
+.navbar-right__search-button,
+.navbar-right__cart-preview {
+  display: none;
+}
+
 .navbar-right__cart-preview__amount {
   width: 18px; 
   height: 18px;
@@ -79,6 +87,11 @@ nav {
   color: white;
   top: -5px;  
   right: -9px; 
+}
+
+.navbar-right__username {
+  font-weight: 600;
+  font-size: 15px;
 }
   
 @keyframes to-high {
@@ -92,10 +105,67 @@ nav {
   }
 }
 
+@media screen and (min-width: 380px) {
+  .nav-horizontal {
+    height: var(--header-height-min380);
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+  .nav-horizontal {
+    height: var(--header-height-min600);
+  }
+
+  .navbar-left__menu-lpc-button {
+    display: inline-block;
+  }
+
+  .navbar-left__logoshop {
+    margin-left: 24px;
+  } 
+
+  .navbar-right__search-button,
+  .navbar-right__cart-preview {
+    display: initial;
+    font-size: 20px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  .nav-horizontal {
+    height: var(--header-height-min768);
+  }
+
+  .navbar-right__search-button,
+  .navbar-right__cart-preview {
+    font-size: 22px;
+  }
+}
+
 /* Large devices (laptops/desktops, 992px and up) */
 @media screen and (min-width: 992px) {
+  .nav-horizontal {
+    height: var(--header-height-min992);
+  }
+
   .navbar-left__menu-lpc-button {
     display: none;
   }
-  .navbar-right ion-icon { font-size: 22px; }
+
+  .navbar-left__logoshop {
+    margin-left: 0;
+  }
+
+  .navbar-left__menu {
+    display: flex;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  .nav-horizontal {
+    height: var(--header-height-min1200);
+  }
 }

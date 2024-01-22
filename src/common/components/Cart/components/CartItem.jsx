@@ -1,4 +1,3 @@
-import '../index.css';
 import { BaseSource, MeanVars } from 'utils/constants';
 import { fixDecimal } from 'functions';
 import { useDispatch } from 'react-redux';

@@ -14,14 +14,14 @@ const FiltersSidebar = () => {
   }
 
   return (
-    <div className="filters-sidebar" ref={filtersSidebarRef}>
-      <div className="filters-sidebar-top posrel">
-        <span className="posab top-50pc left-6pc">
+    <div className="catalog__filters-sidebar" ref={filtersSidebarRef}>
+      <div className="catalog__filters-sidebar-top">
+        <button className="catalog__filters-sidebar-top__close-button">
           <ion-icon name="arrow-back" onClick={closeFiltersSidebar} />
-        </span>
-        <h2 className="posab pos-center">Filters</h2>
+        </button>
+        <span className="catalog__filters-sidebar-top__title">Filters</span>
       </div>
-      <div className="filters-sidebar-center"><Filters /></div>
+      <div className="catalog__filters-sidebar-center"><Filters /></div>
       <div className="filters-sidebar-bottom posrel">
         <span className="posab pos-center color-white">9,068 items</span>
       </div>

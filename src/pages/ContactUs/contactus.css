@@ -1,0 +1,137 @@
+.contact-us {
+  padding: var(--page-section-dist-max380) 30px 0 30px;
+}
+
+.contact-us__content {
+  margin-top: 40px;
+}
+
+.contact-us__content__title {
+  display: inline-block;
+  font-size: 24px;
+}
+
+.contact-us__content__title,
+.contact-us__content__form > *:not(:last-child) {
+  margin-bottom: 25px;
+}
+
+.contact-us__send-message-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 22px 36px;
+  transition: var(--short-delay);
+}
+
+.contact-us__send-message-button:hover {
+  opacity: 0.8;
+}
+
+.contact-us__location {
+  border: 1px solid #e4e4e4;
+  padding: 20px;
+  border-radius: 8px; 
+}
+
+.contact-us__location__title {
+  font-size: 18px;
+}
+
+.contact-us__location > *:not(:first-child) { 
+  margin-top: 24px; 
+}
+
+.contact-us__location__map {
+  width: 100%;
+}
+
+.contact-us__location__detail {
+  display: flex;
+}
+
+.contact-us__location__detail__icon {
+  position: relative;
+  width: 40px; 
+  height: 40px; 
+  border: 0.8px solid #e4e4e4; 
+}
+
+.contact-us__location__detail__icon ion-icon {
+  font-size: 20px;
+  color: #5f5e5e;
+  position: absolute;
+  top: 50%;
+  left: 50%; 
+  transform: translate(-50%, -50%);
+}
+
+.contact-us__location__detail__address { 
+  margin-left: 15px; 
+}
+
+.contact-us__location__detail__address__title {
+  font-size: 15px;
+}
+
+.contact-us__location__detail__address__value {
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.contact-us__send-message-button,
+.contact-us__location__map,
+.contact-us__location__detail__icon {
+  border-radius: 8px;
+}
+
+.contact-us__content__title,
+.contact-us__send-message-button,
+.contact-us__location__detail__address__title {
+  font-weight: 600;
+}
+
+.contact-us__location__title,
+.contact-us__location__detail__address__value {
+  font-weight: 500;
+}
+
+@media screen and (min-width: 380px) {
+  .contact-us {
+    padding: var(--page-section-dist-min380) 35px 0 35px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+  .contact-us {
+    padding: var(--page-section-dist-min600) 40px 0 40px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  .contact-us {
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+    column-gap: 4rem;
+    padding: var(--page-section-dist-min768) 45px 0 45px;
+  }
+
+  .contact-us__content {
+    margin-top: 0;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+  .contact-us {
+    padding: var(--page-section-dist-min992) 45px 0 45px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  .contact-us {
+    padding: var(--page-section-dist-min1200) 50px 0 50px;
+  }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import NavbarLeftSide from "./components/NavbarLeftSide";
 import NavbarRightSide from "./components/NavbarRightSide";
-import "./index.css";
+import "./horizontal-nav.css";
 
 const HorizontalNavbar = () => {
 
@@ -15,7 +15,7 @@ const HorizontalNavbar = () => {
 
   return (
     <header ref={navbarRef}>
-      <nav>
+      <nav className="nav-horizontal">
         <NavbarLeftSide />
         <NavbarRightSide />
       </nav>

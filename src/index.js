@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Router from './routes';
+import "./common/styles/reusable.css";
 import "./common/styles/index.css"
 import reportWebVitals from './reportWebVitals';
 import store from "./services/redux/store";

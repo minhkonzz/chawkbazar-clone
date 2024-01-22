@@ -1,4 +1,4 @@
-import "./index.css"; 
+import "./message-box.css"; 
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { touchMessageBox } from "services/redux/store/reducers/popup.reducer"; 

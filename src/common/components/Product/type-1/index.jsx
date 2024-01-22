@@ -1,4 +1,4 @@
-import './index.css'
+import './product.css'
 import { useDispatch } from 'react-redux';
 import { touchProductDialog } from 'services/redux/store/reducers/popup.reducer'; 
 import { BaseSource } from 'utils/constants';
@@ -9,7 +9,7 @@ const Product = ({ data }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="product__list-item" onClick={() => { console.log("clicked to product"); dispatch(touchProductDialog(data?.id)) }}>
+    <div className="product__list-item" onClick={() => { dispatch(touchProductDialog(data?.id)) }}>
       <div className="product__list-item__image">
         <img alt="product__image" src={`${BaseSource.PREFIX_API_SOURCE + data.image.thumbnail}`}/>
       </div>

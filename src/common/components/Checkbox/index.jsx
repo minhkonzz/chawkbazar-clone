@@ -1,4 +1,4 @@
-import "./index.css";
+import "./checkbox.css";
 import { useEffect, useRef } from "react";
 
 const Checkbox = (props) => {

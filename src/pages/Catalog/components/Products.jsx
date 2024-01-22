@@ -30,7 +30,10 @@ const Products = () => {
     <div className="catalog__products">
       <div className="catalog__products__header">
         <span className="catalog__products__header__title">Casual wear</span>
-        {/* <button className="catalog__products__header__filter-sidebar-button" onClick={() => dispatch(touchFiltersSidebar())}>Open filter sidebar</button> */}
+        <button className="catalog__products__header__filter-sidebar-button" onClick={() => dispatch(touchFiltersSidebar())}>
+          <ion-icon name="options-outline"></ion-icon>
+          <span>Filters</span>
+        </button>
         <div className="catalog__products__header__sorts">
           <p className="catalog__products__header__total-items">9,608 items</p>
           <SortingOptions />

@@ -1,21 +1,49 @@
-.bottom-menu {
-   display: none;
-   position: fixed;
-   height: 80px; 
-   background-color: white;
-   z-index: 10000;
-   bottom: 0;
-   padding: 0 26px; 
+.bottom__menu {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  height: var(--bottom-menu-height-max380); 
+  width: 100vw;
+  z-index: 10000;
+  bottom: 0;
+  padding: 0 26px;
+  box-shadow: 0px -4px 8px rgb(243, 243, 243);
+  background-color: #fff;  
 }
 
-.bottom-menu button ion-icon {
-   font-size: 20px;
+.bottom__menu__tab {
+  font-size: 21px;
 }
 
-.shadow-top { box-shadow: 0px -4px 8px rgb(243, 243, 243); }
+@media screen and (min-width: 380px) {
+  .bottom__menu {
+    height: var(--bottom-menu-height-min380);
+  }
 
-@media (max-width: 739px) {
-   .bottom-menu {
-      display: flex;
-   }
+  .bottom__menu__tab {
+    font-size: 24px;
+  }
+}
+ 
+ /* Small devices (portrait tablets and large phones, 600px and up) */
+@media screen and (min-width: 600px) {
+  .bottom__menu {
+    display: none;
+  }
+}
+ 
+ /* Medium devices (landscape tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+   
+}
+ 
+ /* Large devices (laptops/desktops, 992px and up) */
+@media screen and (min-width: 992px) {
+   
+}
+ 
+ /* Extra large devices (large laptops and desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+   
 }

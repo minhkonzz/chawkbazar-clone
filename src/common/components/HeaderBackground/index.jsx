@@ -1,4 +1,4 @@
-import './index.css';
+import './header-background.css';
 import { useLocation } from 'react-router-dom';
 import { paths } from 'utils/constants';
 
@@ -9,17 +9,17 @@ const HeaderBackground = () => {
   const getHeaderBackgroundTitle = () => {
     switch (location.pathname) {
       case paths.PROFILE_PATH:
-        return 'My Account' 
+        return 'My Account'; 
       case paths.FAQ_PATH:
-        return 'Frequently Asked Questions'
+        return 'Frequently Asked Questions';
       case paths.TERMS_PATH:
-        return 'Terms of Service'
+        return 'Terms of Service';
       case paths.CONTACTUS_PATH:
-        return 'Contact Us'
+        return 'Contact Us';
       case paths.CHECKOUT_PATH:
-        return 'Checkout'
+        return 'Checkout';
       default:
-        return 'My Account'
+        return 'My Account';
     }
   }
 
