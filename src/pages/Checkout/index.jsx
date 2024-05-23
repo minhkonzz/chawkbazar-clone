@@ -1,10 +1,10 @@
-import './index.css';
-import { Outlet } from 'react-router-dom';
+// import './index.css';
+// import { Outlet } from 'react-router-dom';
 
-const Checkout = () => (
-  <div className="checkout">
-    <Outlet />
-  </div>
-);
+// const Checkout = () => (
+//   <div className="checkout">
+//     <Outlet />
+//   </div>
+// );
 
-export default Checkout;
+// export default Checkout;

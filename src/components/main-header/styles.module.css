@@ -1,0 +1,14 @@
+.header {
+   position: sticky;
+   height: 100px;
+   top: 0;
+   left: 0;
+   z-index: 20;
+   background-color: #fff;
+}
+
+.headerInner {
+   max-width: 1920px;
+   padding-left: 1.5rem;
+   padding-right: 1.5rem;
+}
