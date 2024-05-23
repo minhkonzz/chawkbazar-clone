@@ -1,0 +1,62 @@
+.flashSale {
+  max-width: 1920px;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  margin-bottom: 1.5rem;
+}
+
+.saleEvents {
+  max-width: 1920px;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+.wrapper {
+  max-width: 1920px;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.homeSection {
+  margin-bottom: 4rem;
+}
+
+.serviceMemberContact {
+  text-align: center;
+  padding-top: .75rem;
+  padding-bottom: 1.25rem;
+  margin: 2rem 0;
+}
+
+@media (min-width: 768px) {
+   .serviceMemberContact {
+      margin: 3rem 0;
+   }
+}
+
+@media (min-width: 1024px) {
+  .serviceMemberContact {
+     margin: 4rem 0;
+     padding-top: .375rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .serviceMemberContact {
+     margin: 5rem 0;
+  }
+}
+
+@media (min-width: 1500px) {
+  .serviceMemberContact {
+     padding-top: .5rem;
+     padding-bottom: 1.25rem;
+  }
+}
+
+@media (min-width: 1780px) {
+  .serviceMemberContact {
+     margin: 6rem 0;
+     padding-top: .75rem;
+  }
+}

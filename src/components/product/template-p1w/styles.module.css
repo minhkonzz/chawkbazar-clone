@@ -1,0 +1,34 @@
+.container {
+   cursor: pointer;
+   padding-bottom: .25rem;
+}
+
+.imageContainer {
+   margin-bottom: .875rem;
+}
+
+.detail {
+   padding: .5rem;
+}
+
+.name {
+   margin-bottom: .375rem;
+   font-weight: 600;
+   font-size: 1.125rem;
+   line-height: 1.75rem;
+}
+
+.desc {
+   font-size: .875rem;
+   line-height: 1.625;
+   max-width: 250px;
+}
+
+.prices {
+   margin-top: .75rem;
+}
+
+.lastPrice {
+   font-size: 1.25rem;
+   line-height: 1.75rem;
+}
