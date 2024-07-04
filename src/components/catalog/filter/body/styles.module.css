@@ -1,0 +1,45 @@
+.wrapper {
+   margin-bottom: 1.75rem;
+   border-bottom: 1px solid rgb(230, 230, 230);
+   padding-bottom: 1.75rem;
+}
+
+.header {
+   margin-bottom: .625rem;
+}
+
+.heading {
+   font-size: 1.25rem;
+   line-height: 1.75rem;
+   font-weight: 600;
+   color: rgb(33, 33, 33);
+}
+
+.clear {
+   font-size: .75rem;
+   line-height: 1rem;
+   color: rgb(90, 90, 90);
+}
+
+.clear:hover {
+   color: rgb(33, 33, 33);
+   transition: all .2s ease-in-out;
+}
+
+.selected {
+   margin: .375rem;
+   border-radius: .5rem;
+   border: 1px solid rgb(230, 230, 230);
+   background-color: rgb(247, 247, 247);
+   padding: .625rem .875rem;
+   font-size: .75rem;
+   line-height: 1rem;
+   color: rgb(33, 33, 33);
+}
+
+@media (min-width: 768px) {
+   .heading {
+      font-size: 1.5rem;
+      line-height: 2rem;
+   }
+}

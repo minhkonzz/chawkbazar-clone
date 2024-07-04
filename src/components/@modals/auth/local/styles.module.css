@@ -1,0 +1,17 @@
+.remember {
+   padding-left: .75rem;
+   font-size: .875rem;
+   line-height: 1.25rem;
+   color: rgb(33, 33, 33);
+}
+
+.forgotPassword {
+   font-size: .875rem;
+   line-height: 1.25rem;
+   color: rgb(33, 33, 33);
+   text-decoration: underline;
+}
+
+.forgotPassword:hover {
+   text-decoration: none;
+}

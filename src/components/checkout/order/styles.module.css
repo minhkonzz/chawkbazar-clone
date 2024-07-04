@@ -1,0 +1,90 @@
+.container {
+   width: 100%;
+}
+
+.title {
+   margin-bottom: 1.5rem;
+   font-size: 1.125rem;
+   line-height: 1.75rem;
+   font-weight: bold;
+   color: rgb(33, 33, 33);
+}
+
+.header {
+   margin-top: 1.5rem;
+   border-radius: .375rem;
+   background-color: rgb(244, 244, 244);
+   padding: 1rem;
+   font-size: .875rem; 
+   line-height: 1.25rem;
+   font-weight: 600;
+   color: rgb(33, 33, 33);
+}
+
+.product {
+   border-bottom: 1px solid rgb(230, 230, 230);
+   padding: 1rem 0;
+}
+
+.productText {
+   font-size: .875rem;
+   line-height: 1.25rem;
+   color: rgb(33, 33, 33);
+   padding-left: .75rem;
+}
+
+.wrapper {
+   border-bottom: 1px solid rgb(230, 230, 230);
+   padding: 0 1rem;
+   font-size: .875rem;
+   line-height: 1.25rem;
+   font-weight: 600;
+   color: rgb(33, 33, 33);
+}
+
+@media (min-width: 768px) {
+   .container {
+      margin-left: 1.75rem;
+   }
+
+   .title {
+      font-size: 1.25rem;
+   }
+
+   .header {
+      margin-top: 1.75rem;
+
+   }
+}
+
+@media (min-width: 1024px) {
+   .container {
+      width: 40%;
+      margin-left: 2.5rem;
+   }
+
+   .product {
+      padding-left: .75rem;
+      padding-right: .75rem;
+   }
+
+   .wrapper {
+      padding: 1.25rem .75rem;
+   }
+}
+
+@media (min-width: 1280px) {
+   .container {
+      margin-left: 3.5rem;
+   }
+
+   .title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-bottom: 2rem;
+   }
+
+   .header {
+      margin-top: 2.25rem;
+   }
+}

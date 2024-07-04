@@ -1,0 +1,43 @@
+.label {
+   margin-bottom: .75rem;
+   font-size: .875rem;
+   font-weight: 600;
+   color: rgb(58, 58, 58);
+}
+
+.error {
+   margin-top: 11px;
+   font-size: 13px;
+   color: red;
+}
+
+.inp {
+   height: 2.75rem;
+   padding: .5rem 1rem;
+   border: 1px solid rgb(230, 230, 230);
+   border-radius: .375rem;
+   font-size: .75rem;
+   line-height: 1rem;
+   color: rgb(29, 30, 31);
+   transition: all .2s ease-in-out;
+}
+
+.inp:focus {
+   outline: none;
+   border: 1px solid rgb(33, 33, 33);
+}
+
+@media (min-width: 768px) {   
+   .inp {
+      height: 3rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+   }
+}
+
+@media (min-width: 1024px) {
+   .inp {
+      font-size: .875rem;
+      line-height: 1.25rem;
+   }
+}

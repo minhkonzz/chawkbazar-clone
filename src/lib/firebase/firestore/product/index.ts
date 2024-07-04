@@ -1,0 +1,136 @@
+import { Firestore, or, where, and, doc } from "firebase/firestore";
+import { serializeProducts } from "./utils";
+import { fetchDoc, fetchDocs, fetchWithCustomQuery } from "..";
+import { firestore as firestoreClient } from "../../client";
+import collections from "../collections";
+
+export const getProducts = async (
+   firestore: Firestore = firestoreClient 
+): Promise<any> => {
+   const products = await fetchDocs({ collectionName: collections.PRODUCTS }, firestore);
+   return await serializeProducts(products);
+};
+
+export const getProductById = async (
+   id: string,
+   firestore: Firestore = firestoreClient
+): Promise<any> => {
+   const product = await fetchDoc(collections.PRODUCTS, id, firestore);
+   if (!product) return null;
+   const { brand, category } = product;
+   return {
+      ...product,
+      brand: brand.id,
+      category: category.id
+   };
+};
+
+export const getProductAttributes = async (
+   firestore: Firestore = firestoreClient
+): Promise<any> => {
+   const res = await Promise.all([collections.CATEGORIES, collections.BRANDS].map(
+      (collectionName) => fetchDocs({ collectionName }, firestore)
+   ));
+
+   return {
+      category: {
+         title: "Category",
+         options: res[0].map(((e: any) => ({ name: e.name, slug: e.slug })))
+      },
+      brand: {
+         title: "Brand",
+         options: res[1].map(((e: any) => ({ name: e.name, slug: e.slug })))
+      },
+      price: {
+         title: "Prices",
+         options: [
+            { id: "rp1", name: "Over $50",      slug: "50-",      min: null, max: 50 },
+            { id: "rp2", name: "$50 to $100",   slug: "50-100",   min: 50,   max: 100 },
+            { id: "rp3", name: "$100 to $200",  slug: "100-200",  min: 100,  max: 150 },
+            { id: "rp4", name: "$150 to $200",  slug: "150-200",  min: 150,  max: 200 },
+            { id: "rp5", name: "$200 to $300",  slug: "200-300",  min: 200,  max: 300 },
+            { id: "rp6", name: "$300 to $500",  slug: "300-500",  min: 300,  max: 500 },
+            { id: "rp7", name: "$500 to $1000", slug: "500-1000", min: 500,  max: 1000 },
+            { id: "rp8", name: "Under $1000",   slug: "-1000",    min: 1000, max: null }
+         ]
+      }
+   };
+};
+
+export const getFilteredProducts = async (
+   filter: any,
+   firestore: Firestore = firestoreClient
+): Promise<any> => {
+
+   const query: any[] = [];
+   const keys = Object.keys(filter);
+
+   for (let i = 0; i < keys.length; i++) {
+      const k = keys[i];
+      switch (k) {
+         case "category": {
+            const categories = await fetchWithCustomQuery(
+               collections.CATEGORIES, 
+               [where("slug", "in", filter[k])],
+               firestore
+            );
+            query.push(where("category", "in", 
+               categories.map((c: any) => doc(firestore, collections.CATEGORIES, c.id))
+            ));
+            break;
+         }
+         case "brand": {
+            const brands = await fetchWithCustomQuery(
+               collections.BRANDS, 
+               [where("slug", "in", filter[k])],
+               firestore
+            );
+            query.push(where("brand", "in", 
+               brands.map((b: any) => doc(firestore, collections.BRANDS, b.id))
+            ));
+            break;
+         }
+         case "price": {
+            query.push(or(
+               ...(filter[keys[i]].map((e: any) => 
+                  and(where("price", ">=", e.min), where("price", "<=", e.max))
+               ))
+            ));
+            break;
+         }
+      }
+   }
+
+   const products = await fetchWithCustomQuery(
+      collections.PRODUCTS,
+      query,
+      firestore
+   );
+
+   return await serializeProducts(products);
+};
+
+export const getNewArrivalProducts = async (
+   firestore: Firestore = firestoreClient
+): Promise<any> => {
+   const products = await fetchDocs({ collectionName: "new_arrival_products" }, firestore);
+   return await serializeProducts(products);
+};
+
+export const getFlashSaleProducts = async (
+   firestore: Firestore = firestoreClient
+): Promise<any> => {
+   const products = await fetchDocs({
+      collectionName: collections.PRODUCTS,
+      _where: ["on_flash_sale", "==", true]
+   }, firestore);
+   return await serializeProducts(products);
+};
+
+export const getBrands = async (
+   firestore: Firestore = firestoreClient
+): Promise<any> => {
+   return await fetchDocs({
+      collectionName: collections.BRANDS,
+   }, firestore);
+}
