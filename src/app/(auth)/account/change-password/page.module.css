@@ -1,0 +1,32 @@
+.inpWrapper {
+   margin-bottom: 1rem;
+}
+
+.button {
+   display: inline-flex;
+   margin-top: .75rem;
+   border-radius: .375rem;
+   background-color: rgb(33, 33, 33);
+   padding: 1rem 1.25rem;
+   font-size: 13px;
+   font-weight: 600;
+   line-height: 1rem;
+   color: #fff;
+   transition: all .3s ease;
+}
+
+@media (min-width: 768px) {
+   .button {
+      padding: .875rem 1.5rem;
+      font-size: .875rem;
+      line-height: 1.25rem;
+
+   }
+}
+
+@media (min-width: 1024px) {
+   .button {
+      padding: 1rem 2rem;
+   }
+}
+

@@ -1,1 +1,0 @@
-export * as ProductsService from "./products.service";

@@ -5,8 +5,8 @@
 }
 
 .container:hover {
-   transform: translateY(-1px);
-   box-shadow: 0 4px 8px #e4e4e4;
+   transform: translateY(-.1rem);
+   box-shadow: 0 2px 8px #f0f0f0;
 }
 
 .detail {
@@ -23,7 +23,7 @@
 }
 
 .desc {
-   max-width: 250px;
+   max-width: 100%;
    color: rgb(90, 90, 90);
    font-size: .75rem;
    line-height: 1.5;

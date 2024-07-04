@@ -1,0 +1,110 @@
+.container {
+   margin-top: 3.5rem;
+   margin-bottom: 3.5rem;
+   padding-bottom: .5rem;
+   flex-direction: column;
+}
+
+.contacts {
+   margin-bottom: 1.5rem;
+   border: 1px solid rgb(230, 230, 230);
+}
+
+.contactsHeading {
+   padding-bottom: 1.75rem;
+   font-size: 1.5rem;
+   line-height: 2rem;
+   font-weight: bold;
+   color: rgb(33, 33, 33);
+}
+
+.getInTouchHeading {
+   font-size: 1.5rem;
+   line-height: 2rem;
+   font-weight: bold;
+   color: rgb(33, 33, 33);
+   padding-bottom: 1.75rem;
+}
+
+.dinp {
+   flex-direction: column;
+   margin-top: 1rem;
+   gap: .75rem;
+}
+
+.inpWrapper {
+   width: 100%;
+}
+
+@media (min-width: 768px) {
+   .container {
+      flex-direction: row;
+   }
+
+   .contactsHeading {
+      padding-bottom: 2.5rem;
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+   }
+
+   .getTouch {
+      margin-left: 1.75rem;
+   }
+
+   .getInTouchHeading {
+      padding-bottom: 2.25rem;
+   }
+}
+
+@media (min-width: 1024px) {
+   .container {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+   }
+
+   .contacts {
+      width: 40%;
+      border-radius: .375rem;
+      padding: 1.75rem;
+   }
+
+   .contactsHeading {
+      padding-bottom: 1.5rem;
+   }
+
+   .getTouch {
+      width: 60%;
+      padding-left: 1.75rem;
+   }
+
+   .dinp {
+      flex-direction: row;
+   }
+
+   .inpWrapper {
+      width: 50%;
+   }
+}
+
+@media (min-width: 1280px) {
+   .container {
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+      max-width: 1280px;
+   }
+}
+
+@media (min-width: 1500px) {
+   .contacts {
+      width: 33.333333%;
+   }
+
+   .getTouch {
+      width: 66.666667%;
+   }
+
+   .getTouchHeading {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+   }
+}

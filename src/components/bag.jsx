@@ -1,4 +1,6 @@
-const BagSvg = () => {
+"use client"
+
+export default function BagIcon() {
   return (
     <svg width="180" height="309.722" viewBox="0 0 180 309.722">
       <g id="no_cart_in_bag" data-name="no cart in bag" transform="translate(-988 -7673)">
@@ -35,6 +37,4 @@ const BagSvg = () => {
       </g></g></g></g>
     </svg>
   )
-}
-
-export default BagSvg; 
+};

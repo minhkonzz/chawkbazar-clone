@@ -1,16 +1,25 @@
-import styles from "./styles.module.css";
+"use client";
 
-export default function () {
+import styles from "./styles.module.css";
+import TextInput from "@/shared/components/text-input";
+
+export default function EmailSubscribe() {
    return (
-      <div className={`${styles.container} d-flex at-center`}>
+      <section className={`${styles.container} home-section nfu d-flex at-center`}>
          <div className={styles.header}>
             <h3 className={styles.heading}>Get Expert Tips In Your Inbox</h3>
             <p className={styles.desc}>Subscribe to our newsletter and stay updated.</p>
          </div>
-         <form className={`${styles.form} d-flex jc-end`} action="">
-            <input className={styles.input} type="text" spellCheck={false} placeholder="Write your email here" />
-            <button className={styles.button}>Subscribe</button>
+         <form className={styles.form} action="">
+            <TextInput 
+               customStyle={styles.inp}
+               placeholder="Write your email here"
+               inputValue="Hello"
+               onChange={() => {}}
+               errorMessage=""
+            />
+            <button className={`${styles.btn} fw-600`}>Subscribe</button>
          </form>
-      </div>
+      </section>
    )
 }

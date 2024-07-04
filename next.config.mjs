@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
    images: {
-      domains: ['chawkbazar.vercel.app']
+      domains: [
+         'chawkbazar.vercel.app',
+         'firebasestorage.googleapis.com' 
+      ]
    },
 };
 

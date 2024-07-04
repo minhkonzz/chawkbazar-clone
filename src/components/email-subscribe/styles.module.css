@@ -1,51 +1,44 @@
 .container {
    flex-direction: column;
    justify-content: center;
-   padding: 2.5rem 1.25rem;
+   padding: 2.5rem 1rem;
 }
 
 .header {
-   margin-bottom: 1.75rem;
+   margin-bottom: 1.5rem;
    text-align: center;
 }
 
 .heading {
-   font-size: 1.125rem;
-   line-height: 1.75rem;
+   font-size: 1.125rem !important;
+   line-height: 1.75rem !important;
    font-weight: bold;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .desc {
    font-size: .75rem;
    line-height: 1.5rem;
-   margin-bottom: 1.25rem;
    color: rgb(90, 90, 90);
 }
 
-.form, .input {
+.form {
+   display: flex;
+   flex-direction: column;
    width: 100%;
 }
 
-.input {
-   border: 1px solid rgb(230, 230, 230);
-   border-radius: .375rem;
+.inp {
    height: 3rem;
-   padding: .5rem 1rem;
-   text-align: center;
-   font-size: .75rem;
-   line-height: 1rem;
-   color: rgb(29, 30, 31);
-   transition: all .2s ease-in-out;
 }
 
-.button {
+.btn {
+   width: 100%;
    margin-top: .75rem;
    border-radius: .375rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    padding: 1rem 1.25rem;
    font-size: 13px;
-   font-weight: 600;
    line-height: 1rem;
    transition: all .3s ease-in-out;
    color: #fff;
@@ -61,12 +54,14 @@
       flex-direction: row;
    }
 
-   .input {
+   .inp {
       text-align: left;
    }
 
-   .button {
+   .btn {
+      width: auto;
       margin-top: 0;
+      margin-left: .25rem;
    }
 }
 
@@ -92,15 +87,16 @@
 
    .form {
       width: 545px;
+      height: 3rem;
    }
 
-   .input {
-      padding: 0 1.25rem;
-   }
-
-   .button {
-      padding: .875rem 1.5rem;
+   .inp,
+   .btn {
       height: 100%;
+   }
+
+   .btn {
+      padding: .875rem 1.5rem;
       font-size: .875rem;
       line-height: 1.25rem;
       margin-left: .5rem;
@@ -123,14 +119,11 @@
       margin-bottom: .75rem;
    }
 
-   .input {
+   .form {
       height: 3.5rem;
-      padding: 0 1.75rem;
-      font-size: .875rem;
-      line-height: 1.25rem;
    }
 
-   .button {
+   .btn {
       padding: 1rem 2rem;
    }
 }
@@ -139,6 +132,10 @@
    .container {
       flex-direction: row;
       justify-content: space-between;
+   }
+
+   .form {
+      justify-content: flex-end;
    }
 
    .header {
