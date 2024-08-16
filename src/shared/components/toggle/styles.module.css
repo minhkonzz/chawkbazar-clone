@@ -1,0 +1,26 @@
+.wrapper {
+   border-radius: 20px;
+   width: 2.5rem;
+   height: 22px;
+   padding-top: 3px;
+   padding-bottom: 3px;
+   transition: .2s ease-in-out;
+}
+
+.nude {
+   display: inline-block;
+   width: 16px;
+   height: 16px;
+   background-color: #fff;
+   border-radius: 30px;
+}
+
+.toggled {
+   background-color: rgb(33, 33, 33);
+   padding-left: 22px;
+}
+
+.notToggled {
+   background-color: #e4e4e4;
+   padding-left: 4px;
+}
