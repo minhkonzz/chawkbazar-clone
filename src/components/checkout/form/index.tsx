@@ -68,81 +68,81 @@ export default function CheckoutForm({
       }
    ], makeOrder);
 
-return (
-   <div className={styles.container}>
-      <h2 className={styles.heading}>Shipping Address</h2>
-      <div>
-         <div className={`${styles.dinp} d-flex`}>
-            <div className={styles.inpWrapper}>
+   return (
+      <div className={styles.container}>
+         <h2 className={styles.heading}>Shipping Address</h2>
+         <div>
+            <div className={`${styles.dinp} d-flex`}>
+               <div className={styles.inpWrapper}>
+                  <TextInput
+                     label="First Name *"
+                     placeholder="Enter your first name"
+                     onChange={e => setOrderMetadata({...orderMetadata, firstName: e.target.value})}
+                     inputValue={firstName}
+                     errorMessage={!!errors && errors["firstNameError"] || ""}
+                  />
+               </div>
+               <div className={styles.inpWrapper}>
+                  <TextInput
+                     label="Last Name *"
+                     placeholder="Enter your last name"
+                     inputValue={lastName}
+                     onChange={e => setOrderMetadata({...orderMetadata, lastName: e.target.value})}
+                     errorMessage={!!errors && errors["lastNameError"] || ""}
+                  />
+               </div>
+            </div>
+            <div className={styles.dinp}>
                <TextInput
-                  label="First Name *"
-                  placeholder="Enter your first name"
-                  onChange={e => setOrderMetadata({...orderMetadata, firstName: e.target.value})}
-                  inputValue={firstName}
-                  errorMessage={!!errors && errors["firstNameError"] || ""}
+                  label="Address *"
+                  placeholder="Enter your address"
+                  inputValue={address}
+                  onChange={e => setOrderMetadata({...orderMetadata, address: e.target.value})}
+                  errorMessage={!!errors && errors["addressError"] || ""}
                />
             </div>
-            <div className={styles.inpWrapper}>
-               <TextInput
-                  label="Last Name *"
-                  placeholder="Enter your last name"
-                  inputValue={lastName}
-                  onChange={e => setOrderMetadata({...orderMetadata, lastName: e.target.value})}
-                  errorMessage={!!errors && errors["lastNameError"] || ""}
-               />
+            <div className={`${styles.dinp} d-flex`}>
+               <div className={styles.inpWrapper}>
+                  <TextInput
+                     label="Phone / mobile *"
+                     placeholder="Enter your phone"
+                     inputValue={phone}
+                     onChange={e => setOrderMetadata({...orderMetadata, phone: e.target.value})}
+                     errorMessage={!!errors && errors["phoneError"] || ""}
+                  />
+               </div>
+               <div className={styles.inpWrapper}>
+                  <TextInput
+                     label="Email *"
+                     placeholder="Enter your email"
+                     inputValue={email}
+                     onChange={e => setOrderMetadata({...orderMetadata, email: e.target.value})}
+                     errorMessage={!!errors && errors["emailError"] || ""}
+                  />
+               </div>
             </div>
+            <div className={`${styles.dinp} d-flex`}>
+               <div className={styles.inpWrapper}>
+                  <TextInput
+                     label="City / Town"
+                     placeholder="Enter city / town"
+                     inputValue={city}
+                     onChange={e => setOrderMetadata({...orderMetadata, city: e.target.value})}
+                     errorMessage=""
+                  />
+               </div>
+               <div className={styles.inpWrapper}>
+                  <TextInput
+                     label="Postcode"
+                     placeholder="Enter postcode"
+                     inputValue={postCode}
+                     onChange={e => setOrderMetadata({...orderMetadata, postCode: e.target.value})}
+                     errorMessage=""
+                  />
+               </div>
+            </div>
+            { !cod && <button type="submit" className={styles.btn} onClick={placeOrder}>Place order</button> }
          </div>
-         <div className={styles.dinp}>
-            <TextInput
-               label="Address *"
-               placeholder="Enter your address"
-               inputValue={address}
-               onChange={e => setOrderMetadata({...orderMetadata, address: e.target.value})}
-               errorMessage={!!errors && errors["addressError"] || ""}
-            />
-         </div>
-         <div className={`${styles.dinp} d-flex`}>
-            <div className={styles.inpWrapper}>
-               <TextInput
-                  label="Phone / mobile *"
-                  placeholder="Enter your phone"
-                  inputValue={phone}
-                  onChange={e => setOrderMetadata({...orderMetadata, phone: e.target.value})}
-                  errorMessage={!!errors && errors["phoneError"] || ""}
-               />
-            </div>
-            <div className={styles.inpWrapper}>
-               <TextInput
-                  label="Email *"
-                  placeholder="Enter your email"
-                  inputValue={email}
-                  onChange={e => setOrderMetadata({...orderMetadata, email: e.target.value})}
-                  errorMessage={!!errors && errors["emailError"] || ""}
-               />
-            </div>
-         </div>
-         <div className={`${styles.dinp} d-flex`}>
-            <div className={styles.inpWrapper}>
-               <TextInput
-                  label="City / Town"
-                  placeholder="Enter city / town"
-                  inputValue={city}
-                  onChange={e => setOrderMetadata({...orderMetadata, city: e.target.value})}
-                  errorMessage=""
-               />
-            </div>
-            <div className={styles.inpWrapper}>
-               <TextInput
-                  label="Postcode"
-                  placeholder="Enter postcode"
-                  inputValue={postCode}
-                  onChange={e => setOrderMetadata({...orderMetadata, postCode: e.target.value})}
-                  errorMessage=""
-               />
-            </div>
-         </div>
-         { !cod && <button type="submit" className={styles.btn} onClick={placeOrder}>Place order</button> }
       </div>
-   </div>
-)
-}
+   );
+};

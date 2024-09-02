@@ -17,17 +17,17 @@ export default function Toast({ message, type, duration }: Message) {
    const bgColor = colors[type];
 
    useEffect(() => {
-      const toastElement = ref.current;
+      const toastEl = ref.current;
       let hideToast: NodeJS.Timeout;
-      if (toastElement) {
+      if (toastEl) {
          hideToast = setTimeout(() => {
-            toastElement.addEventListener("animationend", () => toast(undefined));
-            toastElement.style.animation = "toast-invisible .3s ease-in-out";
-            toastElement.style.animationFillMode = "forwards";
+            toastEl.addEventListener("animationend", () => toast(undefined));
+            toastEl.style.animation = "toast-invisible .3s ease-in-out";
+            toastEl.style.animationFillMode = "forwards";
          }, duration);
       }
       return () => {
-         if (toastElement) clearTimeout(hideToast);
+         if (toastEl) clearTimeout(hideToast);
       }
    }, []);
 

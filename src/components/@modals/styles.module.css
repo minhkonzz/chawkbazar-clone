@@ -1,0 +1,46 @@
+.cart-invisible {
+   animation: cart-invisible .5s ease-in;
+   animation-fill-mode: forwards;
+}
+
+.product-invisible {
+   animation: product-invisible .5s ease-in;
+}
+
+.auth-invisible {
+   animation: auth-invisible .5s ease-in;
+}
+
+@keyframes product-invisible {
+   0% {
+      transform: scale(1, 1);
+      opacity: 1;
+   }
+
+   100% {
+      transform: scale(.7, .7);
+      opacity: 0;
+   }
+}
+
+@keyframes auth-invisible {
+   0% {
+      transform: scale(1);
+      opacity: 1;
+   }
+
+   100% {
+      transform: scale(.8);
+      opacity: 0;
+   }
+}
+
+@keyframes cart-invisible {
+   0% {
+      right: 0;
+   }
+
+   100% {
+      right: -200%;
+   }
+}
