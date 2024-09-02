@@ -16,7 +16,7 @@
   --header-height-min768: 90px;
   --header-height-min992: 95px;
   --header-height-min1200: 110px;
-  --bottom-menu-height-max380: 65px;
+  --bottom-menu-height-max380: 60px;
   --bottom-menu-height-min380: 70px;
   --page-section-dist-max380: 20px;
   --page-section-dist-min380: 28px;
@@ -260,11 +260,6 @@ a { text-decoration: none; }
 
 /* ================= keyframes ================ */
 
-/* @keyframes section-visible {
-   0% { transform: scale(.8); margin-top: 180px; opacity: 0; }
-   100% { transform: scale(1); margin-top: 0; opacity: 1; }
-} */
-
 @keyframes opacity-fadein {
    0% { opacity: 0; }
    100% { opacity: 1; }
@@ -278,5 +273,34 @@ a { text-decoration: none; }
 @keyframes toast-invisible {
    0% { transform: translate(-50%, 6%); }
    100% { transform: translate(-50%, -200%); opacity: 0; }
+}
+
+@keyframes product-invisible {
+   0% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+   }
+
+   100% {
+      transform: translate(-50%, -40%);
+      opacity: 0;
+   }
+}
+
+@keyframes auth-invisible {
+   0% {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+   }
+
+   100% {
+      transform: translate(-50%, -40%);
+      opacity: 0;
+   }
+}
+
+@keyframes cart-invisible {
+   0% { right: 0; }
+   100% { right: -200%; }
 }
 

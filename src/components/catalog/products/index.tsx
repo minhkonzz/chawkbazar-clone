@@ -51,5 +51,5 @@ export default function CatalogProducts() {
             <button className={`${styles.loadMoreButton} cp`}>Load more</button>
          </div>
       </div>
-   )
-}
+   );
+};

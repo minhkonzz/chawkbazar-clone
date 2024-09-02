@@ -1,7 +1,7 @@
 .container {
-   margin-top: 2.25rem;
-   border-bottom: 4px solid rgb(33, 33, 33);
+   margin-top: 2.5rem;
    padding-top: .625rem;
+   padding-bottom: var(--bottom-menu-height-max380);
    max-width: 1920px;
    padding: 0 1rem;
 }
@@ -41,6 +41,18 @@
 
 .list li {
    margin-top: .75rem;
+}
+
+@media (min-width: 380px) {
+   .container {
+      padding-bottom: var(--bottom-menu-height-min380);
+   }
+}
+
+@media (min-width: 600px) {
+   .container {
+      padding-bottom: 0;
+   }
 }
 
 @media (min-width: 768px) {

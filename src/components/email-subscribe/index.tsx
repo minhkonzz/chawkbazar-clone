@@ -10,17 +10,15 @@ export default function EmailSubscribe() {
             <h3 className={styles.heading}>Get Expert Tips In Your Inbox</h3>
             <p className={styles.desc}>Subscribe to our newsletter and stay updated.</p>
          </div>
-         <form className={`${styles.form} d-flex jc-end`} action="">
-            <div className={styles.input}>
-               <TextInput 
-                  customStyle={styles.inp}
-                  placeholder="Write your email here"
-                  inputValue="Hello"
-                  onChange={() => {}}
-                  errorMessage=""
-               />
-            </div>
-            <button className={styles.button}>Subscribe</button>
+         <form className={styles.form} action="">
+            <TextInput 
+               customStyle={styles.inp}
+               placeholder="Write your email here"
+               inputValue="Hello"
+               onChange={() => {}}
+               errorMessage=""
+            />
+            <button className={`${styles.btn} fw-600`}>Subscribe</button>
          </form>
       </section>
    )

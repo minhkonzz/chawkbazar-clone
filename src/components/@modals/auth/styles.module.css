@@ -1,6 +1,7 @@
 .container {
    border-radius: .5rem;
    background-color: #fff;
+   animation: visible .3s ease-in-out;
 }
 
 .closeButton {
@@ -23,7 +24,7 @@
    row-gap: .5rem;
    max-height: calc(100vh - 120px);
    padding: 1.25rem;
-   overflow: scroll;
+   overflow: auto;
 }
 
 .title {
@@ -56,21 +57,40 @@
    top: -0.625rem;
    background-color: #fff;
    padding: 0 .5rem;
+   font-size: .875rem;
 }
 
 .switchAuth {
-   font-size: .875rem;
-   line-height: 1.25rem;
    color: rgb(90, 90, 90);
 }
 
 .switchButton {
-   font-size: .875rem;
-   line-height: 1.25rem;
    font-weight: bold;
    text-decoration: underline;
    color: rgb(33, 33, 33);
    margin-left: 5px;
+}
+
+.switchAuth,
+.switchButton {
+   font-size: .875rem;
+   line-height: 1.25rem;
+   margin-top: 5px;
+}
+
+.btn {
+   margin-top: .375rem;
+   border-radius: .375rem;
+   background-color: var(--primary-color);
+   padding: 1rem 1.25rem;
+   font-size: 13px;
+   color: #fff;
+   height: 2.75rem;
+   transition: all .2s ease-in-out;
+}
+
+.btn:hover {
+   opacity: .9;
 }
 
 @media (min-width: 480px) {
@@ -82,11 +102,6 @@
 
    .title {
       margin-bottom: 1.5rem;
-   }
-
-   .switchAuth, .switchButton {
-      font-size: 1rem;
-      line-height: 1.5rem;
    }
 }
 
@@ -106,4 +121,21 @@
       font-size: 1rem;
       line-height: 1.5rem;
    }
+
+   .btn {
+      height: 3rem;
+      padding: .875rem 1.5rem;
+      font-size: .875rem;
+   }
+}
+
+@media (min-width: 1024px) {
+   .btn {
+      padding: 1rem 2rem;
+   }
+}
+
+@keyframes visible {
+   0% { opacity: 0; transform: translate(-50%, -40%); }
+   100% { opacity: 1; transform: translate(-50%, -50%); }
 }

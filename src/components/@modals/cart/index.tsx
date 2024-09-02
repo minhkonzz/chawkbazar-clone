@@ -37,15 +37,14 @@ export default forwardRef(function Cart({ onClose }: Props, ref: ForwardedRef<HT
          </header>
          <main className={`${styles.items} h-100pc`}>
          { items.length > 0 &&
+            items.map((item, i: number) => <CartItem key={i} {...{ item }} />) || 
             <div className="d-flex fd-col w-100pc h-100pc jc-sa at-center">
                <BagSvg />
                <p className="blur fw-600">Không có sản phẩm nào trong giỏ hàng</p>
-            </div> || 
-            items.map((item, i: number) => <CartItem key={i} {...{ item }} />) 
-         }
+            </div> }
          </main>
          <div className={styles.bottom}>
-            <Link href="/checkout" className={`${styles.checkoutButton} d-flex jc-sb at-center`}>
+            <Link href="/checkout" className={`${styles.checkoutButton} d-flex jc-sb at-center${items.length > 0 ? "" : " disabled" }`}>
                <span className={styles.checkoutButtonText}>Proceed to checkout</span>
                <span className={`${styles.totalValue} d-flex at-center`}>
                   <span className={styles.vline}></span>${items.length === 0 ? 0 : fixDecimal(totalPrice, 2)}

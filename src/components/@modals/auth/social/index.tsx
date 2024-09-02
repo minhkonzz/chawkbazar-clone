@@ -2,7 +2,7 @@
 
 import { signInWithGoogle } from "@/lib/firebase/auth";
 import { useToast } from "@/context";
-import styles from "./styles.module.css";
+import styles from "../styles.module.css";
 
 export default function SocialAuth() {
 

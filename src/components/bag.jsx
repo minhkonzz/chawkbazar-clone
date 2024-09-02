@@ -1,3 +1,5 @@
+"use client"
+
 export default function BagIcon() {
   return (
     <svg width="180" height="309.722" viewBox="0 0 180 309.722">

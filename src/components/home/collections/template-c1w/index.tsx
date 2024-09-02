@@ -26,6 +26,7 @@ export default async function Collections() {
                      className={styles.image} 
                      width={meta.w} 
                      height={meta.h} 
+                     style={{ height: "auto" }}
                      src={`${env.BANNER_IMAGE_STORAGE + url}`} 
                      alt="logo_shop" 
                      priority 

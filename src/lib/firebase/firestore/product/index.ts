@@ -127,6 +127,16 @@ export const getFlashSaleProducts = async (
    return await serializeProducts(products);
 };
 
+export const getOnSellProducts = async (
+   firestore: Firestore = firestoreClient
+): Promise<any> => {
+   const products = await fetchDocs({
+      collectionName: collections.PRODUCTS,
+      _where: ["in_stock", ">", 0]
+   }, firestore);
+   return await serializeProducts(products);
+}
+
 export const getBrands = async (
    firestore: Firestore = firestoreClient
 ): Promise<any> => {

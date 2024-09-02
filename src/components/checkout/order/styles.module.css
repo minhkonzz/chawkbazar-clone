@@ -1,5 +1,7 @@
+
 .container {
    width: 100%;
+   padding-top: 3rem;
 }
 
 .title {
@@ -29,13 +31,13 @@
 .productText {
    font-size: .875rem;
    line-height: 1.25rem;
-   color: rgb(33, 33, 33);
+   color: #000;
    padding-left: .75rem;
 }
 
 .wrapper {
    border-bottom: 1px solid rgb(230, 230, 230);
-   padding: 0 1rem;
+   padding: .875rem .5rem;
    font-size: .875rem;
    line-height: 1.25rem;
    font-weight: 600;
@@ -44,6 +46,7 @@
 
 @media (min-width: 768px) {
    .container {
+      padding-top: 0;
       margin-left: 1.75rem;
    }
 
@@ -54,6 +57,10 @@
    .header {
       margin-top: 1.75rem;
 
+   }
+
+   .wrapper {
+      padding: 1rem .6rem;
    }
 }
 

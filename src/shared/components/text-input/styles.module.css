@@ -18,18 +18,17 @@
    border-radius: .375rem;
    font-size: .75rem;
    line-height: 1rem;
-   color: rgb(29, 30, 31);
+   color: #000;
    transition: all .2s ease-in-out;
 }
 
 .inp:focus {
    outline: none;
-   border: 1px solid rgb(33, 33, 33);
+   border: 1px solid #000;
 }
 
 @media (min-width: 768px) {   
    .inp {
-      height: 3rem;
       padding-left: 1.25rem;
       padding-right: 1.25rem;
    }

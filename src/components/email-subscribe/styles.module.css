@@ -5,39 +5,40 @@
 }
 
 .header {
-   margin-bottom: 1.75rem;
+   margin-bottom: 1.5rem;
    text-align: center;
 }
 
 .heading {
-   font-size: 1.125rem;
-   line-height: 1.75rem;
+   font-size: 1.125rem !important;
+   line-height: 1.75rem !important;
    font-weight: bold;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .desc {
    font-size: .75rem;
    line-height: 1.5rem;
-   margin-bottom: 1.25rem;
    color: rgb(90, 90, 90);
 }
 
-.form, .input {
+.form {
+   display: flex;
+   flex-direction: column;
    width: 100%;
 }
 
 .inp {
-   height: 100% !important;
+   height: 3rem;
 }
 
-.button {
+.btn {
+   width: 100%;
    margin-top: .75rem;
    border-radius: .375rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    padding: 1rem 1.25rem;
    font-size: 13px;
-   font-weight: 600;
    line-height: 1rem;
    transition: all .3s ease-in-out;
    color: #fff;
@@ -57,8 +58,10 @@
       text-align: left;
    }
 
-   .button {
+   .btn {
+      width: auto;
       margin-top: 0;
+      margin-left: .25rem;
    }
 }
 
@@ -84,9 +87,15 @@
 
    .form {
       width: 545px;
+      height: 3rem;
    }
 
-   .button {
+   .inp,
+   .btn {
+      height: 100%;
+   }
+
+   .btn {
       padding: .875rem 1.5rem;
       font-size: .875rem;
       line-height: 1.25rem;
@@ -110,11 +119,11 @@
       margin-bottom: .75rem;
    }
 
-   .inp {
+   .form {
       height: 3.5rem;
    }
 
-   .button {
+   .btn {
       padding: 1rem 2rem;
    }
 }
@@ -123,6 +132,10 @@
    .container {
       flex-direction: row;
       justify-content: space-between;
+   }
+
+   .form {
+      justify-content: flex-end;
    }
 
    .header {
@@ -143,4 +156,3 @@
       line-height: 2.25rem;
    }
 }
-

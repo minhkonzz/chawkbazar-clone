@@ -2,8 +2,7 @@
    width: 100%;
    background-color: #fff;
    z-index: 1000;
-   transition: transform .3s ease;
-   animation: visible .3s ease;
+   animation: visible .5s ease-in-out;
 }
 
 .header {
@@ -39,16 +38,22 @@
 
 .checkoutButton {
    border-radius: .375rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    padding: .75rem 1.25rem;
    font-size: .875rem;
    line-height: 1.25rem;
    color: #fff;
-   transition: all .3s ease-in-out;
+   transition: all .1s ease-in-out;
+   pointer-events: none;
+}
+
+.checkoutButton.disabled {
+   pointer-events: none;
+   opacity: .5;
 }
 
 .checkoutButton:hover {
-   opacity: .7;
+   opacity: .9;
 }
 
 .checkoutButtonText {
@@ -122,6 +127,6 @@
 }
 
 @keyframes visible {
-   0% { right: -200%; };
+   0% { right: -100%; };
    100% { right: 0; }
 }

@@ -3,7 +3,7 @@
   transition: all .2s ease-in;
   font-size: .75rem;
   line-height: 1.5rem;
-  color: rgb(33, 33, 33);
+  color: #000;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -11,6 +11,10 @@
 .catalog {
   padding-bottom: 4rem;
   padding-top: 2rem;
+}
+
+.catalog,
+.event {
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -25,7 +29,8 @@
     line-height: 1.75rem;
   }
 
-  .catalog {
+  .catalog,
+  .event {
     padding-left: 2rem;
     padding-right: 2rem;
   }
@@ -38,7 +43,8 @@
 }
 
 @media (min-width: 1500px) {
-  .catalog {
+  .catalog,
+  .event {
     padding-left: 4rem;
     padding-right: 4rem;
   }

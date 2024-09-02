@@ -1,6 +1,6 @@
 "use client";
 
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef, useMemo } from "react";
 import { env } from "@/configs";
 import { fixDecimal } from "@/shared/helpers/number";
 import { useProductOptions } from "@/shared/hooks";
@@ -27,16 +27,36 @@ export default forwardRef(function ProductDetail({ item, onClose }: Props, ref: 
       handleAddToCart
    } = useProductOptions(item);
 
+   const variation = useMemo(() => 
+      product?.variations.reduce((acc: any, cur: any) => {
+         if (cur.attribute.slug === "color") acc.colors.push(cur);
+         else if (cur.attribute.slug === "size") acc.sizes.push(cur);
+         return acc;
+      }, { sizes: [], colors: [] })
+   , []);
+
    return (
       <div {...{ref}} className={`${styles.container} d-flex posab pos-center`}>
          <Image 
             width={430}
             height={558}
+            className={styles.img}
             alt="product-image"
             src={`${env.PRODUCT_IMAGE_STORAGE}${product.image.pm}`}
          />
          <div className={`${styles.about} posrel`}>
-            <button className={`${styles.close} circle-bd-r posab right-1d5pc top-n2pc`} onClick={e => onClose(e, true)}>x</button>
+            <button className={`${styles.close} circle-bd-r posab right-1d5pc top-n2pc`} onClick={e => onClose(e, true)}>
+               <svg 
+                  stroke="currentColor" 
+                  fill="currentColor" 
+                  strokeWidth="0" 
+                  viewBox="0 0 512 512" 
+                  className={styles.ic} 
+                  height="1em" 
+                  width="1em">
+                  <path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"></path>
+               </svg>
+            </button>
             <h2 className={styles.name}>{product?.name}</h2>
             <p className={styles.desc}>{product?.description}</p>
             <div className={`${styles.prices} d-flex`}>
@@ -45,13 +65,11 @@ export default forwardRef(function ProductDetail({ item, onClose }: Props, ref: 
             </div>
             <span className="d-b">Size</span>
             <div className={`${styles.addons} d-flex`}> {
-               product?.variations
-               .filter((variation: any) => variation.attribute.slug === "size")
+               variation.sizes
                .map((addon: any, index: number) => (
                   <span 
-                     style={{ border: !!size && index === size.sizeSelectedIndex ? "1px solid black" : "0.5px solid rgb(212, 212, 212)"}}
                      key={index} 
-                     className={`${addon.attribute.slug} ${styles.addon} d-flex jc-center at-center`}
+                     className={`${styles.addon} ${addon.attribute.slug} d-flex jc-center at-center cp${!!size && index === size.sizeSelectedIndex ? " selected" : ""}`}
                      onClick={() => onSelectAddon(addon, index)}>
                      {addon.value}
                   </span>
@@ -59,15 +77,13 @@ export default forwardRef(function ProductDetail({ item, onClose }: Props, ref: 
             </div>
             <span className="d-b">Color</span>
             <div className={`${styles.addons} d-flex`}> {
-               product?.variations
-               .filter((variation: any) => variation.attribute.slug === "color")
+               variation.colors
                .map((addon: any, index: number) => (
                   <span 
-                     style={{ border: !!color && index === color.colorSelectedIndex ? "1px solid black" : "0.5px solid rgb(212, 212, 212)"}}
                      key={index} 
-                     className={`${addon.attribute.slug} ${styles.addon} d-flex jc-center at-center`}
+                     className={`${addon.attribute.slug} ${styles.addon} d-flex jc-center at-center cp${!!color && index === color.colorSelectedIndex ? "selected" : ""}`}
                      onClick={() => onSelectAddon(addon, index)}>
-                     <span className="thin-bd-r" style={{ backgroundColor: addon.meta }}/>
+                     <span style={{ backgroundColor: addon.meta }}/>
                   </span>
                )) }
             </div>
@@ -77,7 +93,6 @@ export default forwardRef(function ProductDetail({ item, onClose }: Props, ref: 
                      className={`${styles.qtyBtn} increase h-100pc fw-600`} 
                      onClick={() => inDecreaseAmount("DECREASE")}>
                      <svg 
-                        xmlns="http://www.w3.org/2000/svg" 
                         width="10px" 
                         height="2px" 
                         viewBox="0 0 12 1.5">
@@ -95,7 +110,6 @@ export default forwardRef(function ProductDetail({ item, onClose }: Props, ref: 
                      onClick={() => inDecreaseAmount("INCREASE")}>
                      <svg 
                         data-name="plus (2)" 
-                        xmlns="http://www.w3.org/2000/svg" 
                         width="10px" 
                         height="10px" 
                         viewBox="0 0 12 12">
@@ -112,7 +126,7 @@ export default forwardRef(function ProductDetail({ item, onClose }: Props, ref: 
                </button>
             </div>
             { !!errors && !!errors.amountError && <p className={styles.errorMessage}>{errors.amountError}</p> }
-            <button className={`${styles.viewBtn} dark-v d-flex jc-center w-100pc thin-bd-r`}>View details</button>
+            <button className={`${styles.viewBtn} dark-v d-flex jc-center w-100pc thin-bd-r fw-600`}>View details</button>
          </div>
       </div>
    );

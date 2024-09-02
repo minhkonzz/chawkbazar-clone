@@ -28,6 +28,7 @@ export default async function TopBrands() {
                      className={styles.image}
                      width={428} 
                      height={428} 
+                     style={{ maxWidth: 428, maxHeight: 428, width: "100%", height: "auto" }}
                      src={`${BRAND_IMAGE_STORAGE + e.image}`}
                      alt="brand" 
                   />
@@ -35,7 +36,8 @@ export default async function TopBrands() {
                   <Image 
                      className="posab pos-center"
                      width={200}
-                     height={94} 
+                     height={94}
+                     style={{ height: "auto", width: "auto" }}
                      src={`${BRAND_LOGO_STORAGE + e.logo}`}
                      alt="brand-logo" 
                   />

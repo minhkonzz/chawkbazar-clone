@@ -1,6 +1,5 @@
 .container {
    position: relative;
-   margin-right: 2rem;
 }
 
 .nation {
@@ -25,4 +24,16 @@
    padding-bottom: .5rem;
    border-radius: .5rem;
    border: 1px solid rgb(230, 230, 230);
+}
+
+@media (min-width: 600px) {
+   .container {
+      margin-right: .5rem;
+   }
+}
+
+@media (min-width: 1024px) {
+   .container {
+      margin-right: 2rem;
+   }
 }

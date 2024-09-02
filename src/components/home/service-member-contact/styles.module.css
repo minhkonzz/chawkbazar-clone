@@ -11,6 +11,10 @@
 }
 
 .image {
+   max-width: 870px;
+   max-height: 300px;
+   width: 100%;
+   height: auto;
    margin-bottom: .625rem;
 }
 

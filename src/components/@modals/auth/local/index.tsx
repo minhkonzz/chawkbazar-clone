@@ -8,8 +8,9 @@ import { signUp } from "@/lib/firebase/auth/actions";
 import Toggle from "@/shared/components/toggle";
 import TextInput from "@/shared/components/text-input";
 import styles from "./styles.module.css";
+import styles1 from "../styles.module.css";
 
-const { regex, TOAST_DURATION } = constants;
+const { regex } = constants;
 
 export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
 
@@ -25,12 +26,10 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
       setEmail(""); 
       setPassword(""); 
       setErrors(null);
-      // if (headerStatus) setHeaderStatus(null);
    }, [isLogin]);
 
    useEffect(() => {
       if (errors) setErrors(null);
-      // if (headerStatus) setHeaderStatus(null);
    }, [name, email, password]);
 
    const onClick = async () => {
@@ -106,7 +105,7 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
             </div>
             <button className={styles.forgotPassword}>Forgot password</button>
          </div> }
-         <button className={`w-100pc`} {...{ onClick }}>
+         <button className={`${styles1.btn} w-100pc`} {...{ onClick }}>
             { isLogin && "Login" || "Register" }
          </button>
       </>

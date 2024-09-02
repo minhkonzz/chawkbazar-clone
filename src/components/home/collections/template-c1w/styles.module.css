@@ -1,7 +1,7 @@
 .container {
    display: grid;
    grid-template-columns: repeat(2, minmax(0, 1fr));
-   gap: .5rem;
+   gap: .3rem;
    margin-bottom: 4rem;
 }
 
@@ -30,7 +30,7 @@
 @media (min-width: 480px) {
    .container {
       grid-template-columns: repeat(9, minmax(0, 1fr));
-      gap: .625rem;
+      gap: .45rem;
    }
 
    .collection {
@@ -39,5 +39,17 @@
 
    .prime {
       grid-column: span 5 / span 5;
+   }
+}
+
+@media (min-width: 1024px) {
+   .container {
+      gap: .5rem;
+   }
+}
+
+@media (min-width: 1280px) {
+   .container {
+      gap: .625rem;
    }
 }

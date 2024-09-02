@@ -15,7 +15,7 @@ export default function Home() {
          <div className="wrapper1920 mx-auto">
             <Collections />
             <FlashSale />
-            <Promotions />
+            {/* <Promotions /> */}
             <OnSellingProducts />
             <TopBrands />
             <NewArrivals />
