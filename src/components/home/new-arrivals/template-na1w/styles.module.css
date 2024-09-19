@@ -2,7 +2,7 @@
    font-weight: bold;
    font-size: 1.125rem;
    line-height: 1.75rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    margin-bottom: 1rem;
 }
 

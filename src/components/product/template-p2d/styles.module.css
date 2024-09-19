@@ -17,7 +17,7 @@
 .name {
    font-size: .875rem;
    line-height: 1.25rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    font-weight: 600;
    margin-bottom: .25rem;
 }

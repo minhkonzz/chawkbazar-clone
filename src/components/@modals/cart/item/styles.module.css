@@ -32,7 +32,7 @@
 
 .name {
    margin-bottom: .375rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .unitPrice {
@@ -43,7 +43,7 @@
 .quantityControl {
    height: 2rem;
    border-radius: .375rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
 }
 
 .quantityButton {

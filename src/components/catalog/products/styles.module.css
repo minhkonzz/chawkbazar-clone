@@ -8,7 +8,7 @@
    font-weight: bold;
    font-size: 1.5rem;
    line-height: 2rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .itemsCount {
@@ -31,7 +31,7 @@
 }
 
 .loadMoreButton {
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    height: 2.75rem;
    border-radius: .375rem;
    padding: .5rem 1.25rem;

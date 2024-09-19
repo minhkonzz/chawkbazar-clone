@@ -4,5 +4,6 @@ export default {
    ORDERS: "orders",
    BRANDS: "brands",
    CATEGORIES: "categories",
-   COLLECTION_BANNERS: "collection-banners"
+   COLLECTION_BANNERS: "collection-banners",
+   NEW_ARRIVAL_PRODUCTS: "new_arrival_products"
 }

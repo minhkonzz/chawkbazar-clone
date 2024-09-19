@@ -37,7 +37,7 @@
 
 .titleLink {
    text-decoration: underline;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .form {
@@ -67,7 +67,7 @@
 .switchButton {
    font-weight: bold;
    text-decoration: underline;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    margin-left: 5px;
 }
 

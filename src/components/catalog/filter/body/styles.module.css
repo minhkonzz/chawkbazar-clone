@@ -12,7 +12,7 @@
    font-size: 1.25rem;
    line-height: 1.75rem;
    font-weight: 600;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .clear {
@@ -22,7 +22,7 @@
 }
 
 .clear:hover {
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    transition: all .2s ease-in-out;
 }
 
@@ -34,7 +34,7 @@
    padding: .625rem .875rem;
    font-size: .75rem;
    line-height: 1rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 @media (min-width: 768px) {

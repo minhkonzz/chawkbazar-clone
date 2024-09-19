@@ -15,14 +15,14 @@
    font-size: 1.5rem;
    line-height: 2rem;
    font-weight: bold;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .getInTouchHeading {
    font-size: 1.5rem;
    line-height: 2rem;
    font-weight: bold;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    padding-bottom: 1.75rem;
 }
 

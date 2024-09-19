@@ -7,7 +7,7 @@
    border: 1px solid rgb(230, 230, 230);
    background-color: rgb(251, 251, 251);
    padding: 1rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .confirmIcWrapper {
@@ -38,7 +38,7 @@
    font-size: 1rem;
    line-height: 1.5rem;
    font-weight: 600;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .metaPart:last-child {
@@ -62,14 +62,14 @@
    font-size: 1.125rem;
    line-height: 1.75rem;
    font-weight: bold;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .ordered {
    font-size: .875rem;
    line-height: 1.25rem;
    font-weight: 600;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .head {

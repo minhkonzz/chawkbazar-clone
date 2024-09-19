@@ -1,3 +1,5 @@
+import { Order } from "./entities";
+
 export type FirestoreQueryDocumentsConfig = {
    collectionName: string,
    _startAfter?: any,
@@ -28,4 +30,6 @@ export type CurrentUser = {
    phoneNumber: string,
    photoURL: string,
 };
+
+export type OrderListItem = Pick<Order, "date" | "state" | "total" | "totalItems">;
 

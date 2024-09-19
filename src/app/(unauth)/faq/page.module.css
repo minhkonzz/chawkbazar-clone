@@ -24,13 +24,13 @@
 
 .hz {
    height: .125rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
 }
 
 .vt {
    width: .125rem;
    border-radius: .375rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    transition: all .2s ease-in-out;
 }
 

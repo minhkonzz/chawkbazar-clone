@@ -1,7 +1,7 @@
 .btn {
    margin-top: .375rem;
    border-radius: .375rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    padding: 1rem 1.25rem;
    font-size: 13px;
    color: #fff;

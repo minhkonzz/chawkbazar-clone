@@ -9,7 +9,7 @@
 
 .th {
    padding: 1rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    font-weight: 600;
 }
 
@@ -27,12 +27,12 @@
 
 .cell {
    padding: 1.25rem 1rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .button {
    border-radius: .375rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    padding: .625rem 1rem;
    font-size: .875rem;
    line-height: 1rem;

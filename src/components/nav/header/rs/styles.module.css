@@ -30,7 +30,7 @@
    color: #fff;
    top: -0.75rem;
    right: -0.75rem;
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
 }
 
 .signIn,

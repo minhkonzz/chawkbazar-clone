@@ -113,7 +113,7 @@ export const getFilteredProducts = async (
 export const getNewArrivalProducts = async (
    firestore: Firestore = firestoreClient
 ): Promise<any> => {
-   const products = await fetchDocs({ collectionName: "new_arrival_products" }, firestore);
+   const products = await fetchDocs({ collectionName: collections.NEW_ARRIVAL_PRODUCTS }, firestore);
    return await serializeProducts(products);
 };
 
@@ -135,7 +135,7 @@ export const getOnSellProducts = async (
       _where: ["in_stock", ">", 0]
    }, firestore);
    return await serializeProducts(products);
-}
+};
 
 export const getBrands = async (
    firestore: Firestore = firestoreClient
@@ -143,4 +143,4 @@ export const getBrands = async (
    return await fetchDocs({
       collectionName: collections.BRANDS,
    }, firestore);
-}
+};

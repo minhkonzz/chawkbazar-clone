@@ -2,13 +2,13 @@
    padding-left: .75rem;
    font-size: .875rem;
    line-height: 1.25rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .forgotPassword {
    font-size: .875rem;
    line-height: 1.25rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    text-decoration: underline;
 }
 

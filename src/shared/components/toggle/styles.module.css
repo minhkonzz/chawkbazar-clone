@@ -16,7 +16,7 @@
 }
 
 .toggled {
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
    padding-left: 22px;
 }
 

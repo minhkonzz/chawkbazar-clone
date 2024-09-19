@@ -1,6 +1,7 @@
 import { Firestore } from "firebase/firestore";
 import { firestore as firestoreClient } from "../../client";
 import { fetchDoc, fetchDocs, addNewDoc } from "../";
+import { Order } from "@/shared/types/entities";
 
 export const createOrder = async (
    checkoutDetail: any,
@@ -46,7 +47,7 @@ export const createOrder = async (
 export const getUserOrders = async (
    userId: string,
    firestore: Firestore = firestoreClient
-) => {
+): Promise<Pick<Order, "date" | "state" | "total" | "totalItems">[]> => {
    const orderDocs = await fetchDocs({
       collectionName: "orders",
       _where: ["customerId", "==", userId]
@@ -54,26 +55,20 @@ export const getUserOrders = async (
 
    let allOrders: any = [];
    orderDocs.forEach((orderDoc: any) => {
-      const { products, shipFee, state, date, payment, note } = orderDoc.data();
-      let orderSubtotal = 0;
-      let orderTotalQuantity = 0;
-      products.forEach((product: any) => {
-         const { sale_price, price, qty } = product;
-         orderSubtotal += (sale_price || price) * qty;
-         orderTotalQuantity += qty;
-      })
-      const orderTotalPay = orderSubtotal + shipFee;
+      const { products, shipFee, state, date } = orderDoc;
+      const { subtotal, totalItems } = products.reduce((acc: { subtotal: number, totalItems: number }, cur: any) => {
+         const { sale_price, price, qty } = cur;
+         acc.subtotal += (sale_price || price) * qty;
+         acc.totalItems += qty;
+         return acc;
+      }, { subtotal: 0, totalItems: 0 });
+
+      const total = subtotal + shipFee;
       allOrders = [...allOrders, {
-         orderId: orderDoc.id,
-         orderDate: date,
-         orderState: state,
-         orderProducts: products,
-         orderPaymentType: payment.type,
-         orderSubtotal: orderSubtotal,
-         orderFee: shipFee,
-         orderTotalPay,
-         orderTotalQuantity,
-         orderNote: note
+         date,
+         state,
+         total,
+         totalItems,
       }];
    });
 
@@ -87,10 +82,10 @@ export const getOrder = async (
    const order = await fetchDoc("orders", id, firestore);
    if (!order) return null;
 
-   const { 
+   const {
       date,
-      products, 
-      shipFee, 
+      products,
+      shipFee,
       payment,
       note,
       customerRefs

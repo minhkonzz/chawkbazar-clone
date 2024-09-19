@@ -3,13 +3,14 @@
 import styles from "./styles.module.css";
 import Langs from "../langs";
 import { openSans } from "@/app/fonts";
-import { useModalContext, useCartContext } from "@/context";
+import { useModalContext, useCartContext, useFirebaseUserContext } from "@/context";
 
 export default function HeaderRight() {
    const { cart } = useCartContext()!;
+   const { currentUser } = useFirebaseUserContext()!;
    const { setCurrentModal } = useModalContext()!;
-
    const { items } = cart;
+   const userName = currentUser?.user.displayName;
 
    const onClick = () => {
       if (!setCurrentModal) return;
@@ -24,7 +25,7 @@ export default function HeaderRight() {
    return (
       <div className={styles.container}>
          <Langs />
-         <button className={`${styles.signIn} ${openSans.className}`} onClick={onSignIn}>Sign In</button>
+         <button className={`${styles.signIn} ${openSans.className}`} onClick={onSignIn}>Hello, {userName || "Sign in"}</button>
          <button className={styles.cartButton} {...{ onClick }}>
             { items.length > 0 && <span className={`${styles.cartAmount} d-flex jc-center at-center circle-bd-r`}>{items.length}</span> }
             <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" viewBox="0 0 20 20" className={styles.cartIcon}>

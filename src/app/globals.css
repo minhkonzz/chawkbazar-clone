@@ -208,7 +208,7 @@ a { text-decoration: none; }
    font-weight: bold;
    font-size: 1.875rem;
    line-height: 2.25em;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
    margin-bottom: .875rem;
 }
 

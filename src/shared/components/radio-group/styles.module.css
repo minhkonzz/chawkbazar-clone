@@ -2,7 +2,7 @@
    margin-inline-start: .5rem;
    font-size: .875rem;
    line-height: 1.25rem;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .inp {
@@ -14,9 +14,9 @@
 }
 
 .inp:hover {
-   border-color: rgb(33, 33, 33);
+   border-color: var(--primary-color);
 }
 
 .inp:checked {
-   background-color: rgb(33, 33, 33);
+   background-color: var(--primary-color);
 }

@@ -16,7 +16,7 @@
 
 .title {
    font-weight: bold;
-   color: rgb(33, 33, 33);
+   color: var(--primary-color);
 }
 
 .title, .desc {
