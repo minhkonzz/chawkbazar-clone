@@ -1,16 +1,13 @@
-import { getFirestore } from "firebase/firestore";
+import { ReactNode } from "react";
 import { getFlashSaleProducts } from "@/lib/firebase/firestore/product";
-import getAuthenticatedAppForUser from "@/lib/firebase/server";
+import { Product as SerializedProduct } from "@/shared/types";
+import { delay } from "@/shared/helpers/global";
+import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
-import Product from "@/components/product/template-p1w";
+import Product, { Skeleton as ProductSkeleton } from "@/components/product/template-p1w";
+import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
-export default async function FlashSale() {
-
-   const { firebaseServerApp } = await getAuthenticatedAppForUser();
-   const products = await getFlashSaleProducts(getFirestore(firebaseServerApp));
-
-   if (!products) return <></>;
-
+function Container({ children }: { children: ReactNode }) {
    return (
       <section className={`${styles.container} home-section nfu`}>
          <div className={styles.header}>
@@ -18,16 +15,44 @@ export default async function FlashSale() {
             <span>Time over!</span>
          </div>
          <div className={styles.items}>
-            { products.map((e: any) => 
-               <Product 
-                  key={`${e.id}`}
-                  wImage={324}
-                  hImage={324}
-                  imagePath={e.image.pmd}
-                  product={e}
-               />
-            )}
+            {children}      
          </div>
       </section>
-   )
+   );
+};
+
+async function List() {
+   const firestoreServer = await useFirestoreServer();
+   const products = await getFlashSaleProducts(firestoreServer);
+   return (
+      products.map((e: SerializedProduct, i: number) => 
+         <div 
+            className={styles.item}
+            style={{ animationDelay: `${i * .1}s` }}>
+            <Product 
+               key={`${e.id}`}
+               wImage={324}
+               hImage={324}
+               imagePath={e.image.pmd}
+               product={e}
+            />
+         </div>   
+      )
+   );
+};
+
+export default function FlashSale() {
+   return (
+      <Container>
+         {withSkeleton(List, () => 
+            Array.from({ length: 10 }).map((_, i) => 
+               <ProductSkeleton 
+                  key={`fs${i}`}
+                  wImage={324} 
+                  hImage={324} 
+               />
+            )
+         )()}
+      </Container>
+   );
 };

@@ -1,22 +1,13 @@
 import { fixDecimal } from "@/shared/helpers/number";
+import { SelectedProduct } from "@/shared/types/entities";
+import { useCartContext } from "@/context/cart";
 import { env } from "@/configs";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-interface Props {
-   cart: any;
-   isOnlinePaySelected: any;
-   setIsOnlinePaySelected: any;
-   createOrder: any;
-};
+export default function CheckoutOrderDetail() {
 
-export default function CheckoutOrderDetail({
-   cart,
-   isOnlinePaySelected,
-   setIsOnlinePaySelected,
-   createOrder
-}: Props) {
-
+   const { cart } = useCartContext()!;
    const { items, totalPrice } = cart;
    const shipFee: number = 2.99;
 
@@ -27,7 +18,7 @@ export default function CheckoutOrderDetail({
             <span>Product</span>
             <span>Subtotals</span>
          </div>
-         { items.map((item: any, index: number) => 
+         {items.map((item: SelectedProduct, index: number) => 
             <div className={`${styles.product} d-flex at-center jc-sb`} key={index}>
                <div className="d-flex at-center">
                   <Image 
@@ -36,11 +27,11 @@ export default function CheckoutOrderDetail({
                      src={`${env.PRODUCT_IMAGE_STORAGE}${item.image.p}`} 
                      alt="order-product"    
                   />
-                  <h6 className={styles.productText}>{`${item?.name} - ${item?.sizeSelected.value}, ${item?.colorSelected.value}`}</h6>
+                  <h6 className={styles.productText}>{`${item?.name} - ${item?.selectedSize.value}, ${item?.selectedColor.value}`}</h6>
                </div>
-               <span className={styles.productText}>${`${fixDecimal(item.sale_price || item.price, 2)}`}</span>
+               <span className={styles.productText}>${`${fixDecimal(item?.sale_price || item?.price, 2)}`}</span>
             </div>
-         ) }
+         )}
          <div className={`${styles.wrapper} d-flex at-center jc-sb`}>
             <span>Shipping</span>
             <span>Free</span>
@@ -50,5 +41,5 @@ export default function CheckoutOrderDetail({
             <span>${`${fixDecimal(totalPrice + shipFee, 2)}`}</span>
          </div>
       </div>
-   )
-}
+   );
+};

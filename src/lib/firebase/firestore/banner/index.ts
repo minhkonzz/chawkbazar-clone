@@ -1,26 +1,29 @@
 import { fetchDocs } from "..";
 import { Firestore } from "firebase/firestore";
 import { firestore as firestoreClient } from "../../client";
+import { ImageSource } from "../../storage/types";
+import { CollectionBanner, CollectionBannerGroup } from "./types";
+import collections from "../collections";
 
 export const getPromotionBanners = async (
    firestore: Firestore = firestoreClient
-): Promise<any> => {
-   return await fetchDocs({ collectionName: "promotion-banners" }, firestore);
+): Promise<ImageSource[]> => {
+   return await fetchDocs({collectionName: collections.PROMOTION_BANNERS}, firestore) as ImageSource[];
 };
 
 export const getCollectionBanners = async (
    collectionBannerNames: string,
    firestore: Firestore = firestoreClient
-): Promise<any> => {
-   const groups = await fetchDocs({ collectionName: "collection-banners" }, firestore);
-   return groups.filter((g: any) => g.name === collectionBannerNames)[0]
+): Promise<string[]> => {
+   const groups = await fetchDocs({collectionName: collections.COLLECTION_BANNERS}, firestore) as CollectionBannerGroup[];
+   return groups.filter((g: CollectionBannerGroup) => g.name === collectionBannerNames)[0]
       .data
-      .sort((b1: any, b2: any) => b1.pos - b2.pos)
-      .map((e: any) => e.storageUrl);
+      .sort((b1: CollectionBanner, b2: CollectionBanner) => b1.pos - b2.pos)
+      .map((e: CollectionBanner) => e.url);
 };
 
 export const getModernCaptures = async (
    firestore: Firestore = firestoreClient
-): Promise<any> => {
-   return await fetchDocs({ collectionName: "modern-captures" }, firestore);
-}
+): Promise<ImageSource[]> => {
+   return await fetchDocs({collectionName: collections.MODERN_CAPTURES}, firestore) as ImageSource[];
+};

@@ -12,15 +12,32 @@
    margin-bottom: 1.5rem;
 }
 
-/* .title {
-   font-weight: bold;
-   font-size: 1.875rem;
-   line-height: 2.25em;
-} */
-
 .items {
    display: grid;
    grid-template-columns: repeat(5, minmax(0, 1fr));
    column-gap: 1.75rem;
    row-gap: 2rem;
 }
+
+.item {
+   opacity: 0;
+   transform: translateY(-20px);
+   animation: fadeIn .4s ease forwards;
+}
+
+@keyframes fadeIn {
+   0% {
+      opacity: 0;
+      transform: translateY(-20px);
+   }
+   50% {
+      opacity: .5;
+      transform: translateY(10px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+

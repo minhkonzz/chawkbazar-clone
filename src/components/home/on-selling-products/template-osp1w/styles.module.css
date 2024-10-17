@@ -35,6 +35,23 @@
    gap: 1rem;
 }
 
+.item {
+   opacity: 0;
+   transform: translateY(-20px);
+   animation: fadeIn .4s ease forwards;
+}
+
+@keyframes fadeIn {
+   50% {
+      opacity: .5;
+      transform: translateY(20px);
+   }
+   100% {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
 @media (min-width: 770px) {
    .list {
       grid-template-columns: 1fr 1fr;

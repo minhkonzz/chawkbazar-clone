@@ -44,7 +44,6 @@ export default function AccountChangePassword() {
                   label="Old password"
                   placeholder="Enter your current password"
                   inputValue={oldPassword}
-                  errorMessage=""
                   onChange={e => setOldPassword(e.target.value)}
                />
             </div>
@@ -53,11 +52,14 @@ export default function AccountChangePassword() {
                   label="New password"
                   placeholder="Enter new password"
                   inputValue={newPassword}
-                  errorMessage=""
                   onChange={e => setNewPassword(e.target.value)}
                />
             </div>
-            <button className={`${styles.button} cp`} onClick={updatePassword}>Change password</button>
+            <button 
+               className={`${styles.btn} cp`} 
+               onClick={updatePassword}>
+               Change password
+            </button>
          </div>
       </>
    );

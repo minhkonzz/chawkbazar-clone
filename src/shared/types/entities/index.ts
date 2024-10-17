@@ -20,19 +20,26 @@ export type ProductAttribute = {
 export type ProductVariation = {
    id: number,
    value: string,
-   meta: string,
+   meta?: string,
    attribute: ProductAttribute
 };
 
-export type Product = {
+export type SelectedProduct = {
    id: string,
    brand: Brand,
    category: Category,
    name: string,
    description: string,
-   image: unknown,
+   on_flash_sale: boolean,
+   image: {
+      p?: string,
+      pm?: string,
+      pmd?: string,
+      pxs?: string
+   },
    price: number,
-   salePrice: number,
+   sale_price?: number,
+   in_stock: number,
    variations: ProductVariation[],
    qty: number,
    selectedColor: Omit<ProductVariation, "attribute">,
@@ -40,6 +47,7 @@ export type Product = {
 };
 
 export type Order = {
+   id: string,
    customer: {
       id: string,
       email: string,
@@ -51,14 +59,12 @@ export type Order = {
       isPaid: boolean,
       type: string
    },
-   products: Product,
+   products: SelectedProduct[],
    city: string,
    shipFee: number,
    postCode: string,
    address: string,
    date: string,
    state: string,
-   total: number,
-   totalItems: number,
    note: string
 };

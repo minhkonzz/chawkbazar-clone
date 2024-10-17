@@ -1,31 +1,48 @@
-"use client"
-
-import { useIntersectionObserver } from "@/shared/hooks";
 import { getNewArrivalProducts } from "@/lib/firebase/firestore/product";
+import { Product as SerializedProduct } from "@/shared/types";
+import { delay } from "@/shared/helpers/global";
+import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
-import Product from "@/components/product/template-p1w";
+import Product, { Skeleton as ProductSkeleton } from "@/components/product/template-p1w";
+import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
-export default function NewArrivals() {
+const title: string = "New Arrivals";
 
-   const [ref, products] = useIntersectionObserver<any>(async () => {
-      return await getNewArrivalProducts();
-   });
-;
+async function NewArrivals() {
+   const firestoreServer = await useFirestoreServer();
+   const products = await getNewArrivalProducts(firestoreServer);
    return (
-      <section {...{ref}} className="home-section nfu observe">
-         <h3 className={styles.title}>New Arrivals</h3>
+      <section className="home-section nfu">
+         <h3 className={styles.title}>{title}</h3>
          <div className={styles.items}>
-            { products && products.map((item: any, index: number) => {
-               const { id, image } = item;
-               return <Product 
-                  key={`${index}-${id}`} 
-                  wImage={352} 
-                  hImage={452} 
-                  product={item}
-                  imagePath={image}
-               />
-            }) || <></> }
+            {products.map((item: SerializedProduct, i: number) => 
+               <div 
+                  style={{ animationDelay: `${i * .1}s` }}
+                  className={styles.item}>
+                  <Product 
+                     key={item?.id} 
+                     wImage={352} 
+                     hImage={452} 
+                     product={item}
+                     imagePath={item?.image?.pm}
+                  />
+               </div>
+            )}
          </div>
       </section>
    );
 };
+
+export default withSkeleton(
+   NewArrivals, 
+   () => (
+      <section className="home-section nfu">
+         <h3 className={styles.title}>{title}</h3>
+         <div className={styles.items}>
+            {Array.from({ length: 10 }).map((_: unknown) => 
+               <ProductSkeleton wImage={352} hImage={452} />
+            )}
+         </div>
+      </section>
+   )
+);

@@ -1,5 +1,5 @@
 .container {
-   background: url('https://chawkbazar.vercel.app/assets/images/page-header.jpg') 50% / cover no-repeat;
+   background: url('../../../public/page-header.webp') 50% / cover no-repeat;
    padding: 1.5rem;
 }
 

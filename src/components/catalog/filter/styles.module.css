@@ -10,20 +10,10 @@
 }
 
 .path {
-   padding-bottom: 1.75rem;
-}
-
-.pathPart {
    font-size: .875rem;
    line-height: 1.25rem;
-   color: rgb(90, 90, 90);
-}
-
-.pathSeparator {
-   margin: 0 .625rem;
-   color: rgb(90, 90, 90);
-   font-size: 1rem;
-   line-height: 1.5rem;
+   color: var(--primary-color);
+   padding-bottom: 1.75rem;
 }
 
 @media (min-width: 1024px) {

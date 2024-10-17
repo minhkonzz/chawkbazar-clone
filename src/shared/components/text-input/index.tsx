@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -9,9 +10,9 @@ interface Props {
    customStyle?: any,
    label?: string, 
    placeholder: string, 
-   inputValue: string,
+   inputValue?: string,
    onChange?: (e: any) => void,
-   errorMessage: string
+   errorMessage?: string
 }
 
 export default function TextInput({
@@ -27,21 +28,23 @@ export default function TextInput({
 
    const props = {
       className: `w-100pc ${styles.inp} ${customStyle}`,
-      value: inputValue,
+      value: inputValue || "",
       placeholder: placeholder ?? '',
       spellCheck: false,
-      ...(onChange ? { onChange: (e: any) => onChange(e) } : {})
-   }
+      ...(onChange ? {onChange: (
+         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      ) => onChange(e)} : {})
+   };
 
    return (
       <>
-         { label && <label className={`${styles.label} d-b`}>{label}</label> }
+         {label && <label className={`${styles.label} d-b`}>{label}</label>}
          { 
             textArea && 
             <textarea {...{...props, rows: textArea.r, cols: textArea.c}} /> || 
             <input {...props} type={isPassword && "password" || "text"} />
          }
-         { errorMessage && <p className={styles.error}>{errorMessage}</p> }
+         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
       </>
    )
 }

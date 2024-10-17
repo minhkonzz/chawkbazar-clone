@@ -1,25 +1,26 @@
-import { useState, useEffect } from "react";
-import { constants } from "@/configs";
+import { useState, useEffect, KeyboardEvent } from "react";
 import { useToast, useCartContext } from "@/context";
+import { ProductVariation } from "../types/entities";
+import { Product } from "../types";
+import { SelectedProductVariation } from "../types";
+import { constants } from "@/configs";
 
 const { AMOUNT_PATTERN } = constants.regex;
-const { INCREASE_ONCE, DECREASE_ONCE } = constants;
+const { DEFAULT_QUANTITY, INCREASE_ONCE, DECREASE_ONCE } = constants;
 
-export default function useProductOptions(product: any) {
+export default function useProductOptions(product: Product) {
 
    const toast = useToast()!;
-   const [ amount, setAmount ] = useState<string>("1");
-   const [ color, setColor ] = useState<any>(null);
-   const [ size, setSize ] = useState<any>(null);
-   const [ errors, setErrors ] = useState<any>(null);
+   const [amount, setAmount] = useState<string>("1");
+   const [color, setColor] = useState<SelectedProductVariation>();
+   const [size, setSize] = useState<SelectedProductVariation>();
+   const [errors, setErrors] = useState<{amountErr?: string, addonsErr?: string}>();
 
-   const { addCart } = useCartContext()!;
+   const {addCart} = useCartContext()!;
 
    useEffect(() => {
-      const addonsError = !!errors && errors.addonsError;
-      if (addonsError) {
-         // show message
-      }
+      const addonsErr = !!errors && errors.addonsErr;
+      if (addonsErr) toast("warning", "Addons");
    }, [errors]);
 
    const getAmountError = () => {
@@ -27,79 +28,69 @@ export default function useProductOptions(product: any) {
    };
 
    const getUserOptionsError = () => {
-      const amountError = getAmountError();
-      const addonsError = (!size && color && "Vui lòng chọn màu sản phẩm") || (!color && size && "Vui lòng chọn size") || (!size && !color && "Vui lòng chọn size và màu sản phẩm") || "";
-      if (amountError || addonsError) {
-         return {
-            amountError,
-            addonsError
-         }
+      const amountErr = getAmountError();
+      const addonsErr = (!size && color && "Vui lòng chọn màu sản phẩm") || (!color && size && "Vui lòng chọn size") || (!size && !color && "Vui lòng chọn size và màu sản phẩm") || "";
+      if (!amountErr && !addonsErr) return;
+      return {
+         ...(errors && {errors} || {}),
+         ...(amountErr && {amountErr} || {}),
+         ...(addonsErr && {addonsErr} || {})
       }
-      return null;
    };
 
-   const inDecreaseAmount = (amountAction: any) => {
-      const amountError = getAmountError();
-      if (amountError) {
-         setErrors({ ...errors, amountError });
+   const clickChangeAmount = (act: "INCREASE" | "DECREASE") => {
+      const amountErr = getAmountError();
+      if (amountErr) {
+         setErrors({...errors, amountErr});
          return;
       }
-      setAmount((Number(amount) + (amountAction === "INCREASE" ? INCREASE_ONCE : DECREASE_ONCE)).toString());
+      setAmount((Number(amount) + (act === "INCREASE" ? INCREASE_ONCE : DECREASE_ONCE)).toString());
    }
 
    const onModifyingAmount = (newAmount: string) => {
       if (newAmount.length > 5) return;
-      setErrors(null);
+      setErrors(undefined);
       setAmount(newAmount);
    }
 
-   const isEnteredAmount = (e: any) => {
-      const amountError = getAmountError();
-      if (e.code === "Enter" && amountError) setErrors({ ...errors, amountError });
+   const isEnteredAmount = (e: KeyboardEvent<HTMLInputElement>) => {
+      const amountErr = getAmountError();
+      if (e.code === "Enter" && amountErr) setErrors({...errors, amountErr});
    }
 
    const handleAddToCart = () => {
-      const userOptionsError = getUserOptionsError();
-      if (userOptionsError) {
-         setErrors(userOptionsError);
+      const userOptionsErr = getUserOptionsError();
+      if (userOptionsErr) {
+         setErrors(userOptionsErr);
          return;
       }
-      addCart({
+
+      const addCartProduct = {
          ...product,
-         qty: Number(amount) || 1, // amount default is 1
-         sizeSelected: size.sizeSelected,
-         colorSelected: color.colorSelected
-      });
-      toast("success", "Successfully added item to cart");
+         qty: Number(amount) || DEFAULT_QUANTITY,
+         selectedSize: size?.selected!,
+         selectedColor: color?.selected!
+      };
+
+      addCart(addCartProduct);
+      return addCartProduct;
    };
 
-   const onSelectAddon = (addonDetail: any, selectedIndex: number) => {
-      const { id: addonId, value: addonValue, meta: colorCode } = addonDetail;
-      if (!!colorCode === false) {
-         const { sizeSelected, sizeSelectedIndex } = size || { sizeSelected: null, sizeSelectedIndex: -1 };
-         if ((!!sizeSelected && sizeSelected.value === addonValue) || sizeSelectedIndex === selectedIndex) return;
-         setSize({
-            sizeSelected: {
-               ...sizeSelected,
-               id: addonId,
-               value: addonValue
-            },
-            sizeSelectedIndex: selectedIndex
-         });
-         return;
-      }
-      const { colorSelected, colorSelectedIndex } = color || { colorSelected: null, colorSelectedIndex: -1 };
-      if ((!!colorSelected && colorSelected.value === addonValue) || colorSelectedIndex === selectedIndex) return;
-      setColor({
-         colorSelected: {
-            ...colorSelected,
-            id: addonId,
-            value: addonValue,
-            meta: colorCode
+   const onSelectAddon = (addonDetail: ProductVariation, selectedIdx: number) => {
+      const {id, value, meta, attribute} = addonDetail;
+      const [addon, setAddon] = !meta && [size, setSize] || [color, setColor];
+      const {selected, idx} = addon || {selected: null, idx: -1}
+      if (selected?.value === value || idx === selectedIdx) return;
+      setAddon({
+         selected: {
+            attribute,
+            id,
+            value,
+            ...(meta && {meta} || {})
          },
-         colorSelectedIndex: selectedIndex
-      })
-   }
+         idx: selectedIdx
+      });
+   };
 
    return {
       product,
@@ -107,7 +98,7 @@ export default function useProductOptions(product: any) {
       color,
       size,
       errors,
-      inDecreaseAmount,
+      clickChangeAmount,
       onModifyingAmount,
       isEnteredAmount,
       onSelectAddon,

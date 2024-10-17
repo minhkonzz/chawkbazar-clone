@@ -1,6 +1,6 @@
 "use client"; 
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, MouseEvent } from "react";
 import { useModalContext, MODALS } from "@/context/modal";
 
 export default function AppModal() {
@@ -32,7 +32,7 @@ export default function AppModal() {
       setCurrentModal("none");
    }
 
-   const onClose = (e: any, isClickCloseButton: boolean = false) => {
+   const onClose = (e: MouseEvent<HTMLDivElement | HTMLButtonElement>, isClickCloseButton: boolean = false) => {
       if (!!setCurrentModal && ((e.target !== e.currentTarget && isClickCloseButton) || e.target === e.currentTarget)) {
          const modal = modalRef.current;
          if (!modal) return;

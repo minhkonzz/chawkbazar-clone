@@ -2,6 +2,7 @@
 :root {
   --primary-color: rgb(32, 32, 32);
   --button-hover-color: rgb(64, 64, 64);
+  --skeleton-color: rgba(245, 245, 245, .8);
   --error-color: rgb(239, 64, 64);
   --main-container-width-max: 1740px;
   --main-container-width-max380: calc(100vw - 15px);
@@ -24,7 +25,7 @@
   --page-section-dist-min768: 44px;
   --page-section-dist-min992: 52px;
   --page-section-dist-min1200: 60px;
-  --short-delay: all .3s;
+  --short-delay: all .2s;
   --long-delay: all 2s;
 }
 

@@ -1,57 +1,65 @@
 import { Firestore, or, where, and, doc } from "firebase/firestore";
-import { serializeProducts } from "./utils";
+import { serializeProduct, serializeProducts } from "./utils";
 import { fetchDoc, fetchDocs, fetchWithCustomQuery } from "..";
 import { firestore as firestoreClient } from "../../client";
+import { Product as SerializedProduct, ProductAttributes } from "@/shared/types";
+import { Product as FirestoreProduct, Product } from "./types";
 import collections from "../collections";
+import { Brand, Category } from "@/shared/types/entities";
 
 export const getProducts = async (
    firestore: Firestore = firestoreClient 
-): Promise<any> => {
-   const products = await fetchDocs({ collectionName: collections.PRODUCTS }, firestore);
+): Promise<SerializedProduct[]> => {
+   const products = await fetchDocs({
+      collectionName: collections.PRODUCTS
+   }, firestore) as FirestoreProduct[];
    return await serializeProducts(products);
 };
 
 export const getProductById = async (
    id: string,
    firestore: Firestore = firestoreClient
-): Promise<any> => {
-   const product = await fetchDoc(collections.PRODUCTS, id, firestore);
+): Promise<SerializedProduct | null> => {
+   const product = await fetchDoc(collections.PRODUCTS, id, firestore) as FirestoreProduct;
    if (!product) return null;
-   const { brand, category } = product;
-   return {
-      ...product,
-      brand: brand.id,
-      category: category.id
-   };
+   return serializeProduct(product);
 };
 
 export const getProductAttributes = async (
    firestore: Firestore = firestoreClient
-): Promise<any> => {
-   const res = await Promise.all([collections.CATEGORIES, collections.BRANDS].map(
-      (collectionName) => fetchDocs({ collectionName }, firestore)
-   ));
+): Promise<ProductAttributes> => {
+   const r = await Promise.all([collections.CATEGORIES, collections.BRANDS].map(
+      collectionName => fetchDocs({collectionName}, firestore)
+   )) as [Category[], Brand[]];
 
    return {
       category: {
          title: "Category",
-         options: res[0].map(((e: any) => ({ name: e.name, slug: e.slug })))
+         options: r[0].map((e: Category) => ({
+            id: e.id,
+            name: e.name, 
+            slug: e.slug
+         }))
       },
       brand: {
          title: "Brand",
-         options: res[1].map(((e: any) => ({ name: e.name, slug: e.slug })))
+         options: r[1].map(((e: Brand) => ({
+            id: e.id,
+            name: e.name, 
+            slug: e.slug
+         })))
       },
       price: {
          title: "Prices",
          options: [
-            { id: "rp1", name: "Over $50",      slug: "50-",      min: null, max: 50 },
+            { id: "rp1", name: "Over $50",      slug: "50-",      min: 0, max: 50 },
             { id: "rp2", name: "$50 to $100",   slug: "50-100",   min: 50,   max: 100 },
             { id: "rp3", name: "$100 to $200",  slug: "100-200",  min: 100,  max: 150 },
             { id: "rp4", name: "$150 to $200",  slug: "150-200",  min: 150,  max: 200 },
             { id: "rp5", name: "$200 to $300",  slug: "200-300",  min: 200,  max: 300 },
             { id: "rp6", name: "$300 to $500",  slug: "300-500",  min: 300,  max: 500 },
             { id: "rp7", name: "$500 to $1000", slug: "500-1000", min: 500,  max: 1000 },
-            { id: "rp8", name: "Under $1000",   slug: "-1000",    min: 1000, max: null }
+            { id: "rp8", name: "Under $1000",   slug: "-1000",    min: 1000, max: 0 }
          ]
       }
    };
@@ -60,7 +68,7 @@ export const getProductAttributes = async (
 export const getFilteredProducts = async (
    filter: any,
    firestore: Firestore = firestoreClient
-): Promise<any> => {
+): Promise<SerializedProduct[]> => {
 
    const query: any[] = [];
    const keys = Object.keys(filter);
@@ -105,42 +113,44 @@ export const getFilteredProducts = async (
       collections.PRODUCTS,
       query,
       firestore
-   );
+   ) as Product[];
 
    return await serializeProducts(products);
 };
 
 export const getNewArrivalProducts = async (
    firestore: Firestore = firestoreClient
-): Promise<any> => {
-   const products = await fetchDocs({ collectionName: collections.NEW_ARRIVAL_PRODUCTS }, firestore);
+): Promise<SerializedProduct[]> => {
+   const products = await fetchDocs({
+      collectionName: collections.NEW_ARRIVAL_PRODUCTS
+   }, firestore) as FirestoreProduct[];
    return await serializeProducts(products);
 };
 
 export const getFlashSaleProducts = async (
    firestore: Firestore = firestoreClient
-): Promise<any> => {
+): Promise<SerializedProduct[]> => {
    const products = await fetchDocs({
       collectionName: collections.PRODUCTS,
       _where: ["on_flash_sale", "==", true]
-   }, firestore);
+   }, firestore) as FirestoreProduct[];
    return await serializeProducts(products);
 };
 
 export const getOnSellProducts = async (
    firestore: Firestore = firestoreClient
-): Promise<any> => {
+): Promise<SerializedProduct[]> => {
    const products = await fetchDocs({
       collectionName: collections.PRODUCTS,
       _where: ["in_stock", ">", 0]
-   }, firestore);
+   }, firestore) as FirestoreProduct[];
    return await serializeProducts(products);
 };
 
 export const getBrands = async (
    firestore: Firestore = firestoreClient
-): Promise<any> => {
+): Promise<Brand[]> => {
    return await fetchDocs({
       collectionName: collections.BRANDS,
-   }, firestore);
+   }, firestore) as Brand[];
 };

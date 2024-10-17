@@ -16,7 +16,7 @@ export default function Promotions() {
    useEffect(() => {
       (async () => {
          const _banners = await getPromotionBanners();
-         setBanners(_banners.map((b: { storageUrl: string }) => b.storageUrl));
+         setBanners(_banners.map((b: { url: string }) => b.url));
       })();
    }, []);
 
@@ -36,7 +36,7 @@ export default function Promotions() {
             centerMode
             preventScrollOnSwipe
             itemsListProps={{ className: styles.items }}>
-            { banners.map((b: string, i: number) => 
+            {banners.map((b: string, i: number) => 
                <Image
                   key={i}
                   src={`${env.BANNER_IMAGE_STORAGE + b}`}
@@ -44,7 +44,7 @@ export default function Promotions() {
                   width={1252}
                   height={496}
                />
-            ) }
+            )}
          </ReactSimplyCarousel>
       </section>
    );

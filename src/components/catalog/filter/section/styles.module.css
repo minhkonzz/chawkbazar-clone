@@ -4,8 +4,12 @@
    padding-bottom: 1.75rem;
 }
 
-.title {
+.title,
+.titleSkeleton {
    margin-bottom: 1.75rem;
+}
+
+.title {
    font-size: .875rem;
    line-height: 1.25rem;
    font-weight: 600;

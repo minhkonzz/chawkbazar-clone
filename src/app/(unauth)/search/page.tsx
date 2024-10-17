@@ -1,6 +1,8 @@
-import { Suspense } from "react";
-import { Filter, Products } from "@/components/catalog";
+import dynamic from "next/dynamic";
 import styles from "./page.module.css";
+
+const Filter = dynamic(() => import("@/components/catalog/filter"), { ssr: false });
+const Products = dynamic(() => import("@/components/catalog/products"), { ssr: false });
 
 export default function Search() {
    return (
@@ -27,10 +29,10 @@ export default function Search() {
             </div>
          </div>
          <div className={`${styles.catalog} d-flex wrapper1920 mx-auto`}>
-            <Suspense fallback={<></>}>
-               <Filter />
+            <Filter />
+            <div className="w-100pc">
                <Products />
-            </Suspense>
+            </div>
          </div>
       </>
    );

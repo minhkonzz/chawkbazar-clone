@@ -1,17 +1,13 @@
-import { getFirestore } from "firebase/firestore";
+import { ReactNode } from "react";
 import { getOnSellProducts } from "@/lib/firebase/firestore/product";
-import getAuthenticatedAppForUser from "@/lib/firebase/server";
+import { Product as SerializedProduct } from "@/shared/types";
+import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";
-import Product from "@/components/product/template-p2d";
+import Product, { Skeleton as ProductSkeleton } from "@/components/product/template-p2d";
+import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
-export default async function OnSellingProducts() {
-
-   const { firebaseServerApp } = await getAuthenticatedAppForUser();
-   const products = await getOnSellProducts(getFirestore(firebaseServerApp));
-
-   if (!products) return <></>;
-
+function Container({ children }: { children: ReactNode }) {
    return (
       <section className="home-section nfu">
          <div className={`${styles.titleWrapper} d-flex jc-sb at-center`}>
@@ -23,13 +19,37 @@ export default async function OnSellingProducts() {
                width={428}
                height={600} 
                className={styles.image}
-               src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fbanner%2Fbanner-sale-offer.jpg&w=640&q=100" 
+               src="/banner-sale-offer.webp" 
                alt="selling" 
             />   
             <div className={styles.list}>
-               { products.map((product: any, i: number) => <Product key={`${product.id}-${i}`} product={product} />) }
+               {children}
             </div>
          </div>
       </section>
+   );
+};
+
+async function List() {
+   const firestoreServer = await useFirestoreServer();
+   const products = await getOnSellProducts(firestoreServer);
+   return (
+      products.map((product: SerializedProduct, i: number) => 
+         <div className={styles.item} style={{ animationDelay: `${i * .1}s` }}>
+            <Product key={product?.id} product={product} />
+         </div>
+      )
+   );
+};
+
+export default function OnSellingProducts() {
+   return (
+      <Container>
+         {withSkeleton(List, () => 
+            Array.from({ length: 9 }).map((_, i) => 
+               <ProductSkeleton key={`os${i}`} />
+            )
+         )()}
+      </Container>
    );
 };

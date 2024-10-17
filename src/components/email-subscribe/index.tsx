@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import styles from "./styles.module.css";
 import TextInput from "@/shared/components/text-input";
 
 export default function EmailSubscribe() {
+   const [input, setInput] = useState<string>("");
+
    return (
       <section className={`${styles.container} home-section nfu d-flex at-center`}>
          <div className={styles.header}>
@@ -14,12 +17,11 @@ export default function EmailSubscribe() {
             <TextInput 
                customStyle={styles.inp}
                placeholder="Write your email here"
-               inputValue="Hello"
-               onChange={() => {}}
-               errorMessage=""
+               inputValue={input}
+               onChange={e => setInput(e.target.value)}
             />
             <button className={`${styles.btn} fw-600`}>Subscribe</button>
          </form>
       </section>
-   )
-}
+   );
+};

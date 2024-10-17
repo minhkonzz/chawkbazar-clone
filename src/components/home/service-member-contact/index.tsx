@@ -12,7 +12,7 @@ export default function ServiceMemberContact() {
             width={870}
             height={300} 
             className={styles.image}
-            src="https://chawkbazar.vercel.app/_next/image?url=%2Fassets%2Fimages%2Fsupport.png&w=1080&q=75" 
+            src="/support.webp" 
             alt="person-contacts" 
          />
          <button className={`${styles.button} cp jc-center at-center`}>
@@ -24,8 +24,7 @@ export default function ServiceMemberContact() {
                viewBox="0 0 512 512" 
                className={styles.icon} 
                height="1em" 
-               width="1em" 
-               xmlns="http://www.w3.org/2000/svg">
+               width="1em">
                <path 
                   fill="none" 
                   strokeLinecap="round" 

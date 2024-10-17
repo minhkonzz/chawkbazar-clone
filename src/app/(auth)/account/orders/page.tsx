@@ -1,9 +1,9 @@
-import { getFirestore } from "firebase/firestore";
 import { getUserOrders } from "@/lib/firebase/firestore/order";
 import { isEmptyArray } from "@/shared/helpers/array";
 import { OrderListItem } from "@/shared/types";
-import getAuthenticatedAppForUser from "@/lib/firebase/server";
+import { getFirestore } from "firebase/firestore";
 import styles from "./page.module.css";
+import getAuthenticatedAppForUser from "@/lib/firebase/server";
 
 const _mockTableHead = [
    "Order",
@@ -15,11 +15,12 @@ const _mockTableHead = [
 
 export default async function AccountOrders() {
    const { firebaseServerApp, currentUser } = await getAuthenticatedAppForUser();
-   if (!currentUser?.uid) {
-      return null;
-   }
 
-   const orders = await getUserOrders(currentUser.uid, getFirestore(firebaseServerApp));
+   if (!currentUser) 
+      return <p>Not found current user</p>
+
+   const firestoreServer = getFirestore(firebaseServerApp);
+   const orders = await getUserOrders(currentUser.uid, firestoreServer);
 
    return (
       !isEmptyArray(orders) && 

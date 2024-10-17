@@ -24,10 +24,11 @@ export default function RootLayout({
 }: Readonly<{
    children: ReactNode
 }>) {
+
    return (
       <html lang="en">
          <body className={openSans.className}>
-            <NextTopLoader color="rgb(33, 33, 33)" height={5} />
+            <NextTopLoader color="rgb(90, 90, 90)" height={2} />
             <FirebaseUserContext>
                <CartProvider>
                   <ModalContext>

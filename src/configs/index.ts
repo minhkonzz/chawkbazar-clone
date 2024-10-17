@@ -2,6 +2,7 @@ const constants = {
    INCREASE_ONCE: 1,
    DECREASE_ONCE: -1,
    TOAST_DURATION: 4000,
+   DEFAULT_QUANTITY: 1,
    regex: {
       EMAIL_REGEX: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
       PASSWORD_REGEX: /^(?=.*[~!@#$%^&*(),.?":{}|<>])(?=.*[A-Z]).{8,15}$/g,

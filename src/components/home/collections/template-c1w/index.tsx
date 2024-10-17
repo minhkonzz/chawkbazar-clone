@@ -1,39 +1,61 @@
-import { getFirestore } from "firebase/firestore";
 import { getCollectionBanners } from "@/lib/firebase/firestore/banner";
 import { mergeStyles } from "@/shared/helpers/global";
 import { env } from "@/configs";
-import getAuthenticatedAppForUser from "@/lib/firebase/server";
+import SkeletonLoader from "@/shared/components/skeleton";
+import withSkeleton from "@/shared/hocs/withSkeleton";
 import Image from "next/image";
 import styles from "./styles.module.css";
+import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
-export default async function Collections() {
+const bannerStyles = (i: number, maxLen: number) => 
+   i === 0 || i === maxLen - 1 ?
+   { className: mergeStyles(styles, ["collection", "prime"]), w: 1030, h: 425 } :
+   { className: styles.collection, w: 425, h: 425 };
 
-   const { firebaseServerApp } = await getAuthenticatedAppForUser();
-   const banners = await getCollectionBanners("c1w", getFirestore(firebaseServerApp));
+async function Collections() {
 
-   if (!banners) return <></>;
+   const firestoreServer = await useFirestoreServer();
+   const banners = await getCollectionBanners("c1w", firestoreServer);
 
    return (
       <section className={`${styles.container} home-section`}>
-         { banners.map((url: string, i: number) => {
-            const meta = i === 0 || i === banners.length - 1 ? 
-               { className: mergeStyles(styles, ["collection", "prime"]), w: 1030, h: 425 } : 
-               { className: styles.collection, w: 425, h: 425 };
-            
+         {banners.map((url: string, i: number) => {
+            const _s = bannerStyles(i, banners.length)
             return (
-               <div className={meta.className} key={i}>
+               <div 
+                  className={`${_s.className} ${styles.loaded} posrel o-h`} 
+                  style={{ animationDelay: `${i * .1}s` }}
+                  key={i}>
                   <Image 
                      className={styles.image} 
-                     width={meta.w} 
-                     height={meta.h} 
-                     style={{ height: "auto" }}
+                     width={_s.w} 
+                     height={_s.h} 
                      src={`${env.BANNER_IMAGE_STORAGE + url}`} 
                      alt="logo_shop" 
                      priority 
                   />
+                  <div className={`${styles.decor} posab top-0 left-0`}></div>
                </div>
             );
-         }) }
+         })}
       </section>
-   )
-}
+   );
+};
+
+export default withSkeleton(
+   Collections,
+   () => {
+      const length: number = 6;
+      return (
+         <section className={`${styles.container} home-section`}>
+            {Array.from({ length }).map((_, i: number) => {
+               const _s = bannerStyles(i, length);
+               return <div className={_s.className}>
+                  <SkeletonLoader width={_s.w} height={_s.h} borderRadius=".5rem" />
+               </div>;
+            })}
+         </section>
+      );
+   }
+);
+

@@ -16,12 +16,23 @@
 
 .link {
    margin-bottom: .5rem;
-   border-radius: .25rem;
+   border-radius: .5rem;
    padding: .875rem 1rem;
    font-size: .875rem;
    line-height: 1.25rem;
    font-weight: 400;
    color: var(--primary-color);
+   transition: all .2s ease;
+}
+
+.link:hover {
+   background-color: rgb(245, 245, 245);
+}
+
+.link.selected {
+   background-color: var(--primary-color);
+   color: #fff;
+   font-weight: 600;
 }
 
 .linkTitle {

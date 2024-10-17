@@ -1,14 +1,17 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, MutableRefObject } from "react";
 
-export default function useIntersectionObserver<T>(asyncOperator: () => Promise<T>, threshold: number = .1) {
-   
-   const ref = useRef(null);
+export default function useIntersectionObserver<T>(
+   asyncOperator: () => Promise<T>, 
+   threshold: number = .1
+) {
+
+   const ref = useRef<HTMLElement>(null);
    const [cachedData, setCachedData] = useState<T>();
 
    const observerOptions = {
       rootMargin: "50px",
       threshold,
-   }
+   };
 
    useEffect(() => {
       const currentRef = ref.current;
@@ -30,5 +33,5 @@ export default function useIntersectionObserver<T>(asyncOperator: () => Promise<
 
    }, [threshold, cachedData]);
 
-   return [ref, cachedData];
-}
+   return [ref, cachedData] as [MutableRefObject<HTMLElement>, T]; 
+};

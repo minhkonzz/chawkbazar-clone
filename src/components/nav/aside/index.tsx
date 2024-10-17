@@ -43,7 +43,7 @@ export default function AsideNav() {
                         { routeName: "/policy", routeText: "Terms & Conditions" }, 
                         { routeName: "/contact", routeText: "Contact" },
                         { routeName: "/checkout", routeText: "Checkout" }
-                     ].map((route: any, i: number) => 
+                     ].map((route: { routeName: string, routeText: string }, i: number) => 
                         <li key={`${route.routeName}-${i}`} onClick={() => navigate(route.routeName)}>
                            {route.routeText}
                         </li>

@@ -1,7 +1,11 @@
+.containerSkeleton,
 .container {
-   cursor: pointer;
    padding-bottom: .25rem;
    border-radius: 12px;
+}
+
+.container {
+   cursor: pointer;
    transition: all .2s ease-in;
 }
 
@@ -10,30 +14,47 @@
    box-shadow: 0px 2px 14px #e9e9e9;
 }
 
-.imageContainer {
-   margin-bottom: .875rem;
-   overflow: hidden;
+.detail {
+   padding: .5rem .8rem;
 }
 
-.detail {
-   padding: .5rem;
+.detailSkeleton {
+   padding: .5rem 0;
+}
+
+.name,
+.nameSkeleton {
+   margin-bottom: .375rem;
 }
 
 .name {
-   margin-bottom: .375rem;
    font-weight: 600;
    font-size: 1.125rem;
    line-height: 1.75rem;
 }
 
+.desc,
+.descSkeleton {
+   max-width: "100%";
+}
+
 .desc {
    font-size: .875rem;
    line-height: 1.625;
-   max-width: 250px;
 }
 
-.prices {
+.descSkeleton {
+   height: 1rem;
+}
+
+.prices,
+.pricesSkeleton {
    margin-top: .75rem;
+}
+
+.pricesSkeleton {
+   width: 30%;
+   height: 1.25rem;
 }
 
 .lastPrice {

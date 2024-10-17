@@ -1,13 +1,13 @@
 "use client";
 
-import { useState, forwardRef, ForwardedRef } from "react";
+import { useState, forwardRef, ForwardedRef, MouseEvent } from "react";
 import Image from "next/image";
 import styles from "./styles.module.css";
 import SocialAuth from "./social";
 import LocalAuth from "./local";
 
 interface Props {
-   onClose: (e: any, isClickCloseButton: boolean) => void;
+   onClose: (e: MouseEvent<HTMLButtonElement>, isClickCloseButton: boolean) => void;
 }
 
 export default forwardRef(function Auth({ onClose }: Props, ref: ForwardedRef<HTMLDivElement | null>) {

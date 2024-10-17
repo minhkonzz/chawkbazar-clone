@@ -1,7 +1,9 @@
 .container {
    flex-direction: column;
    justify-content: center;
-   padding: 2.5rem 1rem;
+   padding: 2.5rem 1.25rem;
+   border-radius: .5rem;
+   background-color: rgb(249, 249, 249);
 }
 
 .header {
@@ -10,8 +12,8 @@
 }
 
 .heading {
-   font-size: 1.125rem !important;
-   line-height: 1.75rem !important;
+   font-size: 1.125rem;
+   line-height: 1.75rem;
    font-weight: bold;
    color: var(--primary-color);
 }
@@ -19,7 +21,7 @@
 .desc {
    font-size: .75rem;
    line-height: 1.5rem;
-   color: rgb(90, 90, 90);
+   color: var(--primary-color);
 }
 
 .form {
@@ -29,7 +31,8 @@
 }
 
 .inp {
-   height: 3rem;
+   height: 2.75rem;
+   background-color: #fff;
 }
 
 .btn {
@@ -40,13 +43,18 @@
    padding: 1rem 1.25rem;
    font-size: 13px;
    line-height: 1rem;
-   transition: all .3s ease-in-out;
+   transition: all .2s ease;
    color: #fff;
+}
+
+.btn:hover {
+   opacity: .9;
 }
 
 @media (min-width: 480px) {
    .container {
-      padding: 0 4rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
    }
 
    .form {
@@ -56,6 +64,7 @@
 
    .inp {
       text-align: left;
+      height: 100%;
    }
 
    .btn {
@@ -67,7 +76,7 @@
 
 @media (min-width: 768px) {
    .container {
-      padding: 3.5rem 0;
+      padding: 3.5rem 4rem;
    }
 
    .header {
@@ -105,7 +114,8 @@
 
 @media (min-width: 1024px) {
    .container {
-      padding: 4rem 0;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
    }
    
    .header {
@@ -151,6 +161,11 @@
 }
 
 @media (min-width: 1500px) {
+   .container {
+      padding-left: 6rem;
+      padding-right: 6rem;
+   }
+
    .heading {
       font-size: 1.875rem;
       line-height: 2.25rem;

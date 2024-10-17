@@ -2,7 +2,7 @@
    margin-bottom: 1rem;
 }
 
-.button {
+.btn {
    display: inline-flex;
    margin-top: .75rem;
    border-radius: .375rem;
@@ -13,6 +13,10 @@
    line-height: 1rem;
    color: #fff;
    transition: all .3s ease;
+}
+
+.btn:hover {
+   opacity: .9;
 }
 
 @media (min-width: 768px) {

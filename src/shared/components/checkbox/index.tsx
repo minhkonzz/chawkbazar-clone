@@ -1,14 +1,14 @@
 "use client";
 
-import { ReactNode, useRef, useEffect } from "react";
+import { ReactNode, useRef, useEffect, ChangeEvent } from "react";
+import { ProductAttributeOption } from "@/shared/types";
 import styles from "./styles.module.css";
-// import { useEffect, useRef } from "react";
 
 interface Props {
    children: ReactNode;
    checked: boolean;
-   value: any;
-   onSelectChange: (e: React.FormEvent<HTMLInputElement>, value: string) => void;
+   value: ProductAttributeOption;
+   onSelectChange: (e: ChangeEvent<HTMLInputElement>, value: ProductAttributeOption) => void;
 };
 
 export default function Checkbox({
@@ -45,5 +45,5 @@ export default function Checkbox({
          /> 
          <span className={styles.checkmark}></span>
       </label>
-   )
-}
+   );
+};

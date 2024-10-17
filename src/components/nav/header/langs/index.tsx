@@ -5,7 +5,7 @@ export default function HeaderLanguages() {
       <div className={styles.container}>
          <button className={`${styles.langsButton} d-flex at-center`}>
             <span className={`${styles.nation} d-flex at-center`}>
-               <svg className={styles.flag} xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us" viewBox="0 0 640 480" width="20px" height="15px">
+               <svg className={styles.flag} id="flag-icon-css-us" viewBox="0 0 640 480" width="20px" height="15px">
                   <g fillRule="evenodd">
                      <g strokeWidth="1pt">
                         <path fill="#bd3d44" d="M0 0h972.8v39.4H0zm0 78.8h972.8v39.4H0zm0 78.7h972.8V197H0zm0 78.8h972.8v39.4H0zm0 78.8h972.8v39.4H0zm0 78.7h972.8v39.4H0zm0 78.8h972.8V512H0z" transform="scale(.9375)"></path>
@@ -17,7 +17,7 @@ export default function HeaderLanguages() {
                </svg>
                English - EN
             </span>
-            <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true" className={styles.icon} height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
+            <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true" className={styles.icon} height="1em" width="1em"><path strokeLinecap="round" strokeLinejoin="round" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
          </button>
          <ul></ul>
       </div>

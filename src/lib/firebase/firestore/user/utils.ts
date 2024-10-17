@@ -1,5 +1,7 @@
+import { User } from "firebase/auth";
+
 export default class FirestoreUserServiceUtilities {
-   static extractUserMetadata(user: any): any {
+   static extractUserMetadata(user: User): any {
       return {
          uid: user.uid,
          displayName: user.displayName,

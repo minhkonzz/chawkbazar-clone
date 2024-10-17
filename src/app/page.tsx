@@ -7,15 +7,14 @@ import TopBrands from "@/components/home/top-brands/template-tb1w";
 import NewArrivals from "@/components/home/new-arrivals/template-na1w";
 import ServiceMemberContact from "@/components/home/service-member-contact";
 import ModernCaptures from "@/components/home/modern-captures";
+import { Suspense } from "react";
 
 export default function Home() {
-
    return (
       <>
          <div className="wrapper1920 mx-auto">
             <Collections />
             <FlashSale />
-            {/* <Promotions /> */}
             <OnSellingProducts />
             <TopBrands />
             <NewArrivals />

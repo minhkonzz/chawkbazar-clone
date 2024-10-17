@@ -9,19 +9,28 @@ import styles from "./page.module.css";
 import TextInput from "@/shared/components/text-input";
 import RadioGroup from "@/shared/components/radio-group";
 
-const { regex, TOAST_DURATION } = constants;
+const {regex} = constants;
 
 const genders = [
    { title: "Male", value: "male" },
    { title: "Female", value: "female" }
 ];
 
+export type Profile = {
+   firstName: string,
+   lastName: string,
+   displayName: string,
+   phone: string,
+   email: string,
+   gender: string
+};
+
 export default function AccountProfile() {
 
    const toast = useToast()!;
-   const { currentUser } = useFirebaseUserContext()!;
+   const {currentUser} = useFirebaseUserContext()!;
 
-   const [profile, setProfile] = useState({
+   const [profile, setProfile] = useState<Profile>({
       firstName: "",
       lastName: "",
       displayName: "",
@@ -41,40 +50,40 @@ export default function AccountProfile() {
          });
    }
 
-   const { errors, handleAfterValidate: _updateProfile } = useInputsValidation([
+   const {errors, handleAfterValidate: _updateProfile} = useInputsValidation([
       {
-         fieldTitle: "First name",
-         inputValue: profile.firstName,
+         title: "First name",
+         value: profile.firstName,
          pattern: regex.NAME_REGEX,
-         errorIdentifier: "firstNameError",
+         errorIdentifier: "firstNameErr",
          errorMessage: "Chỉ được phép ký tự là chữ"
       },
       {
-         fieldTitle: "Last name",
-         inputValue: profile.lastName,
+         title: "Last name",
+         value: profile.lastName,
          pattern: regex.NAME_REGEX,
-         errorIdentifier: "lastNameError",
+         errorIdentifier: "lastNameErr",
          errorMessage: "Chỉ được phép ký tự là chữ"
       },
       {
-         fieldTitle: "Display name",
-         inputValue: profile.displayName,
+         title: "Display name",
+         value: profile.displayName,
          pattern: regex.USERNAME_REGEX,
-         errorIdentifier: "displayNameError",
+         errorIdentifier: "displayNameErr",
          errorMessage: "Chỉ được phép ký tự là chữ hoặc số"
       },
       {
-         fieldTitle: "Phone",
-         inputValue: profile.phone,
+         title: "Phone",
+         value: profile.phone,
          pattern: regex.NUMERIC_REGEX,
-         errorIdentifier: "phoneError",
+         errorIdentifier: "phoneErr",
          errorMessage: "Chỉ được phép ký tự là số"
       },
       {
-         fieldTitle: "Email",
-         inputValue: profile.email,
+         title: "Email",
+         value: profile.email,
          pattern: regex.EMAIL_REGEX,
-         errorIdentifier: "emailError",
+         errorIdentifier: "emailErr",
          errorMessage: "Email không hợp lệ"
       }
    ], updateProfile);
@@ -87,8 +96,8 @@ export default function AccountProfile() {
                   label="First Name *"
                   placeholder="Enter your first name"
                   inputValue={profile.firstName}
-                  errorMessage={errors?.firstNameError || ""}
-                  onChange={e => setProfile({ ...profile, firstName: e.target.value })}
+                  errorMessage={errors?.firstNameErr || ""}
+                  onChange={e => setProfile({...profile, firstName: e.target.value})}
                />
             </div>
             <div className={styles.inpWrapper}>
@@ -96,8 +105,8 @@ export default function AccountProfile() {
                   label="Last Name *"
                   placeholder="Enter your first name"
                   inputValue={profile.lastName}
-                  errorMessage={errors?.lastNameError || ""}
-                  onChange={e => setProfile({ ...profile, lastName: e.target.value })}
+                  errorMessage={errors?.lastNameErr || ""}
+                  onChange={e => setProfile({...profile, lastName: e.target.value})}
                />
             </div>
          </div>
@@ -106,8 +115,8 @@ export default function AccountProfile() {
                label="Display name *"
                placeholder="Your display name"
                inputValue={profile.displayName}
-               errorMessage={errors?.displayNameError || ""}
-               onChange={e => setProfile({ ...profile, displayName: e.target.value })}
+               errorMessage={errors?.displayNameErr || ""}
+               onChange={e => setProfile({...profile, displayName: e.target.value})}
             />
          </div>
          <div className={`${styles.dinp} d-flex`}>
@@ -116,8 +125,8 @@ export default function AccountProfile() {
                   label="Phone *"
                   placeholder="Enter your phone"
                   inputValue={profile.phone}
-                  errorMessage={errors?.phoneError || ""}
-                  onChange={e => setProfile({ ...profile, phone: e.target.value })}
+                  errorMessage={errors?.phoneErr || ""}
+                  onChange={e => setProfile({...profile, phone: e.target.value})}
                />
             </div>
             <div className={styles.inpWrapper}>
@@ -125,8 +134,8 @@ export default function AccountProfile() {
                   label="Email *"
                   placeholder="Enter your email"
                   inputValue={profile.email}
-                  errorMessage={errors?.emailError || ""}
-                  onChange={e => setProfile({ ...profile, email: e.target.value })}
+                  errorMessage={errors?.emailErr || ""}
+                  onChange={e => setProfile({...profile, email: e.target.value})}
                />
             </div>
          </div>
