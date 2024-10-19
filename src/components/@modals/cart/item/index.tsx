@@ -4,7 +4,7 @@ import { env } from "@/configs";
 import { useCartContext } from "@/context";
 import { constants } from "@/configs";
 import { fixDecimal } from "@/shared/helpers/number";
-import { SelectedProduct } from "@/shared/types/entities";
+import { SelectedProduct } from "@/shared/types";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
@@ -16,8 +16,7 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
       name, 
       qty,
       image,
-      price,
-      sale_price, 
+      lastPrice,
       selectedSize, 
       selectedColor 
    } = cartItem;
@@ -26,7 +25,7 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
 
    const changeAmount = (type: number) => {
       adjustAmount({ itemAdjust: cartItem, type });
-   }
+   };
 
    return (
       <div className={`${styles.container} d-flex at-center`}>
@@ -51,7 +50,7 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
          </div>
          <div className="d-flex fd-col">
             <a href="#" className={styles.name}>{`${name} - ${selectedSize.value}, ${selectedColor.value}`}</a>
-            <span className={styles.unitPrice}>Unit price: ${fixDecimal(sale_price || price, 2)}</span>
+            <span className={styles.unitPrice}>Unit price: ${fixDecimal(lastPrice, 2)}</span>
             <div className="d-flex jc-sb at-end">
                <div className={`${styles.quantityControl} d-flex at-center o-h`}>
                   <button 
@@ -79,9 +78,9 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
                      </svg>
                   </button>
                </div>
-               <span className={`${styles.total} fw-600`}>${fixDecimal((sale_price || price) * qty, 2)}</span>
+               <span className={`${styles.total} fw-600`}>${fixDecimal(lastPrice * qty, 2)}</span>
             </div>
          </div>
       </div>
-   )
-}
+   );
+};

@@ -1,5 +1,5 @@
 import { fixDecimal } from "@/shared/helpers/number";
-import { SelectedProduct } from "@/shared/types/entities";
+import { SelectedProduct } from "@/shared/types";
 import { useCartContext } from "@/context/cart";
 import { env } from "@/configs";
 import styles from "./styles.module.css";
@@ -29,7 +29,7 @@ export default function CheckoutOrderDetail() {
                   />
                   <h6 className={styles.productText}>{`${item?.name} - ${item?.selectedSize.value}, ${item?.selectedColor.value}`}</h6>
                </div>
-               <span className={styles.productText}>${`${fixDecimal(item?.sale_price || item?.price, 2)}`}</span>
+               <span className={styles.productText}>${`${fixDecimal(item?.lastPrice, 2)}`}</span>
             </div>
          )}
          <div className={`${styles.wrapper} d-flex at-center jc-sb`}>

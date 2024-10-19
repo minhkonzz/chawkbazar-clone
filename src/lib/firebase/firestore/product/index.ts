@@ -2,10 +2,10 @@ import { Firestore, or, where, and, doc } from "firebase/firestore";
 import { serializeProduct, serializeProducts } from "./utils";
 import { fetchDoc, fetchDocs, fetchWithCustomQuery } from "..";
 import { firestore as firestoreClient } from "../../client";
-import { Product as SerializedProduct, ProductAttributes } from "@/shared/types";
+import { ProductAttributes } from "@/shared/types";
+import { Product as SerializedProduct, Brand, Category } from "@/shared/types/entities";
 import { Product as FirestoreProduct, Product } from "./types";
 import collections from "../collections";
-import { Brand, Category } from "@/shared/types/entities";
 
 export const getProducts = async (
    firestore: Firestore = firestoreClient 

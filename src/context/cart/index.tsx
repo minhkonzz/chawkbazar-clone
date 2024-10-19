@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, createContext, useContext } from "react";
-import { SelectedProduct } from "@/shared/types/entities";
+import { SelectedProduct } from "@/shared/types";
 import { useLocalStorage } from "@/shared/hooks";
 import { constants } from "@/configs";
 
@@ -14,13 +14,11 @@ export type Cart = {
 
 type CartContextType = {
    cart: Cart,
-   addCart: (params: NewSelection) => void,
+   addCart: (item: SelectedProduct) => void,
    removeFromCart: (item: any) => void,
    adjustAmount: (params: any) => void,
    clearCart: () => void
 };
-
-type NewSelection = Pick<SelectedProduct, "id" | "qty" | "price" | "sale_price" | "selectedSize" | "selectedColor">;
 
 const CartContext = createContext<CartContextType | null>(null);
 
@@ -30,15 +28,14 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       totalPrice: 0,
    });
 
-   const addCart = (params: NewSelection) => {
+   const addCart = (item: SelectedProduct) => {
       const {
          id: idAdd,
          qty: qtyAdd,
-         price: unitPrice,
-         sale_price,
+         lastPrice,
          selectedSize,
          selectedColor,
-      } = params;
+      } = item;
 
       const currentItems = cart.items;
       const isItemAdded = !!currentItems.find(
@@ -52,8 +49,8 @@ export default function CartProvider({ children }: { children: ReactNode }) {
             ? currentItems.map((item: SelectedProduct) =>
                item.id === idAdd ? { ...item, qty: item.qty + qtyAdd } : item
             )
-            : [...currentItems, { ...params, qty: qtyAdd }],
-         totalPrice: cart.totalPrice + qtyAdd * (sale_price || unitPrice),
+            : [...currentItems, { ...item, qty: qtyAdd }],
+         totalPrice: cart.totalPrice + qtyAdd * lastPrice,
       });
    };
 

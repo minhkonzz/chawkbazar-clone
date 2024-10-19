@@ -2,7 +2,7 @@ import { FieldPath, QueryDocumentSnapshot, WhereFilterOp } from "firebase/firest
 
 import { 
    Order, 
-   SelectedProduct,
+   Product,
    ProductVariation
 } from "./entities";
 
@@ -55,7 +55,12 @@ export type SelectedProductVariation = {
    idx: number
 };
 
-export type Product = Omit<SelectedProduct, "selectedColor" | "selectedSize" | "qty">;
+export type SelectedProduct = Pick<Product, "id" | "name" | "image"> & {
+   lastPrice: number,
+   qty: number,
+   selectedColor: Omit<ProductVariation, "attribute">,
+   selectedSize: Omit<ProductVariation, "attribute" | "meta">
+};
 
 export type ProductAttributeOption = {
    id: string,

@@ -60,6 +60,7 @@ export default function TopBrands() {
          {withSkeleton(List, () =>
             Array.from({ length: 10 }).map((_, i) =>
                <SkeletonLoader 
+                  key={i}
                   width={428} 
                   height={428} 
                   borderRadius=".375rem" 

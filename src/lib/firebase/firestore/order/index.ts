@@ -1,7 +1,8 @@
 import { Firestore } from "firebase/firestore";
 import { firestore as firestoreClient } from "../../client";
 import { fetchDoc, fetchDocs, addNewDoc } from "../";
-import { Order, SelectedProduct } from "@/shared/types/entities";
+import { Order } from "@/shared/types/entities";
+import { SelectedProduct } from "@/shared/types";
 import { OrderListItem, OrderDetailClaims } from "@/shared/types";
 import { CheckoutDetail } from "@/components/checkout/form/types";
 import collections from "../collections";
@@ -68,8 +69,8 @@ export const getUserOrders = async (
       const { products, shipFee, state, date } = orderDoc;
       const { subtotal, totalItems } = products.reduce(
          (acc: { subtotal: number; totalItems: number }, cur: SelectedProduct) => {
-            const { sale_price, price, qty } = cur;
-            acc.subtotal += (sale_price || price) * qty;
+            const { lastPrice, qty } = cur;
+            acc.subtotal += lastPrice * qty;
             acc.totalItems += qty;
             return acc;
          },
@@ -104,7 +105,7 @@ export const getOrder = async (
       (acc: number, cur: SelectedProduct) => {
          return (
             acc +
-            (cur.sale_price || cur.price) * cur.qty
+            cur.lastPrice * cur.qty
          );
       },
       0

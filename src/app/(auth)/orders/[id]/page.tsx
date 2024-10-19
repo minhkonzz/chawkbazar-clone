@@ -1,6 +1,6 @@
 import { getOrder } from "@/lib/firebase/firestore/order";
 import { fixDecimal } from "@/shared/helpers/number";
-import { SelectedProduct } from "@/shared/types/entities";
+import { SelectedProduct } from "@/shared/types";
 import styles from "./page.module.css";
 import Banner from "@/components/banner";
 import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
@@ -63,7 +63,7 @@ export default async function AccountOrder({
                         {order?.products.map((e: SelectedProduct, i: number) => 
                            <tr key={`${e.id}-${i}`} className={styles.row}>
                               <td className={styles.cell}>{`${e.name} - ${e.selectedColor.value}, ${e.selectedSize.value} * ${e.qty}`}</td>
-                              <td className={styles.cell}>{`$${fixDecimal((e.sale_price || e.price) * e.qty, 2)}`}</td>
+                              <td className={styles.cell}>{`$${fixDecimal(e.lastPrice * e.qty, 2)}`}</td>
                            </tr>
                         )}
                      </tbody>

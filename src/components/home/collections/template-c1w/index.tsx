@@ -50,7 +50,7 @@ export default withSkeleton(
          <section className={`${styles.container} home-section`}>
             {Array.from({ length }).map((_, i: number) => {
                const _s = bannerStyles(i, length);
-               return <div className={_s.className}>
+               return <div key={i} className={_s.className}>
                   <SkeletonLoader width={_s.w} height={_s.h} borderRadius=".5rem" />
                </div>;
             })}

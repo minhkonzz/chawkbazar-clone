@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { fixDecimal } from "@/shared/helpers/number";
 import { env } from "@/configs";
-import { Product as SerializedProduct } from "@/shared/types";
+import { Product as SerializedProduct } from "@/shared/types/entities";
 import SkeletonLoader from "@/shared/components/skeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";

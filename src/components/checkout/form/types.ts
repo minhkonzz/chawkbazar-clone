@@ -1,4 +1,4 @@
-import { SelectedProduct } from "@/shared/types/entities";
+import { SelectedProduct } from "@/shared/types";
 
 export type OrderSubmitData = {
    cod?: boolean,

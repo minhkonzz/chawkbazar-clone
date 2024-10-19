@@ -1,7 +1,7 @@
 import { useState, useEffect, KeyboardEvent } from "react";
 import { useToast, useCartContext } from "@/context";
 import { ProductVariation } from "../types/entities";
-import { Product } from "../types";
+import { Product } from "../types/entities";
 import { SelectedProductVariation } from "../types";
 import { constants } from "@/configs";
 
@@ -66,7 +66,10 @@ export default function useProductOptions(product: Product) {
       }
 
       const addCartProduct = {
-         ...product,
+         id: product?.id,
+         name: product?.name,
+         lastPrice: product?.sale_price || product?.price,
+         image: product?.image,
          qty: Number(amount) || DEFAULT_QUANTITY,
          selectedSize: size?.selected!,
          selectedColor: color?.selected!
@@ -103,5 +106,5 @@ export default function useProductOptions(product: Product) {
       isEnteredAmount,
       onSelectAddon,
       handleAddToCart
-   }
-}
+   };
+};

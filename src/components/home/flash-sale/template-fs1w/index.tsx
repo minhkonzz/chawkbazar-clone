@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import { getFlashSaleProducts } from "@/lib/firebase/firestore/product";
-import { Product as SerializedProduct } from "@/shared/types";
-import { delay } from "@/shared/helpers/global";
+import { Product as SerializedProduct } from "@/shared/types/entities";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
 import Product, { Skeleton as ProductSkeleton } from "@/components/product/template-p1w";
@@ -27,10 +26,10 @@ async function List() {
    return (
       products.map((e: SerializedProduct, i: number) => 
          <div 
+            key={e?.id}
             className={styles.item}
             style={{ animationDelay: `${i * .1}s` }}>
             <Product 
-               key={`${e.id}`}
                wImage={324}
                hImage={324}
                imagePath={e.image.pmd}

@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { getFilteredProducts } from "@/lib/firebase/firestore/product";
 import { delay, transformFilterOptions } from "@/shared/helpers/global";
 import { isEmptyArray } from "@/shared/helpers/array";
-import { Product as SerializedProduct } from "@/shared/types";
+import { Product as SerializedProduct} from "@/shared/types/entities";
 import { Skeleton as ProductSkeleton } from "../../product/template-p1w";
 import SkeletonLoader from "@/shared/components/skeleton";
 import SortingOptions from "./sorting-options";
@@ -62,9 +62,10 @@ export default function CatalogProducts() {
                if (!product.image.p) return null;
                return (
                   <div
+                     key={product?.id}
                      style={{ animationDelay: `${i * .1}s` }} 
                      className={styles.item}>
-                     <Product key={product?.id} {...{
+                     <Product {...{
                         id: product.id,
                         wImage: 334, 
                         hImage: 432, 

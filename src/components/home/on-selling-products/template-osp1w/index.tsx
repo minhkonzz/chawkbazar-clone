@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { getOnSellProducts } from "@/lib/firebase/firestore/product";
-import { Product as SerializedProduct } from "@/shared/types";
+import { Product as SerializedProduct } from "@/shared/types/entities";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";
@@ -35,8 +35,11 @@ async function List() {
    const products = await getOnSellProducts(firestoreServer);
    return (
       products.map((product: SerializedProduct, i: number) => 
-         <div className={styles.item} style={{ animationDelay: `${i * .1}s` }}>
-            <Product key={product?.id} product={product} />
+         <div 
+            key={product?.id} 
+            className={styles.item} 
+            style={{ animationDelay: `${i * .1}s` }}>
+            <Product product={product} />
          </div>
       )
    );

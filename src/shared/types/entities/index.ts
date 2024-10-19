@@ -1,3 +1,5 @@
+import { SelectedProduct } from "..";
+
 export type Brand = {
    id: string,
    name: string,
@@ -24,7 +26,7 @@ export type ProductVariation = {
    attribute: ProductAttribute
 };
 
-export type SelectedProduct = {
+export type Product = {
    id: string,
    brand: Brand,
    category: Category,
@@ -40,10 +42,7 @@ export type SelectedProduct = {
    price: number,
    sale_price?: number,
    in_stock: number,
-   variations: ProductVariation[],
-   qty: number,
-   selectedColor: Omit<ProductVariation, "attribute">,
-   selectedSize: Omit<ProductVariation, "attribute" | "meta">
+   variations: ProductVariation[]
 };
 
 export type Order = {

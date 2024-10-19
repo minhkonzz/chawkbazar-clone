@@ -9,13 +9,11 @@ import {
    useMemo,
 } from "react";
 
-import { env } from "@/configs";
 import { fixDecimal } from "@/shared/helpers/number";
-import { SelectedProduct } from "@/shared/types/entities";
+import { Product } from "@/shared/types/entities";
+import { SelectedProduct } from "@/shared/types";
 import { useProductOptions } from "@/shared/hooks";
 import { ProductVariation } from "@/shared/types/entities";
-import { Product } from "@/shared/types";
-import Image from "next/image";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -70,11 +68,6 @@ export default forwardRef(
          )
       , []);
 
-      // const imgStyle = useMemo(() => ({
-      //    width: "auto",
-      //    minHeight: "100% !important"
-      // }), []);
-
       const errorMessage: string = errors && (
          errors.amountErr || "" +
          errors.addonsErr || ""
@@ -82,13 +75,6 @@ export default forwardRef(
 
       return (
          <div {...{ref}} className={`${styles.container} d-flex posab pos-center`}>
-            {/* <Image 
-               width={0}
-               height={0}
-               style={imgStyle}
-               alt="product-image"
-               src={`${env.PRODUCT_IMAGE_STORAGE}${product?.image?.pm}`}
-            /> */}
             <div className={`${styles.about} w-100pc`}>
                <button className={`${styles.close} circle-bd-r posab`} onClick={e => onClose(e, true)}>
                   <svg 
