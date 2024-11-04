@@ -32,66 +32,41 @@ const _navLinks = [
       title: "Owner and Data Controller",
       desc: "The Commons\n20-40 demo St,\nJon doe NSW 2008\nCountry\n\nEmail: demo@demo.com"
    }
-]
+];
 
 export default function Policy() {
    return (
       <Banner title="Privacy policy">
-         <div className={styles.container}>
+         <div className={styles.wrapper}>
             <div className="wrapper1920">
                <div className={`${styles.wrapper} d-flex`}>
                   <nav className={styles.nav}>
                      <ol className={styles.navInner}>
-                        {_navLinks.map((e, i) => 
+                        {_navLinks.map((e, i) => (
                            <li key={e.id}>
-                              <a href={`#title-${i+1}`} className={`${styles.navLink} d-b cp`}>
-                                 {`${i > 9 && i || `0${i}`}. ${e.title}`}
+                              <a
+                                 href={`#title-${i + 1}`}
+                                 className={`${styles.navLink} d-b cp`}>
+                                 {`${(i > 9 && i) || `0${i}`}. ${e.title}`}
                               </a>
                            </li>
-                        )}
+                        ))}
                      </ol>
                   </nav>
                   <div className={styles.detail}>
-                     {_navLinks.map((e, i) => 
-                        <div id={`title-${i+1}`} key={e.id} className={styles.section}>
+                     {_navLinks.map((e, i) => (
+                        <div
+                           id={`title-${i + 1}`}
+                           key={e.id}
+                           className={styles.section}>
                            <h2 className={styles.sectionHeading}>{e.title}</h2>
                            <p className={styles.sectionText}>{e.desc}</p>
                         </div>
-                     )}
+                     ))}
                   </div>
                </div>
             </div>
          </div>
       </Banner>
-   )
+   );
 }
-
-// import "./terms.css";
-// import { useRef } from "react";
-// import { terms } from "./static-data";
-
-// const Terms = () => {
-
-//   const refs = useRef([]);
-//   const scrollToTerm = (i) => window.scrollTo(0, refs.current[i].offsetTop);
-
-//   return (
-//     <div className="terms">
-//       <div className="terms__tabs"> {
-//         terms.map((term, i) => <p className="terms__tab" onClick={() => scrollToTerm(i)} key={i}>{term.title}</p>)
-//       }
-//       </div>
-//       <div className="terms__content"> {
-//         terms.map((term, i) =>
-//           <div ref={element => refs.current[i] = element} key={i} className="term">
-//             <span className="term__title">{term.title}</span>
-//             <p className="term__description">{term.desc}</p>
-//           </div>
-//         )
-//       }
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Terms;

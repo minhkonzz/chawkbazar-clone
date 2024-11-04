@@ -1,8 +1,8 @@
-.container {
+.wrapper {
    width: 100%;
    background-color: #fff;
    z-index: 1000;
-   animation: visible .5s ease-in-out;
+   animation: visible 0.5s ease-in-out;
 }
 
 .header {
@@ -21,7 +21,7 @@
    font-size: 1.5rem;
    line-height: 2rem;
    color: rgb(261, 261, 261);
-   transition: opacity .15s ease-in-out;
+   transition: opacity 0.15s ease-in-out;
 }
 
 .closeButton:hover {
@@ -43,7 +43,7 @@
    font-size: .875rem;
    line-height: 1.25rem;
    color: #fff;
-   transition: all .1s ease-in-out;
+   transition: all 0.1s ease-in-out;
 }
 
 .checkoutButton.disabled {
@@ -76,7 +76,7 @@
 }
 
 @media (min-width: 768px) {
-   .container {
+   .wrapper {
       width: 50vw;
    }
 
@@ -115,7 +115,7 @@
 }
 
 @media (min-width: 1024px) {
-   .container {
+   .wrapper {
       width: 450px;
    }
 
@@ -126,6 +126,10 @@
 }
 
 @keyframes visible {
-   0% { right: -100%; };
-   100% { right: 0; }
+   0% {
+      right: -100%;
+   }
+   100% {
+      right: 0;
+   }
 }

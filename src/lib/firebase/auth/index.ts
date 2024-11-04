@@ -1,11 +1,11 @@
-import { 
+import {
    createUserWithEmailAndPassword,
    GoogleAuthProvider,
    signInWithPopup,
    signInWithEmailAndPassword,
    User,
    updateProfile
-} from "firebase/auth"; 
+} from "firebase/auth";
 
 import { upsertDoc } from "../firestore";
 import { auth } from "../client";
@@ -20,8 +20,8 @@ export const signInWithEmail = async (
 };
 
 export const signInWithGoogle = async (): Promise<User> => {
-   const provider: GoogleAuthProvider = new GoogleAuthProvider(); 
-   const { user } = await signInWithPopup(auth, provider); 
+   const provider: GoogleAuthProvider = new GoogleAuthProvider();
+   const { user } = await signInWithPopup(auth, provider);
    return user;
 };
 
@@ -33,7 +33,7 @@ export const signUp = async (
 ): Promise<User> => {
    const { user } = await createUserWithEmailAndPassword(auth, email, password);
    await updateProfile(user, { displayName: name });
-   const nameParts = name.split(" ").filter((namePart: string) => namePart); 
+   const nameParts = name.split(" ").filter((namePart: string) => namePart);
    await upsertDoc(collections.CUSTOMERS, user.uid, {
       firstName: nameParts[0],
       lastName: nameParts[nameParts.length - 1],

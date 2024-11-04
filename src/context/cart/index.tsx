@@ -13,11 +13,11 @@ export type Cart = {
 };
 
 type CartContextType = {
-   cart: Cart,
-   addCart: (item: SelectedProduct) => void,
-   removeFromCart: (item: any) => void,
-   adjustAmount: (params: any) => void,
-   clearCart: () => void
+   cart: Cart;
+   addCart: (item: SelectedProduct) => void;
+   removeFromCart: (item: any) => void;
+   adjustAmount: (params: any) => void;
+   clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -25,7 +25,7 @@ const CartContext = createContext<CartContextType | null>(null);
 export default function CartProvider({ children }: { children: ReactNode }) {
    const [cart, setCart] = useLocalStorage<Cart>("cart", {
       items: [],
-      totalPrice: 0,
+      totalPrice: 0
    });
 
    const addCart = (item: SelectedProduct) => {
@@ -34,7 +34,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
          qty: qtyAdd,
          lastPrice,
          selectedSize,
-         selectedColor,
+         selectedColor
       } = item;
 
       const currentItems = cart.items;
@@ -47,10 +47,10 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       setCart({
          items: isItemAdded
             ? currentItems.map((item: SelectedProduct) =>
-               item.id === idAdd ? { ...item, qty: item.qty + qtyAdd } : item
-            )
+                 item.id === idAdd ? { ...item, qty: item.qty + qtyAdd } : item
+              )
             : [...currentItems, { ...item, qty: qtyAdd }],
-         totalPrice: cart.totalPrice + qtyAdd * lastPrice,
+         totalPrice: cart.totalPrice + qtyAdd * lastPrice
       });
    };
 
@@ -60,7 +60,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
          price: unitPrice,
          sale_price,
          selectedSize,
-         selectedColor,
+         selectedColor
       } = item;
 
       const currentItems = cart.items;
@@ -73,7 +73,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
                      item.selectedColor.id !== selectedColor.id)) ||
                item.id !== item.id
          ),
-         totalPrice: cart.totalPrice - currentAmount * (sale_price || unitPrice),
+         totalPrice: cart.totalPrice - currentAmount * (sale_price || unitPrice)
       });
    };
 
@@ -86,7 +86,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
          sale_price,
          selectedSize,
          selectedColor,
-         qty,
+         qty
       } = itemAdjust;
 
       if (adjustType === DECREASE_ONCE && qty === 1) return;
@@ -100,13 +100,13 @@ export default function CartProvider({ children }: { children: ReactNode }) {
             item.id === id &&
             item.selectedSize.id === selectedSize.id &&
             item.selectedColor.id === selectedColor.id
-            ? {
-               ...item,
-               qty: item.qty + adjustType
-            }
-            : item
+               ? {
+                    ...item,
+                    qty: item.qty + adjustType
+                 }
+               : item
          ),
-         totalPrice: totalPrice + priceChange * adjustType,
+         totalPrice: totalPrice + priceChange * adjustType
       });
    };
 

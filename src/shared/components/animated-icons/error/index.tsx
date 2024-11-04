@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 interface Props {
    size?: number;
    color?: string;
-};
+}
 
 export default function AnimatedErrorIcon({
    size = 20,
@@ -11,9 +11,7 @@ export default function AnimatedErrorIcon({
 }: Props) {
    return (
       <div style={{ width: size, height: size }}>
-         <svg
-            viewBox="0 0 100 100"
-            fill="none">
+         <svg viewBox="0 0 100 100" fill="none">
             <circle
                className={styles.circle}
                cx="50"

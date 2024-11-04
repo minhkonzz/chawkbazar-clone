@@ -5,8 +5,8 @@ export const hash = async (plain: string): Promise<string> => {
 };
 
 export const compare = async (
-   plain: string, 
+   plain: string,
    hashed: string
 ): Promise<boolean> => {
    return bcrypt.compare(plain, hashed);
-}
+};

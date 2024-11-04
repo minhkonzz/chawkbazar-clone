@@ -1,24 +1,24 @@
-.container {
+.wrapper {
    flex-direction: column;
    padding: 3.5rem 1rem;
 }
 
 @media (min-width: 768px) {
-   .container {
+   .wrapper {
       flex-direction: row;
       padding: 3.5rem 2rem;
    }
 }
 
 @media (min-width: 1280px) {
-   .container {
-      max-width: 1280px; 
+   .wrapper {
+      max-width: 1280px;
       padding: 5rem 2rem;
    }
 }
 
 @media (min-width: 1500px) {
-   .container {
+   .wrapper {
       max-width: 1500px;
    }
 }

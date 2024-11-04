@@ -1,4 +1,4 @@
-.container {
+.wrapper {
    display: grid;
    grid-template-columns: repeat(3, minmax(0, 1fr));
    gap: .2rem;
@@ -7,7 +7,7 @@
 }
 
 .backface {
-   transition: opacity .3s ease-in-out;
+   transition: opacity 0.3s ease-in-out;
    opacity: 0;
    background-color: #000;
 }
@@ -21,24 +21,24 @@
 
 .icon {
    color: #fff;
-   transition: all .3s ease-in-out;
+   transition: all 0.3s ease-in-out;
    font-size: 1rem;
    line-height: 1.5rem;
    transform: scale(4, 4);
    opacity: 0;
 }
 
-.container > a:hover .icon {
+.wrapper > a:hover .icon {
    transform: scale(1, 1) translate(-50%, -50%);
    opacity: 1;
 }
 
-.container > a:hover .backface {
+.wrapper > a:hover .backface {
    opacity: .8;
 }
 
 @media (min-width: 480px) {
-   .container {
+   .wrapper {
       gap: .25rem;
    }
 
@@ -49,13 +49,13 @@
 }
 
 @media (min-width: 768px) {
-   .container {
+   .wrapper {
       grid-template-columns: repeat(6, minmax(0, 1fr));
    }
 
    .icon {
       font-size: 1.875rem;
-      line-height: 2.25rem; 
+      line-height: 2.25rem;
    }
 }
 

@@ -43,7 +43,7 @@
 }
 
 @media (min-width: 768px) {
-   .container {
+   .wrapper {
       width: 100%;
    }
 
@@ -53,7 +53,7 @@
 }
 
 @media (min-width: 1024px) {
-   .container {
+   .wrapper {
       width: 60%;
    }
 
@@ -67,7 +67,7 @@
 
    .btn {
       width: 200px;
-   } 
+   }
 }
 
 @media (min-width: 1280px) {

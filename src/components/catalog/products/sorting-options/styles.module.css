@@ -31,9 +31,11 @@
    font-size: 14px;
    padding: 10px 0 10px 20px;
    color: #3b3b3b;
- }
- 
-.list p:hover { background-color: #e4e4e4; }
+}
+
+.list p:hover {
+   background-color: #e4e4e4;
+}
 
 @media (min-width: 768px) {
    .button {

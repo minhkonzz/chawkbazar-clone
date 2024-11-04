@@ -1,15 +1,14 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 import { isEmptyArray } from "@/shared/helpers/array";
 import { getPromotionBanners } from "@/lib/firebase/firestore/banner";
 import { env } from "@/configs";
-import ReactSimplyCarousel from 'react-simply-carousel';
+import ReactSimplyCarousel from "react-simply-carousel";
 import Image from "next/image";
 import styles from "./styles.module.css";
 
 export default function Promotions() {
-
    const [activeIndex, setActiveIndex] = useState<number>(0);
    const [banners, setBanners] = useState<string[]>([]);
 
@@ -36,7 +35,7 @@ export default function Promotions() {
             centerMode
             preventScrollOnSwipe
             itemsListProps={{ className: styles.items }}>
-            {banners.map((b: string, i: number) => 
+            {banners.map((b: string, i: number) => (
                <Image
                   key={i}
                   src={`${env.BANNER_IMAGE_STORAGE + b}`}
@@ -44,9 +43,8 @@ export default function Promotions() {
                   width={1252}
                   height={496}
                />
-            )}
+            ))}
          </ReactSimplyCarousel>
       </section>
    );
 }
-

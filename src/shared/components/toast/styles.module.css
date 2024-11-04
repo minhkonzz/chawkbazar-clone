@@ -1,10 +1,10 @@
-.container {
+.wrapper {
    width: 350px;
    height: 60px;
    padding: 16px 20px;
    top: 6%;
    background-color: hsl(0, 0%, 100%);
-   animation: visible .3s ease-in-out;
+   animation: visible 0.3s ease-in-out;
    animation-fill-mode: forwards;
    box-shadow: 0px 2px 16px rgb(221, 221, 221);
 }
@@ -20,6 +20,10 @@
 }
 
 @keyframes visible {
-   0% { transform: translate(-50%, -200%); }
-   100% { transform: translate(-50%, 6%); }
+   0% {
+      transform: translate(-50%, -200%);
+   }
+   100% {
+      transform: translate(-50%, 6%);
+   }
 }

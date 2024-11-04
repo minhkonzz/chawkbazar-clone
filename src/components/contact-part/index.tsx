@@ -4,14 +4,14 @@ import styles from "./styles.module.css";
 interface Props {
    icon: ReactElement;
    title: string;
-   desc: string; 
-};
+   desc: string;
+}
 
 export default function ContactPart({ icon, title, desc }: Props) {
    const Icon = () => icon;
 
    return (
-      <div className={`${styles.container} d-flex`}>
+      <div className={`${styles.wrapper} d-flex`}>
          <div className={`${styles.ic} d-flex jc-center at-center`}>
             <Icon />
          </div>
@@ -20,5 +20,5 @@ export default function ContactPart({ icon, title, desc }: Props) {
             <p className={styles.desc}>{desc}</p>
          </div>
       </div>
-   )
+   );
 }

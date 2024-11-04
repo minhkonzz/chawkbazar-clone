@@ -4,8 +4,8 @@ interface Props {
    width?: number | string;
    height?: number | string;
    borderRadius?: number | string;
-   className?: string
-};
+   className?: string;
+}
 
 export default function Skeleton({
    width = "100%",
@@ -13,12 +13,13 @@ export default function Skeleton({
    borderRadius = ".5rem",
    className = ""
 }: Props) {
-   return <div 
-      className={`${styles.skeleton} posrel o-h${" " + className}`}
-      style={{
-         width,
-         height,
-         borderRadius
-      }}>
-   </div>;
-};
+   return (
+      <div
+         className={`${styles.skeleton} posrel o-h${" " + className}`}
+         style={{
+            width,
+            height,
+            borderRadius
+         }}></div>
+   );
+}

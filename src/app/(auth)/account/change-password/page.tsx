@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import { useFirebaseUserContext } from "@/context";
@@ -13,34 +13,41 @@ import TextInput from "@/shared/components/text-input";
 const { regex } = constants;
 
 export default function AccountChangePassword() {
-
    const toast = useToast()!;
    const { currentUser } = useFirebaseUserContext()!;
    const [oldPassword, setOldPassword] = useState("");
    const [newPassword, setNewPassword] = useState("");
 
-   const newPasswordError = !newPassword.match(regex.PASSWORD_REGEX) ?
-   "Password cần tối thiểu 8 đến 15 ký tự, chứa ít nhất 1 ký tự đặc biệt và 1 ký tự in hoa" : "";
+   const newPasswordError = !newPassword.match(regex.PASSWORD_REGEX)
+      ? "Password cần tối thiểu 8 đến 15 ký tự, chứa ít nhất 1 ký tự đặc biệt và 1 ký tự in hoa"
+      : "";
 
    const updatePassword = async () => {
       if (!currentUser || newPasswordError) return;
       const { password: hashedPassword } = currentUser.metadata;
-      const correctCurrentPassword = await checkCurrentPassword(oldPassword, hashedPassword);
+      const correctCurrentPassword = await checkCurrentPassword(
+         oldPassword,
+         hashedPassword
+      );
       if (!correctCurrentPassword) {
          toast("error", "Incorrect old password");
          return;
       }
       updateUserPassword(currentUser.user, newPassword)
-         .then(() => { toast("success", "Password updated successfully"); })
-         .catch((err) => { toast("error", `Failed to update password: ${err.message}`); })
-   }
+         .then(() => {
+            toast("success", "Password updated successfully");
+         })
+         .catch(err => {
+            toast("error", `Failed to update password: ${err.message}`);
+         });
+   };
 
    return (
       <>
          <h2 className={layoutStyles.mainHeading}>Change password</h2>
          <div className={styles.main}>
             <div className={styles.inpWrapper}>
-               <TextInput 
+               <TextInput
                   label="Old password"
                   placeholder="Enter your current password"
                   inputValue={oldPassword}
@@ -48,19 +55,17 @@ export default function AccountChangePassword() {
                />
             </div>
             <div className={styles.inpWrapper}>
-               <TextInput 
+               <TextInput
                   label="New password"
                   placeholder="Enter new password"
                   inputValue={newPassword}
                   onChange={e => setNewPassword(e.target.value)}
                />
             </div>
-            <button 
-               className={`${styles.btn} cp`} 
-               onClick={updatePassword}>
+            <button className={`${styles.btn} cp`} onClick={updatePassword}>
                Change password
             </button>
          </div>
       </>
    );
-};
+}

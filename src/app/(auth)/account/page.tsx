@@ -5,5 +5,5 @@ export default function AccountDashboard() {
       <>
          <h2 className={layoutStyles.mainHeading}>Dashboard</h2>
       </>
-   )
+   );
 }

@@ -1,14 +1,14 @@
 .cart-invisible {
-   animation: cart-invisible .5s ease-in;
+   animation: cart-invisible 0.5s ease-in;
    animation-fill-mode: forwards;
 }
 
 .product-invisible {
-   animation: product-invisible .5s ease-in;
+   animation: product-invisible 0.5s ease-in;
 }
 
 .auth-invisible {
-   animation: auth-invisible .5s ease-in;
+   animation: auth-invisible 0.5s ease-in;
 }
 
 @keyframes product-invisible {
@@ -18,7 +18,7 @@
    }
 
    100% {
-      transform: scale(.7, .7);
+      transform: scale(0.7, 0.7);
       opacity: 0;
    }
 }
@@ -30,7 +30,7 @@
    }
 
    100% {
-      transform: scale(.8);
+      transform: scale(0.8);
       opacity: 0;
    }
 }

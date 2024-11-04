@@ -4,24 +4,20 @@ interface Props {
    size?: number;
    color?: string;
    thickness?: number;
-   speed?: number
-};
+   speed?: number;
+}
 
 export default function Spinner({
    size = 20,
    color = "#fff",
    thickness = 2
 }: Props) {
-
    const radius = size / 2 - thickness / 2;
    const circumference = 2 * Math.PI * radius;
 
    return (
       <div style={{ width: size, height: size }}>
-         <svg
-            width={size}
-            height={size}
-            viewBox={`0 0 ${size} ${size}`}>
+         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
             <circle
                cx={size / 2}
                cy={size / 2}
@@ -44,4 +40,4 @@ export default function Spinner({
          </svg>
       </div>
    );
-};
+}

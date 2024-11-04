@@ -24,7 +24,7 @@
 
 .clear:hover {
    color: var(--primary-color);
-   transition: all .2s ease-in-out;
+   transition: all 0.2s ease-in-out;
 }
 
 .selected {
@@ -32,7 +32,7 @@
    border-radius: .5rem;
    border: 1px solid rgb(230, 230, 230);
    background-color: rgb(247, 247, 247);
-   padding: .625rem .875rem;
+   padding: .625rem 0.875rem;
    font-size: .75rem;
    line-height: 1rem;
    color: var(--primary-color);

@@ -3,18 +3,18 @@ import { firestore as firestoreClient } from "../client";
 import { is2DArray } from "@/shared/helpers/array";
 import { FetchedDocs } from "./types";
 
-import { 
-   Firestore, 
-   query, 
-   addDoc, 
-   collection, 
+import {
+   Firestore,
+   query,
+   addDoc,
+   collection,
    getDocs,
    getDoc,
    setDoc,
-   doc, 
+   doc,
    where,
-   limit, 
-   startAfter, 
+   limit,
+   startAfter,
    DocumentReference,
    QueryDocumentSnapshot,
    QueryFilterConstraint,
@@ -24,23 +24,29 @@ import {
    and
 } from "firebase/firestore";
 
-export const fetchDocs = async ({
-   collectionName,
-   _limit,
-   _startAfter,
-   _where
-}: FirestoreQueryDocumentsConfig,
-   firestore: Firestore = firestoreClient, 
+export const fetchDocs = async (
+   {
+      collectionName,
+      _limit,
+      _startAfter,
+      _where
+   }: FirestoreQueryDocumentsConfig,
+   firestore: Firestore = firestoreClient
 ): Promise<FetchedDocs> => {
-   const {docs} = await getDocs(
-      query (...[
-         collection(firestore, collectionName),
-         ...(_limit ? [limit(_limit)] : []),
-         ...(_startAfter ? [startAfter(_startAfter)] : []),
-         ...(_where ? [where(..._where)] : [])
-      ])
+   const { docs } = await getDocs(
+      query(
+         ...[
+            collection(firestore, collectionName),
+            ...(_limit ? [limit(_limit)] : []),
+            ...(_startAfter ? [startAfter(_startAfter)] : []),
+            ...(_where ? [where(..._where)] : [])
+         ]
+      )
    );
-   return docs.map((doc: QueryDocumentSnapshot) => ({...doc.data(), id: doc.id}));
+   return docs.map((doc: QueryDocumentSnapshot) => ({
+      ...doc.data(),
+      id: doc.id
+   }));
 };
 
 export const fetchDoc = async (
@@ -49,7 +55,7 @@ export const fetchDoc = async (
    firestore: Firestore = firestoreClient
 ): Promise<DocumentData | null> => {
    const _doc = await getDoc(doc(firestore, collectionName, id));
-   return _doc.exists() ? _doc.data() : null; 
+   return _doc.exists() ? _doc.data() : null;
 };
 
 export const fetchWithCustomQuery = async (
@@ -57,13 +63,13 @@ export const fetchWithCustomQuery = async (
    customQuery: QueryFilterConstraint[],
    firestore: Firestore = firestoreClient
 ): Promise<FetchedDocs> => {
-   const {docs} = await getDocs(
-      query (
-         collection(firestore, collectionName),
-         and(...customQuery)
-      )
+   const { docs } = await getDocs(
+      query(collection(firestore, collectionName), and(...customQuery))
    );
-   return docs.map((doc: QueryDocumentSnapshot) => ({...doc.data(), id: doc.id}));
+   return docs.map((doc: QueryDocumentSnapshot) => ({
+      ...doc.data(),
+      id: doc.id
+   }));
 };
 
 export const fetchDocFromReference = async (
@@ -87,9 +93,7 @@ export const upsertDoc = async (
    bodyData: Object,
    firestore: Firestore = firestoreClient
 ): Promise<void> => {
-   return await setDoc(
-      doc(firestore, collectionName, id),
-      bodyData,
-      { merge: true }
-   );
+   return await setDoc(doc(firestore, collectionName, id), bodyData, {
+      merge: true
+   });
 };

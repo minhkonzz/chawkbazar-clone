@@ -1,4 +1,4 @@
-.container {
+.wrapper {
    padding: 4rem 0;
 }
 
@@ -121,7 +121,7 @@
 }
 
 @media (min-width: 1024px) {
-   .container {
+   .wrapper {
       padding: 5rem 0;
    }
 
@@ -152,7 +152,7 @@
 }
 
 @media (min-width: 1280px) {
-   .container {
+   .wrapper {
       padding-left: 8rem;
       padding-right: 8rem;
    }
@@ -178,14 +178,14 @@
 }
 
 @media (min-width: 1500px) {
-   .container {
+   .wrapper {
       padding-left: 11rem;
       padding-right: 11rem;
    }
 }
 
 @media (min-width: 1780px) {
-   .container {
+   .wrapper {
       padding-left: 14rem;
       padding-right: 14rem;
    }

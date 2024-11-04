@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { 
-   ReactNode, 
-   Dispatch, 
-   useState, 
+import {
+   ReactNode,
+   Dispatch,
+   useState,
    useEffect,
-   createContext, 
-   useContext, 
+   createContext,
+   useContext,
    SetStateAction
 } from "react";
 
@@ -17,19 +17,22 @@ import registerAuthServiceWorker from "@/lib/firebase/worker";
 import firebaseClientApp from "@/lib/firebase/client";
 
 type CurrentUser = {
-   user: User,
-   metadata: UserMetadata
+   user: User;
+   metadata: UserMetadata;
 } | null;
 
 type FirebaseUserContextType = {
-   currentUser: CurrentUser,
-   setCurrentUser: Dispatch<SetStateAction<CurrentUser>>
+   currentUser: CurrentUser;
+   setCurrentUser: Dispatch<SetStateAction<CurrentUser>>;
 };
 
 const FirebaseUserContext = createContext<FirebaseUserContextType | null>(null);
 
-export default function FirebaseUserProvider({ children }: { children: ReactNode }) {
-
+export default function FirebaseUserProvider({
+   children
+}: {
+   children: ReactNode;
+}) {
    const [currentUser, setCurrentUser] = useState<CurrentUser>(null);
 
    useEffect(() => {
@@ -40,19 +43,23 @@ export default function FirebaseUserProvider({ children }: { children: ReactNode
             return;
          }
          getUserMetadata(user.uid)
-            .then((metadata) => setCurrentUser({ user, metadata }))
-            .catch((error) => console.error("Error getting user metadata: ", error)) 
+            .then(metadata => setCurrentUser({ user, metadata }))
+            .catch(error =>
+               console.error("Error getting user metadata: ", error)
+            );
       });
       registerAuthServiceWorker()
          .then(() => {})
-         .catch((err) => console.error(err.message));
+         .catch(err => console.error(err.message));
 
       return () => unsub!();
-   }, []);   
+   }, []);
 
-   return <FirebaseUserContext.Provider value={{ currentUser, setCurrentUser }}>
-      { children }
-   </FirebaseUserContext.Provider>;
+   return (
+      <FirebaseUserContext.Provider value={{ currentUser, setCurrentUser }}>
+         {children}
+      </FirebaseUserContext.Provider>
+   );
 }
 
 export const useFirebaseUserContext = () => useContext(FirebaseUserContext);

@@ -6,11 +6,11 @@ const HeaderRight = dynamic(() => import("./rs"), { ssr: false });
 
 export default function NavHeader() {
    return (
-      <header className={styles.container}>
-         <div className={`${styles.inner} d-flex jc-sb h-100pc mx-auto`}>
+      <header className={`${styles.wrapper} bg-white`}>
+         <div className={`${styles.inner} wrapper-1920 d-flex jc-sb h-100pc mx-auto`}>
             <Ls />
             <HeaderRight />
          </div>
       </header>
    );
-};
+}

@@ -5,7 +5,6 @@ import { useToast } from "@/context";
 import styles from "../styles.module.css";
 
 export default function SocialAuth() {
-
    const toast = useToast()!;
 
    const onGoogleLogin = async () => {
@@ -14,14 +13,18 @@ export default function SocialAuth() {
          user ? "success" : "error",
          user ? "You logged in with Google" : "Login failed with Google"
       );
-   }
+   };
 
-   const onFacebookLogin = () => {}   
+   const onFacebookLogin = () => {};
 
    return (
       <>
-         <button className={`${styles.btn} w-100pc`} onClick={onGoogleLogin}>Login with Google</button>
-         <button className={`${styles.btn} w-100pc`} onClick={onFacebookLogin}>Login with Facebook</button>
-      </>      
+         <button className={`${styles.btn} w-100pc`} onClick={onGoogleLogin}>
+            Login with Google
+         </button>
+         <button className={`${styles.btn} w-100pc`} onClick={onFacebookLogin}>
+            Login with Facebook
+         </button>
+      </>
    );
-};
+}

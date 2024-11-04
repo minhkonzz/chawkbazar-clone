@@ -1,16 +1,17 @@
-.container {
+.wrapper {
+   max-width: 100%;
+   width: 100%;
    border-radius: .375rem;
    border: 1px solid rgb(241, 241, 241);
-   transition: all .1s ease-in-out;
+   transition: all 0.1s ease-in-out;
 }
 
-.container:hover {
-   transform: translateY(-.1rem);
+.wrapper:hover {
+   transform: translateY(-0.1rem);
    box-shadow: 0 2px 8px #f0f0f0;
 }
 
 .detail {
-   width: calc(100% - 176px);
    padding: .5rem;
 }
 
@@ -62,7 +63,7 @@
 
 .prices {
    font-weight: 600;
-   font-size: .875rem; 
+   font-size: .875rem;
    line-height: 1.25rem;
    column-gap: .5rem;
 }
@@ -83,7 +84,7 @@
 @media (min-width: 480px) {
    .name {
       font-size: 1rem;
-      line-height: 1.5rem; 
+      line-height: 1.5rem;
    }
 
    .prices {
@@ -99,7 +100,7 @@
 
 @media (min-width: 768px) {
    .name {
-      margin-bottom: .375rem; 
+      margin-bottom: .375rem;
    }
 
    .prices {
@@ -119,7 +120,7 @@
       font-size: .875rem;
       line-height: 1.25rem;
    }
-   
+
    .prices {
       font-size: 1.25rem;
       line-height: 1.75rem;

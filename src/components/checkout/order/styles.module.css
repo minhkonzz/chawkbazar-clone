@@ -1,5 +1,4 @@
-
-.container {
+.wrapper {
    width: 100%;
    padding-top: 3rem;
 }
@@ -17,7 +16,7 @@
    border-radius: .375rem;
    background-color: rgb(244, 244, 244);
    padding: 1rem;
-   font-size: .875rem; 
+   font-size: .875rem;
    line-height: 1.25rem;
    font-weight: 600;
    color: var(--primary-color);
@@ -37,7 +36,7 @@
 
 .wrapper {
    border-bottom: 1px solid rgb(230, 230, 230);
-   padding: .875rem .5rem;
+   padding: .875rem 0.5rem;
    font-size: .875rem;
    line-height: 1.25rem;
    font-weight: 600;
@@ -45,7 +44,7 @@
 }
 
 @media (min-width: 768px) {
-   .container {
+   .wrapper {
       padding-top: 0;
       margin-left: 1.75rem;
    }
@@ -56,16 +55,15 @@
 
    .header {
       margin-top: 1.75rem;
-
    }
 
    .wrapper {
-      padding: 1rem .6rem;
+      padding: 1rem 0.6rem;
    }
 }
 
 @media (min-width: 1024px) {
-   .container {
+   .wrapper {
       width: 40%;
       margin-left: 2.5rem;
    }
@@ -76,12 +74,12 @@
    }
 
    .wrapper {
-      padding: 1.25rem .75rem;
+      padding: 1.25rem 0.75rem;
    }
 }
 
 @media (min-width: 1280px) {
-   .container {
+   .wrapper {
       margin-left: 3.5rem;
    }
 

@@ -1,7 +1,7 @@
-.container {
+.wrapper {
    border-radius: .5rem;
    background-color: #fff;
-   animation: visible .3s ease-in-out;
+   animation: visible 0.3s ease-in-out;
 }
 
 .closeButton {
@@ -13,7 +13,7 @@
    z-index: 10;
    top: .75rem;
    background-color: #fff;
-   transition: all .2s ease-in-out;
+   transition: all 0.2s ease-in-out;
 }
 
 .ic {
@@ -56,7 +56,7 @@
 .lineText {
    top: -0.625rem;
    background-color: #fff;
-   padding: 0 .5rem;
+   padding: 0 0.5rem;
    font-size: .875rem;
 }
 
@@ -136,6 +136,12 @@
 }
 
 @keyframes visible {
-   0% { opacity: 0; transform: translate(-50%, -40%); }
-   100% { opacity: 1; transform: translate(-50%, -50%); }
+   0% {
+      opacity: 0;
+      transform: translate(-50%, -40%);
+   }
+   100% {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+   }
 }

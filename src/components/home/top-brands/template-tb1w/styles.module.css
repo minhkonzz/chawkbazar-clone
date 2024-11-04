@@ -2,12 +2,11 @@
    border-radius: .375rem;
    opacity: 0;
    transform: translateY(20px);
-   animation: fadeIn .4s ease forwards;
 }
 
 .image {
    object-fit: cover;
-   transition: all .4s ease-in-out;
+   transition: all 0.4s ease-in-out;
 }
 
 .brands {
@@ -21,7 +20,7 @@
    left: 0;
    background-color: #000;
    opacity: .5;
-   transition: opacity .5s cubic-bezier(.4, 0, .2, 1);
+   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .brand:hover .backface {
@@ -30,17 +29,6 @@
 
 .brand:hover .image {
    transform: rotate(6deg) scale(1.25);
-}
-
-@keyframes fadeIn {
-   50% {
-      opacity: .5;
-      transform: translateY(-10px);
-   }
-   100% {
-      opacity: 1;
-      transform: translateY(0);
-   }
 }
 
 @media (min-width: 768px) {

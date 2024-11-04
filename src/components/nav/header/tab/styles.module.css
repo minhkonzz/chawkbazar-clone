@@ -1,4 +1,4 @@
-.container {
+.wrapper {
    position: relative;
    height: 100%;
    padding-top: 2.25rem;
@@ -12,7 +12,7 @@
    opacity: .3;
 }
 
-.container:hover .icon {
+.wrapper:hover .icon {
    transform: rotate(-180deg);
 }
 
@@ -25,14 +25,14 @@
 }
 
 .text::after {
-   content: '';
+   content: "";
    position: absolute;
    bottom: 0;
    left: 0;
    width: 0;
    height: 3px;
    background-color: #000;
-   transition: width .3s ease-in-out;
+   transition: width 0.3s ease-in-out;
 }
 
 .text:hover::after {

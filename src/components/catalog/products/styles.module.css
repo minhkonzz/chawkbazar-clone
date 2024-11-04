@@ -38,7 +38,6 @@
 .item {
    opacity: 0;
    transform: translateY(20px);
-   animation: fadeIn .4s ease forwards;
 }
 
 .loadMore {
@@ -54,22 +53,11 @@
    font-weight: 600;
    line-height: 1rem;
    color: #fff;
-   transition: all .2s ease;
+   transition: all 0.2s ease;
 }
 
 .btn:hover {
    opacity: .9;
-}
-
-@keyframes fadeIn {
-   50% {
-      opacity: .5;
-      transform: translateY(-10px);
-   }
-   100% {
-      opacity: 1;
-      transform: translateY(0);
-   }
 }
 
 @media (min-width: 480px) {
@@ -79,8 +67,7 @@
 }
 
 @media (min-width: 768px) {
-   .itemsCount 
-   .itemsCountSkeleton {
+   .itemsCount .itemsCountSkeleton {
       margin-right: 1.5rem;
    }
 

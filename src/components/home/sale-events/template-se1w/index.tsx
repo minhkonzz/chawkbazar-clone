@@ -8,120 +8,139 @@ const MAX_WIDTH: number = 1920;
 const TOTAL_SLIDES: number = 6; // Total number of slides including duplicates
 
 export default function SaleEvents() {
-  const swiperWrapperRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [startPos, setStartPos] = useState<number>(0);
-  const [currentTranslate, setCurrentTranslate] = useState<number>(0);
-  const [prevTranslate, setPrevTranslate] = useState<number>(0);
-  const [activeIndex, setActiveIndex] = useState<number>(1);
+   const swiperWrapperRef = useRef<HTMLDivElement>(null);
+   const [isDragging, setIsDragging] = useState<boolean>(false);
+   const [startPos, setStartPos] = useState<number>(0);
+   const [currentTranslate, setCurrentTranslate] = useState<number>(0);
+   const [prevTranslate, setPrevTranslate] = useState<number>(0);
+   const [activeIndex, setActiveIndex] = useState<number>(1);
 
-  let slideWidth = .6 * window.innerWidth; // Adjust according to container width
+   let slideWidth = 0.6 * window.innerWidth; // Adjust according to container width
 
-  useEffect(() => {
-    const innerWidth: number = window.innerWidth;
-    setInitialPosition(innerWidth)();
-    window.addEventListener('resize', setInitialPosition(innerWidth));
-    return () => window.removeEventListener('resize', setInitialPosition(innerWidth));
-  }, []);
+   useEffect(() => {
+      const innerWidth: number = window.innerWidth;
+      setInitialPosition(innerWidth)();
+      window.addEventListener("resize", setInitialPosition(innerWidth));
+      return () =>
+         window.removeEventListener("resize", setInitialPosition(innerWidth));
+   }, []);
 
-  const setInitialPosition = (innerWidth: number) => {
-    return () => {
-      slideWidth = Math.min(1920, innerWidth);
-      const initialTranslate = -slideWidth * activeIndex + (window.innerWidth - slideWidth) / 2;
-      setCurrentTranslate(initialTranslate);
-      setPrevTranslate(initialTranslate);
+   const setInitialPosition = (innerWidth: number) => {
+      return () => {
+         slideWidth = Math.min(1920, innerWidth);
+         const initialTranslate =
+            -slideWidth * activeIndex + (window.innerWidth - slideWidth) / 2;
+         setCurrentTranslate(initialTranslate);
+         setPrevTranslate(initialTranslate);
+         if (swiperWrapperRef.current) {
+            swiperWrapperRef.current.style.transform = `translateX(${initialTranslate}px)`;
+         }
+      };
+   };
+
+   const handleTransitionEnd = () => {
       if (swiperWrapperRef.current) {
-        swiperWrapperRef.current.style.transform = `translateX(${initialTranslate}px)`;
+         swiperWrapperRef.current.style.transition = "none";
+
+         if (activeIndex >= TOTAL_SLIDES - 1) {
+            setActiveIndex(1);
+            const newTranslate =
+               -slideWidth * 1 + (window.innerWidth - slideWidth) / 2;
+            setCurrentTranslate(newTranslate);
+            setPrevTranslate(newTranslate);
+            swiperWrapperRef.current.style.transform = `translateX(${newTranslate}px)`;
+         }
+
+         if (activeIndex <= 0) {
+            setActiveIndex(TOTAL_SLIDES - 2);
+            const newTranslate =
+               -slideWidth * (TOTAL_SLIDES - 2) +
+               (window.innerWidth - slideWidth) / 2;
+            setCurrentTranslate(newTranslate);
+            setPrevTranslate(newTranslate);
+            swiperWrapperRef.current.style.transform = `translateX(${newTranslate}px)`;
+         }
       }
-    }
-  };
+   };
 
-  const handleTransitionEnd = () => {
-    if (swiperWrapperRef.current) {
-      swiperWrapperRef.current.style.transition = 'none';
-
-      if (activeIndex >= TOTAL_SLIDES - 1) {
-        setActiveIndex(1);
-        const newTranslate = -slideWidth * 1 + (window.innerWidth - slideWidth) / 2;
-        setCurrentTranslate(newTranslate);
-        setPrevTranslate(newTranslate);
-        swiperWrapperRef.current.style.transform = `translateX(${newTranslate}px)`;
-      }
-
-      if (activeIndex <= 0) {
-        setActiveIndex(TOTAL_SLIDES - 2);
-        const newTranslate = -slideWidth * (TOTAL_SLIDES - 2) + (window.innerWidth - slideWidth) / 2;
-        setCurrentTranslate(newTranslate);
-        setPrevTranslate(newTranslate);
-        swiperWrapperRef.current.style.transform = `translateX(${newTranslate}px)`;
-      }
-    }
-  };
-
-  const setPositionByIndex = () => {
-    if (swiperWrapperRef.current) {
-      swiperWrapperRef.current.style.transition = 'transform .5s ease';
-      const newTranslate = -slideWidth * activeIndex + (window.innerWidth - slideWidth) / 2;
-      setCurrentTranslate(newTranslate);
-      setPrevTranslate(newTranslate);
-      swiperWrapperRef.current.style.transform = `translateX(${newTranslate}px)`;
-
-      swiperWrapperRef.current.addEventListener('transitionend', handleTransitionEnd, { once: true });
-    }
-  };
-
-  const touchStart = (event: React.TouchEvent | React.MouseEvent) => {
-    setIsDragging(true);
-    setStartPos(event.type.includes('mouse') ? (event as React.MouseEvent).pageX : (event as React.TouchEvent).touches[0].clientX);
-    if (swiperWrapperRef.current) {
-      swiperWrapperRef.current.style.transition = 'none';
-    }
-    requestAnimationFrame(animation);
-  };
-
-  const touchEnd = () => {
-    setIsDragging(false);
-    const movedBy = currentTranslate - prevTranslate;
-    if (movedBy < -slideWidth / 4) setActiveIndex((prev) => prev + 1);
-    if (movedBy > slideWidth / 4) setActiveIndex((prev) => prev - 1);
-
-    setPositionByIndex();
-  };
-
-  const touchMove = (event: React.TouchEvent | React.MouseEvent) => {
-    if (isDragging) {
-      const currentPosition = event.type.includes('mouse') ? (event as React.MouseEvent).pageX : (event as React.TouchEvent).touches[0].clientX;
-      setCurrentTranslate(prevTranslate + currentPosition - startPos);
+   const setPositionByIndex = () => {
       if (swiperWrapperRef.current) {
-        swiperWrapperRef.current.style.transform = `translateX(${prevTranslate + currentPosition - startPos}px)`;
+         swiperWrapperRef.current.style.transition = "transform .5s ease";
+         const newTranslate =
+            -slideWidth * activeIndex + (window.innerWidth - slideWidth) / 2;
+         setCurrentTranslate(newTranslate);
+         setPrevTranslate(newTranslate);
+         swiperWrapperRef.current.style.transform = `translateX(${newTranslate}px)`;
+
+         swiperWrapperRef.current.addEventListener(
+            "transitionend",
+            handleTransitionEnd,
+            { once: true }
+         );
       }
-    }
-  };
+   };
 
-  const animation = () => {
-    if (swiperWrapperRef.current) {
-      swiperWrapperRef.current.style.transform = `translateX(${currentTranslate}px)`;
-    }
-    if (isDragging) requestAnimationFrame(animation);
-  };
+   const touchStart = (event: React.TouchEvent | React.MouseEvent) => {
+      setIsDragging(true);
+      setStartPos(
+         event.type.includes("mouse")
+            ? (event as React.MouseEvent).pageX
+            : (event as React.TouchEvent).touches[0].clientX
+      );
+      if (swiperWrapperRef.current) {
+         swiperWrapperRef.current.style.transition = "none";
+      }
+      requestAnimationFrame(animation);
+   };
 
-  return (
-    <div className={styles.container}>
-      <div
-        className={styles.wrapper}
-        ref={swiperWrapperRef}
-        onMouseDown={touchStart}
-        onMouseMove={touchMove}
-        onMouseUp={touchEnd}
-        onMouseLeave={touchEnd}
-        onTouchStart={touchStart}
-        onTouchMove={touchMove}
-        onTouchEnd={touchEnd}
-      >
-        { items.map((item, index) => <div key={index} className={styles.item}>{item}</div>) }
+   const touchEnd = () => {
+      setIsDragging(false);
+      const movedBy = currentTranslate - prevTranslate;
+      if (movedBy < -slideWidth / 4) setActiveIndex(prev => prev + 1);
+      if (movedBy > slideWidth / 4) setActiveIndex(prev => prev - 1);
+
+      setPositionByIndex();
+   };
+
+   const touchMove = (event: React.TouchEvent | React.MouseEvent) => {
+      if (isDragging) {
+         const currentPosition = event.type.includes("mouse")
+            ? (event as React.MouseEvent).pageX
+            : (event as React.TouchEvent).touches[0].clientX;
+         setCurrentTranslate(prevTranslate + currentPosition - startPos);
+         if (swiperWrapperRef.current) {
+            swiperWrapperRef.current.style.transform = `translateX(${prevTranslate + currentPosition - startPos}px)`;
+         }
+      }
+   };
+
+   const animation = () => {
+      if (swiperWrapperRef.current) {
+         swiperWrapperRef.current.style.transform = `translateX(${currentTranslate}px)`;
+      }
+      if (isDragging) requestAnimationFrame(animation);
+   };
+
+   return (
+      <div className={styles.wrapper}>
+         <div
+            className={styles.wrapper}
+            ref={swiperWrapperRef}
+            onMouseDown={touchStart}
+            onMouseMove={touchMove}
+            onMouseUp={touchEnd}
+            onMouseLeave={touchEnd}
+            onTouchStart={touchStart}
+            onTouchMove={touchMove}
+            onTouchEnd={touchEnd}>
+            {items.map((item, index) => (
+               <div key={index} className={styles.item}>
+                  {item}
+               </div>
+            ))}
+         </div>
       </div>
-    </div>
-  )
+   );
 }
 
 /*

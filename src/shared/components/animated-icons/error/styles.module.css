@@ -1,19 +1,23 @@
 .circle {
    stroke-dasharray: 283;
    stroke-dashoffset: 283;
-   animation: draw-circle .6s ease-out forwards;
+   animation: draw-circle 0.6s ease-out forwards;
 }
 
 .path {
    stroke-dasharray: 90;
    stroke-dashoffset: 90;
-   animation: draw-x .3s .6s ease-out forwards;
+   animation: draw-x 0.3s 0.6s ease-out forwards;
 }
 
 @keyframes draw-circle {
-   to { stroke-dashoffset: 0; }
+   to {
+      stroke-dashoffset: 0;
+   }
 }
 
 @keyframes draw-x {
-   to { stroke-dashoffset: 0; }
+   to {
+      stroke-dashoffset: 0;
+   }
 }

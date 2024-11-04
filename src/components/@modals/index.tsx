@@ -1,10 +1,9 @@
-"use client"; 
+"use client";
 
 import { useRef, useEffect, MouseEvent } from "react";
 import { useModalContext, MODALS } from "@/context/modal";
 
 export default function AppModal() {
-   
    const { modal: name, setCurrentModal } = useModalContext()!;
    const Modal = MODALS[name]?.component;
 
@@ -14,8 +13,10 @@ export default function AppModal() {
    useEffect(() => {
       const clearEvents = () => {
          const [modal, backdrop] = [modalRef.current, backdropRef.current];
-         if (modal) modal.removeEventListener("animationend", endModalAnimation);
-         if (backdrop) backdrop.removeEventListener("animationend", endBackdropAnimation);
+         if (modal)
+            modal.removeEventListener("animationend", endModalAnimation);
+         if (backdrop)
+            backdrop.removeEventListener("animationend", endBackdropAnimation);
       };
       return clearEvents;
    }, []);
@@ -26,14 +27,21 @@ export default function AppModal() {
       backdrop.addEventListener("animationend", endBackdropAnimation);
       backdrop.style.animation = "opacity-fadeout 1s ease-in-out";
       backdrop.style.animationFillMode = "forwards";
-   }
+   };
 
    const endBackdropAnimation = () => {
       setCurrentModal("none");
-   }
+   };
 
-   const onClose = (e: MouseEvent<HTMLDivElement | HTMLButtonElement>, isClickCloseButton: boolean = false) => {
-      if (!!setCurrentModal && ((e.target !== e.currentTarget && isClickCloseButton) || e.target === e.currentTarget)) {
+   const onClose = (
+      e: MouseEvent<HTMLDivElement | HTMLButtonElement>,
+      isClickCloseButton: boolean = false
+   ) => {
+      if (
+         !!setCurrentModal &&
+         ((e.target !== e.currentTarget && isClickCloseButton) ||
+            e.target === e.currentTarget)
+      ) {
          const modal = modalRef.current;
          if (!modal) return;
          modal.addEventListener("animationend", endModalAnimation);
@@ -42,7 +50,16 @@ export default function AppModal() {
       }
    };
 
-   return Modal && <div ref={backdropRef} className="backdrop" aria-modal="true" role="dialog" onClick={onClose}>
-      <Modal {...{ ref: modalRef, onClose }} />
-   </div>
+   return (
+      Modal && (
+         <div
+            ref={backdropRef}
+            className="backdrop"
+            aria-modal="true"
+            role="dialog"
+            onClick={onClose}>
+            <Modal {...{ ref: modalRef, onClose }} />
+         </div>
+      )
+   );
 }

@@ -16,4 +16,4 @@ export default function useLocalStorage<T>(key: string, fallbackValue: T) {
    }, [key, storedValue]);
 
    return [storedValue, setStoredValue] as [T, Dispatch<SetStateAction<T>>];
-};
+}

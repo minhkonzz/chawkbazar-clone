@@ -1,4 +1,4 @@
-.container {
+.wrapper {
    margin-top: 2.5rem;
    padding-top: .625rem;
    padding-bottom: var(--bottom-menu-height-max380);
@@ -27,7 +27,7 @@
 
 .link {
    color: rgb(90, 90, 90);
-   transition: all .2s ease-in-out;
+   transition: all 0.2s ease-in-out;
 }
 
 .link:hover {
@@ -50,19 +50,19 @@
 }
 
 @media (min-width: 380px) {
-   .container {
+   .wrapper {
       padding-bottom: var(--bottom-menu-height-min380);
    }
 }
 
 @media (min-width: 600px) {
-   .container {
+   .wrapper {
       padding-bottom: 0;
    }
 }
 
 @media (min-width: 768px) {
-   .container {
+   .wrapper {
       margin-top: 2.75rem;
       padding: 0 2rem;
    }
@@ -84,7 +84,7 @@
 }
 
 @media (min-width: 1024px) {
-   .container {
+   .wrapper {
       margin-top: 4rem;
       padding-top: 0;
    }
@@ -118,7 +118,7 @@
 }
 
 @media (min-width: 1500px) {
-   .container {
+   .wrapper {
       padding-top: .5rem;
       padding-left: 4rem;
       padding-right: 4rem;
@@ -126,7 +126,7 @@
 
    .sections {
       padding-bottom: 5rem;
-      margin-bottom: 0
+      margin-bottom: 0;
    }
 
    .title {
@@ -135,7 +135,7 @@
 }
 
 @media (min-width: 1780px) {
-   .container {
+   .wrapper {
       margin-top: 5rem;
    }
 
@@ -148,4 +148,3 @@
       margin-bottom: 1.75rem;
    }
 }
-

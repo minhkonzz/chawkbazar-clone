@@ -2,11 +2,8 @@
 
 const nextConfig = {
    images: {
-      domains: [
-         'chawkbazar.vercel.app',
-         'firebasestorage.googleapis.com' 
-      ]
-   },
+      domains: ["firebasestorage.googleapis.com"]
+   }
 };
 
 export default nextConfig;

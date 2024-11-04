@@ -10,14 +10,20 @@ export default function useProductView(product: Product) {
       if (!setCurrentModal) return;
 
       const CustomProductPopup = forwardRef(function ProductModalWrapper(
-         { onClose }: { onClose: (e: MouseEvent<HTMLButtonElement>, isClickCloseButton: boolean) => void }, 
+         {
+            onClose
+         }: {
+            onClose: (
+               e: MouseEvent<HTMLButtonElement>,
+               isClickCloseButton: boolean
+            ) => void;
+         },
          ref: ForwardedRef<HTMLDivElement | null>
-      )  { 
-            return <ProductModal {...{ ref, item: product, onClose }} /> 
-         }
-      );
+      ) {
+         return <ProductModal {...{ ref, item: product, onClose }} />;
+      });
 
       setCurrentModal("product", CustomProductPopup);
    };
    return onClick;
-};
+}

@@ -6,7 +6,7 @@
    font-size: 13px;
    color: #fff;
    height: 2.75rem;
-   transition: all .3s ease-in-out;
+   transition: all 0.3s ease-in-out;
 }
 
 @media (min-width: 768px) {

@@ -12,7 +12,7 @@
    font-weight: 600;
    line-height: 1rem;
    color: #fff;
-   transition: all .3s ease;
+   transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -24,7 +24,6 @@
       padding: .875rem 1.5rem;
       font-size: .875rem;
       line-height: 1.25rem;
-
    }
 }
 
@@ -33,4 +32,3 @@
       padding: 1rem 2rem;
    }
 }
-

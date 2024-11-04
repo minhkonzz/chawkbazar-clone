@@ -8,8 +8,11 @@ interface Props {
    children: ReactNode;
    checked: boolean;
    value: ProductAttributeOption;
-   onSelectChange: (e: ChangeEvent<HTMLInputElement>, value: ProductAttributeOption) => void;
-};
+   onSelectChange: (
+      e: ChangeEvent<HTMLInputElement>,
+      value: ProductAttributeOption
+   ) => void;
+}
 
 export default function Checkbox({
    children,
@@ -17,7 +20,6 @@ export default function Checkbox({
    value,
    onSelectChange
 }: Props) {
-
    const inputRef = useRef(null);
    const onChange = (checkboxElement: HTMLInputElement, checked: boolean) => {
       checkboxElement.checked = checked;
@@ -26,7 +28,7 @@ export default function Checkbox({
          return;
       }
       checkboxElement.removeAttribute("checked");
-   }
+   };
 
    useEffect(() => {
       const element = inputRef.current;
@@ -35,15 +37,15 @@ export default function Checkbox({
 
    return (
       <label className={styles.wrapper}>
-         { children }
-         <input 
+         {children}
+         <input
             className={styles.input}
             ref={inputRef}
             type="checkbox"
-            value={value?.optionId} 
-            onChange={(e) => onSelectChange(e, value)} 
-         /> 
+            value={value?.optionId}
+            onChange={e => onSelectChange(e, value)}
+         />
          <span className={styles.checkmark}></span>
       </label>
    );
-};
+}

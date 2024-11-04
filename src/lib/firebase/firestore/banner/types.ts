@@ -1,10 +1,10 @@
 export type CollectionBanner = {
-   pos: number,
-   url: string
+   pos: number;
+   url: string;
 };
 
 export type CollectionBannerGroup = {
-   id: string,
-   name: string,
-   data: CollectionBanner[]
+   id: string;
+   name: string;
+   data: CollectionBanner[];
 };

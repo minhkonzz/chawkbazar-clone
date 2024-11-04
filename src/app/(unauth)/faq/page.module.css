@@ -1,4 +1,4 @@
-.container {
+.wrapper {
    max-width: 64rem;
    padding: 4rem 0;
 }
@@ -14,7 +14,7 @@
 
 .header {
    padding: 1.25rem 1.5rem;
-   transition: all .15s ease-in-out;
+   transition: all 0.15s ease-in-out;
 }
 
 .openIc {
@@ -31,7 +31,7 @@
    width: .125rem;
    border-radius: .375rem;
    background-color: var(--primary-color);
-   transition: all .2s ease-in-out;
+   transition: all 0.2s ease-in-out;
 }
 
 .answer {
@@ -43,7 +43,7 @@
    font-size: .875rem;
    line-height: 1.75rem;
    color: rgb(58, 58, 58);
-   transition: max-height .3s ease-in-out;
+   transition: max-height 0.3s ease-in-out;
 }
 
 @media (min-width: 768px) {
@@ -59,11 +59,12 @@
 }
 
 @media (min-width: 1024px) {
-   .container {
+   .wrapper {
       padding: 5rem 0;
    }
 
-   .header, .answer {
+   .header,
+   .answer {
       padding-left: 2.5rem;
       padding-right: 2.5rem;
    }

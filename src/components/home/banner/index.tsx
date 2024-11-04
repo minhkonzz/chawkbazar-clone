@@ -13,13 +13,13 @@
 //   useEffect(() => {
 //     const onNextSlide = () => {
 //       if (currentIndex === 2) {
-//         setCurrentIndex(0); 
+//         setCurrentIndex(0);
 //         return;
 //       }
 //       setCurrentIndex(currentIndex + 1);
 //     }
-//     const slideTimeout = setInterval(onNextSlide, 6000); 
-//     return () => clearTimeout(slideTimeout); 
+//     const slideTimeout = setInterval(onNextSlide, 6000);
+//     return () => clearTimeout(slideTimeout);
 //   }, [currentIndex]);
 
 //   return (

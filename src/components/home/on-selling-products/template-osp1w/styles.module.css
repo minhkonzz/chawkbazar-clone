@@ -1,5 +1,4 @@
-
-.container {
+.wrapper {
    text-align: center;
    padding-top: .75rem;
    padding-bottom: 1.25rem;
@@ -36,20 +35,10 @@
 }
 
 .item {
+   max-width: 100%;
+   width: 100%;
    opacity: 0;
    transform: translateY(-20px);
-   animation: fadeIn .4s ease forwards;
-}
-
-@keyframes fadeIn {
-   50% {
-      opacity: .5;
-      transform: translateY(20px);
-   }
-   100% {
-      opacity: 1;
-      transform: translateY(0);
-   }
 }
 
 @media (min-width: 770px) {
@@ -72,6 +61,6 @@
    }
 
    .list {
-      grid-column: span 3 / span 3; 
+      grid-column: span 3 / span 3;
    }
 }

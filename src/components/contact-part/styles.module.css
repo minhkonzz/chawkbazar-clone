@@ -1,4 +1,4 @@
-.container {
+.wrapper {
    padding-bottom: 1.75rem;
 }
 
@@ -19,7 +19,8 @@
    color: var(--primary-color);
 }
 
-.title, .desc {
+.title,
+.desc {
    font-size: .875rem;
    line-height: 1.25rem;
 }
