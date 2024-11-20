@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import BaseAPI from "@/shared/api";
 import Link from "next/link";
 
 function ProfileIcon({ className }: { className: string }) {
@@ -107,6 +108,10 @@ export default function AccountNav({
    styles: { readonly [key: string]: string };
 }) {
    const [index, setIndex] = useState<number>(0);
+   const logout = async () => {
+      await BaseAPI.post<{ status: string }>("/logout", {});
+   }
+
    return (
       <>
          {links.map((e, i: number) => (
@@ -119,7 +124,7 @@ export default function AccountNav({
                <span className={styles.linkText}>{e.title}</span>
             </Link>
          ))}
-         <button className={`${styles.link} w-100pc d-flex at-center d-b`}>
+         <button onClick={logout} className={`${styles.link} w-100pc d-flex at-center d-b`}>
             <svg
                stroke="currentColor"
                fill="currentColor"
