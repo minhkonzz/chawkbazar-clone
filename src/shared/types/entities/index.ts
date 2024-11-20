@@ -26,6 +26,18 @@ export type ProductVariation = {
    attribute: ProductAttribute;
 };
 
+export type User = {
+   uid: string;
+   email?: string;
+   emailVerified: boolean;
+   displayName?: string;
+   phoneNumber?: string;
+   photoURL?: string;
+   customClaims?: {
+      [key: string]: any;
+   }
+};
+
 export type Product = {
    id: string;
    brand: Brand;

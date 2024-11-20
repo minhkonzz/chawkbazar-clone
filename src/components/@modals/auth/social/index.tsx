@@ -2,7 +2,8 @@
 
 import { signInWithGoogle } from "@/lib/firebase/auth";
 import { useToast } from "@/context";
-import styles from "../styles.module.css";
+import Button from "@/shared/components/button";
+import styles from "@/components/auth/styles.module.css";
 
 export default function SocialAuth() {
    const toast = useToast()!;
@@ -14,17 +15,12 @@ export default function SocialAuth() {
          user ? "You logged in with Google" : "Login failed with Google"
       );
    };
-
-   const onFacebookLogin = () => {};
+   
+   const btnClass = `${styles.btn} w-100pc`
 
    return (
-      <>
-         <button className={`${styles.btn} w-100pc`} onClick={onGoogleLogin}>
-            Login with Google
-         </button>
-         <button className={`${styles.btn} w-100pc`} onClick={onFacebookLogin}>
-            Login with Facebook
-         </button>
-      </>
+      <Button className={btnClass} onClick={onGoogleLogin}>
+         Login with Google
+      </Button>
    );
 }

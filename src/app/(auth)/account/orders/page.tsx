@@ -1,20 +1,17 @@
 import { getUserOrders } from "@/lib/firebase/firestore/order";
 import { isEmptyArray } from "@/shared/helpers/array";
 import { OrderListItem } from "@/shared/types";
-import { getFirestore } from "firebase/firestore";
+import { useFirestoreServer, useAuthenticatedUser } from "@/lib/firebase/configs/server";
 import styles from "./page.module.css";
-import getAuthenticatedAppForUser from "@/lib/firebase/server";
+import Button from "@/shared/components/button";
 
 const _mockTableHead = ["Order", "Date", "Status", "Total", "Actions"];
 
 export default async function AccountOrders() {
-   const { firebaseServerApp, currentUser } =
-      await getAuthenticatedAppForUser();
 
-   if (!currentUser) return <p>Not found current user</p>;
-
-   const firestoreServer = getFirestore(firebaseServerApp);
-   const orders = await getUserOrders(currentUser.uid, firestoreServer);
+   const firestoreServer = useFirestoreServer();
+   const user = await useAuthenticatedUser();
+   const orders = await getUserOrders(user.uid, firestoreServer);
 
    return (
       (!isEmptyArray(orders) && (
@@ -44,7 +41,7 @@ export default async function AccountOrders() {
                            </td>
                         ))}
                         <td className={styles.cell}>
-                           <button className={styles.button}>View</button>
+                           <Button className={styles.btn}>View</Button>
                         </td>
                      </tr>
                   );

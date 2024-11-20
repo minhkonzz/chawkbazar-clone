@@ -9,7 +9,7 @@ export default function SortingOptions() {
    return (
       <div className={`${styles.wrapper} posrel d-ib`}>
          <button
-            className={`${styles.button} d-flex at-center jc-center`}
+            className={`${styles.btn} d-flex at-center jc-center fw-600`}
             onClick={() => setHide(!hide)}>
             Sorting options
             <svg
@@ -28,7 +28,7 @@ export default function SortingOptions() {
             </svg>
          </button>
          {!hide && (
-            <div className={`${styles.list} posab z-1 w-100pc thin-bd-r`}>
+            <div className={`${styles.list} posab z-1 w-100pc thin-bd-r bg-white`}>
                <p>Newest</p>
                <p>Popularity</p>
                <p>Price: Low to High</p>

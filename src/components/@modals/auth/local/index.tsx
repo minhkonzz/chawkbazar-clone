@@ -2,15 +2,19 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { constants } from "@/configs";
-import { useModalContext } from "@/context";
+import { useModalContext, useFirebaseUser } from "@/context";
 import { useInputsValidation } from "@/shared/hooks";
-import { signInWithEmail, signUp } from "@/lib/firebase/auth";
-import { hashPassword } from "@/lib/firebase/auth/actions";
-import { User } from "firebase/auth";
+import { signUp } from "@/lib/firebase/auth/actions";
+import { signInWithEmail } from "@/lib/firebase/auth";
+import type { SignInResponse } from "@/shared/types";
+import type { User as VerifiedUser } from "@/shared/types/entities";
+import type{ User } from "firebase/auth";
 import Toggle from "@/shared/components/toggle";
 import TextInput from "@/shared/components/text-input";
+import Button from "@/shared/components/button";
+import BaseAPI from "@/shared/api";
 import styles from "./styles.module.css";
-import styles1 from "../styles.module.css";
+import styles1 from "@/components/auth/styles.module.css";
 
 import {
    AnimatedSuccessCheckIcon,
@@ -18,7 +22,7 @@ import {
    AnimatedErrorIcon
 } from "@/shared/components/animated-icons";
 
-const { regex } = constants;
+const { regex, FORCE_REFRESH_TOKEN } = constants;
 const { NAME_REGEX, EMAIL_REGEX, PASSWORD_REGEX } = regex;
 
 const getLocalAuthState = (isLoginModal: boolean) => ({
@@ -49,7 +53,9 @@ const getLocalAuthState = (isLoginModal: boolean) => ({
 });
 
 export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
+   let timeoutId: NodeJS.Timeout;
    const { setCurrentModal } = useModalContext()!;
+   const { setUser } = useFirebaseUser()!;
    const [name, setName] = useState<string>("");
    const [email, setEmail] = useState<string>("");
    const [password, setPassword] = useState<string>("");
@@ -59,11 +65,12 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
       if (!isLogin) setName("");
       setEmail("");
       setPassword("");
+
+      return () => { clearTimeout(timeoutId) }
    }, [isLogin]);
 
-   const performSignUp = async (): Promise<User> => {
-      const hashedPassword: string = await hashPassword(password);
-      return await signUp(email, password, hashedPassword, name);
+   const performSignUp = async (): Promise<VerifiedUser> => {
+      return await signUp(name, email, password);
    };
 
    const performSignIn = async (): Promise<User> => {
@@ -74,14 +81,30 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
       setProcess("processing");
       const func = isLogin ? performSignIn : performSignUp;
       const user = await func();
-      if (user) {
-         setProcess("success");
-         setTimeout(() => {
-            setCurrentModal("none");
-         }, 2000);
+      if (!user) {
+         setProcess("error");
          return;
       }
-      setProcess("error");
+      if (!isLogin) {
+         // signed up
+         const signedUpUser = user as VerifiedUser;
+         setUser(signedUpUser);
+      } else {
+         // signed in
+         const signedInUser = user as User
+         const userId = signedInUser.uid;
+         const idToken = await signedInUser.getIdToken(FORCE_REFRESH_TOKEN);
+         const { user: verifiedUser } = await BaseAPI.post<SignInResponse>("/signin", { idToken, userId }); // double check from server
+         if (!verifiedUser) {
+            setProcess("error");
+            return;
+         }
+         setUser(verifiedUser);
+      }
+      setProcess("success");
+      timeoutId = setTimeout(() => {
+         setCurrentModal("none");
+      }, 2000);
    };
 
    const { errors, handleAfterValidate: makeAuth } = useInputsValidation(
@@ -134,7 +157,6 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
 
    return (
       <>
-         {" "}
          {!isLogin && (
             <div className="w-100pc">
                <TextInput
@@ -176,7 +198,7 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
                </button>
             </div>
          )}
-         <button
+         <Button
             className={`${styles1.btn} w-100pc posrel`}
             onClick={makeAuth}
             style={
@@ -188,7 +210,7 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
                {}
             }>
             <InnerButton />
-         </button>
+         </Button>
       </>
    );
 }

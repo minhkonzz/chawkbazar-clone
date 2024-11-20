@@ -1,8 +1,8 @@
 import { fetchDocs } from "..";
-import { Firestore } from "firebase/firestore";
-import { firestore as firestoreClient } from "../../client";
-import { ImageSource } from "../../storage/types";
-import { CollectionBanner, CollectionBannerGroup } from "./types";
+import { firestoreClient } from "../../configs/client";
+import type { Firestore } from "firebase/firestore";
+import type { ImageSource } from "../../storage/types";
+import type { CollectionBanner, CollectionBannerGroup } from "./types";
 import collections from "../collections";
 
 export const getPromotionBanners = async (

@@ -14,6 +14,7 @@ import { Product } from "@/shared/types/entities";
 import { SelectedProduct } from "@/shared/types";
 import { useProductOptions } from "@/shared/hooks";
 import { ProductVariation } from "@/shared/types/entities";
+import Button from "@/shared/components/button";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -77,10 +78,10 @@ export default forwardRef(function ProductDetail(
    return (
       <div
          {...{ ref }}
-         className={`${styles.wrapper} d-flex posab pos-center`}>
-         <div className={`${styles.about} w-100pc`}>
+         className={`${styles.wrapper} w-auto h-auto d-flex posab pos-center bg-white`}>
+         <div className={`${styles.about} d-flex w-100pc`}>
             <button
-               className={`${styles.close} circle-bd-r posab`}
+               className={`${styles.close} circle-bd-r posab bg-white`}
                onClick={e => onClose(e, true)}>
                <svg
                   stroke="currentColor"
@@ -189,11 +190,11 @@ export default forwardRef(function ProductDetail(
             {!!errorMessage && (
                <p className={styles.errorMessage}>{errorMessage}</p>
             )}
-            <button
+            <Button
                onClick={addProductToCart}
-               className={`${styles.btn} dark-v d-flex jc-center w-100pc thin-bd-r fw-600`}>
+               className={`${styles.btn} dark-v d-flex jc-center w-100pc thin-bd-r`}>
                Add to cart
-            </button>
+            </Button>
          </div>
       </div>
    );

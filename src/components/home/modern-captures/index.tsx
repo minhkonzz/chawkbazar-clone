@@ -1,12 +1,12 @@
 import { getModernCaptures } from "@/lib/firebase/firestore/banner";
+import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { ImageSource } from "@/lib/firebase/storage/types";
 import { env } from "@/configs";
 import styles from "./styles.module.css";
 import Image from "next/image";
-import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
 export default async function ModernCaptures() {
-   const firestoreServer = await useFirestoreServer();
+   const firestoreServer = useFirestoreServer();
    const captures = await getModernCaptures(firestoreServer);
 
    return (

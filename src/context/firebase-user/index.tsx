@@ -2,64 +2,63 @@
 
 import {
    ReactNode,
-   Dispatch,
    useState,
    useEffect,
    createContext,
    useContext,
+   Dispatch,
    SetStateAction
 } from "react";
 
-import { getUserMetadata } from "@/lib/firebase/firestore/user";
-import { UserMetadata } from "@/shared/types";
-import { User, getAuth, onAuthStateChanged } from "firebase/auth";
-import registerAuthServiceWorker from "@/lib/firebase/worker";
-import firebaseClientApp from "@/lib/firebase/client";
+import type { User } from "@/shared/types/entities";
+import BaseAPI from "@/shared/api";
 
-type CurrentUser = {
-   user: User;
-   metadata: UserMetadata;
-} | null;
+type CurrentUser = User | undefined;
 
 type FirebaseUserContextType = {
-   currentUser: CurrentUser;
-   setCurrentUser: Dispatch<SetStateAction<CurrentUser>>;
+   user: CurrentUser,
+   setUser: Dispatch<SetStateAction<CurrentUser>>
+} | null;
+
+type SessionCheckResponse = {
+   authenticated: boolean;
+   user?: User;
 };
 
-const FirebaseUserContext = createContext<FirebaseUserContextType | null>(null);
+const FirebaseUserContext = createContext<FirebaseUserContextType>(null);
 
 export default function FirebaseUserProvider({
    children
 }: {
    children: ReactNode;
 }) {
-   const [currentUser, setCurrentUser] = useState<CurrentUser>(null);
+   const [user, setUser] = useState<User>();
 
    useEffect(() => {
-      const auth = getAuth(firebaseClientApp);
-      const unsub = onAuthStateChanged(auth, (user: User | null) => {
-         if (!user) {
-            setCurrentUser(null);
-            return;
+      (async () => {
+         try {
+            const { authenticated, user } = await BaseAPI.get<SessionCheckResponse>("/check-session");
+            if (!authenticated || !user) return;
+            setUser(user);
+         } catch (err) {
+            console.error("Error occurred when checking session");
          }
-         getUserMetadata(user.uid)
-            .then(metadata => setCurrentUser({ user, metadata }))
-            .catch(error =>
-               console.error("Error getting user metadata: ", error)
-            );
-      });
-      registerAuthServiceWorker()
-         .then(() => {})
-         .catch(err => console.error(err.message));
-
-      return () => unsub!();
+      })();
    }, []);
 
    return (
-      <FirebaseUserContext.Provider value={{ currentUser, setCurrentUser }}>
+      <FirebaseUserContext.Provider value={{ user, setUser }}>
          {children}
       </FirebaseUserContext.Provider>
    );
-}
+};
 
-export const useFirebaseUserContext = () => useContext(FirebaseUserContext);
+export const useFirebaseUser = () => {
+   const ctx = useContext(FirebaseUserContext);
+   if (ctx === undefined) {
+      throw new Error(
+         "useFirebaseUser must be used within a FirebaseUserProvider"
+      );
+   }
+   return ctx;
+};

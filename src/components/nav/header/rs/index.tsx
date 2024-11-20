@@ -1,23 +1,22 @@
 "use client";
 
 // import Langs from "../langs";
-import { useRouter } from "next/navigation";
-import { openSans } from "@/app/fonts";
+import { useRouter, usePathname } from "next/navigation";
 import styles from "./styles.module.css";
 
 import {
    useModalContext,
    useCartContext,
-   useFirebaseUserContext
+   useFirebaseUser
 } from "@/context";
 
 export default function HeaderRight() {
    const router = useRouter();
-   const { cart } = useCartContext()!;
-   const { currentUser } = useFirebaseUserContext()!;
+   const pathname = usePathname();
+   const { cart: { items } } = useCartContext()!;
+   const { user } = useFirebaseUser()!;
    const { setCurrentModal } = useModalContext()!;
-   const { items } = cart;
-   const username = currentUser?.user.displayName;
+   const username = user?.displayName;
 
    const openCart = () => {
       if (!setCurrentModal) return;
@@ -34,18 +33,17 @@ export default function HeaderRight() {
    };
 
    return (
-      <div className={styles.wrapper} suppressHydrationWarning={true}>
+      <div className={`${styles.wrapper} d-flex at-center`} suppressHydrationWarning={true}>
          {/* <Langs /> */}
-         <button
-            className={`${styles.signIn} 
-            ${openSans.className}`}
+         {pathname === "/auth" && <></> || <><button
+            className={`${styles.signIn} fw-600`}
             onClick={redirectProfile}>
             {(username && `Hi, ${username}`) || "Sign in"}
          </button>
-         <button className={styles.cartButton} onClick={openCart}>
+         <button className={`${styles.cartButton} posrel`} onClick={openCart}>
             {items.length > 0 && (
                <span
-                  className={`${styles.cartAmount} d-flex jc-center at-center circle-bd-r`}>
+                  className={`${styles.cartAmount} dark-v d-flex jc-center at-center circle-bd-r posab fw-600`}>
                   {items.length}
                </span>
             )}
@@ -60,7 +58,7 @@ export default function HeaderRight() {
                   fill="currentColor"
                   fillRule="evenodd"></path>
             </svg>
-         </button>
+         </button></>}
       </div>
    );
 }

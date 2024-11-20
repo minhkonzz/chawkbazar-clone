@@ -3,15 +3,15 @@
    margin-left: 45px;
 }
 
-.logo {
-   width: 6rem;
-   height: auto;
+.menu li:last-child:hover .dropdown {
+   display: block;
+   animation: to-high .2s linear;
 }
 
 .dropdown {
    width: 220px;
    top: 100%;
-   transition: all 0.4s;
+   transition: var(--short-delay);
    padding: 1.25rem 0;
    display: none;
    background-color: rgb(249, 249, 249);
@@ -20,14 +20,14 @@
 .dropdown li {
    cursor: pointer;
    display: block;
-   transition: all 0.2s;
-   font-size: .875rem;
+   transition: var(--short-delay);
+   font-size: 0.875rem;
    line-height: 1.25rem;
    color: rgb(90, 90, 90);
-   padding-right: .75rem;
+   padding-right: 0.75rem;
    padding-left: 1.25rem;
-   padding-top: .5rem;
-   padding-bottom: .5rem;
+   padding-top: 0.5rem;
+   padding-bottom: 0.5rem;
 }
 
 .dropdown li a {
@@ -42,23 +42,12 @@
    background-color: rgb(233, 233, 233);
 }
 
-.menu li:last-child:hover .dropdown {
-   display: block;
-   animation: to-high .2s linear;
-}
-
-@media (min-width: 600px) {}
-
 @media (min-width: 992px) {
    .menu {
       display: flex;
       align-items: center;
       gap: 1rem;
       margin-left: 4rem;
-   }
-
-   .logo {
-      margin-left: 0;
    }
 }
 
@@ -83,3 +72,5 @@
       opacity: 1;
    }
 }
+
+

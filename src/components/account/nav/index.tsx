@@ -112,14 +112,14 @@ export default function AccountNav({
          {links.map((e, i: number) => (
             <Link
                onClick={() => setIndex(i)}
-               className={`${styles.link} d-flex at-center cp d-b${i === index ? ` ${styles.selected}` : ""}`}
+               className={`${styles.link} d-flex at-center d-b${i === index ? ` ${styles.selected}` : ""}`}
                href={`/account/${e.path}`}
                key={e.id}>
                <e.ic className={styles.ic} />
                <span className={styles.linkText}>{e.title}</span>
             </Link>
          ))}
-         <button className={`${styles.link} w-100pc d-flex at-center cp d-b`}>
+         <button className={`${styles.link} w-100pc d-flex at-center d-b`}>
             <svg
                stroke="currentColor"
                fill="currentColor"

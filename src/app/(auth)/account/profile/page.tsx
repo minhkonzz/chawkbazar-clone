@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { useInputsValidation } from "@/shared/hooks";
-import { updateUserProfile } from "@/lib/firebase/firestore/user";
-import { useToast, useFirebaseUserContext } from "@/context";
+import { updateUserProfile } from "@/lib/firebase/auth/actions";
+import { useToast, useFirebaseUser } from "@/context";
 import { constants } from "@/configs";
 import styles from "./page.module.css";
 import TextInput from "@/shared/components/text-input";
 import RadioGroup from "@/shared/components/radio-group";
+import Button from "@/shared/components/button";
 
 const { regex } = constants;
 
@@ -27,7 +28,7 @@ export type Profile = {
 
 export default function AccountProfile() {
    const toast = useToast()!;
-   const { currentUser } = useFirebaseUserContext()!;
+   const { user } = useFirebaseUser()!;
 
    const [profile, setProfile] = useState<Profile>({
       firstName: "",
@@ -39,14 +40,10 @@ export default function AccountProfile() {
    });
 
    const updateProfile = () => {
-      if (!currentUser) return;
-      updateUserProfile(currentUser.user, profile)
-         .then(() => {
-            toast("success", "Success update your profile");
-         })
-         .catch(error => {
-            toast("error", `Failed to update your profile: ${error.message}`);
-         });
+      if (!user) return;
+      updateUserProfile(user.uid, profile)
+         .then(() => toast("success", "Success update your profile"))
+         .catch(err => toast("error", `Failed to update your profile: ${err.message}`));
    };
 
    const { errors, handleAfterValidate: _updateProfile } = useInputsValidation(
@@ -157,7 +154,7 @@ export default function AccountProfile() {
                <RadioGroup options={genders} />
             </div>
          </div>
-         <button onClick={_updateProfile}>Update</button>
+         <Button className={styles.btn} onClick={_updateProfile}>Update profile</Button>
       </div>
    );
-}
+};

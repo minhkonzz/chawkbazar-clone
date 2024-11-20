@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState, createContext, useContext } from "react";
+import { type ReactNode, useState, createContext, useContext } from "react";
 import AuthModal from "@/components/@modals/auth";
 import Cart from "@/components/@modals/cart";
 import SideNav from "@/components/nav/aside";

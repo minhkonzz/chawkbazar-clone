@@ -5,11 +5,12 @@ import { useInputsValidation } from "@/shared/hooks";
 import { OrderSubmitData } from "./types";
 import { useState } from "react";
 import { createOrder } from "@/lib/firebase/firestore/order";
-import { useToast, useCartContext, useFirebaseUserContext } from "@/context";
+import { useToast, useCartContext, useFirebaseUser } from "@/context";
 import { useRouter } from "next/navigation";
 import { AnimatedSpinnerIcon } from "@/shared/components/animated-icons";
 import styles from "./styles.module.css";
 import TextInput from "@/shared/components/text-input";
+import Button from "@/shared/components/button";
 
 const { regex } = constants;
 
@@ -17,7 +18,7 @@ export default function CheckoutForm() {
    const toast = useToast()!;
    const router = useRouter();
    const { cart } = useCartContext()!;
-   const { currentUser } = useFirebaseUserContext()!;
+   const { user } = useFirebaseUser()!;
    const [processing, setProcessing] = useState<boolean>(false);
 
    const [orderMetadata, setOrderMetadata] = useState<OrderSubmitData>({
@@ -32,7 +33,7 @@ export default function CheckoutForm() {
    });
 
    const makeOrder = async () => {
-      if (!currentUser) {
+      if (!user) {
          toast("warning", "Please login first");
          return;
       }
@@ -62,7 +63,7 @@ export default function CheckoutForm() {
                isPaid: false
             }
          },
-         currentUser?.user.uid
+         user.uid
       );
 
       if (!orderId) {
@@ -222,7 +223,7 @@ export default function CheckoutForm() {
                   />
                </div>
             </div>
-            <button
+            <Button
                type="submit"
                className={`${styles[(processing && "btnLoading") || "btn"]} fw-600 posrel`}
                onClick={placeOrder}>
@@ -234,7 +235,7 @@ export default function CheckoutForm() {
                      Placing order
                   </>
                )) || <>Place order</>}
-            </button>
+            </Button>
          </div>
       </div>
    );

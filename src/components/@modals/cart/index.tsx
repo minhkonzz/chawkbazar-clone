@@ -25,11 +25,11 @@ export default forwardRef(function Cart(
    return (
       <div
          {...{ ref }}
-         className={`${styles.wrapper} d-flex fd-col jc-sb posab right-0 top-0 bottom-0`}>
+         className={`${styles.wrapper} d-flex fd-col jc-sb posab right-0 top-0 bottom-0 bg-white`}>
          <header className={`${styles.header} d-flex jc-sb at-center`}>
             <h2 className={`${styles.heading} fw-700`}>Shopping cart</h2>
             <button
-               className={`${styles.closeButton} d-flex jc-center at-center cp`}
+               className={`${styles.closeButton} d-flex jc-center at-center`}
                aria-label="close"
                onClick={e => onClose(e, true)}>
                <svg
@@ -62,7 +62,7 @@ export default forwardRef(function Cart(
                href="/checkout"
                className={`
                   ${styles.checkoutButton} 
-                  d-flex jc-sb at-center cp
+                  d-flex jc-sb at-center dark-v
                   ${items.length > 0 ? "" : ` ${styles.disabled}`}
                `}>
                <span className={styles.checkoutButtonText}>

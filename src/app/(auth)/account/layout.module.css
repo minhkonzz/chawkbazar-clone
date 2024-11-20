@@ -22,7 +22,7 @@
    line-height: 1.25rem;
    font-weight: 400;
    color: var(--primary-color);
-   transition: all 0.2s ease;
+   transition: var(--short-delay);
 }
 
 .link:hover {

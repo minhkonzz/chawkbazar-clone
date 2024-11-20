@@ -1,5 +1,6 @@
 import styles from "./styles.module.css";
 import Image from "next/image";
+import Button from "@/shared/components/button";
 
 export default function ServiceMemberContact() {
    return (
@@ -18,7 +19,7 @@ export default function ServiceMemberContact() {
             src="/support.webp"
             alt="person-contacts"
          />
-         <button className={`${styles.button} cp jc-center at-center`}>
+         <Button className={`${styles.btn} jc-center at-center`}>
             Chat With Member Services
             <svg
                stroke="currentColor"
@@ -38,7 +39,7 @@ export default function ServiceMemberContact() {
                <circle cx="256" cy="256" r="32"></circle>
                <circle cx="352" cy="256" r="32"></circle>
             </svg>
-         </button>
+         </Button>
       </section>
    );
 }

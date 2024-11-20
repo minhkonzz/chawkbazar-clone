@@ -2,15 +2,11 @@
    max-width: 1350px;
    max-height: 850px;
    min-width: 920px;
-   width: auto;
-   height: auto;
-   background-color: white;
    border-radius: 10px;
-   animation: visible 0.3s ease-in-out;
+   animation: visible .3s ease;
 }
 
 .about {
-   display: flex;
    flex-direction: column;
    justify-content: space-around;
    padding: 10px 30px 20px 30px;
@@ -20,7 +16,6 @@
    width: 32px;
    height: 32px;
    padding-top: 2px;
-   background-color: white;
    right: -1.75% !important;
    top: -6%;
 }
@@ -50,7 +45,7 @@
    height: 42px;
    border: .5px solid rgb(212, 212, 212);
    border-radius: 4px;
-   transition: all 0.2s;
+   transition: var(--short-delay);
 }
 
 .addon:not(:first-child) {
@@ -74,11 +69,6 @@
 .btn {
    font-size: 1rem;
    padding: 20px 0;
-   transition: opacity 0.2s ease;
-}
-
-.btn:hover {
-   opacity: .9;
 }
 
 .qty {

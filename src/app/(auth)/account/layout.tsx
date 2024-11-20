@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import dynamic from "next/dynamic";
 import styles from "./layout.module.css";
 import Banner from "@/components/banner";
@@ -20,4 +20,4 @@ export default function Account({ children }: { children: ReactNode }) {
          </div>
       </Banner>
    );
-}
+};

@@ -1,12 +1,6 @@
 .wrapper {
-   display: flex;
-   align-items: center;
    height: 100%;
    column-gap: 2.5rem;
-}
-
-.cartButton {
-   position: relative;
 }
 
 .cartIcon {
@@ -17,20 +11,14 @@
 .signIn {
    font-size: 1rem;
    line-height: 1.5rem;
-   font-weight: 600;
-   cursor: pointer;
 }
 
 .cartAmount {
    min-width: 20px;
    min-height: 20px;
    padding: 2px;
-   position: absolute;
-   font-weight: bold;
-   color: #fff;
    top: -0.75rem;
    right: -0.75rem;
-   background-color: var(--primary-color);
 }
 
 .signIn,

@@ -31,7 +31,7 @@ export default function AsideNav() {
          <div className={`${styles.top} d-flex at-center jc-sb`}>
             <Image
                className={styles.logo}
-               src="/logo.svg"
+               src="/logo.webp"
                alt="logo_shop"
                width={95}
                height={30}

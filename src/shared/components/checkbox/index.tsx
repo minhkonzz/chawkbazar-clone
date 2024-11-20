@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useRef, useEffect, ChangeEvent } from "react";
+import { type ReactNode, useRef, useEffect, ChangeEvent } from "react";
 import { ProductAttributeOption } from "@/shared/types";
 import styles from "./styles.module.css";
 

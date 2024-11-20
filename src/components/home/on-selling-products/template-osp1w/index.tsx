@@ -1,5 +1,6 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { getOnSellProducts } from "@/lib/firebase/firestore/product";
+import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { Product as SerializedProduct } from "@/shared/types/entities";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
@@ -7,7 +8,6 @@ import Image from "next/image";
 import Product, {
    Skeleton as ProductSkeleton
 } from "@/components/product/template-p2d";
-import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
 function Container({ children }: { children: ReactNode }) {
    return (
@@ -18,7 +18,7 @@ function Container({ children }: { children: ReactNode }) {
                See All Products
             </a>
          </div>
-         <div className={styles.products}>
+         <div className={`${styles.products} d-flex`}>
             <Image
                width={428}
                height={600}
@@ -33,7 +33,7 @@ function Container({ children }: { children: ReactNode }) {
 }
 
 async function List() {
-   const firestoreServer = await useFirestoreServer();
+   const firestoreServer = useFirestoreServer();
    const products = await getOnSellProducts(firestoreServer);
    return products.map((product: SerializedProduct, i: number) => (
       <div

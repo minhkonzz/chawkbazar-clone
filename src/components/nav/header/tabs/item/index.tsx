@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { openSans } from "@/app/fonts";
 import styles from "./styles.module.css";
 
@@ -10,8 +10,8 @@ interface Props {
 
 export default function HeaderTab({ tabName, href, children }: Props) {
    return (
-      <li className={styles.wrapper}>
-         <a className={`${styles.text} ${openSans.className}`} {...{ href }}>
+      <li className={`${styles.wrapper} posrel`}>
+         <a className={`${styles.text} text-black ${openSans.className}`} href={href}>
             {tabName}
             {!!children && (
                <svg

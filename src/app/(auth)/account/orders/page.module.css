@@ -31,13 +31,10 @@
    color: var(--primary-color);
 }
 
-.button {
+.btn {
    border-radius: .375rem;
-   background-color: var(--primary-color);
    padding: .625rem 1rem;
    font-size: .875rem;
-   line-height: 1rem;
-   color: #fff;
 }
 
 @media (min-width: 1024px) {

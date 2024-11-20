@@ -7,8 +7,8 @@ export default function Toggle() {
    return (
       <button
          onClick={() => setToggled(!toggled)}
-         className={`${styles.wrapper} ${(toggled && styles.toggled) || styles.notToggled} posrel d-ib cp`}>
-         <span className={styles.nude}></span>
+         className={`${styles.wrapper} ${(toggled && styles.toggled) || styles.notToggled} posrel d-ib`}>
+         <span className={`${styles.nude} bg-white`}></span>
       </button>
    );
 }

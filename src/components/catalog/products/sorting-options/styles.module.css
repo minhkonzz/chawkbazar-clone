@@ -2,13 +2,12 @@
    width: 175px;
 }
 
-.button {
+.btn {
    min-width: 180px;
    border-radius: .5rem;
    border: 1px solid rgb(230, 230, 230);
    padding: .5rem 0;
    font-size: 13px;
-   font-weight: 600;
    color: var(--primary-color);
    text-align: left;
 }
@@ -22,7 +21,6 @@
 
 .list {
    border: .8px solid #e4e4e4;
-   background-color: #fff;
    margin-top: 5px;
    padding: 5px 0;
 }
@@ -38,7 +36,7 @@
 }
 
 @media (min-width: 768px) {
-   .button {
+   .btn {
       font-size: .875rem;
       line-height: 1.25rem;
    }

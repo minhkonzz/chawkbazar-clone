@@ -47,7 +47,7 @@ export default function Product({ wImage, hImage, product }: Props) {
 
    return (
       <div
-         className={`${styles.wrapper} d-flex at-center cp`}
+         className={`${styles.wrapper} w-100pc d-flex at-center cp`}
          onClick={onClick}>
          <Image
             width={w}
@@ -58,10 +58,10 @@ export default function Product({ wImage, hImage, product }: Props) {
             priority
          />
          <div className={`${styles.detail} o-h`}>
-            <h2 className={styles.name}>{product?.name}</h2>
+            <h2 className={`${styles.name} fw-600`}>{product?.name}</h2>
             <p
                className={`${styles.desc} o-h`}>{`${product?.description.slice(0, 35)}...`}</p>
-            <div className={`${styles.prices} d-flex at-center wrap`}>
+            <div className={`${styles.prices} d-flex at-center wrap fw-600`}>
                <span>
                   ${fixDecimal(product?.sale_price || product?.price, 2)}
                </span>

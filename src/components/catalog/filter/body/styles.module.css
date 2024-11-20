@@ -24,7 +24,7 @@
 
 .clear:hover {
    color: var(--primary-color);
-   transition: all 0.2s ease-in-out;
+   transition: var(--short-delay);
 }
 
 .selected {

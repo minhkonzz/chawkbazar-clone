@@ -1,6 +1,6 @@
 import { env } from "@/configs";
 
-const firebaseConfig = {
+const firebaseClientSecrets = {
    apiKey: env.FIREBASE_API_KEY,
    authDomain: env.FIREBASE_AUTH_DOMAIN,
    projectId: env.FIREBASE_PROJECT_ID,
@@ -10,4 +10,6 @@ const firebaseConfig = {
    measurementId: env.FIREBASE_MEASUREMENT_ID
 };
 
-export default firebaseConfig;
+
+
+export { firebaseClientSecrets }

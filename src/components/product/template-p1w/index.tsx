@@ -39,11 +39,8 @@ function Product({ wImage, hImage, imagePath, product }: Props) {
                className={
                   styles.desc
                }>{`${product?.description.slice(0, 50)}...`}</p>
-            <div className={styles.prices}>
-               <span
-                  className={
-                     styles.lastPrice
-                  }>{`$${fixDecimal(product?.price, 2)}`}</span>
+            <div className={`${styles.prices} d-flex wrap fw-600`}>
+               <span>{`$${fixDecimal(product?.price, 2)}`}</span>
             </div>
          </div>
       </div>
