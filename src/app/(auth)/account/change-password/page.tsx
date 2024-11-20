@@ -24,19 +24,19 @@ export default function AccountChangePassword() {
       : "";
 
    const update = async () => {
-      // if (!user || newPasswordError) return;
-      // const { password: hashedPassword } = user.metadata;
-      // const correctCurrentPassword = await checkCurrentPassword(
-      //    oldPassword,
-      //    hashedPassword
-      // );
-      // if (!correctCurrentPassword) {
-      //    toast("error", "Incorrect old password");
-      //    return;
-      // }
-      // updatePassword(currentUser?.user.uid, newPassword)
-      //    .then(() => toast("success", "Password updated successfully"))
-      //    .catch(err => toast("error", `Failed to update password: ${err.message}`));
+      if (!user || newPasswordError) return;
+      const { hashedPassword } = user.customClaims!;
+      const correctCurrentPassword = await checkCurrentPassword(
+         oldPassword,
+         hashedPassword
+      );
+      if (!correctCurrentPassword) {
+         toast("error", "Incorrect old password");
+         return;
+      }
+      updatePassword(user.uid, newPassword)
+         .then(() => toast("success", "Password updated successfully"))
+         .catch(err => toast("error", `Failed to update password: ${err.message}`));
    };
 
    return (

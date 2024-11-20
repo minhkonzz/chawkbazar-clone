@@ -1,6 +1,6 @@
 import { getOrder } from "@/lib/firebase/firestore/order";
 import { fixDecimal } from "@/shared/helpers/number";
-import { SelectedProduct } from "@/shared/types";
+import type { SelectedProduct } from "@/shared/types";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import styles from "./page.module.css";
 import Banner from "@/components/banner";

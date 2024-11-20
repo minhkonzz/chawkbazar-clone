@@ -1,6 +1,6 @@
-import { ChangeEvent } from "react";
+import type { ChangeEvent } from "react";
+import type { ProductAttributeOption } from "@/shared/types";
 import { useSearchParams, usePathname } from "next/navigation";
-import { ProductAttributeOption } from "@/shared/types";
 import SkeletonLoader from "@/shared/components/skeleton";
 import Checkbox from "@/shared/components/checkbox";
 import styles from "./styles.module.css";

@@ -2,13 +2,15 @@
 
 import { useMemo } from "react";
 import { fixDecimal } from "@/shared/helpers/number";
+import { constants } from "@/configs";
 import { env } from "@/configs";
-import { Product as SerializedProduct } from "@/shared/types/entities";
+import type { Product as SerializedProduct } from "@/shared/types/entities";
 import SkeletonLoader from "@/shared/components/skeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import useProductView from "@/shared/hooks/useProductView";
 
+const { storageEndpoints } = constants;
 const DEFAULT_SIZE: number = 176;
 
 interface Props {
@@ -53,7 +55,7 @@ export default function Product({ wImage, hImage, product }: Props) {
             width={w}
             height={h}
             style={imgStyles}
-            src={env.PRODUCT_IMAGE_STORAGE! + product?.image.pxs}
+            src={env.FIREBASE_STORAGE_URL + storageEndpoints.products + product?.image.pxs}
             alt="product"
             priority
          />

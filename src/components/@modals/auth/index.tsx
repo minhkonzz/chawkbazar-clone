@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, ForwardedRef, MouseEvent } from "react";
+import { forwardRef, type ForwardedRef, type MouseEvent } from "react";
 import Auth from "@/components/auth";
 import styles from "./styles.module.css";
 

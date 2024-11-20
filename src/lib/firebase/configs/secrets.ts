@@ -10,6 +10,4 @@ const firebaseClientSecrets = {
    measurementId: env.FIREBASE_MEASUREMENT_ID
 };
 
-
-
 export { firebaseClientSecrets }

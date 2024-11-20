@@ -1,8 +1,8 @@
 "use client";
 
 import {
-   ForwardedRef,
-   MouseEvent,
+   type ForwardedRef,
+   type MouseEvent,
    forwardRef,
    useState,
    useCallback,
@@ -10,10 +10,10 @@ import {
 } from "react";
 
 import { fixDecimal } from "@/shared/helpers/number";
-import { Product } from "@/shared/types/entities";
-import { SelectedProduct } from "@/shared/types";
+import type { Product } from "@/shared/types/entities";
+import type { SelectedProduct } from "@/shared/types";
+import type { ProductVariation } from "@/shared/types/entities";
 import { useProductOptions } from "@/shared/hooks";
-import { ProductVariation } from "@/shared/types/entities";
 import Button from "@/shared/components/button";
 import styles from "./styles.module.css";
 

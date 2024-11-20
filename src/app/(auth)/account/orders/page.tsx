@@ -1,6 +1,6 @@
 import { getUserOrders } from "@/lib/firebase/firestore/order";
 import { isEmptyArray } from "@/shared/helpers/array";
-import { OrderListItem } from "@/shared/types";
+import type { OrderListItem } from "@/shared/types";
 import { useFirestoreServer, useAuthenticatedUser } from "@/lib/firebase/configs/server";
 import styles from "./page.module.css";
 import Button from "@/shared/components/button";

@@ -1,11 +1,14 @@
 import { getCollectionBanners } from "@/lib/firebase/firestore/banner";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { mergeStyles } from "@/shared/helpers/global";
+import { constants } from "@/configs";
 import { env } from "@/configs";
 import SkeletonLoader from "@/shared/components/skeleton";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import Image from "next/image";
 import styles from "./styles.module.css";
+
+const { banners } = constants.storageEndpoints;
 
 const bannerStyles = (i: number, maxLen: number) =>
    i === 0 || i === maxLen - 1
@@ -18,11 +21,11 @@ const bannerStyles = (i: number, maxLen: number) =>
 
 async function Collections() {
    const firestoreServer = useFirestoreServer();
-   const banners = await getCollectionBanners("c1w", firestoreServer);
+   const _banners = await getCollectionBanners("c1w", firestoreServer);
 
    return (
       <section className={`${styles.wrapper} home-section`}>
-         {banners.map((url: string, i: number) => {
+         {_banners.map((url: string, i: number) => {
             const _s = bannerStyles(i, banners.length);
             return (
                <div
@@ -33,7 +36,7 @@ async function Collections() {
                      className={styles.image}
                      width={_s.w}
                      height={_s.h}
-                     src={`${env.BANNER_IMAGE_STORAGE + url}`}
+                     src={`${env.FIREBASE_STORAGE_URL! + banners + url}`}
                      alt="logo_shop"
                      priority
                   />

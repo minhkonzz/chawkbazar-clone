@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { ReadonlyURLSearchParams } from "next/navigation";
+import type { ReadonlyURLSearchParams } from "next/navigation";
 
 export const transformFilterOptions = (
    searchParams: ReadonlyURLSearchParams
@@ -26,7 +26,3 @@ export const mergeStyles = (styles: any, classNames: string[] = []) => {
 export const clientOnly = (path: string) => {
    return dynamic(() => import(path), { ssr: false });
 };
-
-export const delay = (ms: number) =>
-   new Promise(resolve => setTimeout(resolve, ms));
-export const isOnClient = typeof window !== "undefined";

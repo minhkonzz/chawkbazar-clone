@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { getProductAttributes } from "@/lib/firebase/firestore/product";
-import { ProductAttributes, ProductAttributeOption } from "@/shared/types";
+import type { ProductAttributes, ProductAttributeOption } from "@/shared/types";
 import { Skeleton as SectionSkeleton } from "../section";
 import SkeletonLoader from "@/shared/components/skeleton";
 import Section from "../section";

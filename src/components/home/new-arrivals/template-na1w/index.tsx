@@ -1,6 +1,6 @@
 import { getNewArrivalProducts } from "@/lib/firebase/firestore/product";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
-import { Product as SerializedProduct } from "@/shared/types/entities";
+import type { Product as SerializedProduct } from "@/shared/types/entities";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
 import Product, {

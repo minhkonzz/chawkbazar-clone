@@ -2,7 +2,7 @@
 
 import { constants } from "@/configs";
 import { useInputsValidation } from "@/shared/hooks";
-import { OrderSubmitData } from "./types";
+import type { OrderSubmitData } from "./types";
 import { useState } from "react";
 import { createOrder } from "@/lib/firebase/firestore/order";
 import { useToast, useCartContext, useFirebaseUser } from "@/context";

@@ -1,6 +1,6 @@
 "use client";
 
-import { ForwardedRef, MouseEvent, forwardRef } from "react";
+import { type ForwardedRef, type MouseEvent, forwardRef } from "react";
 import { fixDecimal } from "@/shared/helpers/number";
 import { useCartContext } from "@/context";
 import Link from "next/link";

@@ -20,8 +20,10 @@ export const signUp = async (
       password
    });
    const nameParts = displayName.split(" ");
+   const hashedPassword = await hash(password);
    await firebaseAuthAdmin.setCustomUserClaims(userRecord.uid, {
       role: "customer",
+      hashedPassword,
       firstName: nameParts[0],
       lastName: nameParts[nameParts.length - 1],
       gender: ""

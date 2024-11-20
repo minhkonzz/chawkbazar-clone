@@ -1,11 +1,11 @@
 import "server-only"
 
 import { firebaseClientSecrets } from "./secrets";
-import { initializeApp as initializeAdminApp, getApps, cert, ServiceAccount } from "firebase-admin/app";
+import { initializeApp as initializeAdminApp, getApps, cert, type ServiceAccount } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { cookies } from "next/headers";
 import { initializeServerApp } from "firebase/app";
-import { getFirestore, Firestore } from "firebase/firestore";
+import { type Firestore, getFirestore } from "firebase/firestore";
 import type { UserRecord } from "firebase-admin/auth";
 import { env } from "@/configs";
 

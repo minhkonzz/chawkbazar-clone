@@ -1,8 +1,8 @@
-import { useState, useEffect, KeyboardEvent } from "react";
+import { useState, useEffect, type KeyboardEvent } from "react";
 import { useToast, useCartContext } from "@/context";
-import { ProductVariation } from "../types/entities";
-import { Product } from "../types/entities";
-import { SelectedProductVariation } from "../types";
+import type { ProductVariation } from "../types/entities";
+import type { Product } from "../types/entities";
+import type { SelectedProductVariation } from "../types";
 import { constants } from "@/configs";
 
 const { AMOUNT_PATTERN } = constants.regex;

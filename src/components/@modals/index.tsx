@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, MouseEvent } from "react";
+import { useRef, useEffect, type MouseEvent } from "react";
 import { useModalContext, MODALS } from "@/context/modal";
 
 export default function AppModal() {

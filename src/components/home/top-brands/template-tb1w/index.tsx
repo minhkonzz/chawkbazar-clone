@@ -2,13 +2,14 @@ import type { ReactNode } from "react";
 import type { Brand } from "@/shared/types/entities";
 import { getBrands } from "@/lib/firebase/firestore/product";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
+import { constants } from "@/configs";
 import { env } from "@/configs";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import SkeletonLoader from "@/shared/components/skeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-const { BRAND_IMAGE_STORAGE, BRAND_LOGO_STORAGE } = env;
+const { brandLogos, brands } = constants.storageEndpoints;
 
 function Container({ children }: { children: ReactNode }) {
    return (
@@ -21,8 +22,8 @@ function Container({ children }: { children: ReactNode }) {
 
 async function List() {
    const firestoreServer = useFirestoreServer();
-   const brands = await getBrands(firestoreServer);
-   return brands.map((e: Brand, i: number) => (
+   const _brands = await getBrands(firestoreServer);
+   return _brands.map((e: Brand, i: number) => (
       <a
          style={{ animationDelay: `${i * .1}s` }}
          key={e?.id}
@@ -38,7 +39,7 @@ async function List() {
                width: "100%",
                height: "auto"
             }}
-            src={`${BRAND_IMAGE_STORAGE + e.image}`}
+            src={`${env.FIREBASE_STORAGE_URL! + brands + e.image}`}
             alt="brand"
          />
          <span className={`${styles.backface} posab w-100pc h-100pc`}></span>
@@ -47,7 +48,7 @@ async function List() {
             width={200}
             height={94}
             style={{ height: "auto", width: "auto" }}
-            src={`${BRAND_LOGO_STORAGE + e.logo}`}
+            src={`${env.FIREBASE_STORAGE_URL + brandLogos + e.logo}`}
             alt="brand-logo"
          />
       </a>

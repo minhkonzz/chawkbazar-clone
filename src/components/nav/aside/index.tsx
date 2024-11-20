@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useModalContext } from "@/context";
+import Image from "next/image";
 import styles from "./styles.module.css";
 
 export default function AsideNav() {

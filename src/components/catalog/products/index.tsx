@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { getFilteredProducts } from "@/lib/firebase/firestore/product";
 import { transformFilterOptions } from "@/shared/helpers/global";
 import { isEmptyArray } from "@/shared/helpers/array";
-import { Product as SerializedProduct } from "@/shared/types/entities";
+import type { Product as SerializedProduct } from "@/shared/types/entities";
 import { Skeleton as ProductSkeleton } from "../../product/template-p1w";
 import SkeletonLoader from "@/shared/components/skeleton";
 import SortingOptions from "./sorting-options";

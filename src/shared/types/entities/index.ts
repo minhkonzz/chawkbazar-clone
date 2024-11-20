@@ -1,4 +1,4 @@
-import { SelectedProduct } from "..";
+import type { SelectedProduct } from "..";
 
 export type Brand = {
    id: string;

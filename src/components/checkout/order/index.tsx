@@ -1,9 +1,12 @@
 import { fixDecimal } from "@/shared/helpers/number";
-import { SelectedProduct } from "@/shared/types";
+import type { SelectedProduct } from "@/shared/types";
 import { useCartContext } from "@/context/cart";
 import { env } from "@/configs";
+import { constants } from "@/configs";
 import styles from "./styles.module.css";
 import Image from "next/image";
+
+const { storageEndpoints } = constants;
 
 export default function CheckoutOrderDetail() {
    const { cart } = useCartContext()!;
@@ -25,7 +28,7 @@ export default function CheckoutOrderDetail() {
                   <Image
                      width={62}
                      height={62}
-                     src={`${env.PRODUCT_IMAGE_STORAGE}${item.image.p}`}
+                     src={`${env.FIREBASE_STORAGE_URL + storageEndpoints.products}${item.image.p}`}
                      alt="order-product"
                   />
                   <h6

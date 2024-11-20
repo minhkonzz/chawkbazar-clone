@@ -1,13 +1,13 @@
 "use client";
 
 import {
-   ReactNode,
+   type ReactNode,
+   type Dispatch,
+   type SetStateAction,
    useState,
    useEffect,
    createContext,
    useContext,
-   Dispatch,
-   SetStateAction
 } from "react";
 
 import type { User } from "@/shared/types/entities";

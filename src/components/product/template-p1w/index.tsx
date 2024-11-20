@@ -2,12 +2,14 @@
 
 import { env } from "@/configs";
 import { fixDecimal } from "@/shared/helpers/number";
-import { Product as SerializedProduct } from "@/shared/types/entities";
+import { constants } from "@/configs";
+import type { Product as SerializedProduct } from "@/shared/types/entities";
 import SkeletonLoader from "@/shared/components/skeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import useProductView from "@/shared/hooks/useProductView";
 
+const { storageEndpoints } = constants;
 const DEFAULT_SIZE: number = 322;
 
 interface Props {
@@ -30,7 +32,7 @@ function Product({ wImage, hImage, imagePath, product }: Props) {
                width: "100%",
                height: "auto"
             }}
-            src={env.PRODUCT_IMAGE_STORAGE! + imagePath}
+            src={env.FIREBASE_STORAGE_URL + storageEndpoints.products + imagePath}
             alt="product-image"
          />
          <div className={styles.detail}>

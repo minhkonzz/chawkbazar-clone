@@ -1,7 +1,7 @@
 "use client";
 
 import { type ReactNode, createContext, useContext } from "react";
-import { SelectedProduct } from "@/shared/types";
+import type { SelectedProduct } from "@/shared/types";
 import { useLocalStorage } from "@/shared/hooks";
 import { constants } from "@/configs";
 

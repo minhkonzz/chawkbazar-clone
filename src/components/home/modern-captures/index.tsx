@@ -1,9 +1,12 @@
 import { getModernCaptures } from "@/lib/firebase/firestore/banner";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
-import { ImageSource } from "@/lib/firebase/storage/types";
+import type { ImageSource } from "@/lib/firebase/storage/types";
+import { constants } from "@/configs";
 import { env } from "@/configs";
 import styles from "./styles.module.css";
 import Image from "next/image";
+
+const { modeCaptures } = constants.storageEndpoints;
 
 export default async function ModernCaptures() {
    const firestoreServer = useFirestoreServer();
@@ -21,7 +24,7 @@ export default async function ModernCaptures() {
                   width={298}
                   height={298}
                   className={styles.img}
-                  src={env.MODERN_IMAGE_STORAGE + e.url}
+                  src={env.FIREBASE_STORAGE_URL + modeCaptures + e.url}
                   alt="mode-image"
                />
                <div
