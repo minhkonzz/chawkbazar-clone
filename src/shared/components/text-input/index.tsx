@@ -26,7 +26,7 @@ export default function TextInput({
    errorMessage
 }: Props) {
    const props = {
-      className: `w-100pc ${styles.inp} ${customStyle}`,
+      className: `w-100pc bg-white text-black ${styles.inp} ${customStyle}`,
       value: inputValue || "",
       placeholder: placeholder ?? "",
       spellCheck: false,
@@ -41,7 +41,7 @@ export default function TextInput({
 
    return (
       <>
-         {label && <label className={`${styles.label} d-b`}>{label}</label>}
+         {label && <label className={`${styles.label} d-b fw-600`}>{label}</label>}
          {(textArea && (
             <textarea {...{ ...props, rows: textArea.r, cols: textArea.c }} />
          )) || <input {...props} type={(isPassword && "password") || "text"} />}

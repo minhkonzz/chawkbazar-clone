@@ -1,6 +1,6 @@
 .event {
    background-color: rgb(247, 247, 247);
-   transition: all 0.2s ease-in;
+   transition: var(--short-delay);
    font-size: .75rem;
    line-height: 1.5rem;
    color: #000;

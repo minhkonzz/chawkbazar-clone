@@ -7,7 +7,7 @@ export default function Footer() {
          <div className={styles.sections}>
             {mock.map((e, i) => (
                <div className={styles.section} key={i}>
-                  <h4 className={styles.title}>{e.title}</h4>
+                  <h4 className={`${styles.title} fw-600`}>{e.title}</h4>
                   <ul className={styles.list}>
                      {e.references.map((ref, _i) => (
                         <li key={ref.id}>

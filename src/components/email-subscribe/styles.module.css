@@ -32,23 +32,14 @@
 
 .inp {
    text-align: center;
-   background-color: #fff;
 }
 
 .btn {
    width: 100%;
    margin-top: .75rem;
    border-radius: .375rem;
-   background-color: var(--primary-color);
    padding: 1rem 1.25rem;
    font-size: 13px;
-   line-height: 1rem;
-   transition: all 0.2s ease;
-   color: #fff;
-}
-
-.btn:hover {
-   opacity: .9;
 }
 
 @media (min-width: 480px) {

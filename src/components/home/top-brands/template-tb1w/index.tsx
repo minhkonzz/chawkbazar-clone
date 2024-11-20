@@ -1,13 +1,12 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
+import type { Brand } from "@/shared/types/entities";
 import { getBrands } from "@/lib/firebase/firestore/product";
-import { Brand } from "@/shared/types/entities";
+import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { env } from "@/configs";
-import { delay } from "@/shared/helpers/global";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import SkeletonLoader from "@/shared/components/skeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";
-import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
 const { BRAND_IMAGE_STORAGE, BRAND_LOGO_STORAGE } = env;
 
@@ -21,7 +20,7 @@ function Container({ children }: { children: ReactNode }) {
 }
 
 async function List() {
-   const firestoreServer = await useFirestoreServer();
+   const firestoreServer = useFirestoreServer();
    const brands = await getBrands(firestoreServer);
    return brands.map((e: Brand, i: number) => (
       <a

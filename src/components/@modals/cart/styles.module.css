@@ -1,8 +1,7 @@
 .wrapper {
    width: 100%;
-   background-color: #fff;
    z-index: 1000;
-   animation: visible 0.5s ease-in-out;
+   animation: visible .5s ease;
 }
 
 .header {
@@ -21,7 +20,7 @@
    font-size: 1.5rem;
    line-height: 2rem;
    color: rgb(261, 261, 261);
-   transition: opacity 0.15s ease-in-out;
+   transition: var(--short-delay);
 }
 
 .closeButton:hover {
@@ -38,12 +37,10 @@
 
 .checkoutButton {
    border-radius: .375rem;
-   background-color: var(--primary-color);
    padding: .75rem 1.25rem;
    font-size: .875rem;
    line-height: 1.25rem;
-   color: #fff;
-   transition: all 0.1s ease-in-out;
+   transition: var(--short-delay);
 }
 
 .checkoutButton.disabled {

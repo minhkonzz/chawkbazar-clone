@@ -1,8 +1,7 @@
 .label {
    margin-bottom: .75rem;
    font-size: .875rem;
-   font-weight: 600;
-   color: rgb(58, 58, 58);
+   color: var(--primary-color);
 }
 
 .error {
@@ -17,8 +16,7 @@
    border-radius: .375rem;
    font-size: .75rem;
    line-height: 1rem;
-   color: #000;
-   transition: all .2s ease-in-out;
+   transition: var(--short-delay);
 }
 
 .inp:focus {

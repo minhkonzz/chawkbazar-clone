@@ -1,12 +1,9 @@
 .btn {
    margin-top: .375rem;
    border-radius: .375rem;
-   background-color: var(--primary-color);
    padding: 1rem 1.25rem;
    font-size: 13px;
-   color: #fff;
    height: 2.75rem;
-   transition: all 0.3s ease-in-out;
 }
 
 @media (min-width: 768px) {

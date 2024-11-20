@@ -11,6 +11,10 @@
    padding-right: 1rem;
 }
 
+.logo {
+   width: 6rem;
+}
+
 @media (min-width: 380px) {
    .wrapper {
       height: var(--header-height-min380);
@@ -36,6 +40,9 @@
 @media (min-width: 992px) {
    .wrapper {
       height: var(--header-height-min992);
+   }
+   .logo {
+      margin-left: 0;
    }
 }
 

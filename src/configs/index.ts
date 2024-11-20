@@ -1,8 +1,12 @@
 const constants = {
+   APP_NAME: "chawkbazar",
    INCREASE_ONCE: 1,
    DECREASE_ONCE: -1,
    TOAST_DURATION: 4000,
    DEFAULT_QUANTITY: 1,
+   CHECK_TOKEN_REVOKED: true,
+   FORCE_REFRESH_TOKEN: true,
+   TOKEN_EXPIRES: 60 * 60 * 24 * 5 * 1000, // 5 days
    regex: {
       EMAIL_REGEX: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
       PASSWORD_REGEX: /^(?=.*[~!@#$%^&*(),.?":{}|<>])(?=.*[A-Z]).{8,15}$/g,
@@ -15,6 +19,8 @@ const constants = {
 };
 
 const env = {
+   FIREBASE_PRIVATE_KEY: process.env.FIREBASE_PRIVATE_KEY,
+   FIREBASE_CLIENT_EMAIL: process.env.FIREBASE_CLIENT_EMAIL,
    FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
    FIREBASE_AUTH_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
    FIREBASE_PROJECT_ID: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,

@@ -1,10 +1,10 @@
-import { Firestore } from "firebase/firestore";
-import { firestore as firestoreClient } from "../../client";
+import { firestoreClient } from "../../configs/client";
 import { fetchDoc, fetchDocs, addNewDoc } from "../";
-import { Order } from "@/shared/types/entities";
-import { SelectedProduct } from "@/shared/types";
-import { OrderListItem, OrderDetailClaims } from "@/shared/types";
-import { CheckoutDetail } from "@/components/checkout/form/types";
+import type { Firestore } from "firebase/firestore";
+import type { Order } from "@/shared/types/entities";
+import type { SelectedProduct } from "@/shared/types";
+import type { OrderListItem, OrderDetailClaims } from "@/shared/types";
+import type { CheckoutDetail } from "@/components/checkout/form/types";
 import collections from "../collections";
 
 export const createOrder = async (

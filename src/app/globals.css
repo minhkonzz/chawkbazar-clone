@@ -25,7 +25,7 @@
    --page-section-dist-min768: 44px;
    --page-section-dist-min992: 52px;
    --page-section-dist-min1200: 60px;
-   --short-delay: all .2s;
+   --short-delay: all .15s;
    --long-delay: all 2s;
 }
 
@@ -178,7 +178,7 @@
    bottom: 0;
 }
 .thin-bd-r {
-   border-radius: 12px;
+   border-radius: 8px;
 }
 .norm-bd-r {
    border-radius: 16px;
@@ -259,7 +259,7 @@ html {
    box-sizing: border-box;
 }
 
-button {
+button, a {
    cursor: pointer;
 }
 

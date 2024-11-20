@@ -1,11 +1,11 @@
 import { getCollectionBanners } from "@/lib/firebase/firestore/banner";
+import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { mergeStyles } from "@/shared/helpers/global";
 import { env } from "@/configs";
 import SkeletonLoader from "@/shared/components/skeleton";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import Image from "next/image";
 import styles from "./styles.module.css";
-import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
 const bannerStyles = (i: number, maxLen: number) =>
    i === 0 || i === maxLen - 1
@@ -17,7 +17,7 @@ const bannerStyles = (i: number, maxLen: number) =>
       : { className: styles.collection, w: 425, h: 425 };
 
 async function Collections() {
-   const firestoreServer = await useFirestoreServer();
+   const firestoreServer = useFirestoreServer();
    const banners = await getCollectionBanners("c1w", firestoreServer);
 
    return (

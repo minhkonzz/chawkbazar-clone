@@ -6,21 +6,12 @@
    display: inline-flex;
    margin-top: .75rem;
    border-radius: .375rem;
-   background-color: var(--primary-color);
    padding: 1rem 1.25rem;
    font-size: 13px;
-   font-weight: 600;
-   line-height: 1rem;
-   color: #fff;
-   transition: all 0.3s ease;
-}
-
-.btn:hover {
-   opacity: .9;
 }
 
 @media (min-width: 768px) {
-   .button {
+   .btn {
       padding: .875rem 1.5rem;
       font-size: .875rem;
       line-height: 1.25rem;
@@ -28,7 +19,7 @@
 }
 
 @media (min-width: 1024px) {
-   .button {
+   .btn {
       padding: 1rem 2rem;
    }
 }

@@ -13,7 +13,7 @@ export default function CheckoutOrderDetail() {
    return (
       <div className={styles.wrapper}>
          <h2 className={styles.title}>Your order</h2>
-         <div className={`${styles.header} d-flex jc-sb`}>
+         <div className={`${styles.header} d-flex jc-sb fw-600`}>
             <span>Product</span>
             <span>Subtotals</span>
          </div>
@@ -38,11 +38,11 @@ export default function CheckoutOrderDetail() {
                </span>
             </div>
          ))}
-         <div className={`${styles.wrapper} d-flex at-center jc-sb`}>
+         <div className={styles.ck}>
             <span>Shipping</span>
             <span>Free</span>
          </div>
-         <div className={`${styles.wrapper} d-flex at-center jc-sb`}>
+         <div className={styles.ck}>
             <span>Total</span>
             <span>${`${fixDecimal(totalPrice + shipFee, 2)}`}</span>
          </div>

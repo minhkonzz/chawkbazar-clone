@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
 import TextInput from "@/shared/components/text-input";
+import Button from "@/shared/components/button";
 
 export default function EmailSubscribe() {
    const [input, setInput] = useState<string>("");
@@ -23,7 +24,7 @@ export default function EmailSubscribe() {
                inputValue={input}
                onChange={e => setInput(e.target.value)}
             />
-            <button className={`${styles.btn} fw-600`}>Subscribe</button>
+            <Button className={styles.btn}>Subscribe</Button>
          </form>
       </section>
    );

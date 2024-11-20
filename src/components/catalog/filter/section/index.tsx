@@ -54,7 +54,7 @@ export default function FilterSection({ paramName, title, options }: Props) {
 
    return (
       <div className={styles.wrapper}>
-         <h3 className={styles.title}>{title}</h3>
+         <h3 className={`${styles.title} fw-600`}>{title}</h3>
          <div className={`${styles.list} d-flex fd-col`}>
             {options.map((option: ProductAttributeOption, i: number) => (
                <Checkbox

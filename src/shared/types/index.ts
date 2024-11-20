@@ -1,10 +1,11 @@
-import {
+import type {
    FieldPath,
    QueryDocumentSnapshot,
    WhereFilterOp
 } from "firebase/firestore";
 
-import { Order, Product, ProductVariation } from "./entities";
+import type { User } from "./entities";
+import type { Order, Product, ProductVariation } from "./entities";
 
 export type RadioGroupOption = {
    title: string;
@@ -23,6 +24,10 @@ export type SignInRequestBody = {
    password: string;
 };
 
+export type SignInResponse = {
+   user: User;
+}
+
 export type SignUpRequestBody = {
    name: string;
    email: string;
@@ -33,19 +38,11 @@ export type RefreshTokensBody = {
    refreshToken: string;
 };
 
-export type CurrentUser = {
-   uuid: string;
-   displayName: string;
-   email: string;
-   emailVerified: boolean;
-   phoneNumber: string;
-   photoURL: string;
-};
-
 export type OrderListItem = Pick<Order, "date" | "state"> & {
    total: number;
    totalItems: number;
 };
+
 export type OrderDetailClaims = Pick<
    Order,
    "id" | "date" | "products" | "shipFee" | "note"
@@ -79,14 +76,6 @@ export type ProductAttributes = {
       title: string;
       options: ProductAttributeOption[];
    };
-};
-
-export type UserMetadata = {
-   firstName: string;
-   lastName: string;
-   phone?: string;
-   gender?: string;
-   password: string;
 };
 
 export type TextFieldMetadata = {

@@ -21,7 +21,7 @@
 
 .icon {
    color: #fff;
-   transition: all 0.3s ease-in-out;
+   transition: var(--short-delay);
    font-size: 1rem;
    line-height: 1.5rem;
    transform: scale(4, 4);

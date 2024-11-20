@@ -46,7 +46,7 @@ export default function Policy() {
                            <li key={e.id}>
                               <a
                                  href={`#title-${i + 1}`}
-                                 className={`${styles.navLink} d-b cp`}>
+                                 className={`${styles.navLink} d-b`}>
                                  {`${(i > 9 && i) || `0${i}`}. ${e.title}`}
                               </a>
                            </li>

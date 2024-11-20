@@ -26,20 +26,10 @@
    padding: 0 1.25rem;
 }
 
-.btn {
-   transition: var(--short-delay);
-   background-color: var(--primary-color);
-   color: #fff;
-}
-
 .btnLoading {
    background: transparent;
    border: 1px solid #000;
    color: #000;
-}
-
-.btn:hover {
-   opacity: .9;
 }
 
 @media (min-width: 768px) {

@@ -11,6 +11,7 @@ import SkeletonLoader from "@/shared/components/skeleton";
 import SortingOptions from "./sorting-options";
 import Product from "../../product/template-p1w";
 import styles from "./styles.module.css";
+import Button from "@/shared/components/button";
 
 function Skeleton() {
    return (
@@ -81,7 +82,7 @@ export default function CatalogProducts() {
                })}
             </div>
             <div className={`${styles.loadMore} text-center`}>
-               <button className={`${styles.btn} cp`}>Load more</button>
+               <Button className={styles.btn}>Load more</Button>
             </div>
          </>
       )) || <Skeleton />

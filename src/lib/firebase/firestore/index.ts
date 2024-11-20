@@ -1,10 +1,8 @@
-import { FirestoreQueryDocumentsConfig } from "@/shared/types";
-import { firestore as firestoreClient } from "../client";
-import { is2DArray } from "@/shared/helpers/array";
-import { FetchedDocs } from "./types";
+import type { FirestoreQueryDocumentsConfig } from "@/shared/types";
+import type { FetchedDocs } from "./types";
+import { firestoreClient } from "../configs/client";
 
 import {
-   Firestore,
    query,
    addDoc,
    collection,
@@ -15,13 +13,12 @@ import {
    where,
    limit,
    startAfter,
-   DocumentReference,
-   QueryDocumentSnapshot,
-   QueryFilterConstraint,
-   DocumentData,
-   FieldPath,
-   WhereFilterOp,
-   and
+   and,
+   type Firestore,
+   type DocumentReference,
+   type QueryDocumentSnapshot,
+   type QueryFilterConstraint,
+   type DocumentData,
 } from "firebase/firestore";
 
 export const fetchDocs = async (

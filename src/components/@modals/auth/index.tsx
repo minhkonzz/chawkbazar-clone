@@ -1,30 +1,26 @@
 "use client";
 
-import { useState, forwardRef, ForwardedRef, MouseEvent } from "react";
-import Image from "next/image";
+import { forwardRef, ForwardedRef, MouseEvent } from "react";
+import Auth from "@/components/auth";
 import styles from "./styles.module.css";
-import SocialAuth from "./social";
-import LocalAuth from "./local";
 
 interface Props {
    onClose: (
       e: MouseEvent<HTMLButtonElement>,
       isClickCloseButton: boolean
    ) => void;
-}
+};
 
-export default forwardRef(function Auth(
+export default forwardRef(function AuthModal(
    { onClose }: Props,
    ref: ForwardedRef<HTMLDivElement | null>
 ) {
-   const [isLogin, setIsLogin] = useState<boolean>(true);
-
    return (
       <div
-         {...{ ref }}
-         className={`${styles.wrapper} posab pos-center max-h-100pc`}>
+         ref={ref}
+         className={`${styles.wrapper} posab pos-center max-h-100pc bg-white`}>
          <button
-            className={`${styles.closeButton} jc-center at-center cp circle-bd-r`}
+            className={`${styles.closeButton} jc-center at-center circle-bd-r bg-white`}
             onClick={e => onClose(e, true)}>
             <svg
                stroke="currentColor"
@@ -38,41 +34,7 @@ export default forwardRef(function Auth(
             </svg>
          </button>
          <div className={`${styles.main} d-flex fd-col w-100pc h-100pc`}>
-            <header className={`${styles.header} text-center`}>
-               <Image alt="shop-logo" src="/logo.svg" width={95} height={30} />
-               <p className={styles.title}>
-                  {(isLogin && "Login with your email & password") || (
-                     <>
-                        By signing up, you agree to our
-                        <a className={styles.titleLink} href="#">
-                           Terms
-                        </a>{" "}
-                        &
-                        <a className={styles.titleLink} href="#">
-                           Privacy
-                        </a>
-                     </>
-                  )}
-               </p>
-            </header>
-            <div className={`${styles.form} d-flex fd-col`}>
-               <LocalAuth {...{ isLogin }} />
-            </div>
-            <div
-               className={`${styles.lineWrapper} posrel d-flex fd-col at-center jc-center`}>
-               <hr className={`${styles.line} w-100pc`} />
-               <span className={`${styles.lineText} posab`}>Or</span>
-            </div>
-            <SocialAuth />
-            <div className={`${styles.switchAuth} text-center`}>
-               {(isLogin && "Don't have any account") ||
-                  "Already have an account"}
-               <button
-                  className={`${styles.switchButton} cp`}
-                  onClick={() => setIsLogin(!isLogin)}>
-                  {(isLogin && "Register") || "Login"}
-               </button>
-            </div>
+            <Auth />
          </div>
       </div>
    );

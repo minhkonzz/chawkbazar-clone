@@ -23,7 +23,7 @@
 
 .removeIc,
 .imageBackdrop {
-   transition: all 0.3s ease-in-out;
+   transition: var(--short-delay);
 }
 
 .imageWrapper:hover .imageBackdrop {
@@ -49,7 +49,7 @@
 
 .quantityButton {
    width: 2rem;
-   transition: all 0.3s ease-in-out;
+   transition: var(--short-delay);
 }
 
 .quantityText {

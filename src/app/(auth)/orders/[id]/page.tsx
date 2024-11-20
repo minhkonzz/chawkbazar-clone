@@ -1,16 +1,16 @@
 import { getOrder } from "@/lib/firebase/firestore/order";
 import { fixDecimal } from "@/shared/helpers/number";
 import { SelectedProduct } from "@/shared/types";
+import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import styles from "./page.module.css";
 import Banner from "@/components/banner";
-import useFirestoreServer from "@/lib/firebase/firestore/hooks/useFirestoreServer";
 
 export default async function AccountOrder({
    params
 }: {
    params: { id: string };
 }) {
-   const firestoreServer = await useFirestoreServer();
+   const firestoreServer = useFirestoreServer();
    const order = await getOrder(params.id, firestoreServer);
 
    if (!order) throw new Error("Order not found");
