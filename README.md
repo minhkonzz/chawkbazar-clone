@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <h3 align="center">Chawkbazar Shop</h3>
 
-## Getting Started
+  <p align="center">
+    This project is cloned from this ecommerce template
+    <br />
+    <a href="https://chawkbazar.vercel.app/">chawkbazar.vercel.app</a>
+    <br />
+    <br />
+    <a href="https://fanciful-bunny-91031a.netlify.app/"><strong>View Demo »</strong></a>
+  </p>
+</div>
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is an e-commerce website that provides customers with an online shopping experience for fashion items of all ages, customers can refer to products, manage shopping carts, manipulate orders and more, backend powered by Firestore service of Firebase Cloud integration. The user interface of the project was previously built with just ReactJS and currently being converted to the NextJS framework. The goal of implementing this project is to be able to provide users with a specialized shopping platform for fashion items and integrate many other advanced shopping support features that the original website does not provide.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[![Next][Next.js]][Next-url]
+[![Firebase][Firebase]][Firebase-url]
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<!-- ROADMAP -->
+## Roadmap
 
-## Learn More
+- [x] User authentication
+- [x] Searching, filtering products
+- [x] Manage cart, checkout
+- [x] User account, tracking orders
+- [ ] Payment integration (Paypal)
+- [ ] Themes for per page
+- [ ] Products recommendation
+- [ ] Multi-language Support
+    - [ ] English
+    - [ ] Vietnamese
 
-To learn more about Next.js, take a look at the following resources:
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[product-screenshot]: images/screenshot.png
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
+[Firebase]: https://img.shields.io/badge/firebase-fccc45?style=for-the-badge&logo=firebase&logoColor=black
+[Firebase-url]: https://firebase.google.com/
 
--  [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--  [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

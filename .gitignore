@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 /public/auth-service-worker.js
+commit_hashes.txt
+override.sh
 
 # dependencies
 /node_modules
