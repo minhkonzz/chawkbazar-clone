@@ -1,3 +1,5 @@
+"use client"
+
 import { fixDecimal } from "@/shared/helpers/number";
 import type { SelectedProduct } from "@/shared/types";
 import { useCartContext } from "@/context/cart";
@@ -6,11 +8,10 @@ import { constants } from "@/configs";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-const { storageEndpoints } = constants;
+const { products } = constants.storageEndpoints;
 
 export default function CheckoutOrderDetail() {
-   const { cart } = useCartContext()!;
-   const { items, totalPrice } = cart;
+   const { cart: { items, totalPrice }} = useCartContext()!;
    const shipFee: number = 2.99;
 
    return (
@@ -28,7 +29,7 @@ export default function CheckoutOrderDetail() {
                   <Image
                      width={62}
                      height={62}
-                     src={`${env.FIREBASE_STORAGE_URL + storageEndpoints.products}${item.image.p}`}
+                     src={`${env.FIREBASE_STORAGE_URL + products}${item.image.p}`}
                      alt="order-product"
                   />
                   <h6
