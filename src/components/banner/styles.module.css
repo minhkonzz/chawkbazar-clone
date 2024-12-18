@@ -1,6 +1,6 @@
 .wrapper {
    background: url("../../../public/page-header.webp") 50% / cover no-repeat;
-   padding: 1.5rem;
+   min-height: 320px;
 }
 
 .background {

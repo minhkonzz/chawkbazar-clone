@@ -22,8 +22,8 @@ export const createOrder = async (
       postCode,
       cartItems,
       shipFee,
-      payment,
-      note
+      isPaid,
+      cod
    } = checkoutDetail;
 
    const { id } = await addNewDoc(
@@ -43,8 +43,8 @@ export const createOrder = async (
          city,
          postCode,
          shipFee,
-         payment,
-         note
+         isPaid,
+         cod
       },
       firestore
    );

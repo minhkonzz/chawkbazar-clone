@@ -1,28 +1,39 @@
 "use client";
 
+import { forwardRef, useState, type MouseEvent, ForwardedRef } from "react";
 import { constants } from "@/configs";
 import { useInputsValidation } from "@/shared/hooks";
-import type { OrderSubmitData } from "./types";
-import { useState } from "react";
 import { createOrder } from "@/lib/firebase/firestore/order";
-import { useToast, useCartContext, useFirebaseUser } from "@/context";
 import { useRouter } from "next/navigation";
 import { AnimatedSpinnerIcon } from "@/shared/components/animated-icons";
+import type { OrderSubmitData } from "@/components/checkout/form/types";
+import { createPaymentIntent } from "@/lib/stripe/actions";
+import StripeElementsProvider from "@/lib/stripe/stripe-elements-provider";
+import StripePaymentForm from "../stripe-payment";
 import styles from "./styles.module.css";
 import TextInput from "@/shared/components/text-input";
 import Button from "@/shared/components/button";
+import PaymentOptions from "../payment-options";
+
+import {
+   useToast,
+   useCartContext,
+   useFirebaseUser,
+   useModalContext
+} from "@/context";
 
 const { regex } = constants;
 
 export default function CheckoutForm() {
    const toast = useToast()!;
    const router = useRouter();
+   const { setCurrentModal } = useModalContext()!;
    const { cart } = useCartContext()!;
    const { user } = useFirebaseUser()!;
    const [processing, setProcessing] = useState<boolean>(false);
+   const [cod, setCod] = useState<boolean>(true);
 
-   const [orderMetadata, setOrderMetadata] = useState<OrderSubmitData>({
-      cod: false,
+   const [checkoutFormData, setCheckoutFormData] = useState<OrderSubmitData>({
       firstName: "",
       lastName: "",
       address: "",
@@ -46,67 +57,99 @@ export default function CheckoutForm() {
 
       setProcessing(true);
 
-      const orderId: string = await createOrder(
-         {
-            firstName: orderMetadata.firstName,
-            lastName: orderMetadata.lastName,
-            address: orderMetadata.address,
-            phone: orderMetadata.phone,
-            email: orderMetadata.email,
-            city: orderMetadata.city,
-            postCode: orderMetadata.postCode,
-            note: "",
-            cartItems: items,
-            shipFee: 2.99,
-            payment: {
-               type: orderMetadata.cod ? "pay_online" : "cash_on_delivery",
-               isPaid: false
-            }
-         },
-         user.uid
-      );
+      const billingDetails = {
+         firstName: checkoutFormData.firstName,
+         lastName: checkoutFormData.lastName,
+         address: checkoutFormData.address,
+         phone: checkoutFormData.phone,
+         email: checkoutFormData.email,
+         city: checkoutFormData.city,
+         postCode: checkoutFormData.postCode,
+         cod,
+         cartItems: items,
+         shipFee: 2.99,
+         isPaid: false
+      };
+
+      if (!cod) {
+         // user select online payment
+         const clientSecret = await createPaymentIntent({
+            amount: cart.totalPrice * 100,
+            currency: "USD"
+         });
+         if (!clientSecret) {
+            toast("error", "Failed to create payment intent");
+            setProcessing(false);
+            return;
+         }
+         const _PaymentModal = forwardRef(function PaymentModal(
+            {
+               onClose
+            }: {
+               onClose: (
+                  e: MouseEvent<HTMLButtonElement | null>,
+                  isClickCloseButton: boolean
+               ) => void;
+            },
+            ref: ForwardedRef<HTMLFormElement | null>
+         ) {
+            return (
+               <StripeElementsProvider clientSecret={clientSecret}>
+                  <StripePaymentForm
+                     userId={user.uid}
+                     billingDetails={billingDetails} 
+                     onClose={onClose} 
+                     ref={ref} />
+               </StripeElementsProvider>
+            );
+         });
+         setCurrentModal("payment", _PaymentModal);
+         return;
+      }
+
+      const orderId: string = await createOrder(billingDetails, user.uid);
 
       if (!orderId) {
          toast("error", "Failed to create order");
          return;
       }
 
-      router.push(`/orders/${orderId}?order_success=true`);
+      router.push(`/order-success?id=${orderId}`);
    };
 
    const { errors, handleAfterValidate: placeOrder } = useInputsValidation(
       [
          {
             title: "First name",
-            value: orderMetadata.firstName,
+            value: checkoutFormData.firstName,
             pattern: regex.NAME_REGEX,
             errorIdentifier: "firstNameError",
             errorMessage: "Chỉ được phép ký tự là chữ"
          },
          {
             title: "Last name",
-            value: orderMetadata.lastName,
+            value: checkoutFormData.lastName,
             pattern: regex.NAME_REGEX,
             errorIdentifier: "lastNameError",
             errorMessage: "Chỉ được phép ký tự là chữ"
          },
          {
             title: "Address",
-            value: orderMetadata.address,
+            value: checkoutFormData.address,
             pattern: regex.ALPHANUMERIC_REGEX,
             errorIdentifier: "addressError",
             errorMessage: "Chỉ được phép ký tự là chữ hoặc số"
          },
          {
             title: "Phone",
-            value: orderMetadata.phone,
+            value: checkoutFormData.phone,
             pattern: regex.NUMERIC_REGEX,
             errorIdentifier: "phoneError",
             errorMessage: "Chỉ được phép ký tự là số"
          },
          {
             title: "Email",
-            value: orderMetadata.email,
+            value: checkoutFormData.email,
             pattern: regex.EMAIL_REGEX,
             errorIdentifier: "emailError",
             errorMessage: "Email không hợp lệ1"
@@ -125,12 +168,12 @@ export default function CheckoutForm() {
                      label="First Name *"
                      placeholder="Enter your first name"
                      onChange={e =>
-                        setOrderMetadata({
-                           ...orderMetadata,
+                        setCheckoutFormData({
+                           ...checkoutFormData,
                            firstName: e.target.value
                         })
                      }
-                     inputValue={orderMetadata.firstName}
+                     inputValue={checkoutFormData.firstName}
                      errorMessage={(!!errors && errors["firstNameError"]) || ""}
                   />
                </div>
@@ -138,10 +181,10 @@ export default function CheckoutForm() {
                   <TextInput
                      label="Last Name *"
                      placeholder="Enter your last name"
-                     inputValue={orderMetadata.lastName}
+                     inputValue={checkoutFormData.lastName}
                      onChange={e =>
-                        setOrderMetadata({
-                           ...orderMetadata,
+                        setCheckoutFormData({
+                           ...checkoutFormData,
                            lastName: e.target.value
                         })
                      }
@@ -153,10 +196,10 @@ export default function CheckoutForm() {
                <TextInput
                   label="Address *"
                   placeholder="Enter your address"
-                  inputValue={orderMetadata.address}
+                  inputValue={checkoutFormData.address}
                   onChange={e =>
-                     setOrderMetadata({
-                        ...orderMetadata,
+                     setCheckoutFormData({
+                        ...checkoutFormData,
                         address: e.target.value
                      })
                   }
@@ -168,10 +211,10 @@ export default function CheckoutForm() {
                   <TextInput
                      label="Phone / mobile *"
                      placeholder="Enter your phone"
-                     inputValue={orderMetadata.phone}
+                     inputValue={checkoutFormData.phone}
                      onChange={e =>
-                        setOrderMetadata({
-                           ...orderMetadata,
+                        setCheckoutFormData({
+                           ...checkoutFormData,
                            phone: e.target.value
                         })
                      }
@@ -182,10 +225,10 @@ export default function CheckoutForm() {
                   <TextInput
                      label="Email *"
                      placeholder="Enter your email"
-                     inputValue={orderMetadata.email}
+                     inputValue={checkoutFormData.email}
                      onChange={e =>
-                        setOrderMetadata({
-                           ...orderMetadata,
+                        setCheckoutFormData({
+                           ...checkoutFormData,
                            email: e.target.value
                         })
                      }
@@ -198,10 +241,10 @@ export default function CheckoutForm() {
                   <TextInput
                      label="City / Town"
                      placeholder="Enter city / town"
-                     inputValue={orderMetadata.city}
+                     inputValue={checkoutFormData.city}
                      onChange={e =>
-                        setOrderMetadata({
-                           ...orderMetadata,
+                        setCheckoutFormData({
+                           ...checkoutFormData,
                            city: e.target.value
                         })
                      }
@@ -212,10 +255,10 @@ export default function CheckoutForm() {
                   <TextInput
                      label="Postcode"
                      placeholder="Enter postcode"
-                     inputValue={orderMetadata.postCode}
+                     inputValue={checkoutFormData.postCode}
                      onChange={e =>
-                        setOrderMetadata({
-                           ...orderMetadata,
+                        setCheckoutFormData({
+                           ...checkoutFormData,
                            postCode: e.target.value
                         })
                      }
@@ -223,6 +266,7 @@ export default function CheckoutForm() {
                   />
                </div>
             </div>
+            <PaymentOptions cod={cod} setCod={setCod} />
             <Button
                type="submit"
                className={`${styles[(processing && "btnLoading") || "btn"]} fw-600 posrel`}

@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { type ForwardedRef, type MouseEvent, forwardRef } from "react";
+import { type ForwardedRef, type MouseEvent, useCallback, forwardRef } from "react";
 import { fixDecimal } from "@/shared/helpers/number";
-import { useCartContext } from "@/context";
-import Link from "next/link";
+import { useCartContext, useModalContext } from "@/context";
+import { useRouter } from "next/navigation";
 import CartItem from "./item";
 import styles from "./styles.module.css";
 import BagSvg from "../../bag";
@@ -19,12 +19,18 @@ export default forwardRef(function Cart(
    { onClose }: Props,
    ref: ForwardedRef<HTMLDivElement | null>
 ) {
-   const { cart } = useCartContext()!;
-   const { items, totalPrice } = cart;
+   const router = useRouter();
+   const { setCurrentModal } = useModalContext()!;
+   const { cart: { items, totalPrice }} = useCartContext()!;
+
+   const toCheckout = useCallback(() => {
+      setCurrentModal("none");
+      router.push("/checkout");
+   }, []);
 
    return (
       <div
-         {...{ ref }}
+         ref={ref}
          className={`${styles.wrapper} d-flex fd-col jc-sb posab right-0 top-0 bottom-0 bg-white`}>
          <header className={`${styles.header} d-flex jc-sb at-center`}>
             <h2 className={`${styles.heading} fw-700`}>Shopping cart</h2>
@@ -58,11 +64,11 @@ export default forwardRef(function Cart(
             )}
          </main>
          <div className={styles.bottom}>
-            <Link
-               href="/checkout"
+            <button
+               onClick={toCheckout}
                className={`
                   ${styles.checkoutButton} 
-                  d-flex jc-sb at-center dark-v
+                  d-flex w-100pc jc-sb at-center dark-v
                   ${items.length > 0 ? "" : ` ${styles.disabled}`}
                `}>
                <span className={styles.checkoutButtonText}>
@@ -72,7 +78,7 @@ export default forwardRef(function Cart(
                   <span className={styles.vline}></span>$
                   {items.length === 0 ? 0 : fixDecimal(totalPrice, 2)}
                </span>
-            </Link>
+            </button>
          </div>
       </div>
    );

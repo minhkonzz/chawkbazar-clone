@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
-import { openSans } from "./fonts";
+import { inter } from "./fonts";
 import "./globals.css";
 
 import NextTopLoader from "nextjs-toploader";
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
    return (
       <html lang="en">
-         <body className={openSans.className}>
+         <body className={inter.className}>
             <NextTopLoader color="rgb(90, 90, 90)" height={2} />
             <FirebaseUserContext>
                <CartProvider>

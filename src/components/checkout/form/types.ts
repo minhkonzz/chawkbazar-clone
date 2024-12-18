@@ -1,7 +1,6 @@
 import { SelectedProduct } from "@/shared/types";
 
 export type OrderSubmitData = {
-   cod?: boolean;
    firstName?: string;
    lastName?: string;
    address?: string;
@@ -11,12 +10,9 @@ export type OrderSubmitData = {
    postCode?: string;
 };
 
-export type CheckoutDetail = Omit<OrderSubmitData, "cod"> & {
-   note: string;
+export type CheckoutDetail = OrderSubmitData & {
    cartItems: SelectedProduct[];
    shipFee: number;
-   payment: {
-      type: string;
-      isPaid: boolean;
-   };
+   isPaid: boolean;
+   cod: boolean;
 };

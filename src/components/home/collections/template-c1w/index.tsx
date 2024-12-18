@@ -26,7 +26,7 @@ async function Collections() {
    return (
       <section className={`${styles.wrapper} home-section`}>
          {_banners.map((url: string, i: number) => {
-            const _s = bannerStyles(i, banners.length);
+            const _s = bannerStyles(i, _banners.length);
             return (
                <div
                   className={`${_s.className} ${styles.loaded} posrel o-h`}

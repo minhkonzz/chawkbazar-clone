@@ -6,11 +6,12 @@ import Cart from "@/components/@modals/cart";
 import SideNav from "@/components/nav/aside";
 
 export const MODALS: Readonly<
-   Record<"none" | "auth" | "product" | "cart" | "sidenav", any>
+   Record<"none" | "auth" | "product" | "payment" | "cart" | "sidenav", any>
 > = {
    none: null,
    auth: { component: AuthModal },
    product: { component: null },
+   payment: { component: null },
    cart: { component: Cart },
    sidenav: { component: SideNav }
 };
@@ -28,7 +29,7 @@ export default function PopupProvider({ children }: { children: ReactNode }) {
    const [modal, setModal] = useState<ModalType>("none");
 
    const setCurrentModal = (type: ModalType, customPopup?: any) => {
-      if (customPopup && ["product"].includes(type)) {
+      if (customPopup && ["product", "payment"].includes(type)) {
          MODALS[type].component = customPopup;
       }
       setModal(type);

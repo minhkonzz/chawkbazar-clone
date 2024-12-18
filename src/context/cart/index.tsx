@@ -55,6 +55,12 @@ export default function CartProvider({ children }: { children: ReactNode }) {
    };
 
    const removeFromCart = (item: any) => {
+      const currentItems = cart.items;
+      if (currentItems.length === 1) {
+         setCart({ items: [], totalPrice: 0 });
+         return;
+      }
+
       const {
          qty: currentAmount,
          price: unitPrice,
@@ -63,15 +69,13 @@ export default function CartProvider({ children }: { children: ReactNode }) {
          selectedColor
       } = item;
 
-      const currentItems = cart.items;
-
       setCart({
          items: currentItems.filter(
             (_item: SelectedProduct) =>
                (_item.id === item.id &&
                   (item.selectedSize.id !== selectedSize.id ||
                      item.selectedColor.id !== selectedColor.id)) ||
-               item.id !== item.id
+               _item.id !== item.id
          ),
          totalPrice: cart.totalPrice - currentAmount * (sale_price || unitPrice)
       });
@@ -82,18 +86,17 @@ export default function CartProvider({ children }: { children: ReactNode }) {
 
       const {
          id,
-         price: unitPrice,
-         sale_price,
+         lastPrice,
          selectedSize,
          selectedColor,
          qty
       } = itemAdjust;
+      
 
       if (adjustType === DECREASE_ONCE && qty === 1) return;
 
       const currentItems = cart.items;
       const totalPrice = cart.totalPrice;
-      const priceChange = sale_price || unitPrice;
 
       setCart({
          items: currentItems.map((item: SelectedProduct) =>
@@ -106,7 +109,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
                  }
                : item
          ),
-         totalPrice: totalPrice + priceChange * adjustType
+         totalPrice: totalPrice + lastPrice * adjustType
       });
    };
 

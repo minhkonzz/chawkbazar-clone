@@ -1,12 +1,14 @@
 import Banner from "@/components/banner";
 import styles from "./page.module.css";
-import Checkout from "@/components/checkout";
+import CheckoutForm from "@/components/checkout/form";
+import CheckoutOrder from "@/components/checkout/order";
 
 export default function CheckoutPage() {
    return (
       <Banner title="Checkout">
          <div className={`${styles.wrapper} d-flex mx-auto`}>
-            <Checkout />
+            <CheckoutForm />
+            <CheckoutOrder />
          </div>
       </Banner>
    );

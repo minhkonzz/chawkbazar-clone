@@ -77,7 +77,7 @@ export default forwardRef(function ProductDetail(
 
    return (
       <div
-         {...{ ref }}
+         ref={ref}
          className={`${styles.wrapper} w-auto h-auto d-flex posab pos-center bg-white`}>
          <div className={`${styles.about} d-flex w-100pc`}>
             <button

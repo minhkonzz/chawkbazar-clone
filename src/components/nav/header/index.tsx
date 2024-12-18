@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import HeaderTabs from "./tabs";
 import styles from "./styles.module.css";
 
+const HeaderTabs = dynamic(() => import("./tabs"), { ssr: false });
 const HeaderRight = dynamic(() => import("./rs"), { ssr: false });
 
 export default function NavHeader() {
