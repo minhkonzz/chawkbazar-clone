@@ -1,13 +1,11 @@
 import type { ReactNode } from "react";
+import { Skeleton as ProductSkeleton } from "@/components/product/template-p2d";
 import { getOnSellProducts } from "@/lib/firebase/firestore/product";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
-import type { Product as SerializedProduct } from "@/shared/types/entities";
+import OnSellingProductsList from "./list";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
 import Image from "next/image";
-import Product, { 
-   Skeleton as ProductSkeleton
-} from "@/components/product/template-p2d";
 
 function Container({ children }: { children: ReactNode }) {
    return (
@@ -35,14 +33,7 @@ function Container({ children }: { children: ReactNode }) {
 async function List() {
    const firestoreServer = useFirestoreServer();
    const products = await getOnSellProducts(firestoreServer);
-   return products.map((product: SerializedProduct, i: number) => (
-      <div
-         key={product?.id}
-         className={`${styles.item} item-fadein`}
-         style={{ animationDelay: `${i * .1}s` }}>
-         <Product product={product} />
-      </div>
-   ));
+   return <OnSellingProductsList initialProducts={products} />
 }
 
 export default function OnSellingProducts() {

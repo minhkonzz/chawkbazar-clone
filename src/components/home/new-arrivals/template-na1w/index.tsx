@@ -2,6 +2,7 @@ import { getNewArrivalProducts } from "@/lib/firebase/firestore/product";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import type { Product as SerializedProduct } from "@/shared/types/entities";
 import withSkeleton from "@/shared/hocs/withSkeleton";
+import NewArrivalProductsList from "./list";
 import styles from "./styles.module.css";
 import Product, {
    Skeleton as ProductSkeleton
@@ -16,19 +17,7 @@ async function NewArrivals() {
       <section className="home-section nfu">
          <h3 className={styles.title}>{title}</h3>
          <div className={styles.items}>
-            {products.map((item: SerializedProduct, i: number) => (
-               <div
-                  key={item?.id}
-                  style={{ animationDelay: `${i * 0.1}s` }}
-                  className={`${styles.item} item-fadein`}>
-                  <Product
-                     wImage={352}
-                     hImage={452}
-                     product={item}
-                     imagePath={item?.image?.pm}
-                  />
-               </div>
-            ))}
+            <NewArrivalProductsList initialProducts={products} />
          </div>
       </section>
    );
