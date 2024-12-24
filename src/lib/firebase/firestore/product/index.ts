@@ -1,6 +1,6 @@
 import { type Firestore, or, where, and, doc } from "firebase/firestore";
 import { serializeProduct, serializeProducts } from "./utils";
-import { fetchDoc, fetchDocs, fetchWithCustomQuery } from "..";
+import { fetchDoc, fetchDocs, fetchWithCustomQuery, getDocsSnapShot } from "..";
 import { firestoreClient } from "../../configs/client";
 import type { ProductAttributes } from "@/shared/types";
 import type { Product as FirestoreProduct, Product } from "./types";
@@ -23,6 +23,18 @@ export const getProducts = async (
       firestore
    )) as FirestoreProduct[];
    return await serializeProducts(products);
+};
+
+export const getProductsSnapShot = (
+   cb: (data: SerializedProduct[]) => void
+) => {
+   const unsub = getDocsSnapShot(
+      {
+         collectionName: collections.PRODUCTS
+      },
+      cb
+   );
+   return unsub;
 };
 
 export const getProductById = async (
@@ -197,6 +209,18 @@ export const getNewArrivalProducts = async (
    return await serializeProducts(products);
 };
 
+export const getNewArrivalProductsSnapShot = (
+   cb: (data: SerializedProduct[]) => void
+) => {
+   const unsub = getDocsSnapShot(
+      {
+         collectionName: collections.NEW_ARRIVAL_PRODUCTS
+      },
+      cb
+   );
+   return unsub;
+};
+
 export const getFlashSaleProducts = async (
    firestore: Firestore = firestoreClient
 ): Promise<SerializedProduct[]> => {
@@ -208,6 +232,19 @@ export const getFlashSaleProducts = async (
       firestore
    )) as FirestoreProduct[];
    return await serializeProducts(products);
+};
+
+export const getFlashSaleProductsSnapShot = (
+   cb: (data: SerializedProduct[]) => void
+) => {
+   const unsub = getDocsSnapShot(
+      {
+         collectionName: collections.PRODUCTS,
+         _where: ["on_flash_sale", "==", true]
+      },
+      cb
+   );
+   return unsub;
 };
 
 export const getOnSellProducts = async (
@@ -223,6 +260,19 @@ export const getOnSellProducts = async (
    return await serializeProducts(products);
 };
 
+export const getOnSellProductsSnapShot = (
+   cb: (data: SerializedProduct[]) => void
+) => {
+   const unsub = getDocsSnapShot(
+      {
+         collectionName: collections.PRODUCTS,
+         _where: ["in_stock", ">", 0]
+      },
+      cb
+   );
+   return unsub;
+};
+
 export const getBrands = async (
    firestore: Firestore = firestoreClient
 ): Promise<Brand[]> => {
@@ -232,4 +282,14 @@ export const getBrands = async (
       },
       firestore
    )) as Brand[];
+};
+
+export const getBrandsSnapshot = (cb: (data: Brand[]) => void) => {
+   const unsub = getDocsSnapShot(
+      {
+         collectionName: collections.BRANDS
+      },
+      cb
+   );
+   return unsub;
 };

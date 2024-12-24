@@ -1,5 +1,5 @@
 import { firestoreClient } from "../../configs/client";
-import { fetchDoc, fetchDocs, addNewDoc } from "../";
+import { createDocRef, fetchDoc, fetchDocs, performTransaction, getDocRef } from "../";
 import type { Firestore } from "firebase/firestore";
 import type { Order } from "@/shared/types/entities";
 import type { SelectedProduct } from "@/shared/types";
@@ -26,9 +26,26 @@ export const createOrder = async (
       cod
    } = checkoutDetail;
 
-   const { id } = await addNewDoc(
-      collections.ORDERS,
-      {
+   return performTransaction(async (transaction) => {
+      // Create a new document reference
+      const newOrderRef = createDocRef(collections.ORDERS, firestore);
+
+      // Check product availability and update inventory
+      for (const item of cartItems) {
+         const productRef = getDocRef(collections.PRODUCTS, item.id, firestore);
+         const productDoc = await transaction.get(productRef);
+         if (!productDoc.exists()) {
+            throw new Error(`Product ${item.id} not found`);
+         }
+         const productData = productDoc.data();
+         if (productData.stock < item.qty) {
+            throw new Error(`Not enough stock for product ${item.id}`);
+         }
+         transaction.update(productRef, { stock: productData.stock - item.qty });
+      }
+
+      // Create the order
+      transaction.set(newOrderRef, {
          customer: {
             id: userId,
             firstName,
@@ -45,11 +62,10 @@ export const createOrder = async (
          shipFee,
          isPaid,
          cod
-      },
-      firestore
-   );
+      });
 
-   return id;
+      return newOrderRef.id;
+   }, firestore);
 };
 
 export const getUserOrders = async (

@@ -1,12 +1,10 @@
 import type { ReactNode } from "react";
 import { getFlashSaleProducts } from "@/lib/firebase/firestore/product";
-import type { Product as SerializedProduct } from "@/shared/types/entities";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
+import { Skeleton as ProductSkeleton } from "@/components/product/template-p1w";
+import FlashSaleList from "./list";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
-import Product, {
-   Skeleton as ProductSkeleton
-} from "@/components/product/template-p1w";
 
 function Container({ children }: { children: ReactNode }) {
    return (
@@ -23,19 +21,7 @@ function Container({ children }: { children: ReactNode }) {
 async function List() {
    const firestoreServer = useFirestoreServer();
    const products = await getFlashSaleProducts(firestoreServer);
-   return products.map((e: SerializedProduct, i: number) => (
-      <div
-         key={e?.id}
-         className={`${styles.item} item-fadein`}
-         style={{ animationDelay: `${i * 0.1}s` }}>
-         <Product
-            wImage={324}
-            hImage={324}
-            imagePath={e.image.pmd}
-            product={e}
-         />
-      </div>
-   ));
+   return <FlashSaleList initialProducts={products} />
 }
 
 export default function FlashSale() {
