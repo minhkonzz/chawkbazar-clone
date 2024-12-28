@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { 
+   useState, 
+   useEffect, 
+   useCallback, 
+   type SetStateAction, 
+   type Dispatch 
+} from "react";
+
 import { constants } from "@/configs";
 import { useModalContext, useFirebaseUser } from "@/context";
 import { useInputsValidation } from "@/shared/hooks";
@@ -9,7 +16,7 @@ import { signInWithEmail } from "@/lib/firebase/auth";
 import type { SignInResponse } from "@/shared/types";
 import type { User as VerifiedUser } from "@/shared/types/entities";
 import type{ User } from "firebase/auth";
-import Toggle from "@/shared/components/toggle";
+import type { AuthForm } from "@/components/auth";
 import TextInput from "@/shared/components/text-input";
 import Button from "@/shared/components/button";
 import BaseAPI from "@/shared/api";
@@ -52,7 +59,13 @@ const getLocalAuthState = (isLoginModal: boolean) => ({
    }
 });
 
-export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
+export default function LocalAuth({ 
+   isLogin,
+   setAuthForm
+}: { 
+   isLogin: boolean,
+   setAuthForm: Dispatch<SetStateAction<AuthForm>>
+}) {
    let timeoutId: NodeJS.Timeout;
    const { setCurrentModal } = useModalContext()!;
    const { setUser } = useFirebaseUser()!;
@@ -155,45 +168,41 @@ export default function LocalAuth({ isLogin }: { isLogin: boolean }) {
       return <>{(isLogin && "Sign in") || "Sign up"}</>;
    }, [process, isLogin]);
 
+   const toForgotPassword = useCallback(() => {
+      setAuthForm("forgotPassword");
+   }, []);
+
    return (
       <>
          {!isLogin && (
-            <div className="w-100pc">
-               <TextInput
-                  label="Name"
-                  placeholder="Enter your name"
-                  inputValue={name}
-                  errorMessage={errors?.nameErr!}
-                  onChange={e => setName(e.target.value)}
-               />
-            </div>
+            <TextInput
+               label="Name"
+               placeholder="Enter your name"
+               inputValue={name}
+               errorMessage={errors?.nameErr!}
+               onChange={e => setName(e.target.value)}
+            />
          )}
-         <div className="w-100pc">
-            <TextInput
-               label="Email"
-               placeholder="Enter your email"
-               inputValue={email}
-               errorMessage={errors?.emailErr!}
-               onChange={e => setEmail(e.target.value)}
-            />
-         </div>
-         <div className="w-100pc">
-            <TextInput
-               label="Password"
-               placeholder="Enter your password"
-               inputValue={password}
-               errorMessage={errors?.passwordErr!}
-               onChange={e => setPassword(e.target.value)}
-               isPassword
-            />
-         </div>
+         <TextInput
+            label="Email"
+            placeholder="Enter your email"
+            inputValue={email}
+            errorMessage={errors?.emailErr!}
+            onChange={e => setEmail(e.target.value)}
+         />
+         <TextInput
+            label="Password"
+            placeholder="Enter your password"
+            inputValue={password}
+            errorMessage={errors?.passwordErr!}
+            onChange={e => setPassword(e.target.value)}
+            isPassword
+         />
          {isLogin && (
-            <div className="w-100pc d-flex jc-sb at-center">
-               <div className="d-flex at-center">
-                  <Toggle />
-                  <span className={styles.remember}>Remember me</span>
-               </div>
-               <button className={styles.forgotPassword}>
+            <div className="d-flex jc-sb at-center">
+               <button 
+                  onClick={toForgotPassword} 
+                  className={styles.forgotPassword}>
                   Forgot password
                </button>
             </div>

@@ -10,6 +10,7 @@
    line-height: 1.25rem;
    color: var(--primary-color);
    text-decoration: underline;
+   align-self: flex-end;
 }
 
 .forgotPassword:hover {
