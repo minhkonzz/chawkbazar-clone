@@ -40,7 +40,12 @@ const env = {
    FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
    FIREBASE_MEASUREMENT_ID: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
    FIREBASE_STORAGE_URL: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_URL,
-   BASE_URL: process.env.NEXT_PUBLIC_BASE_URL
+   BASE_URL: process.env.NODE_ENV !== "development" && process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
+   TOKEN_SECRET: process.env.TOKEN_SECRET,
+   SMTP_HOST: process.env.SMTP_HOST,
+   SMTP_PORT: process.env.SMTP_PORT,
+   SMTP_USER: process.env.SMTP_USER,
+   SMTP_PASS: process.env.SMTP_PASS
 };
 
 export { constants, env };
