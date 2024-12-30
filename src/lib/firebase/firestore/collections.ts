@@ -1,11 +1,9 @@
 export default {
-   PRODUCTS: "products",
-   CUSTOMERS: "customers",
-   ORDERS: "orders",
-   BRANDS: "brands",
-   CATEGORIES: "categories",
-   COLLECTION_BANNERS: "collection-banners",
-   NEW_ARRIVAL_PRODUCTS: "new_arrival_products",
-   PROMOTION_BANNERS: "promotion-banners",
-   MODERN_CAPTURES: "modern-captures"
+   PRODUCTS: "products_test",
+   ORDERS: "orders_test",
+   BRANDS: "brands_test",
+   CATEGORIES: "categories_test",
+   BANNERS: "banners",
+   MODERN_CAPTURES: "modern-captures_test",
+   FLASH_SALES: "flash_sales_test"
 };

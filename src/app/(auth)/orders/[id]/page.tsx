@@ -67,7 +67,7 @@ export default async function AccountOrder({
                                  <td
                                     className={
                                        styles.cell
-                                    }>{`${e.name} - ${e.selectedColor.value}, ${e.selectedSize.value} * ${e.qty}`}</td>
+                                    }>{`${e.name} - ${e.selectedVariation.size}, ${e.selectedVariation.color?.name} * ${e.qty}`}</td>
                                  <td
                                     className={
                                        styles.cell

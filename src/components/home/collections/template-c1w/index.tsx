@@ -21,7 +21,7 @@ const bannerStyles = (i: number, maxLen: number) =>
 
 async function Collections() {
    const firestoreServer = useFirestoreServer();
-   const _banners = await getCollectionBanners("c1w", firestoreServer);
+   const _banners = await getCollectionBanners(firestoreServer);
 
    return (
       <section className={`${styles.wrapper} home-section`}>
@@ -30,7 +30,7 @@ async function Collections() {
             return (
                <div
                   className={`${_s.className} ${styles.loaded} posrel o-h`}
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  style={{ animationDelay: `${i * .1}s` }}
                   key={i}>
                   <Image
                      className={styles.image}
