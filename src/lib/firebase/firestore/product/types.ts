@@ -1,4 +1,4 @@
-import { DocumentReference } from "firebase/firestore";
+import type { DocumentReference } from "firebase/firestore";
 import { ProductVariation } from "@/shared/types/entities";
 
 export type Product = {

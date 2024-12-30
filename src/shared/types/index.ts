@@ -5,7 +5,7 @@ import type {
 } from "firebase/firestore";
 
 import type { User } from "./entities";
-import type { Order, Product, ProductVariation } from "./entities";
+import type { Order, Product } from "./entities";
 
 export type RadioGroupOption = {
    title: string;
@@ -54,15 +54,17 @@ export type OrderDetailClaims = Pick<
 };
 
 export type SelectedProductVariation = {
-   selected: ProductVariation;
-   idx: number;
-};
+   size: string;
+   color: {
+      name: string;
+      hexCode: string;
+   } | null
+} 
 
 export type SelectedProduct = Pick<Product, "id" | "name" | "image"> & {
    lastPrice: number;
    qty: number;
-   selectedColor: Omit<ProductVariation, "attribute">;
-   selectedSize: Omit<ProductVariation, "attribute" | "meta">;
+   selectedVariation: SelectedProductVariation
 };
 
 export type ProductAttributeOption = {

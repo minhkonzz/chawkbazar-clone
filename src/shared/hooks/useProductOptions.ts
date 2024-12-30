@@ -1,8 +1,7 @@
 import { useState, useEffect, type KeyboardEvent } from "react";
 import { useToast, useCartContext } from "@/context";
-import type { ProductVariation } from "../types/entities";
-import type { Product } from "../types/entities";
 import type { SelectedProductVariation } from "../types";
+import type { Product } from "../types/entities";
 import { constants } from "@/configs";
 
 const { AMOUNT_PATTERN } = constants.regex;
@@ -11,8 +10,11 @@ const { DEFAULT_QUANTITY, INCREASE_ONCE, DECREASE_ONCE } = constants;
 export default function useProductOptions(product: Product) {
    const toast = useToast()!;
    const [amount, setAmount] = useState<string>("1");
-   const [color, setColor] = useState<SelectedProductVariation>();
-   const [size, setSize] = useState<SelectedProductVariation>();
+   const [selectedVariation, setSelectedVariation] = useState<SelectedProductVariation>({
+      size: "",
+      color: null
+   });
+
    const [errors, setErrors] = useState<{
       amountErr?: string;
       addonsErr?: string;
@@ -31,10 +33,11 @@ export default function useProductOptions(product: Product) {
 
    const getUserOptionsError = () => {
       const amountErr = getAmountError();
+      const { size, color } = selectedVariation;
       const addonsErr =
-         (!size && color && "Vui lòng chọn màu sản phẩm") ||
-         (!color && size && "Vui lòng chọn size") ||
-         (!size && !color && "Vui lòng chọn size và màu sản phẩm") ||
+         (!size && color && "Please select product's color") ||
+         (!color && size && "Please select product's size") ||
+         (!size && !color && "Please select size and color") ||
          "";
       if (!amountErr && !addonsErr) return;
       return {
@@ -82,32 +85,31 @@ export default function useProductOptions(product: Product) {
          lastPrice: product?.sale_price || product?.price,
          image: product?.image,
          qty: Number(amount) || DEFAULT_QUANTITY,
-         selectedSize: size?.selected!,
-         selectedColor: color?.selected!
+         selectedVariation
       };
 
       addCart(addCartProduct);
       return addCartProduct;
    };
 
-   const onSelectAddon = (
-      addonDetail: ProductVariation,
-      selectedIdx: number
-   ) => {
-      const { id, value, meta, attribute } = addonDetail;
-      const [addon, setAddon] = (!meta && [size, setSize]) || [color, setColor];
-      const { selected, idx } = addon || { selected: null, idx: -1 };
-      if (selected?.value === value || idx === selectedIdx) return;
-      setAddon({
-         selected: {
-            attribute,
-            id,
-            value,
-            ...((meta && { meta }) || {})
-         },
-         idx: selectedIdx
-      });
+   const onSelectAddon = (addon: string | { hexCode: string, name: string }) => {
+      if (typeof addon === "string") {
+         setSelectedVariation({
+            ...selectedVariation,
+            size: addon
+         });
+         return;
+      }
+      setSelectedVariation({
+         ...selectedVariation,
+         color: addon
+      })
    };
+
+   const {
+      size,
+      color
+   } = selectedVariation;
 
    return {
       product,

@@ -12,7 +12,6 @@ import {
 import { fixDecimal } from "@/shared/helpers/number";
 import type { Product } from "@/shared/types/entities";
 import type { SelectedProduct } from "@/shared/types";
-import type { ProductVariation } from "@/shared/types/entities";
 import { useProductOptions } from "@/shared/hooks";
 import Button from "@/shared/components/button";
 import styles from "./styles.module.css";
@@ -49,26 +48,18 @@ export default forwardRef(function ProductDetail(
       setProductAddCart(addedProduct);
    }, [size, color, amount]);
 
-   const selectAddon = (addon: ProductVariation, i: number) => {
+   const selectAddon = (addon: string | { hexCode: string; name: string }) => {
       return () => {
          if (productAddCart) setProductAddCart(undefined);
-         onSelectAddon(addon, i);
+         onSelectAddon(addon);
       };
    };
 
    const variation = useMemo(
-      () =>
-         product?.variations.reduce(
-            (
-               acc: { sizes: ProductVariation[]; colors: ProductVariation[] },
-               cur: ProductVariation
-            ) => {
-               if (cur.attribute.slug === "color") acc.colors.push(cur);
-               else if (cur.attribute.slug === "size") acc.sizes.push(cur);
-               return acc;
-            },
-            { sizes: [], colors: [] }
-         ),
+      () => ({
+         sizes: product?.variations.map(e => e.size),
+         colors: product?.variations.map(e => e.color)
+      }),
       []
    );
 
@@ -109,7 +100,7 @@ export default forwardRef(function ProductDetail(
                         <path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"></path>
                      </svg>
                   </span>
-                  {`Added ${productAddCart.qty} * ${productAddCart.name} - ${productAddCart.selectedSize.value}, ${productAddCart.selectedColor.value} to cart`}
+                  {`Added ${productAddCart.qty} * ${productAddCart.name} - ${productAddCart.selectedVariation.size}, ${productAddCart.selectedVariation.color?.name} to cart`}
                </div>
             )}
             <h2 className={styles.name}>{product?.name}</h2>
@@ -123,34 +114,34 @@ export default forwardRef(function ProductDetail(
             <span className="d-b">Size</span>
             <div className={`${styles.addons} d-flex`}>
                {" "}
-               {variation.sizes.map((addon: ProductVariation, i: number) => (
+               {variation.sizes.map((addon: string, i: number) => (
                   <span
                      key={i}
                      className={`
                            ${styles.addon} 
-                           ${addon.attribute.slug} 
-                           d-flex jc-center at-center cp
-                           ${!!size && i === size.idx ? ` ${styles.selected}` : ""}`}
-                     onClick={selectAddon(addon, i)}>
-                     {addon.value}
+                           size d-flex jc-center at-center cp
+                           ${!!size && addon === size ? ` ${styles.selected}` : ""}`}
+                     onClick={selectAddon(addon)}>
+                     {addon}
                   </span>
                ))}
             </div>
             <span className="d-b">Color</span>
             <div className={`${styles.addons} d-flex`}>
                {" "}
-               {variation.colors.map((addon: ProductVariation, i: number) => (
-                  <span
-                     key={i}
-                     className={`
-                           ${addon.attribute.slug} 
+               {variation.colors.map(
+                  (addon: { hexCode: string; name: string }, i: number) => (
+                     <span
+                        key={i}
+                        className={`
                            ${styles.addon} 
-                           d-flex jc-center at-center cp
-                           ${!!color && i === color.idx ? ` ${styles.selected}` : ""}`}
-                     onClick={selectAddon(addon, i)}>
-                     <span style={{ backgroundColor: addon.meta }} />
-                  </span>
-               ))}
+                           color d-flex jc-center at-center cp
+                           ${!!color && addon.name === color.name ? ` ${styles.selected}` : ""}`}
+                        onClick={selectAddon(addon)}>
+                        <span style={{ backgroundColor: addon.hexCode }} />
+                     </span>
+                  )
+               )}
             </div>
             <div className={`${styles.qty} d-flex thin-bd-r`}>
                <button
