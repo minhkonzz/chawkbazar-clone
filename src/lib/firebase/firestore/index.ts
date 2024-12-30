@@ -48,7 +48,6 @@ export const fetchDocs = async (
    }: FirestoreQueryDocumentsConfig,
    firestore: Firestore = firestoreClient
 ): Promise<FetchedDocs> => {
-   const d = doc(collection(firestore, collectionName));
    const q = query(
       ...[
          collection(firestore, collectionName),
@@ -137,9 +136,11 @@ export const upsertDoc = async (
    bodyData: Object,
    firestore: Firestore = firestoreClient
 ): Promise<void> => {
-   return await setDoc(getDocRef(collectionName, id, firestore), bodyData, {
-      merge: true
-   });
+   return await setDoc(
+      getDocRef(collectionName, id, firestore), 
+      bodyData, 
+      { merge: true }
+   );
 };
 
 export const performTransaction = <T>(

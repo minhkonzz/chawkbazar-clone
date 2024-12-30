@@ -33,16 +33,18 @@ export default function CartProvider({ children }: { children: ReactNode }) {
          id: idAdd,
          qty: qtyAdd,
          lastPrice,
-         selectedSize,
-         selectedColor
+         selectedVariation: {
+            size,
+            color
+         }
       } = item;
 
       const currentItems = cart.items;
       const isItemAdded = !!currentItems.find(
          (item: SelectedProduct) =>
             item.id === idAdd &&
-            item.selectedSize.id === selectedSize.id &&
-            item.selectedColor.id === selectedColor.id
+            item.selectedVariation.size === size &&
+            item.selectedVariation.color?.name === color?.name
       );
       setCart({
          items: isItemAdded
@@ -87,8 +89,10 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       const {
          id,
          lastPrice,
-         selectedSize,
-         selectedColor,
+         selectedVariation: {
+            size,
+            color
+         },
          qty
       } = itemAdjust;
       
@@ -101,8 +105,8 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       setCart({
          items: currentItems.map((item: SelectedProduct) =>
             item.id === id &&
-            item.selectedSize.id === selectedSize.id &&
-            item.selectedColor.id === selectedColor.id
+            item.selectedVariation.size === size &&
+            item.selectedVariation.color?.name === color?.name
                ? {
                     ...item,
                     qty: item.qty + adjustType

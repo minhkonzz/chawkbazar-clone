@@ -1,5 +1,5 @@
 import type { DocumentReference } from "firebase/firestore";
-import { ProductVariation } from "@/shared/types/entities";
+import type { ProductVariation } from "@/shared/types/entities";
 
 export type Product = {
    id: string;
@@ -15,7 +15,5 @@ export type Product = {
    };
    price: number;
    sale_price?: number;
-   in_stock: number;
-   on_flash_sale: boolean;
    variations: ProductVariation[];
 };

@@ -1,40 +1,44 @@
 import { fetchDocs } from "..";
 import { firestoreClient } from "../../configs/client";
 import type { Firestore } from "firebase/firestore";
-import type { ImageSource } from "../../storage/types";
-import type { CollectionBanner, CollectionBannerGroup } from "./types";
+import type { CollectionBanner } from "./types";
 import collections from "../collections";
 
-export const getPromotionBanners = async (
-   firestore: Firestore = firestoreClient
-): Promise<ImageSource[]> => {
-   return (await fetchDocs(
-      { collectionName: collections.PROMOTION_BANNERS },
-      firestore
-   )) as ImageSource[];
-};
+// export const getPromotionBanners = async (
+//    firestore: Firestore = firestoreClient
+// ): Promise<ImageSource[]> => {
+//    return (await fetchDocs(
+//       { collectionName: collections.PROMOTION_BANNERS },
+//       firestore
+//    )) as ImageSource[];
+// };
 
 export const getCollectionBanners = async (
-   collectionBannerNames: string,
    firestore: Firestore = firestoreClient
 ): Promise<string[]> => {
-   const groups = (await fetchDocs(
-      { collectionName: collections.COLLECTION_BANNERS },
+   const banners = (await fetchDocs(
+      { 
+         collectionName: collections.BANNERS, 
+         _where: ["slug", "array-contains", "collection-banners"] 
+      },
       firestore
-   )) as CollectionBannerGroup[];
-   return groups
-      .filter((g: CollectionBannerGroup) => g.name === collectionBannerNames)[0]
-      .data.sort(
-         (b1: CollectionBanner, b2: CollectionBanner) => b1.pos - b2.pos
-      )
-      .map((e: CollectionBanner) => e.url);
+   )) as CollectionBanner[];
+
+   return banners
+      .sort((b1, b2) => {
+         // format of b1.slug is `collection-banners-[index]`
+         const b1Index = Number(b1.slug.at(-1));
+         const b2Index = Number(b2.slug.at(-1));
+         return b1Index - b2Index
+      })
+      .map((e: CollectionBanner) => e.image);
 };
 
 export const getModernCaptures = async (
    firestore: Firestore = firestoreClient
-): Promise<ImageSource[]> => {
+): Promise<Array<{ id: string, image: string }>> => {
    return (await fetchDocs(
       { collectionName: collections.MODERN_CAPTURES },
       firestore
-   )) as ImageSource[];
+   )) as Array<{ id: string, image: string }>;
 };

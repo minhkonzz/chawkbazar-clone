@@ -74,3 +74,11 @@ export type Order = {
    state: string;
    note: string;
 };
+
+export type FlashSale = {
+   id: string,
+   product: Product,
+   start: string,
+   end: string,
+   quantity: number
+};

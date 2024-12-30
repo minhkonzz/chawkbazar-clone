@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import type { Product as SerializedProduct } from "@/shared/types/entities";
-import { getFlashSaleProductsSnapShot } from "@/lib/firebase/firestore/product";
+import { getFlashSaleSnapShot } from "@/lib/firebase/firestore/product";
 import styles from "./styles.module.css";
 import Product from "@/components/product/template-p1w";
 
@@ -14,7 +14,7 @@ export default function FlashSaleList({
    const [products, setProducts] = useState<SerializedProduct[]>(initialProducts);
 
    useEffect(() => {
-      const unsub = getFlashSaleProductsSnapShot((products: SerializedProduct[]) => {
+      const unsub = getFlashSaleSnapShot((products: SerializedProduct[]) => {
          setProducts(products);
       });
 

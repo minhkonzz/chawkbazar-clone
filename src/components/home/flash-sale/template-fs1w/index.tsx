@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { getFlashSaleProducts } from "@/lib/firebase/firestore/product";
+import { getFlashSale } from "@/lib/firebase/firestore/product";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { Skeleton as ProductSkeleton } from "@/components/product/template-p1w";
 import FlashSaleList from "./list";
@@ -9,10 +9,10 @@ import styles from "./styles.module.css";
 function Container({ children }: { children: ReactNode }) {
    return (
       <section className={`${styles.wrapper} home-section nfu`}>
-         <div className={`${styles.header} d-flex wrap jc-sb at-center`}>
-            <h3>Flash Sale</h3>
+         {/* <div className={`${styles.header} d-flex wrap jc-sb at-center`}>
             <span>Time over!</span>
-         </div>
+         </div> */}
+         <h3>Flash Sale</h3>
          <div className={styles.items}>{children}</div>
       </section>
    );
@@ -20,8 +20,8 @@ function Container({ children }: { children: ReactNode }) {
 
 async function List() {
    const firestoreServer = useFirestoreServer();
-   const products = await getFlashSaleProducts(firestoreServer);
-   return <FlashSaleList initialProducts={products} />
+   const flashsales = await getFlashSale(firestoreServer);
+   return <FlashSaleList initialProducts={flashsales.map(e => e.product)} />
 }
 
 export default function FlashSale() {
