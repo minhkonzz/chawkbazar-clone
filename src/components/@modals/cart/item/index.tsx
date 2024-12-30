@@ -11,9 +11,7 @@ import Image from "next/image";
 const { INCREASE_ONCE, DECREASE_ONCE, storageEndpoints } = constants;
 
 export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
-   const { name, qty, image, lastPrice, selectedSize, selectedColor } =
-      cartItem;
-
+   const { name, qty, image, lastPrice, selectedVariation: { size, color } } = cartItem;
    const { adjustAmount, removeFromCart } = useCartContext()!;
 
    const changeAmount = (type: number) => {
@@ -50,7 +48,7 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
                href="#"
                className={
                   styles.name
-               }>{`${name} - ${selectedSize.value}, ${selectedColor.value}`}</a>
+               }>{`${name} - ${size}, ${color?.name}`}</a>
             <span className={styles.unitPrice}>
                Unit price: ${fixDecimal(lastPrice, 2)}
             </span>

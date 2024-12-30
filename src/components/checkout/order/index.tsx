@@ -35,7 +35,7 @@ export default function CheckoutOrderDetail() {
                   <h6
                      className={
                         styles.productText
-                     }>{`${item?.name} - ${item?.selectedSize.value}, ${item?.selectedColor.value}`}</h6>
+                     }>{`${item?.name} - ${item?.selectedVariation.size}, ${item?.selectedVariation.color?.name}`}</h6>
                </div>
                <span className={styles.productText}>
                   ${`${fixDecimal(item?.lastPrice, 2)}`}

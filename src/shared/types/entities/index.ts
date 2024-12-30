@@ -14,16 +14,13 @@ export type Category = {
    slug: string;
 };
 
-export type ProductAttribute = {
-   id: number;
-   slug: string;
-};
-
 export type ProductVariation = {
-   id: number;
-   value: string;
-   meta?: string;
-   attribute: ProductAttribute;
+   stock: number,
+   size: string;
+   color: {
+      name: string
+      hexCode: string
+   }
 };
 
 export type User = {
@@ -44,7 +41,6 @@ export type Product = {
    category: Category;
    name: string;
    description: string;
-   on_flash_sale: boolean;
    image: {
       p?: string;
       pm?: string;
@@ -53,7 +49,6 @@ export type Product = {
    };
    price: number;
    sale_price?: number;
-   in_stock: number;
    variations: ProductVariation[];
 };
 
