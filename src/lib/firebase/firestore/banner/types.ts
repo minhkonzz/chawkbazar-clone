@@ -1,5 +1,5 @@
 export type CollectionBanner = {
-   id: string;
-   image: string;
-   slug: string;
+  id: string;
+  image: string;
+  slug: string;
 };

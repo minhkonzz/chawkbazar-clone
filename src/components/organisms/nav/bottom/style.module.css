@@ -1,0 +1,33 @@
+.wrapper {
+  position: fixed;
+  height: var(--bottom-menu-height-max380);
+  z-index: 50;
+  padding: 0 26px;
+  box-shadow: 0px -4px 8px rgb(243, 243, 243);
+}
+
+.tab {
+  font-size: 21px;
+}
+
+@media (min-width: 380px) {
+  .wrapper {
+    height: var(--bottom-menu-height-min380);
+  }
+
+  .tab {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 600px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    display: none;
+  }
+}

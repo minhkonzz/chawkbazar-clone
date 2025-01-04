@@ -1,3 +1,3 @@
-import type { DocumentData } from "firebase/firestore";
+import type { DocumentData } from "@/configs/imports-wrapper";
 
-export type FetchedDocs = Array<DocumentData & { id: string }>;
+export type FetchedDoc = DocumentData & { id: string };

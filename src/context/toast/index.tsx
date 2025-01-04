@@ -1,16 +1,16 @@
 "use client";
 
-import { type ReactNode, useState, createContext, useContext } from "react";
-
+import { type ReactNode, useState, createContext } from "@/configs/imports-wrapper";
+import { Toast } from "@/components/atoms";
 import { constants } from "@/configs";
-import Toast from "@/shared/components/toast";
+import context from "../use-context-wrapper";
 
 type MessageType = "success" | "error" | "warning";
 
 export type Message = {
-   type: MessageType;
-   message: string;
-   duration?: number;
+  type: MessageType;
+  message: string;
+  duration?: number;
 };
 
 type ToastContextType = (type?: MessageType, message?: string) => void;
@@ -18,26 +18,29 @@ type ToastContextType = (type?: MessageType, message?: string) => void;
 const ToastContext = createContext<ToastContextType | null>(null);
 
 export default function ToastProvider({ children }: { children: ReactNode }) {
-   const [_toast, setToast] = useState<Message | null>();
+  const [_toast, setToast] = useState<Message | null>();
 
-   const toast = (type?: MessageType, message?: string) => {
-      if (!type || !message) {
-         setToast(null);
-         return;
-      }
-      setToast({
-         type,
-         message,
-         duration: constants.TOAST_DURATION || 5000 // default duration is 5 seconds
-      });
-   };
+  const toast = (type?: MessageType, message?: string) => {
+    if (!type || !message) {
+      setToast(null);
+      return;
+    }
+    setToast({
+      type,
+      message,
+      duration: constants.TOAST_DURATION || 5000 // default duration is 5 seconds
+    });
+  };
 
-   return (
-      <ToastContext.Provider value={toast}>
-         {children}
-         {_toast && <Toast {..._toast} />}
-      </ToastContext.Provider>
-   );
+  return (
+    <ToastContext.Provider value={toast}>
+      {children}
+      {_toast && <Toast {..._toast} />}
+    </ToastContext.Provider>
+  );
 }
 
-export const useToast = () => useContext(ToastContext);
+export const useToast = context(
+  ToastContext,
+  "useToast must be used within a ToastProvider"
+);

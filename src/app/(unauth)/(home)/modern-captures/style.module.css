@@ -1,0 +1,73 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.2rem;
+  border-radius: 0.375rem;
+  padding: 3rem 0;
+}
+
+.backface {
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  background-color: #000;
+}
+
+.img {
+  max-width: 298px;
+  max-height: 298px;
+  width: 100%;
+  height: auto;
+}
+
+.icon {
+  color: #fff;
+  transition: var(--short-delay);
+  font-size: 1rem;
+  line-height: 1.5rem;
+  transform: scale(4, 4);
+  opacity: 0;
+}
+
+.wrapper > a:hover .icon {
+  transform: scale(1, 1) translate(-50%, -50%);
+  opacity: 1;
+}
+
+.wrapper > a:hover .backface {
+  opacity: 0.8;
+}
+
+@media (min-width: 480px) {
+  .wrapper {
+    gap: 0.25rem;
+  }
+
+  .icon {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .icon {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .icon {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+@media (min-width: 1280px) {
+  .icon {
+    font-size: 3.75rem;
+  }
+}

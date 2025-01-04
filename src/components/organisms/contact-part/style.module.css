@@ -1,0 +1,32 @@
+.wrapper {
+  padding-bottom: 1.75rem;
+}
+
+.ic {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(230, 230, 230);
+  padding: 0.375rem;
+}
+
+.detail {
+  padding-left: 0.75rem;
+}
+
+.title {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.title,
+.desc {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (min-width: 1500px) {
+  .detail {
+    padding-left: 1rem;
+  }
+}

@@ -1,0 +1,16 @@
+.close {
+  width: 32px;
+  height: 32px;
+  padding-top: 2px;
+  right: -3% !important;
+  top: -2%;
+}
+
+.ic {
+  font-size: 1.25rem;
+}
+
+.button {
+  margin-top: 20px;
+  height: 45px;
+}

@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 5rem 0;
+}
+
+.btn {
+  margin-top: 2rem;
+}
+
+.desc {
+  margin-top: 4rem;
+}
+
+.image {
+  width: 40%;
+  aspect-ratio: 824 / 493;
+}

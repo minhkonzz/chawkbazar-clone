@@ -1,64 +1,61 @@
 "use client";
 
 import {
-   type ReactNode,
-   type Dispatch,
-   type SetStateAction,
-   useState,
-   useEffect,
-   createContext,
-   useContext,
-} from "react";
+  type ReactNode as AppComponentsTree,
+  type Dispatch,
+  type SetStateAction,
+  useState,
+  useEffect,
+  createContext
+} from "@/configs/imports-wrapper";
 
-import type { User } from "@/shared/types/entities";
-import BaseAPI from "@/shared/api";
+import type { User } from "@/types/entities";
+import context from "../use-context-wrapper";
+import BaseAPI from "@/api";
 
 type CurrentUser = User | undefined;
 
 type FirebaseUserContextType = {
-   user: CurrentUser,
-   setUser: Dispatch<SetStateAction<CurrentUser>>
+  loading: boolean;
+  user: CurrentUser;
+  setUser: Dispatch<SetStateAction<CurrentUser>>;
 } | null;
 
 type SessionCheckResponse = {
-   authenticated: boolean;
-   user?: User;
+  authenticated: boolean;
+  user?: User;
 };
 
 const FirebaseUserContext = createContext<FirebaseUserContextType>(null);
 
 export default function FirebaseUserProvider({
-   children
+  children
 }: {
-   children: ReactNode;
+  children: AppComponentsTree;
 }) {
-   const [user, setUser] = useState<User>();
+  const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState<boolean>(true);
 
-   useEffect(() => {
-      (async () => {
-         try {
-            const { authenticated, user } = await BaseAPI.get<SessionCheckResponse>("/check-session");
-            if (!authenticated || !user) return;
-            setUser(user);
-         } catch (err) {
-            console.error("Error occurred when checking session");
-         }
-      })();
-   }, []);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { authenticated, user } = await BaseAPI.get<SessionCheckResponse>("/check-session");
+        setUser((authenticated && user) || undefined);
+        setLoading(false);
+      } catch (err) {
+        console.error("Error occurred when checking session");
+      }
+    })();
+  }, []);
 
-   return (
-      <FirebaseUserContext.Provider value={{ user, setUser }}>
-         {children}
-      </FirebaseUserContext.Provider>
-   );
-};
+  return (
+    <FirebaseUserContext.Provider value={{ loading, user, setUser }}>
+      {children}
+    </FirebaseUserContext.Provider>
+  );
+}
 
-export const useFirebaseUser = () => {
-   const ctx = useContext(FirebaseUserContext);
-   if (ctx === undefined) {
-      throw new Error(
-         "useFirebaseUser must be used within a FirebaseUserProvider"
-      );
-   }
-   return ctx;
-};
+export const useFirebaseUser = context(
+  FirebaseUserContext,
+  "useFirebaseUser must be used within a FirebaseUserProvider"
+);

@@ -1,137 +1,137 @@
 .wrapper {
-   margin-top: 3rem;
-   border-bottom: 1px solid rgb(230, 230, 230);
-   padding-left: 1rem;
-   padding-right: 1rem;
-   padding-bottom: 2.25rem;
+  margin-top: 3rem;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2.25rem;
 }
 
 .wrapper {
-   flex-direction: column;
+  flex-direction: column;
 }
 
 .nav {
-   margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .navInner {
-   position: sticky;
-   z-index: 10;
+  position: sticky;
+  z-index: 10;
 }
 
 .navLink {
-   padding: .75rem 0;
-   font-size: .875rem;
-   line-height: 1.25rem;
-   text-transform: uppercase;
-   color: rgb(41, 41, 41);
+  padding: 0.75rem 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  color: rgb(41, 41, 41);
 }
 
 .section:not(:last-child) {
-   margin-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 
 .sectionHeading {
-   margin-bottom: 1rem;
-   font-size: 1.125rem;
-   line-height: 1.75rem;
-   font-weight: bold;
-   color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
 .sectionText {
-   font-size: .875rem;
-   line-height: 1.75rem;
-   color: var(--primary-color);
+  font-size: 0.875rem;
+  line-height: 1.75rem;
+  color: var(--primary-color);
 }
 
 @media (min-width: 768px) {
-   .wrapper {
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-      padding-bottom: 3.5rem;
-   }
+  .wrapper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-bottom: 3.5rem;
+  }
 
-   .wrapper {
-      flex-direction: row;
-   }
+  .wrapper {
+    flex-direction: row;
+  }
 
-   .nav {
-      width: 18rem;
-      margin-bottom: 0;
-   }
+  .nav {
+    width: 18rem;
+    margin-bottom: 0;
+  }
 
-   .navInner {
-      top: 4rem;
-   }
+  .navInner {
+    top: 4rem;
+  }
 
-   .detail {
-      width: 75%;
-      padding-left: 2rem;
-   }
+  .detail {
+    width: 75%;
+    padding-left: 2rem;
+  }
 
-   .sectionHeading {
-      font-size: 1.25rem;
-   }
+  .sectionHeading {
+    font-size: 1.25rem;
+  }
 }
 
 @media (min-width: 1024px) {
-   .wrapper {
-      margin-top: 3.5rem;
-      padding-left: 1.75rem;
-      padding-right: 1.75rem;
-      padding-bottom: 4rem;
-      padding-top: .25rem;
-   }
+  .wrapper {
+    margin-top: 3.5rem;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    padding-bottom: 4rem;
+    padding-top: 0.25rem;
+  }
 
-   .navInner {
-      top: 7rem;
-   }
+  .navInner {
+    top: 7rem;
+  }
 
-   .navLink {
-      font-size: 1rem;
-      line-height: 1.5rem;
-      padding: .875rem 0;
-   }
+  .navLink {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    padding: 0.875rem 0;
+  }
 
-   .detail {
-      padding-top: .5rem;
-   }
+  .detail {
+    padding-top: 0.5rem;
+  }
 
-   .sectionHeading {
-      font-size: 1.5rem;
-      line-height: 2rem;
-   }
+  .sectionHeading {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 
-   .sectionText {
-      font-size: 1rem;
-      line-height: 2rem;
-   }
+  .sectionText {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
 }
 
 @media (min-width: 1280px) {
-   .wrapper {
-      margin-top: 4rem;
-      padding: 0 4rem;
-   }
+  .wrapper {
+    margin-top: 4rem;
+    padding: 0 4rem;
+  }
 
-   .nav {
-      width: 25%;
-   }
+  .nav {
+    width: 25%;
+  }
 }
 
 @media (min-width: 1500px) {
-   .wrapper {
-      padding-left: 6rem;
-      padding-right: 6rem;
-      padding-bottom: 5rem;
-   }
+  .wrapper {
+    padding-left: 6rem;
+    padding-right: 6rem;
+    padding-bottom: 5rem;
+  }
 }
 
 @media (min-width: 1780px) {
-   .wrapper {
-      padding-left: 8rem;
-      padding-right: 8rem;
-      padding-bottom: 6rem;
-   }
+  .wrapper {
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-bottom: 6rem;
+  }
 }

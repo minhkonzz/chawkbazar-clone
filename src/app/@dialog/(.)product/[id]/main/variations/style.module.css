@@ -1,0 +1,11 @@
+.wrapper {
+  margin-top: 2em;
+  column-gap: 0.75em;
+}
+
+.addon {
+  width: 100%;
+  max-width: 12em;
+  height: 2.75em;
+  color: rgba(0, 0, 0, 0.7);
+}

@@ -1,15 +1,16 @@
-import Banner from "@/components/banner";
-import styles from "./page.module.css";
-import CheckoutForm from "@/components/checkout/form";
-import CheckoutOrder from "@/components/checkout/order";
+// import redirectHard from "@/lib/app/hard-redirect";
+import { redirect, RedirectType } from "@/configs/imports-wrapper";
+import { useAuthenticatedUser } from "@/lib/firebase/configs/server";
+import CheckoutMain from "./main";
 
-export default function CheckoutPage() {
-   return (
-      <Banner title="Checkout">
-         <div className={`${styles.wrapper} d-flex mx-auto`}>
-            <CheckoutForm />
-            <CheckoutOrder />
-         </div>
-      </Banner>
-   );
+
+export default async function CheckoutPage() {
+  const user = await useAuthenticatedUser();
+
+  if (!user) {
+    // user are not logged in
+    redirect("/auth", RedirectType.replace);
+  }
+
+  return <CheckoutMain />
 }

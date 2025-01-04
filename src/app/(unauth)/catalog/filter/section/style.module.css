@@ -1,0 +1,29 @@
+.wrapper {
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid rgb(230, 230, 230);
+  padding-bottom: 1.75rem;
+}
+
+.title,
+.titleSkeleton {
+  margin-bottom: 1.75rem;
+}
+
+.titleSkeleton {
+  width: 80px;
+  height: 20px;
+}
+
+.title {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--primary-color);
+}
+
+.list {
+  row-gap: 1rem;
+}
+
+.itemSkeleton {
+  height: 28px;
+}

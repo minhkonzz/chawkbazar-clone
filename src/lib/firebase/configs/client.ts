@@ -1,9 +1,14 @@
 "use client";
 
-import { initializeApp, getApps } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getAuth, setPersistence, inMemoryPersistence } from "firebase/auth";
 import { firebaseClientSecrets } from "./secrets";
+import { 
+  initializeApp, 
+  getApps, 
+  getFirestore, 
+  getAuth, 
+  setPersistence, 
+  inMemoryPersistence 
+} from "@/configs/imports-wrapper";
 
 const clientApps = getApps();
 const firebaseClientApp = clientApps.length === 0 ? initializeApp(firebaseClientSecrets) : clientApps[0];

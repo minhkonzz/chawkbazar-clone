@@ -1,71 +1,71 @@
 .wrapper {
-   max-width: 64rem;
-   padding: 4rem 0;
+  max-width: 64rem;
+  padding: 4rem 0;
 }
 
 .box {
-   border-radius: .375rem;
-   background-color: rgb(249, 249, 249);
+  border-radius: 0.375rem;
+  background-color: rgb(249, 249, 249);
 }
 
 .box:not(:first-child) {
-   margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 .header {
-   padding: 1.25rem 1.5rem;
-   transition: var(--short-delay);
+  padding: 1.25rem 1.5rem;
+  transition: var(--short-delay);
 }
 
 .openIc {
-   width: 1rem;
-   height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .hz {
-   height: .125rem;
-   background-color: var(--primary-color);
+  height: 0.125rem;
+  background-color: var(--primary-color);
 }
 
 .vt {
-   width: .125rem;
-   border-radius: .375rem;
-   background-color: var(--primary-color);
-   transition: all 0.2s ease-in-out;
+  width: 0.125rem;
+  border-radius: 0.375rem;
+  background-color: var(--primary-color);
+  transition: all 0.2s ease-in-out;
 }
 
 .answer {
-   border-top: 1px solid rgb(230, 230, 230);
-   padding-left: 1.5rem;
-   padding-right: 1.5rem;
-   padding-top: 1.25rem;
-   padding-bottom: 1.5rem;
-   font-size: .875rem;
-   line-height: 1.75rem;
-   color: rgb(58, 58, 58);
-   transition: max-height 0.3s ease-in-out;
+  border-top: 1px solid rgb(230, 230, 230);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1.25rem;
+  padding-bottom: 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.75rem;
+  color: rgb(58, 58, 58);
+  transition: max-height 0.3s ease-in-out;
 }
 
 @media (min-width: 768px) {
-   .header {
-      padding: 1.5rem 2rem;
-   }
+  .header {
+    padding: 1.5rem 2rem;
+  }
 
-   .answer {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      padding-bottom: 1.75rem;
-   }
+  .answer {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1.75rem;
+  }
 }
 
 @media (min-width: 1024px) {
-   .wrapper {
-      padding: 5rem 0;
-   }
+  .wrapper {
+    padding: 5rem 0;
+  }
 
-   .header,
-   .answer {
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
-   }
+  .header,
+  .answer {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }

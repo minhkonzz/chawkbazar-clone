@@ -1,0 +1,39 @@
+.qty {
+  width: 200px;
+  height: 50px;
+  margin-right: 15px;
+  border: 1px solid #cacaca;
+}
+
+.qtyBtn {
+  width: 28%;
+  color: black;
+}
+
+.qtyBtn:hover {
+  opacity: 0.5;
+}
+
+.qtyBtn,
+.qtyValue {
+  font-size: 16px;
+}
+
+.qtyBtn.decrease {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.qtyBtn.increase {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.qtyValue {
+  width: 44%;
+  padding-left: 4%;
+  border-left: 1px solid #cacaca;
+  border-right: 1px solid #cacaca;
+  outline: none;
+  text-align: center;
+}
