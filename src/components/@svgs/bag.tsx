@@ -1,6 +1,9 @@
-export default function BagIcon() {
-   return (
-      <svg width="180" height="309.722" viewBox="0 0 180 309.722">
+import { forwardRef } from "react";
+import type { SVGProps } from "@/shared/types";
+
+const Bag = forwardRef<SVGSVGElement, SVGProps>(
+   ({ className, ...props }, ref) =>
+      <svg ref={ref} width="180" height="309.722" viewBox="0 0 180 309.722" className={className} {...props}>
          <g
             id="no_cart_in_bag"
             data-name="no cart in bag"
@@ -180,5 +183,7 @@ export default function BagIcon() {
             </g>
          </g>
       </svg>
-   );
-}
+);
+
+Bag.displayName = "Bag";
+export default Bag;

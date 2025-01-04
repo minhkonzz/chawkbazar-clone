@@ -6,6 +6,11 @@
    animation: visible .3s ease;
 }
 
+.close {
+   top: -2.35em;
+   right: -1.25em;
+}
+
 .about {
    flex-direction: column;
    justify-content: space-around;
@@ -28,30 +33,16 @@
    text-decoration: line-through;
 }
 
-.addon {
-   width: 44px;
-   height: 42px;
-   border: .5px solid rgb(212, 212, 212);
-   border-radius: 4px;
-   transition: var(--short-delay);
-}
-
-.addon:not(:first-child) {
-   margin-left: 12px;
-}
-
-.addon span {
-   width: 80%;
-   height: 80%;
-}
-
-.addon:hover,
-.addon.selected {
-   border: 1px solid #000;
-}
-
 .addons {
-   margin-top: 10px;
+   margin-top: 2em;
+   column-gap: .75em
+}
+
+.addon {
+   width: 100%;
+   max-width: 12em;
+   height: 2.75em;
+   color: rgba(0, 0, 0, .7);
 }
 
 .btn {

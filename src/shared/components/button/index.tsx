@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, MouseEvent } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
    disabled?: boolean;
    style?: { readonly [key: string]: string };
    type?: "button" | "reset" | "submit"
-   onClick?: () => void;
+   onClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 };
 
 export default function Button({

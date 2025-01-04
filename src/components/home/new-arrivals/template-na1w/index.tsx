@@ -3,6 +3,7 @@ import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { Skeleton as ProductSkeleton } from "@/components/product/template-p1w";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import NewArrivalProductsList from "./list";
+import sharedStyles from "../../styles.module.css";
 import styles from "./styles.module.css";
 
 async function NewArrivals() {
@@ -10,7 +11,7 @@ async function NewArrivals() {
    const products = await getNewArrivalProducts(firestoreServer);
    return (
       <section className="home-section nfu">
-         <h3 className={styles.title}>New Arrivals</h3>
+         <h3 className={sharedStyles.title}>New Arrivals</h3>
          <div className={styles.items}>
             <NewArrivalProductsList initialProducts={products} />
          </div>

@@ -1,5 +1,6 @@
-import { type ForwardedRef, type MouseEvent, forwardRef } from "react";
+import { type ForwardedRef, forwardRef } from "react";
 import type { Product } from "../types/entities";
+import type { OnCloseModal } from "../types/ui";
 import { useModalContext } from "@/context";
 import ProductModal from "@/components/@modals/product-detail";
 
@@ -10,17 +11,10 @@ export default function useProductView(product: Product) {
       if (!setCurrentModal) return;
 
       const CustomProductPopup = forwardRef(function ProductModalWrapper(
-         {
-            onClose
-         }: {
-            onClose: (
-               e: MouseEvent<HTMLButtonElement>,
-               isClickCloseButton: boolean
-            ) => void;
-         },
+         { onClose }: OnCloseModal,
          ref: ForwardedRef<HTMLDivElement | null>
       ) {
-         return <ProductModal {...{ ref, item: product, onClose }} />;
+         return <ProductModal ref={ref} item={product} onClose={onClose} />
       });
 
       setCurrentModal("product", CustomProductPopup);

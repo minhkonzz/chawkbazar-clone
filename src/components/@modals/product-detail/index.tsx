@@ -2,7 +2,6 @@
 
 import {
    type ForwardedRef,
-   type MouseEvent,
    forwardRef,
    useState,
    useCallback,
@@ -11,6 +10,7 @@ import {
 
 import { fixDecimal } from "@/shared/helpers/number";
 import type { Product } from "@/shared/types/entities";
+import type { OnCloseModal } from "@/shared/types/ui";
 import type { SelectedProduct } from "@/shared/types";
 import { useProductOptions } from "@/shared/hooks";
 import CloseButton from "../close-button";
@@ -18,13 +18,7 @@ import DropdownMenu from "@/shared/components/dropdown-menu";
 import Button from "@/shared/components/button";
 import styles from "./styles.module.css";
 
-interface Props {
-   item: Product;
-   onClose: (
-      e: MouseEvent<HTMLButtonElement>,
-      isClickCloseButton: boolean
-   ) => void;
-}
+type Props = { item: Product } & OnCloseModal;
 
 export default forwardRef(function ProductDetail(
    { item, onClose }: Props,
@@ -54,6 +48,10 @@ export default forwardRef(function ProductDetail(
       if (productAddCart) setProductAddCart(undefined);
       onSelectAddon(addon);
    };
+
+   const changeAmount = useCallback((act: "INCREASE" | "DECREASE") => () => {
+      clickChangeAmount(act);
+   }, [amount]);
    
    const variation = useMemo(() => 
       product?.variations.reduce((acc: any, cur) => {
@@ -89,7 +87,10 @@ export default forwardRef(function ProductDetail(
          ref={ref}
          className={`${styles.wrapper} w-auto h-auto d-flex posab pos-center bg-white`}>
          <div className={`${styles.about} d-flex w-100pc`}>
-            <CloseButton onClick={e => onClose(e, true)} />
+            <CloseButton 
+               className={styles.close}
+               onClick={e => onClose(e, true)}
+            />
             {!!productAddCart && (
                <div className={`${styles.addedCartMessage} d-flex at-center`}>
                   <span
@@ -116,13 +117,15 @@ export default forwardRef(function ProductDetail(
                )}
                <h2>{`$${fixDecimal(product?.price, 2)}`}</h2>
             </div>
-            <div className="d-flex at-center">
+            <div className={`${styles.addons} d-flex at-center`}>
                <DropdownMenu 
+                  className={styles.addon}
                   title="Select size" 
                   data={Object.values(variation.sizes)} 
                   onChange={selected => selectAddon(selected.value)} 
                />
                <DropdownMenu 
+                  className={styles.addon}
                   title="Select color" 
                   data={Object.values(variation.colors)} 
                   onChange={selected => selectAddon(JSON.parse(selected.value))} 
@@ -132,7 +135,7 @@ export default forwardRef(function ProductDetail(
                <div className={`${styles.qty} d-flex thin-bd-r`}>
                   <button
                      className={`${styles.qtyBtn} increase h-100pc fw-600`}
-                     onClick={() => clickChangeAmount("DECREASE")}>
+                     onClick={changeAmount("DECREASE")}>
                      <svg width="10px" height="2px" viewBox="0 0 12 1.5">
                         <rect
                            data-name="Rectangle 970"
@@ -150,7 +153,7 @@ export default forwardRef(function ProductDetail(
                   />
                   <button
                      className={`${styles.qtyBtn} decrease h-100pc fw-600`}
-                     onClick={() => clickChangeAmount("INCREASE")}>
+                     onClick={changeAmount("INCREASE")}>
                      <svg
                         data-name="plus (2)"
                         width="10px"

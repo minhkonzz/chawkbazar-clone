@@ -5,13 +5,14 @@ import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import OnSellingProductsList from "./list";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import styles from "./styles.module.css";
+import sharedStyles from "../../styles.module.css";
 import Image from "next/image";
 
 function Container({ children }: { children: ReactNode }) {
    return (
       <section className="home-section nfu">
          <div className={`${styles.titleWrapper} d-flex jc-sb at-center`}>
-            <h3>On Selling Products</h3>
+            <h3 className={sharedStyles.title}>On Selling Products</h3>
             <a className={styles.seeAll} href="/search">
                See All Products
             </a>

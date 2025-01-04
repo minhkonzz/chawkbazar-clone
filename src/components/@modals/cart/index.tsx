@@ -1,22 +1,16 @@
 "use client"
 
-import { type ForwardedRef, type MouseEvent, useCallback, forwardRef } from "react";
+import { type ForwardedRef, useCallback, forwardRef } from "react";
 import { fixDecimal } from "@/shared/helpers/number";
 import { useCartContext, useModalContext } from "@/context";
 import { useRouter } from "next/navigation";
+import { Bag } from "@/components/@svgs";
+import type { OnCloseModal } from "@/shared/types/ui";
 import CartItem from "./item";
 import styles from "./styles.module.css";
-import BagSvg from "../../bag";
-
-interface Props {
-   onClose: (
-      e: MouseEvent<HTMLButtonElement>,
-      isClickCloseButton: boolean
-   ) => void;
-}
 
 export default forwardRef(function Cart(
-   { onClose }: Props,
+   { onClose }: OnCloseModal,
    ref: ForwardedRef<HTMLDivElement | null>
 ) {
    const router = useRouter();
@@ -56,7 +50,7 @@ export default forwardRef(function Cart(
                   <CartItem key={i} cartItem={item} />
                ))) || (
                <div className="d-flex fd-col w-100pc h-100pc jc-sa at-center">
-                  <BagSvg />
+                  <Bag />
                   <p className="blur fw-600">
                      {"You don't have any product in cart"}
                   </p>

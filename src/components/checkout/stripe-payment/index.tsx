@@ -3,7 +3,6 @@
 import {
    useState,
    forwardRef,
-   type MouseEvent,
    type ForwardedRef,
    type ChangeEvent,
    type FormEventHandler
@@ -19,17 +18,14 @@ import { useRouter } from "next/navigation";
 import { useToast } from "@/context";
 import { createOrder } from "@/lib/firebase/firestore/order";
 import { CheckoutDetail } from "../form/types";
+import type { OnCloseModal } from "@/shared/types/ui";
 import Button from "@/shared/components/button";
 import styles from "./styles.module.css";
 
-interface Props {
+type Props = {
    userId: string;
    billingDetails: CheckoutDetail;
-   onClose: (
-      e: MouseEvent<HTMLButtonElement>,
-      isClickCloseButton: boolean
-   ) => void
-}
+} & OnCloseModal;
 
 export default forwardRef(function StripePayment({
    userId,

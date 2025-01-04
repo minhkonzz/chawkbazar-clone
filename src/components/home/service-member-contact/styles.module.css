@@ -4,9 +4,13 @@
    text-align: center;
 }
 
+.title {
+   margin-bottom: 1rem;
+}
+
 .desc {
    font-size: .75rem;
-   line-height: 1rem;
+   line-height: .5rem;
    color: rgb(90, 90, 90);
 }
 
@@ -26,7 +30,7 @@
    border-radius: .375rem;
 }
 
-.icon {
+.ic {
    margin-inline-start: .5rem;
    font-size: 1.125rem;
    line-height: 1.75rem;
@@ -67,10 +71,6 @@
       font-size: 1.5rem;
       line-height: 2rem;
       margin-bottom: .875rem;
-   }
-
-   .image {
-      padding: 0 10rem;
    }
 
    .btn {
