@@ -4,8 +4,8 @@
 }
 
 .imageWrapper {
-   width: 6rem;
-   height: 6rem;
+   width: 8em;
+   height: 10.375em;
    border-radius: .375rem;
    background-color: rgb(249, 249, 249);
    margin-right: 1rem;
@@ -13,7 +13,12 @@
 
 .imageBackdrop {
    opacity: 0;
-   z-index: 1000;
+   z-index: 2;
+}
+
+.image {
+   max-width: 8em;
+   height: auto;
 }
 
 .removeIc {

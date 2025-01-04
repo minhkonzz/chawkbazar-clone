@@ -1,7 +1,8 @@
 import type {
    FieldPath,
    QueryDocumentSnapshot,
-   WhereFilterOp
+   WhereFilterOp,
+   OrderByDirection
 } from "firebase/firestore";
 
 import type { User } from "./entities";
@@ -16,6 +17,7 @@ export type FirestoreQueryDocumentsConfig = {
    collectionName: string;
    _startAfter?: QueryDocumentSnapshot[];
    _limit?: number;
+   _orderBy?: [string, OrderByDirection];
    _where?: [string | FieldPath, WhereFilterOp, unknown];
 };
 
@@ -38,7 +40,7 @@ export type RefreshTokensBody = {
    refreshToken: string;
 };
 
-export type OrderListItem = Pick<Order, "date" | "state"> & {
+export type OrderListItem = Pick<Order, "id" | "date" | "state"> & {
    total: number;
    totalItems: number;
 };
@@ -48,7 +50,6 @@ export type OrderDetailClaims = Pick<
    "id" | "date" | "products" | "shipFee" | "note"
 > & {
    email: string;
-   paymentMethod: string;
    subtotal: number;
    total: number;
 };
@@ -57,14 +58,15 @@ export type SelectedProductVariation = {
    size: string;
    color: {
       name: string;
-      hexCode: string;
+      hex_code: string;
    } | null
 } 
 
-export type SelectedProduct = Pick<Product, "id" | "name" | "image"> & {
+export type SelectedProduct = Pick<Product, "id" | "name" | "images"> & {
    lastPrice: number;
    qty: number;
-   selectedVariation: SelectedProductVariation
+   selectedVariation: SelectedProductVariation,
+   saleId?: string;
 };
 
 export type ProductAttributeOption = {
@@ -87,3 +89,5 @@ export type TextFieldMetadata = {
    errorIdentifier: string;
    errorMessage: string;
 };
+
+export type SVGProps = React.SVGProps<SVGSVGElement>;

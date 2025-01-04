@@ -75,7 +75,6 @@
 .firstPrice {
    color: rgb(112, 112, 112);
    font-weight: 400;
-   text-decoration: line-through;
 }
 
 @media (min-width: 480px) {

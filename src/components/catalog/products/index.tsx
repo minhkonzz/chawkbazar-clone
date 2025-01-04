@@ -8,7 +8,6 @@ import { isEmptyArray } from "@/shared/helpers/array";
 import type { Product as SerializedProduct } from "@/shared/types/entities";
 import { Skeleton as ProductSkeleton } from "../../product/template-p1w";
 import SkeletonLoader from "@/shared/components/skeleton";
-import SortingOptions from "./sorting-options";
 import Product from "../../product/template-p1w";
 import styles from "./styles.module.css";
 import Button from "@/shared/components/button";
@@ -57,12 +56,12 @@ export default function CatalogProducts() {
                   <span className={styles.itemsCount}>
                      {products.length} items
                   </span>
-                  <SortingOptions />
+                  {/* <SortingOptions /> */}
                </div>
             </div>
             <div className={styles.list}>
                {products.map((product: SerializedProduct, i: number) => {
-                  if (!product.image.p) return null;
+                  if (!product.images.p) return null;
                   return (
                      <div
                         key={product?.id}
@@ -74,7 +73,7 @@ export default function CatalogProducts() {
                               wImage: 334,
                               hImage: 432,
                               product,
-                              imagePath: product.image.p
+                              imagePath: product.images.p
                            }}
                         />
                      </div>

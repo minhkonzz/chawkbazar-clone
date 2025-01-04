@@ -34,6 +34,7 @@ export default function useProductOptions(product: Product) {
    const getUserOptionsError = () => {
       const amountErr = getAmountError();
       const { size, color } = selectedVariation;
+
       const addonsErr =
          (!size && color && "Please select product's color") ||
          (!color && size && "Please select product's size") ||
@@ -82,17 +83,18 @@ export default function useProductOptions(product: Product) {
       const addCartProduct = {
          id: product?.id,
          name: product?.name,
-         lastPrice: product?.sale_price || product?.price,
-         image: product?.image,
+         lastPrice: product?.sale?.lastPrice || product?.price,
+         images: product?.images,
          qty: Number(amount) || DEFAULT_QUANTITY,
-         selectedVariation
+         selectedVariation,
+         ...(product?.sale && { saleId: product.sale.id } || {})
       };
 
       addCart(addCartProduct);
       return addCartProduct;
    };
 
-   const onSelectAddon = (addon: string | { hexCode: string, name: string }) => {
+   const onSelectAddon = (addon: string | { hex_code: string, name: string }) => {
       if (typeof addon === "string") {
          setSelectedVariation({
             ...selectedVariation,

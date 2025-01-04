@@ -1,11 +1,18 @@
 import { firestoreClient } from "../../configs/client";
-import { createDocRef, fetchDoc, fetchDocs, performTransaction, getDocRef } from "../";
-import type { Firestore } from "firebase/firestore";
-import type { Order } from "@/shared/types/entities";
+import type { DocumentReference, Firestore } from "firebase/firestore";
+import type { Order, ProductVariation } from "@/shared/types/entities";
 import type { SelectedProduct } from "@/shared/types";
 import type { OrderListItem, OrderDetailClaims } from "@/shared/types";
 import type { CheckoutDetail } from "@/components/checkout/form/types";
 import collections from "../collections";
+
+import {
+   createDocRef,
+   fetchDoc,
+   fetchDocs,
+   performTransaction,
+   getDocRef
+} from "../";
 
 export const createOrder = async (
    checkoutDetail: CheckoutDetail,
@@ -26,33 +33,88 @@ export const createOrder = async (
       cod
    } = checkoutDetail;
 
-   return performTransaction(async (transaction) => {
-      // Create a new document reference
+   return performTransaction(async transaction => {
       const newOrderRef = createDocRef(collections.ORDERS, firestore);
 
-      // Check product availability and update inventory
+      const productPromises = cartItems.map(item =>
+         transaction.get(getDocRef(collections.PRODUCTS, item.id, firestore))
+      );
+      
+      const salePromises = cartItems
+         .filter(item => item.saleId)
+         .map(item =>
+            transaction.get(
+               getDocRef(collections.FLASH_SALES, item.saleId!, firestore)
+            )
+         );
+
+      const [productDocs, saleDocs] = await Promise.all([
+         Promise.all(productPromises),
+         Promise.all(salePromises)
+      ]);
+
+      const productMap = new Map(productDocs.map(doc => [doc.id, doc]));
+      const saleMap = new Map(saleDocs.map(doc => [doc.id, doc]));
+
+      const updates: { ref: DocumentReference; data: object }[] = [];
+
       for (const item of cartItems) {
-         const productRef = getDocRef(collections.PRODUCTS, item.id, firestore);
-         const productDoc = await transaction.get(productRef);
-         if (!productDoc.exists()) {
+         const productDoc = productMap.get(item.id);
+         if (!productDoc?.exists) {
             throw new Error(`Product ${item.id} not found`);
          }
-         const productData = productDoc.data();
-         if (productData.stock < item.qty) {
+
+         const productData = productDoc.data()!;
+         const variations = productData.variations;
+         const selectedVariationIndex = variations.findIndex(
+            (variation: ProductVariation) =>
+               variation.size === item.selectedVariation.size &&
+               variation.color.hex_code ===
+                  item.selectedVariation.color?.hex_code
+         );
+
+         if (selectedVariationIndex === -1) {
+            throw new Error(`Invalid product variation for product ${item.id}`);
+         }
+
+         if (variations[selectedVariationIndex].stock < item.qty) {
             throw new Error(`Not enough stock for product ${item.id}`);
          }
-         transaction.update(productRef, { stock: productData.stock - item.qty });
+
+         variations[selectedVariationIndex] = {
+            ...variations[selectedVariationIndex],
+            stock: variations[selectedVariationIndex].stock - item.qty
+         };
+
+         updates.push({
+            ref: productDoc.ref,
+            data: { variations }
+         });
+
+         if (item.saleId) {
+            const saleDoc = saleMap.get(item.saleId);
+            if (!saleDoc?.exists) {
+               throw new Error(`Flash sale ${item.saleId} not found`);
+            }
+
+            const saleData = saleDoc.data()!;
+            if (saleData.quantity < item.qty) {
+               throw new Error(
+                  `Not enough stock for flash sale ${item.saleId}`
+               );
+            }
+
+            updates.push({
+               ref: saleDoc.ref,
+               data: { quantity: saleData.quantity - item.qty }
+            });
+         }
       }
 
-      // Create the order
+      updates.forEach(update => transaction.update(update.ref, update.data));
+
       transaction.set(newOrderRef, {
-         customer: {
-            id: userId,
-            firstName,
-            lastName,
-            phone,
-            email
-         },
+         customer: { id: userId, firstName, lastName, phone, email },
          address,
          date: new Date().toJSON().slice(0, 10).replace(/-/g, "/"),
          state: "waiting",
@@ -75,7 +137,7 @@ export const getUserOrders = async (
    const orderDocs = (await fetchDocs(
       {
          collectionName: collections.ORDERS,
-         _where: ["customerId", "==", userId]
+         _where: ["customer.id", "==", userId]
       },
       firestore
    )) as Order[];
@@ -100,6 +162,7 @@ export const getUserOrders = async (
       allOrders = [
          ...allOrders,
          {
+            id: orderDoc.id,
             date,
             state,
             total,
@@ -118,11 +181,11 @@ export const getOrder = async (
    const order = (await fetchDoc(collections.ORDERS, id, firestore)) as Order;
    if (!order) return null;
 
-   const { date, products, shipFee, payment, note, customer } = order;
+   const { date, products, shipFee, note, customer } = order;
 
-   const subtotal = products.reduce((acc: number, cur: SelectedProduct) => {
-      return acc + cur.lastPrice * cur.qty;
-   }, 0);
+   const subtotal = products.reduce((acc: number, cur: SelectedProduct) =>
+      acc + cur.lastPrice * cur.qty
+   , 0);
 
    const total = subtotal + shipFee;
 
@@ -132,7 +195,6 @@ export const getOrder = async (
       email: customer.email,
       products,
       shipFee,
-      paymentMethod: payment.type,
       note,
       subtotal,
       total

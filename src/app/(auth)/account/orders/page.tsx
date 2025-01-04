@@ -3,12 +3,11 @@ import { isEmptyArray } from "@/shared/helpers/array";
 import type { OrderListItem } from "@/shared/types";
 import { useFirestoreServer, useAuthenticatedUser } from "@/lib/firebase/configs/server";
 import styles from "./page.module.css";
-import Button from "@/shared/components/button";
+import Link from "next/link";
 
 const _mockTableHead = ["Order", "Date", "Status", "Total", "Actions"];
 
 export default async function AccountOrders() {
-
    const firestoreServer = useFirestoreServer();
    const user = await useAuthenticatedUser();
    const orders = await getUserOrders(user.uid, firestoreServer);
@@ -19,9 +18,7 @@ export default async function AccountOrders() {
             <thead className={styles.thead}>
                <tr>
                   {_mockTableHead.map((e, i: number) => (
-                     <th key={i} className={styles.th}>
-                        {e}
-                     </th>
+                     <th key={i} className={styles.th}>{e}</th>
                   ))}
                </tr>
             </thead>
@@ -33,15 +30,13 @@ export default async function AccountOrders() {
                      `$${e.total} for ${e.totalItems} items`
                   ];
                   return (
-                     <tr key={i} className={styles.row}>
+                     <tr key={e.id} className={styles.row}>
                         <td className={styles.cell}>#{i + 1}</td>
                         {values.map((v: string, _i: number) => (
-                           <td key={_i} className={styles.cell}>
-                              {v}
-                           </td>
+                           <td key={_i} className={styles.cell}>{v}</td>
                         ))}
                         <td className={styles.cell}>
-                           <Button className={styles.btn}>View</Button>
+                           <Link href={`/orders/${e.id}`} className={styles.btn}>View</Link>
                         </td>
                      </tr>
                   );

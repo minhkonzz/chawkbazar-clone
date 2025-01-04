@@ -15,13 +15,14 @@ import {
    startAfter,
    and,
    onSnapshot,
+   orderBy,
    runTransaction,
    type Firestore,
    type DocumentReference,
    type QueryDocumentSnapshot,
    type QueryFilterConstraint,
    type DocumentData,
-   Transaction,
+   type Transaction,
 } from "firebase/firestore";
 
 export const createDocRef = (
@@ -44,6 +45,7 @@ export const fetchDocs = async (
       collectionName,
       _limit,
       _startAfter,
+      _orderBy,
       _where
    }: FirestoreQueryDocumentsConfig,
    firestore: Firestore = firestoreClient
@@ -51,9 +53,10 @@ export const fetchDocs = async (
    const q = query(
       ...[
          collection(firestore, collectionName),
-         ...(_limit ? [limit(_limit)] : []),
-         ...(_startAfter ? [startAfter(_startAfter)] : []),
-         ...(_where ? [where(..._where)] : [])
+         ...(_limit && [limit(_limit)] || []),
+         ...(_startAfter && [startAfter(_startAfter)] || []),
+         ...(_orderBy && [orderBy(..._orderBy)] || []),
+         ...(_where && [where(..._where)] || [])
       ]
    )
    const { docs } = await getDocs(q);
@@ -68,6 +71,7 @@ export const getDocsSnapShot = <T extends FetchedDocs>(
       collectionName,
       _limit,
       _startAfter,
+      _orderBy,
       _where
    }: FirestoreQueryDocumentsConfig,
    cb: (data: T) => void,
@@ -77,9 +81,10 @@ export const getDocsSnapShot = <T extends FetchedDocs>(
    const q = query(
       ...[
          collection(firestore, collectionName),
-         ...(_limit ? [limit(_limit)] : []),
-         ...(_startAfter ? [startAfter(_startAfter)] : []),
-         ...(_where ? [where(..._where)] : [])
+         ...(_limit && [limit(_limit)] || []),
+         ...(_startAfter && [startAfter(_startAfter)] || []),
+         ...(_orderBy && [orderBy(..._orderBy)] || []),
+         ...(_where && [where(..._where)] || [])
       ]
    )
    const unsub = onSnapshot(q, snapshot => {
@@ -98,7 +103,7 @@ export const fetchDoc = async (
    firestore: Firestore = firestoreClient
 ): Promise<DocumentData | null> => {
    const _doc = await getDoc(getDocRef(collectionName, id, firestore));
-   return _doc.exists() ? _doc.data() : null;
+   return _doc.exists() ? { ..._doc.data(), id: _doc.id } : null;
 };
 
 export const fetchWithCustomQuery = async (
@@ -119,7 +124,7 @@ export const fetchDocFromReference = async (
    ref: DocumentReference<DocumentData, DocumentData>
 ): Promise<DocumentData | null> => {
    const _doc = await getDoc(ref);
-   return _doc.exists() ? _doc.data() : null;
+   return _doc.exists() ? { ..._doc.data(), id: _doc.id } : null;
 };
 
 export const addNewDoc = async (

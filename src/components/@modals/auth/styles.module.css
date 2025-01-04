@@ -3,21 +3,6 @@
    animation: visible .3s ease;
 }
 
-.closeButton {
-   position: fixed;
-   display: inline-flex;
-   width: 1.75rem;
-   height: 1.75rem;
-   right: .75rem;
-   z-index: 10;
-   top: .75rem;
-   transition: var(--short-delay);
-}
-
-.ic {
-   font-size: 1.25rem;
-}
-
 .main {
    row-gap: .5rem;
    max-height: calc(100vh - 120px);

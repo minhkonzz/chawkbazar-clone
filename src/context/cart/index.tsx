@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, createContext, useContext } from "react";
+import { type ReactNode, createContext, useContext, useCallback } from "react";
 import type { SelectedProduct } from "@/shared/types";
 import { useLocalStorage } from "@/shared/hooks";
 import { constants } from "@/configs";
@@ -33,10 +33,7 @@ export default function CartProvider({ children }: { children: ReactNode }) {
          id: idAdd,
          qty: qtyAdd,
          lastPrice,
-         selectedVariation: {
-            size,
-            color
-         }
+         selectedVariation: { size, color }
       } = item;
 
       const currentItems = cart.items;
@@ -56,30 +53,28 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       });
    };
 
-   const removeFromCart = (item: any) => {
+   const removeFromCart = (item: SelectedProduct) => {
       const currentItems = cart.items;
       if (currentItems.length === 1) {
-         setCart({ items: [], totalPrice: 0 });
+         clearCart();
          return;
       }
 
       const {
-         qty: currentAmount,
-         price: unitPrice,
-         sale_price,
-         selectedSize,
-         selectedColor
+         qty,
+         lastPrice,
+         selectedVariation: { size, color }
       } = item;
 
       setCart({
          items: currentItems.filter(
             (_item: SelectedProduct) =>
                (_item.id === item.id &&
-                  (item.selectedSize.id !== selectedSize.id ||
-                     item.selectedColor.id !== selectedColor.id)) ||
+                  (item.selectedVariation.size !== size ||
+                     item.selectedVariation.color?.name !== color?.name)) ||
                _item.id !== item.id
          ),
-         totalPrice: cart.totalPrice - currentAmount * (sale_price || unitPrice)
+         totalPrice: cart.totalPrice - qty * lastPrice
       });
    };
 
@@ -89,13 +84,9 @@ export default function CartProvider({ children }: { children: ReactNode }) {
       const {
          id,
          lastPrice,
-         selectedVariation: {
-            size,
-            color
-         },
+         selectedVariation: { size, color },
          qty
       } = itemAdjust;
-      
 
       if (adjustType === DECREASE_ONCE && qty === 1) return;
 
@@ -107,19 +98,16 @@ export default function CartProvider({ children }: { children: ReactNode }) {
             item.id === id &&
             item.selectedVariation.size === size &&
             item.selectedVariation.color?.name === color?.name
-               ? {
-                    ...item,
-                    qty: item.qty + adjustType
-                 }
+               ? { ...item, qty: item.qty + adjustType }
                : item
          ),
          totalPrice: totalPrice + lastPrice * adjustType
       });
    };
 
-   const clearCart = () => {
+   const clearCart = useCallback(() => {
       setCart({ items: [], totalPrice: 0 });
-   };
+   }, []);
 
    return (
       <CartContext.Provider

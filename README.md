@@ -29,12 +29,13 @@ This project is an e-commerce website that provides customers with an online sho
 - [x] Searching, filtering products
 - [x] Manage cart, checkout
 - [x] User account, tracking orders
-- [ ] Payment integration (Paypal)
+- [x] Payment integration with Stripe
 - [ ] Themes for per page
 - [ ] Products recommendation
 - [ ] Multi-language Support
     - [ ] English
     - [ ] Vietnamese
+- [x] Shop CMS
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

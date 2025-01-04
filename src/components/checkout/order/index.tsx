@@ -3,12 +3,8 @@
 import { fixDecimal } from "@/shared/helpers/number";
 import type { SelectedProduct } from "@/shared/types";
 import { useCartContext } from "@/context/cart";
-import { env } from "@/configs";
-import { constants } from "@/configs";
 import styles from "./styles.module.css";
 import Image from "next/image";
-
-const { products } = constants.storageEndpoints;
 
 export default function CheckoutOrderDetail() {
    const { cart: { items, totalPrice }} = useCartContext()!;
@@ -26,16 +22,18 @@ export default function CheckoutOrderDetail() {
                className={`${styles.product} d-flex at-center jc-sb`}
                key={index}>
                <div className="d-flex at-center">
-                  <Image
-                     width={62}
-                     height={62}
-                     src={`${env.FIREBASE_STORAGE_URL + products}${item.image.p}`}
-                     alt="order-product"
-                  />
-                  <h6
-                     className={
-                        styles.productText
-                     }>{`${item?.name} - ${item?.selectedVariation.size}, ${item?.selectedVariation.color?.name}`}</h6>
+                  <div className={`${styles.imgWrapper} o-h`}>
+                     <Image
+                        width={62}
+                        height={62}
+                        className={styles.img}
+                        src={item.images.pm!}
+                        alt="order-product"
+                     />
+                  </div>
+                  <h6 className={styles.productText}>
+                     {`${item?.name} - ${item?.selectedVariation.size}, ${item?.selectedVariation.color?.name}`}
+                  </h6>
                </div>
                <span className={styles.productText}>
                   ${`${fixDecimal(item?.lastPrice, 2)}`}
