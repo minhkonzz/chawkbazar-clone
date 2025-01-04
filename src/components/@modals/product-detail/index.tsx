@@ -13,6 +13,8 @@ import { fixDecimal } from "@/shared/helpers/number";
 import type { Product } from "@/shared/types/entities";
 import type { SelectedProduct } from "@/shared/types";
 import { useProductOptions } from "@/shared/hooks";
+import CloseButton from "../close-button";
+import DropdownMenu from "@/shared/components/dropdown-menu";
 import Button from "@/shared/components/button";
 import styles from "./styles.module.css";
 
@@ -48,20 +50,36 @@ export default forwardRef(function ProductDetail(
       setProductAddCart(addedProduct);
    }, [size, color, amount]);
 
-   const selectAddon = (addon: string | { hexCode: string; name: string }) => {
-      return () => {
-         if (productAddCart) setProductAddCart(undefined);
-         onSelectAddon(addon);
-      };
+   const selectAddon = (addon: string | { hex_code: string; name: string }) => {
+      if (productAddCart) setProductAddCart(undefined);
+      onSelectAddon(addon);
    };
+   
+   const variation = useMemo(() => 
+      product?.variations.reduce((acc: any, cur) => {
+         const size = cur.size;
+         const color = cur.color;
 
-   const variation = useMemo(
-      () => ({
-         sizes: product?.variations.map(e => e.size),
-         colors: product?.variations.map(e => e.color)
-      }),
-      []
-   );
+         const ks = `s-${size}`;
+         if (!acc.sizes[ks]) {
+            acc.sizes[ks] = {
+               id: ks,
+               label: `Size - ${size}`,
+               value: size
+            }
+         }
+         const kc = `color-${color.name}`;
+         if (!acc.colors[kc]) {
+            acc.colors[kc] = {
+               id: kc,
+               label: `Color - ${color.name}`,
+               value: JSON.stringify(color)
+            }
+         }
+         
+         return acc;
+      }, { sizes: {}, colors: {} })
+   , []);
 
    const errorMessage: string =
       (errors && (errors.amountErr || "" + errors.addonsErr || "")) || "";
@@ -71,20 +89,7 @@ export default forwardRef(function ProductDetail(
          ref={ref}
          className={`${styles.wrapper} w-auto h-auto d-flex posab pos-center bg-white`}>
          <div className={`${styles.about} d-flex w-100pc`}>
-            <button
-               className={`${styles.close} circle-bd-r posab bg-white`}
-               onClick={e => onClose(e, true)}>
-               <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 512 512"
-                  className={styles.ic}
-                  height="1em"
-                  width="1em">
-                  <path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"></path>
-               </svg>
-            </button>
+            <CloseButton onClick={e => onClose(e, true)} />
             {!!productAddCart && (
                <div className={`${styles.addedCartMessage} d-flex at-center`}>
                   <span
@@ -106,86 +111,70 @@ export default forwardRef(function ProductDetail(
             <h2 className={styles.name}>{product?.name}</h2>
             <p className={styles.desc}>{product?.description}</p>
             <div className={`${styles.prices} d-flex`}>
-               {product.sale_price && (
-                  <h2>{`$${fixDecimal(product?.sale_price, 2)}`}</h2>
+               {product.sale?.lastPrice && (
+                  <h2>{`$${fixDecimal(product.sale.lastPrice, 2)}`}</h2>
                )}
                <h2>{`$${fixDecimal(product?.price, 2)}`}</h2>
             </div>
-            <span className="d-b">Size</span>
-            <div className={`${styles.addons} d-flex`}>
-               {" "}
-               {variation.sizes.map((addon: string, i: number) => (
-                  <span
-                     key={i}
-                     className={`
-                           ${styles.addon} 
-                           size d-flex jc-center at-center cp
-                           ${!!size && addon === size ? ` ${styles.selected}` : ""}`}
-                     onClick={selectAddon(addon)}>
-                     {addon}
-                  </span>
-               ))}
-            </div>
-            <span className="d-b">Color</span>
-            <div className={`${styles.addons} d-flex`}>
-               {" "}
-               {variation.colors.map(
-                  (addon: { hexCode: string; name: string }, i: number) => (
-                     <span
-                        key={i}
-                        className={`
-                           ${styles.addon} 
-                           color d-flex jc-center at-center cp
-                           ${!!color && addon.name === color.name ? ` ${styles.selected}` : ""}`}
-                        onClick={selectAddon(addon)}>
-                        <span style={{ backgroundColor: addon.hexCode }} />
-                     </span>
-                  )
-               )}
-            </div>
-            <div className={`${styles.qty} d-flex thin-bd-r`}>
-               <button
-                  className={`${styles.qtyBtn} increase h-100pc fw-600`}
-                  onClick={() => clickChangeAmount("DECREASE")}>
-                  <svg width="10px" height="2px" viewBox="0 0 12 1.5">
-                     <rect
-                        data-name="Rectangle 970"
-                        width="10px"
-                        height="2px"
-                        fill="currentColor"></rect>
-                  </svg>
-               </button>
-               <input
-                  className={`${styles.qtyValue} fw-600`}
-                  onKeyDown={e => isEnteredAmount(e)}
-                  value={amount}
-                  onChange={e => onModifyingAmount(e.target.value)}
+            <div className="d-flex at-center">
+               <DropdownMenu 
+                  title="Select size" 
+                  data={Object.values(variation.sizes)} 
+                  onChange={selected => selectAddon(selected.value)} 
                />
-               <button
-                  className={`${styles.qtyBtn} decrease h-100pc fw-600`}
-                  onClick={() => clickChangeAmount("INCREASE")}>
-                  <svg
-                     data-name="plus (2)"
-                     width="10px"
-                     height="10px"
-                     viewBox="0 0 12 12">
-                     <g data-name="Group 5367">
-                        <path
-                           data-name="Path 17138"
-                           d="M6.749,5.251V0h-1.5V5.251H0v1.5H5.251V12h1.5V6.749H12v-1.5Z"
-                           fill="currentColor"></path>
-                     </g>
-                  </svg>
-               </button>
+               <DropdownMenu 
+                  title="Select color" 
+                  data={Object.values(variation.colors)} 
+                  onChange={selected => selectAddon(JSON.parse(selected.value))} 
+               />
             </div>
-            {!!errorMessage && (
+            <div className="d-flex at-center">
+               <div className={`${styles.qty} d-flex thin-bd-r`}>
+                  <button
+                     className={`${styles.qtyBtn} increase h-100pc fw-600`}
+                     onClick={() => clickChangeAmount("DECREASE")}>
+                     <svg width="10px" height="2px" viewBox="0 0 12 1.5">
+                        <rect
+                           data-name="Rectangle 970"
+                           width="10px"
+                           height="2px"
+                           fill="currentColor">   
+                        </rect>
+                     </svg>
+                  </button>
+                  <input
+                     className={`${styles.qtyValue} fw-600`}
+                     onKeyDown={e => isEnteredAmount(e)}
+                     value={amount}
+                     onChange={e => onModifyingAmount(e.target.value)}
+                  />
+                  <button
+                     className={`${styles.qtyBtn} decrease h-100pc fw-600`}
+                     onClick={() => clickChangeAmount("INCREASE")}>
+                     <svg
+                        data-name="plus (2)"
+                        width="10px"
+                        height="10px"
+                        viewBox="0 0 12 12">
+                        <g data-name="Group 5367">
+                           <path
+                              data-name="Path 17138"
+                              d="M6.749,5.251V0h-1.5V5.251H0v1.5H5.251V12h1.5V6.749H12v-1.5Z"
+                              fill="currentColor"></path>
+                        </g>
+                     </svg>
+                  </button>
+               </div>
+               <Button
+                  onClick={addProductToCart}
+                  className={`${styles.btn} dark-v d-flex jc-center w-100pc thin-bd-r`}>
+                  Add to cart
+               </Button>
+            </div>            
+            {/* {!!errorMessage && (
                <p className={styles.errorMessage}>{errorMessage}</p>
             )}
-            <Button
-               onClick={addProductToCart}
-               className={`${styles.btn} dark-v d-flex jc-center w-100pc thin-bd-r`}>
-               Add to cart
-            </Button>
+             */}
          </div>
       </div>
    );

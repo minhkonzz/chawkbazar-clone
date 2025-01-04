@@ -1,36 +1,36 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import type { Product as SerializedProduct } from "@/shared/types/entities";
 import { getFlashSaleSnapShot } from "@/lib/firebase/firestore/product";
-import styles from "./styles.module.css";
+import type { FlashSale } from "@/shared/types/entities";
 import Product from "@/components/product/template-p1w";
+import styles from "./styles.module.css";
 
 export default function FlashSaleList({
-   initialProducts
+   initialSales
 }: {
-   initialProducts: SerializedProduct[];
+   initialSales: FlashSale[];
 }) {
-   const [products, setProducts] = useState<SerializedProduct[]>(initialProducts);
+   const [sales, setSales] = useState<FlashSale[]>(initialSales);
 
    useEffect(() => {
-      const unsub = getFlashSaleSnapShot((products: SerializedProduct[]) => {
-         setProducts(products);
+      const unsub = getFlashSaleSnapShot((sales: FlashSale[]) => {
+         setSales(sales);
       });
 
       return () => unsub();
    }, []);
 
-   return products.map((e: SerializedProduct, i: number) => (
+   return sales.map((e: FlashSale, i: number) => (
       <div
          key={e?.id}
          className={`${styles.item} item-fadein`}
-         style={{ animationDelay: `${i * 0.1}s` }}>
+         style={{ animationDelay: `${i * .1}s` }}>
          <Product
             wImage={324}
             hImage={324}
-            imagePath={e.image.pmd}
-            product={e}
+            product={e.product}
+            sale={e}
          />
       </div>
    ));

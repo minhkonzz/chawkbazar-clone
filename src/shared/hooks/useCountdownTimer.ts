@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { formatTime } from "../helpers/datetime";
 
 export default function useCountdownTimer(endTime: number) {
    const [timeLeft, setTimeLeft] = useState(endTime - Date.now());
@@ -11,9 +12,9 @@ export default function useCountdownTimer(endTime: number) {
       return () => clearInterval(timer);
    }, [endTime]);
 
-   return {
-      s: Math.floor((timeLeft / 1000) % 60),
-      m: Math.floor((timeLeft / 1000 / 60) % 60),
-      h: Math.floor((timeLeft / (1000 * 60 * 60)) % 24)
-   }
+   return timeLeft > 0 && formatTime(
+      Math.floor(timeLeft / (1000 * 60 * 60)),
+      Math.floor((timeLeft / 1000 / 60) % 60),
+      Math.floor((timeLeft / 1000) % 60),
+   ) || ""
 };

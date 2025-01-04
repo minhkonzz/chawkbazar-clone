@@ -1,6 +1,5 @@
 "use client";
 
-import { env } from "@/configs";
 import { useCartContext } from "@/context";
 import { constants } from "@/configs";
 import { fixDecimal } from "@/shared/helpers/number";
@@ -8,10 +7,10 @@ import type { SelectedProduct } from "@/shared/types";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-const { INCREASE_ONCE, DECREASE_ONCE, storageEndpoints } = constants;
+const { INCREASE_ONCE, DECREASE_ONCE } = constants;
 
 export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
-   const { name, qty, image, lastPrice, selectedVariation: { size, color } } = cartItem;
+   const { name, qty, images, lastPrice, selectedVariation: { size, color } } = cartItem;
    const { adjustAmount, removeFromCart } = useCartContext()!;
 
    const changeAmount = (type: number) => {
@@ -22,10 +21,10 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
       <div className={`${styles.wrapper} d-flex at-center`}>
          <div className={`${styles.imageWrapper} o-h cp posrel`}>
             <Image
-               src={`${env.FIREBASE_STORAGE_URL + storageEndpoints.products}${image.p}`}
                width={128}
                height={166}
-               objectFit="cover"
+               className={styles.image}
+               src={images.pm!}
                alt="product-image"
             />
             <span

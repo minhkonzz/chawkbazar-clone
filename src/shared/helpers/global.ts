@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import type { ReadonlyURLSearchParams } from "next/navigation";
 
 export const transformFilterOptions = (
@@ -21,8 +20,4 @@ export const transformFilterOptions = (
 
 export const mergeStyles = (styles: any, classNames: string[] = []) => {
    return classNames.map(className => styles[className]).join(" ");
-};
-
-export const clientOnly = (path: string) => {
-   return dynamic(() => import(path), { ssr: false });
 };

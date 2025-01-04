@@ -5,13 +5,16 @@
 }
 
 .wrapper {
-   cursor: pointer;
    transition: var(--short-delay);
 }
 
 .wrapper:hover {
    transform: translateY(-0.4rem);
    box-shadow: 0px 2px 14px #e9e9e9;
+}
+
+.wrapper:hover .sale {
+   opacity: 1;
 }
 
 .detail {
@@ -58,9 +61,41 @@
 }
 
 .prices {
-   font-size: .875rem;
-   line-height: 1.25rem;
-   column-gap: .5rem;
+   font-size: .875em;
+   line-height: 1.25em;
+   column-gap: .5em;
+}
+
+.sale {
+   inset: 0;
+   background-color: rgba(0,0,0,.5);
+   border-radius: 12px;
+   opacity: 0;
+   transition: opacity .3s ease;
+}
+
+.saleText {
+   font-weight: 400;
+   font-size: 1em;
+   margin-bottom: 1rem;
+}
+
+.saleTimeLeft {
+   padding: .875em 2em;
+   border-radius: 7px;
+   letter-spacing: .2em;
+}
+
+.saleNoti {
+   padding: .75em 1em;
+   border-radius: 7px;
+   font-size: .875em;
+}
+
+.saleIc {
+   width: 1em;
+   height: 1em;
+   margin-right: .5em;
 }
 
 @media (min-width: 480px) {

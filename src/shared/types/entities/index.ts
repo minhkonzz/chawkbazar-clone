@@ -19,7 +19,7 @@ export type ProductVariation = {
    size: string;
    color: {
       name: string
-      hexCode: string
+      hex_code: string
    }
 };
 
@@ -41,15 +41,20 @@ export type Product = {
    category: Category;
    name: string;
    description: string;
-   image: {
+   images: {
       p?: string;
       pm?: string;
       pmd?: string;
       pxs?: string;
    };
    price: number;
-   sale_price?: number;
    variations: ProductVariation[];
+   created_at: number;
+   updated_at: number;
+   sale?: {
+      id: string;
+      lastPrice: number;
+   }
 };
 
 export type Order = {
@@ -78,7 +83,8 @@ export type Order = {
 export type FlashSale = {
    id: string,
    product: Product,
-   start: string,
-   end: string,
-   quantity: number
+   start: number,
+   end: number,
+   quantity: number,
+   discount_percent: number;
 };

@@ -1,14 +1,10 @@
 import { getCollectionBanners } from "@/lib/firebase/firestore/banner";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { mergeStyles } from "@/shared/helpers/global";
-import { constants } from "@/configs";
-import { env } from "@/configs";
 import SkeletonLoader from "@/shared/components/skeleton";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import Image from "next/image";
 import styles from "./styles.module.css";
-
-const { banners } = constants.storageEndpoints;
 
 const bannerStyles = (i: number, maxLen: number) =>
    i === 0 || i === maxLen - 1
@@ -36,7 +32,7 @@ async function Collections() {
                      className={styles.image}
                      width={_s.w}
                      height={_s.h}
-                     src={`${env.FIREBASE_STORAGE_URL! + banners + url}`}
+                     src={url}
                      alt="logo_shop"
                      priority
                   />

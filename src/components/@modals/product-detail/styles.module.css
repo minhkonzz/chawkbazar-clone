@@ -12,18 +12,6 @@
    padding: 10px 30px 20px 30px;
 }
 
-.close {
-   width: 32px;
-   height: 32px;
-   padding-top: 2px;
-   right: -1.75% !important;
-   top: -6%;
-}
-
-.ic {
-   font-size: 1.25rem;
-}
-
 .about > * {
    margin-top: 20px;
 }

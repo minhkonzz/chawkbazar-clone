@@ -1,4 +1,4 @@
-import type { DocumentReference } from "firebase/firestore";
+import type { DocumentReference, Timestamp } from "firebase/firestore";
 import type { ProductVariation } from "@/shared/types/entities";
 
 export type Product = {
@@ -7,13 +7,23 @@ export type Product = {
    category: DocumentReference;
    name: string;
    description: string;
-   image: {
+   images: {
       p?: string;
       pm?: string;
       pmd?: string;
       pxs?: string;
    };
    price: number;
-   sale_price?: number;
    variations: ProductVariation[];
+   created_at: Timestamp;
+   updated_at: Timestamp;
+};
+
+export type SaledProduct = {
+   id: string;
+   product: DocumentReference;
+   discount_percent: number;
+   start: Timestamp;
+   end: Timestamp;
+   quantity: number;
 };

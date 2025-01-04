@@ -11,8 +11,7 @@ export default function NewArrivalProductsList({
 }: {
    initialProducts: SerializedProduct[];
 }) {
-   const [products, setProducts] =
-      useState<SerializedProduct[]>(initialProducts);
+   const [products, setProducts] = useState<SerializedProduct[]>(initialProducts);
 
    useEffect(() => {
       const unsub = getNewArrivalProductsSnapShot(products => {
@@ -24,13 +23,12 @@ export default function NewArrivalProductsList({
    return products.map((item: SerializedProduct, i: number) => (
       <div
          key={item?.id}
-         style={{ animationDelay: `${i * 0.1}s` }}
+         style={{ animationDelay: `${i * .1}s` }}
          className={`${styles.item} item-fadein`}>
          <Product
             wImage={352}
             hImage={452}
             product={item}
-            imagePath={item?.image?.pm}
          />
       </div>
    ));

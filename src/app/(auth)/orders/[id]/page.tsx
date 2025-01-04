@@ -19,8 +19,7 @@ export default async function AccountOrder({
       { id: "m1", title: "Order number", value: order.id },
       { id: "m2", title: "Date", value: order.date },
       { id: "m3", title: "Email", value: order.email },
-      { id: "m4", title: "Total", value: order.subtotal },
-      { id: "m5", title: "Payment method", value: order.paymentMethod }
+      { id: "m4", title: "Total", value: order.subtotal }
    ];
 
    return (

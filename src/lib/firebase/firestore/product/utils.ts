@@ -1,10 +1,10 @@
 import { fetchDocFromReference } from "..";
-import {
+import type { Product as FirestoreProduct } from "./types";
+import type {
    Product as SerializedProduct,
    Brand,
    Category
 } from "@/shared/types/entities";
-import { Product as FirestoreProduct } from "./types";
 
 export const serializeProduct = async (
    product: FirestoreProduct
@@ -13,7 +13,14 @@ export const serializeProduct = async (
       fetchDocFromReference(product.category),
       fetchDocFromReference(product.brand)
    ])) as [Category, Brand];
-   return { ...product, brand, category };
+
+   return { 
+      ...product, 
+      brand, 
+      category,
+      created_at: product.created_at.toMillis(),
+      updated_at: product.updated_at.toMillis() 
+   };
 };
 
 export const serializeProducts = async (

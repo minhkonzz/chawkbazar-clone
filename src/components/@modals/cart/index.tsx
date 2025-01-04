@@ -58,7 +58,7 @@ export default forwardRef(function Cart(
                <div className="d-flex fd-col w-100pc h-100pc jc-sa at-center">
                   <BagSvg />
                   <p className="blur fw-600">
-                     {"You don't have any product in car"}
+                     {"You don't have any product in cart"}
                   </p>
                </div>
             )}

@@ -33,6 +33,16 @@
    padding-left: .75rem;
 }
 
+.imgWrapper {
+   max-width: 3.875em;
+   max-height: 3.875em;
+}
+
+.img {
+   max-width: 3.875em;
+   height: auto;
+}
+
 .ck {
    display: flex;
    justify-content: space-between;

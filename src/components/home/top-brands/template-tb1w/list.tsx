@@ -3,12 +3,8 @@
 import { useState, useEffect } from "react";
 import { getBrandsSnapshot } from "@/lib/firebase/firestore/product";
 import type { Brand } from "@/shared/types/entities";
-import { env } from "@/configs";
-import { constants } from "@/configs";
 import Image from "next/image";
 import styles from "./styles.module.css";
-
-const { brandLogos, brands } = constants.storageEndpoints;
 
 export default function TopBrandsList({
    initialBrands
@@ -41,7 +37,7 @@ export default function TopBrandsList({
                width: "100%",
                height: "auto"
             }}
-            src={`${env.FIREBASE_STORAGE_URL! + brands + e.image}`}
+            src={e.image}
             alt="brand"
          />
          <span className={`${styles.backface} posab w-100pc h-100pc`}></span>
@@ -50,7 +46,7 @@ export default function TopBrandsList({
             width={200}
             height={94}
             style={{ height: "auto", width: "auto" }}
-            src={`${env.FIREBASE_STORAGE_URL + brandLogos + e.logo}`}
+            src={e.logo}
             alt="brand-logo"
          />
       </a>

@@ -15,14 +15,6 @@ const constants = {
       USERNAME_REGEX: /^\w+$/g,
       NUMERIC_REGEX: /^[0-9]+$/g,
       AMOUNT_PATTERN: /^(?=[^0])[0-9]+$/g
-   },
-   storageEndpoints: {
-      banners: "banners",
-      products: "product-images",
-      modeCaptures: "mode-captures",
-      categories: "category-images",
-      brandLogos: "brand-logos",
-      brands: "brand-images"
    }
 };
 
@@ -38,7 +30,6 @@ const env = {
    FIREBASE_MESSAGING_SENDER_ID: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
    FIREBASE_APP_ID: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
    FIREBASE_MEASUREMENT_ID: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
-   FIREBASE_STORAGE_URL: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_URL,
    BASE_URL: process.env.NODE_ENV !== "development" && process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
    TOKEN_SECRET: process.env.TOKEN_SECRET,
    SMTP_HOST: process.env.SMTP_HOST,
