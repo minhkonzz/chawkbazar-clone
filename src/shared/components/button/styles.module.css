@@ -1,7 +1,7 @@
 .wrapper {
-   transition: opacity .15s ease;
+   transition: opacity 3s ease;
 }
 
 .wrapper:hover {
-   opacity: .95;
+   opacity: .75;
 }

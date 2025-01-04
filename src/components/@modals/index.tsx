@@ -39,8 +39,7 @@ export default function AppModal() {
    ) => {
       if (
          !!setCurrentModal &&
-         ((e.target !== e.currentTarget && isClickCloseButton) ||
-            e.target === e.currentTarget)
+         ((e.target !== e.currentTarget && isClickCloseButton) || e.target === e.currentTarget)
       ) {
          const modal = modalRef.current;
          if (!modal) return;

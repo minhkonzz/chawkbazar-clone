@@ -1,5 +1,8 @@
-import { RequestOptions } from "../interfaces/configs";
 import { env } from "@/configs";
+
+interface RequestOptions extends RequestInit {
+   headers?: Record<string, string>;
+};
 
 export default class BaseAPI {
    static get<T>(path: string, options: RequestOptions = {}): Promise<T> {

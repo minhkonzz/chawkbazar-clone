@@ -7,6 +7,7 @@ import { createOrder } from "@/lib/firebase/firestore/order";
 import { useRouter } from "next/navigation";
 import { AnimatedSpinnerIcon } from "@/shared/components/animated-icons";
 import type { OrderSubmitData } from "@/components/checkout/form/types";
+import type { OnCloseModal } from "@/shared/types/ui";
 import { createPaymentIntent } from "@/lib/stripe/actions";
 import StripeElementsProvider from "@/lib/stripe/stripe-elements-provider";
 import StripePaymentForm from "../stripe-payment";
@@ -83,14 +84,7 @@ export default function CheckoutForm() {
             return;
          }
          const _PaymentModal = forwardRef(function PaymentModal(
-            {
-               onClose
-            }: {
-               onClose: (
-                  e: MouseEvent<HTMLButtonElement | null>,
-                  isClickCloseButton: boolean
-               ) => void;
-            },
+            { onClose }: OnCloseModal,
             ref: ForwardedRef<HTMLFormElement | null>
          ) {
             return (

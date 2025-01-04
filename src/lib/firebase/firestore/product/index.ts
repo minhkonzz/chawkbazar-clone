@@ -295,7 +295,7 @@ export const getOnSellProducts = async (
       {
          collectionName: collections.PRODUCTS,
          _orderBy: ["created_at", "asc"],
-         _limit: 10
+         _limit: 9
       },
       firestore
    )) as FirestoreProduct[];
@@ -309,7 +309,7 @@ export const getOnSellProductsSnapShot = (
       {
          collectionName: collections.PRODUCTS,
          _orderBy: ["created_at", "asc"],
-         _limit: 10
+         _limit: 9
       },
       cb
    );

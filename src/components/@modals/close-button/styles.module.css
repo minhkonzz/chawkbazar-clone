@@ -1,11 +1,10 @@
 .wrapper {
-   width: 2em;
-   height: 2em;
-   right: -1.75%;
-   top: -6%;
-   transition: var(--short-delay);
+   width: 2.5em;
+   height: 2.5em;
 }
 
 .ic {
-   font-size: 1.25rem;
+   color: #000;
+   font-size: 1.5em;
+   margin-top: 3px;
 }

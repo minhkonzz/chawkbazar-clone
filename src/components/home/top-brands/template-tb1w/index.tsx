@@ -5,11 +5,12 @@ import TopBrandsList from "./list";
 import withSkeleton from "@/shared/hocs/withSkeleton";
 import SkeletonLoader from "@/shared/components/skeleton";
 import styles from "./styles.module.css";
+import sharedStyles from "../../styles.module.css";
 
 function Container({ children }: { children: ReactNode }) {
    return (
       <section className="home-section nfu">
-         <h3>Top Brands</h3>
+         <h3 className={sharedStyles.title}>Top Brands</h3>
          <div className={styles.brands}>{children}</div>
       </section>
    );

@@ -1,19 +1,13 @@
 "use client";
 
-import { forwardRef, type ForwardedRef, type MouseEvent } from "react";
+import { forwardRef, type ForwardedRef } from "react";
+import type { OnCloseModal } from "@/shared/types/ui";
 import CloseButton from "../close-button";
 import Auth from "@/components/auth";
 import styles from "./styles.module.css";
 
-interface Props {
-   onClose: (
-      e: MouseEvent<HTMLButtonElement>,
-      isClickCloseButton: boolean
-   ) => void;
-};
-
 export default forwardRef(function AuthModal(
-   { onClose }: Props,
+   { onClose }: OnCloseModal,
    ref: ForwardedRef<HTMLDivElement | null>
 ) {
    return (

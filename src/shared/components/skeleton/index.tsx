@@ -20,6 +20,7 @@ export default function Skeleton({
             width,
             height,
             borderRadius
-         }}></div>
+         }} 
+      />
    );
 }
