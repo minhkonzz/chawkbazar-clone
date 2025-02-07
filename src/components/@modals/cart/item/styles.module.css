@@ -36,6 +36,10 @@
    background-color: rgba(0, 0, 0, 0.3);
 }
 
+.metadata {
+   flex-grow: 1;
+}
+
 .name {
    margin-bottom: .375rem;
    color: var(--primary-color);

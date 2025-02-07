@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,7 +26,9 @@ export default function NavHeader() {
                   <HeaderTabs />
                </ul>
             </nav>
-            <HeaderRight />
+            <Suspense fallback={<span>Loading</span>}>
+               <HeaderRight />
+            </Suspense>
          </div>
       </header>
    );

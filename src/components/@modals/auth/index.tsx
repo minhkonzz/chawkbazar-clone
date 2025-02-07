@@ -14,8 +14,8 @@ export default forwardRef(function AuthModal(
       <div
          ref={ref}
          className={`${styles.wrapper} posab pos-center max-h-100pc bg-white`}>
-         <CloseButton onClick={e => onClose(e, true)} />
-         <div className={`${styles.main} d-flex fd-col w-100pc h-100pc`}>
+         <CloseButton className={styles.close} onClick={e => onClose(e, true)} />
+         <div className={`${styles.main} d-flex fd-col h-100pc`}>
             <Auth />
          </div>
       </div>

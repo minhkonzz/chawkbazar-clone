@@ -9,7 +9,7 @@ import {
 } from "react";
 
 import { constants } from "@/configs";
-import { useModalContext, useFirebaseUser } from "@/context";
+import { useModal, useFirebaseUser, useToast } from "@/context";
 import { useInputsValidation } from "@/shared/hooks";
 import { signUp } from "@/lib/firebase/auth/actions";
 import { signInWithEmail } from "@/lib/firebase/auth";
@@ -54,7 +54,7 @@ const getLocalAuthState = (isLoginModal: boolean) => ({
          component: AnimatedErrorIcon,
          props: {}
       },
-      text: isLoginModal ? "Cannot sign in" : "Cannot sign up",
+      text: isLoginModal ? "Wrong email or password" : "This email has been registered",
       color: "red"
    }
 });
@@ -67,7 +67,8 @@ export default function LocalAuth({
    setAuthForm: Dispatch<SetStateAction<AuthForm>>
 }) {
    let timeoutId: NodeJS.Timeout;
-   const { setCurrentModal } = useModalContext()!;
+   const toast = useToast();
+   const { setCurrentModal } = useModal()!;
    const { setUser } = useFirebaseUser()!;
    const [name, setName] = useState<string>("");
    const [email, setEmail] = useState<string>("");
@@ -86,7 +87,7 @@ export default function LocalAuth({
       return await signUp(name, email, password);
    };
 
-   const performSignIn = async (): Promise<User> => {
+   const performSignIn = async (): Promise<User | null> => {
       return await signInWithEmail(email, password);
    };
 

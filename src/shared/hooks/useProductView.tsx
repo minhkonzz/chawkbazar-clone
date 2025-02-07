@@ -1,11 +1,11 @@
 import { type ForwardedRef, forwardRef } from "react";
 import type { Product } from "../types/entities";
 import type { OnCloseModal } from "../types/ui";
-import { useModalContext } from "@/context";
+import { useModal } from "@/context";
 import ProductModal from "@/components/@modals/product-detail";
 
 export default function useProductView(product: Product) {
-   const { setCurrentModal } = useModalContext()!;
+   const { setCurrentModal } = useModal()!;
 
    const onClick = () => {
       if (!setCurrentModal) return;

@@ -1,0 +1,13 @@
+.wrapper {
+   padding: 5rem 5rem;
+}
+
+.inner {
+   max-width: 480px;
+   gap: 2rem;
+   margin: 0 auto;
+}
+
+.btn {
+   height: 3rem;
+}

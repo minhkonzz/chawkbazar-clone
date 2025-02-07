@@ -31,8 +31,7 @@ export default function useInputsValidation(
 
       const fieldInputsErrors = userFieldInputs.map(
          (field: TextFieldMetadata) => {
-            const { title, value, pattern, errorIdentifier, errorMessage } =
-               field;
+            const { title, value, pattern, errorIdentifier, errorMessage } = field;
             const isValid = value?.match(pattern);
             const fieldError =
                (!value?.length && `Vui lòng thêm ${title}`) ||

@@ -1,4 +1,3 @@
-import type { ReactNode } from "react";
 import { getFlashSale } from "@/lib/firebase/firestore/product";
 import { useFirestoreServer } from "@/lib/firebase/configs/server";
 import { Skeleton as ProductSkeleton } from "@/components/product/template-p1w";
@@ -9,29 +8,21 @@ import styles from "./styles.module.css";
 
 const FlashSaleList = dynamic(() => import("./list"), { ssr: false });
 
-function Container({ children }: { children: ReactNode }) {
-   return (
-      <section className={`${styles.wrapper} home-section nfu`}>
-         <h3 className={sharedStyles.title}>Flash Sale</h3>
-         <div className={styles.items}>{children}</div>
-      </section>
-   );
-};
-
-async function List() {
+export default async function FlashSale() {
    const firestoreServer = useFirestoreServer();
    const flashSales = await getFlashSale(firestoreServer);
-   return <FlashSaleList initialSales={flashSales} />
-};
 
-export default function FlashSale() {
    return (
-      <Container>
-         {withSkeleton(List, () =>
-            Array.from({ length: 10 }).map((_, i) => (
-               <ProductSkeleton key={`fs${i}`} wImage={324} hImage={324} />
-            ))
-         )()}
-      </Container>
+      flashSales.length > 0 && 
+      <section className={`${styles.wrapper} home-section nfu`}>
+         <h3 className={sharedStyles.title}>Flash Sale</h3>
+         <div className={styles.items}>
+            {withSkeleton(FlashSaleList, () =>
+               flashSales.map((e: any, i: number) => (
+                  <ProductSkeleton key={`fs${i}`} wImage={324} hImage={324} />
+               ))
+            )()}
+         </div>
+      </section>
    );
-};
+}

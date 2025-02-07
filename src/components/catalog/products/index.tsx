@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { getFilteredProducts } from "@/lib/firebase/firestore/product";
 import { transformFilterOptions } from "@/shared/helpers/global";
@@ -8,6 +8,7 @@ import { isEmptyArray } from "@/shared/helpers/array";
 import type { Product as SerializedProduct } from "@/shared/types/entities";
 import { Skeleton as ProductSkeleton } from "../../product/template-p1w";
 import SkeletonLoader from "@/shared/components/skeleton";
+import DropdownMenu, { type Option } from "@/shared/components/dropdown-menu";
 import Product from "../../product/template-p1w";
 import styles from "./styles.module.css";
 import Button from "@/shared/components/button";
@@ -47,16 +48,37 @@ export default function CatalogProducts() {
       })();
    }, [searchParams]);
 
+   const sortingOptions = useMemo(() => [
+      { id: "so1", label: "Price: low to high", value: "price-low-to-high" },
+      { id: "so2", label: "Price: high to low", value: "price-high-to-low" }
+      // Add more sorting options here...
+   ], []);
+
+   const onSortingOptionChange = (selectedOption: Option) => {
+      if (selectedOption.value == "price-low-to-high") {
+         setProducts([...products.sort((a, b) => (a.sale?.lastPrice || a.price) - (b.sale?.lastPrice || b.price))]);
+         return;
+      }
+      if (selectedOption.value == "price-high-to-low") {
+         setProducts([...products.sort((a, b) => (b.sale?.lastPrice || b.price) - (a.sale?.lastPrice || a.price))]);
+         return;
+      }
+   }
+
    return (
       (!isEmptyArray(products) && (
          <>
             <div className={`${styles.itemsHeader} d-flex jc-sb at-center`}>
                <h1 className={styles.itemsTitle}>Casual wear</h1>
-               <div className="d-flex at-center jc-end">
-                  <span className={styles.itemsCount}>
+               <div className="d-flex at-center">
+                  <span className={`${styles.itemsCount} d-ib`}>
                      {products.length} items
                   </span>
-                  {/* <SortingOptions /> */}
+                  <DropdownMenu 
+                     title="Sorting Options" 
+                     data={sortingOptions} 
+                     onChange={onSortingOptionChange} 
+                  />
                </div>
             </div>
             <div className={styles.list}>

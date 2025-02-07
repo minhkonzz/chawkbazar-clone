@@ -1,10 +1,6 @@
 "use server";
 
-import {
-   hash,
-   compare as validateCurrentPassword
-} from "@/shared/helpers/hash";
-
+import { hash, compare as validateCurrentPassword } from "@/shared/helpers/hash";
 import { createTransport } from "nodemailer";
 import { env } from "@/configs";
 import type { User } from "@/shared/types/entities";
@@ -83,7 +79,7 @@ export const requestPasswordReset = async (email: string) => {
       from: "chawkbazar@test.com",
       to: email,
       subject: `Chawkbazar Shop - You requested password reset link`,
-      text: `Your password Reset Link: ${`http://localhost:3000/reset-password?token=${resetPasswordToken}`}`,
+      text: `Your password reset link: ${env.BASE_URL}/reset-password?token=${resetPasswordToken}`,
       html: ""
    });
 

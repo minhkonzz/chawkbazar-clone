@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { memo, useState, useCallback } from "react";
+import { memo, useState, useEffect, useCallback, useRef } from "react";
 import { ArrowDown } from "@/components/@svgs";
 import styles from "./styles.module.css";
 
-type Option = {
+export type Option = {
    id: string;
    label: string;
    value: string;
@@ -18,44 +18,53 @@ interface Props {
 }
 
 function DropdownMenu({ title, data, onChange, className }: Props) {
+   const wrapper = useRef<HTMLButtonElement | null>(null);
    const [open, setOpen] = useState(false);
    const [selectedOption, setSelectedOption] = useState<Option>();
 
-   console.log(selectedOption)
+   useEffect(() => {
+      const closePopover = (e: MouseEvent) => {
+         if (e.target == wrapper.current) return;
+         setOpen(false);
+      }
 
-   const handleSelectChange = (selectedOption: Option) => {
-      setSelectedOption(selectedOption);
-      onChange(selectedOption);
-      closePopover();
-   };
-   
-   const closePopover = useCallback(() => {
-      setOpen(false);
+      window.addEventListener("click", closePopover)
+      return () => window.removeEventListener("click", closePopover);
    }, []);
 
+   const handleSelectChange = (selectedOption: Option) => () => {
+      setSelectedOption(selectedOption);
+      onChange(selectedOption);
+      setOpen(false);
+   };
+
+   const changeOpen = useCallback(() => {
+      setOpen(!open);
+   }, [open]);
+
    return (
-      <div className={`${className} posrel`}>
-         <button
-            className={`${styles.btn} w-100pc d-flex at-center jc-center`}
-            onClick={() => setOpen(!open)}>
-            {selectedOption?.label || title}
-            <ArrowDown className={styles.icon} />
-         </button>
+      <button
+         ref={wrapper}
+         className={`${styles.btn} posrel w-100pc d-flex at-center jc-sb${className ? " " + className : ""}`}
+         onClick={changeOpen}>
+         {selectedOption?.label || title}
+         <ArrowDown className={styles.icon} />
          {open && (
             <ul
+               onBlur={changeOpen}
                className={`${styles.list} posab z-1 w-100pc thin-bd-r bg-white`}>
                {data.map(d => (
-                  <li 
-                     className={`${styles.item} cp`} 
-                     onClick={() => handleSelectChange(d)} 
-                     key={d.id} 
+                  <li
+                     className={`${styles.item} cp`}
+                     onClick={handleSelectChange(d)}
+                     key={d.id}
                      value={d.value}>
                      {d.label}
                   </li>
                ))}
             </ul>
          )}
-      </div>
+      </button>
    );
 }
 

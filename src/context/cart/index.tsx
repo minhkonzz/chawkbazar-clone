@@ -1,9 +1,10 @@
 "use client";
 
-import { type ReactNode, createContext, useContext, useCallback } from "react";
+import { type ReactNode, createContext, useCallback } from "react";
 import type { SelectedProduct } from "@/shared/types";
 import { useLocalStorage } from "@/shared/hooks";
 import { constants } from "@/configs";
+import context from "../use-context-wrapper";
 
 const { DECREASE_ONCE } = constants;
 
@@ -117,4 +118,4 @@ export default function CartProvider({ children }: { children: ReactNode }) {
    );
 }
 
-export const useCartContext = () => useContext(CartContext);
+export const useCart = context(CartContext, "useCart must be used within a CartProvider");

@@ -12,7 +12,7 @@ export default function ContactPart({ icon, title, desc }: Props) {
 
    return (
       <div className={`${styles.wrapper} d-flex`}>
-         <div className={`${styles.ic} d-flex jc-center at-center`}>
+         <div className={`${styles.ic} flex-center`}>
             <Icon />
          </div>
          <div className={styles.detail}>

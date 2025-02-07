@@ -115,7 +115,7 @@ export default forwardRef(function ProductDetail(
                {product.sale?.lastPrice && (
                   <h2>{`$${fixDecimal(product.sale.lastPrice, 2)}`}</h2>
                )}
-               <h2>{`$${fixDecimal(product?.price, 2)}`}</h2>
+               <h2 {...(product.sale?.lastPrice ? { className: styles.line } : {})}>{`$${fixDecimal(product?.price, 2)}`}</h2>
             </div>
             <div className={`${styles.addons} d-flex at-center`}>
                <DropdownMenu 
@@ -163,7 +163,8 @@ export default forwardRef(function ProductDetail(
                            <path
                               data-name="Path 17138"
                               d="M6.749,5.251V0h-1.5V5.251H0v1.5H5.251V12h1.5V6.749H12v-1.5Z"
-                              fill="currentColor"></path>
+                              fill="currentColor"
+                           />   
                         </g>
                      </svg>
                   </button>
@@ -174,10 +175,9 @@ export default forwardRef(function ProductDetail(
                   Add to cart
                </Button>
             </div>            
-            {/* {!!errorMessage && (
+            {!!errorMessage && (
                <p className={styles.errorMessage}>{errorMessage}</p>
             )}
-             */}
          </div>
       </div>
    );

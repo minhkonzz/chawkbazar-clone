@@ -6,9 +6,15 @@ import { useRouter } from "next/navigation";
 import TextInput from "@/shared/components/text-input";
 import Button from "@/shared/components/button";
 import Image from "next/image";
+import styles from "./page.module.css";
 
-export default function ResetPassword({ searchParams }: { searchParams: { token?: string } }) {
-   const resetPasswordToken = searchParams.token;
+export default function ResetPassword({
+   searchParams
+}: {
+   searchParams: { token?: string };
+}) {
+   // const resetPasswordToken = searchParams.token;
+   const resetPasswordToken = "aloalo";
    const router = useRouter();
    const [newPassword, setNewPassword] = useState("");
    const [confirmNewPassword, setConfirmNewPassword] = useState("");
@@ -41,26 +47,39 @@ export default function ResetPassword({ searchParams }: { searchParams: { token?
    }, []);
 
    return (
-      <div className="d-flex fd-col at-center" style={{ maxWidth: 480, columnGap: 32 }}>
-         <Image width={95} height={30} src="/logo.webp" alt="logo-shop" />
-         {resetPasswordToken && 
-         <><TextInput 
-            label="New password"
-            placeholder="Enter new password"
-            inputValue={newPassword}
-            onChange={e => setNewPassword(e.target.value)}
-         />
-         <TextInput 
-            label="Confirm new password"
-            placeholder="Confirm new password"
-            inputValue={confirmNewPassword}
-            onChange={e => setConfirmNewPassword(e.target.value)}
-         />
-         {!status.success && status.message && <p style={{ color: "red" }}>{status.message}</p>}
-         <Button onClick={status.success && backToHome || requestResetPassword}>
-            {status.success && status.message || "Reset password"}
-         </Button></> || 
-         <h1>Invalid or expired reset password link</h1>}
+      <div className={styles.wrapper}>
+         <div
+            className={`${styles.inner} d-flex fd-col`}>
+            <Image className="self-center" width={95} height={30} src="/logo.webp" alt="logo-shop" />
+            {(resetPasswordToken && (
+               <>
+                  <TextInput
+                     isPassword
+                     label="New password"
+                     placeholder="Enter new password"
+                     inputValue={newPassword}
+                     onChange={e => setNewPassword(e.target.value)}
+                  />
+                  <TextInput
+                     isPassword
+                     label="Confirm new password"
+                     placeholder="Confirm new password"
+                     inputValue={confirmNewPassword}
+                     onChange={e => setConfirmNewPassword(e.target.value)}
+                  />
+                  {!status.success && status.message && (
+                     <p style={{ color: "red" }}>{status.message}</p>
+                  )}
+                  <Button
+                     className={styles.btn}
+                     onClick={
+                        (status.success && backToHome) || requestResetPassword
+                     }>
+                     {(status.success && status.message) || "Reset password"}
+                  </Button>
+               </>
+            )) || <h1>Invalid or expired reset password link</h1>}
+         </div>
       </div>
    );
 }

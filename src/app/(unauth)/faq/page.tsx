@@ -77,7 +77,7 @@ export default function Faq() {
                         className={`${styles.header} d-flex jc-sb at-center cp`}>
                         <h2 className={styles.questionText}>{e.q}</h2>
                         <button
-                           className={`${styles.openIc} posrel d-flex jc-center at-center`}>
+                           className={`${styles.openIc} posrel flex-center`}>
                            <div className={`${styles.hz} w-100pc`}></div>
                            <div className={`${styles.vt} posab h-100pc`}></div>
                         </button>
