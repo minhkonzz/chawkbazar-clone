@@ -40,12 +40,12 @@ export default function TextInput({
    };
 
    return (
-      <>
+      <div>
          {label && <label className={`${styles.label} d-b fw-600`}>{label}</label>}
          {(textArea && (
             <textarea {...{ ...props, rows: textArea.r, cols: textArea.c }} />
          )) || <input {...props} type={(isPassword && "password") || "text"} />}
          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-      </>
+      </div>
    );
 }

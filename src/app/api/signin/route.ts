@@ -11,8 +11,7 @@ export async function POST(req: NextRequest) {
    const { idToken, userId } = await req.json();
    const verifiedIdToken = await firebaseAuthAdmin.verifyIdToken(idToken, CHECK_TOKEN_REVOKED);
    
-   if (!verifiedIdToken) 
-      return NextResponse.json({ user: null });
+   if (!verifiedIdToken) return NextResponse.json({ user: null });
 
    const sessionCookie = await firebaseAuthAdmin.createSessionCookie(idToken, { expiresIn: TOKEN_EXPIRES });
    const user = await firebaseAuthAdmin.getUser(userId);

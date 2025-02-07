@@ -13,7 +13,7 @@ export default memo(function PaymentOptions({
    return (
       <div className={`${styles.wrapper} d-flex`}>
          <label
-            className={`${styles.option}${cod ? " selected" : ""}`}>
+            className={`${styles.option} d-flex at-center cp${cod ? " selected" : ""}`}>
             <input  
                onChange={() => setCod(true)}
                name="payment-options"
@@ -22,10 +22,10 @@ export default memo(function PaymentOptions({
                checked={cod}
                className={styles.radio}
             />
-            <span className={styles.optionText}>{`Cash on Delivery (COD)`}</span>
+            <span className={`${styles.optionText} d-b`}>{`Cash on Delivery (COD)`}</span>
          </label>
          <label
-            className={`${styles.option}${!cod ? " selected" : ""}`}>
+            className={`${styles.option} d-flex at-center cp${!cod ? " selected" : ""}`}>
             <input
                onChange={() => setCod(false)}
                name="payment-options"

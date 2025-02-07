@@ -1,11 +1,11 @@
 "use client"
 
-import { useFirebaseUser, useCartContext } from "@/context";
+import { useFirebaseUser, useCart } from "@/context";
 import Tab from "./item";
 import styles from "./styles.module.css";
 
 export default function HeaderTabs() {
-   const { cart: { items } } = useCartContext()!;
+   const { cart: { items } } = useCart()!;
    const { user } = useFirebaseUser()!;
     return (
       <ul className={styles.menu}>

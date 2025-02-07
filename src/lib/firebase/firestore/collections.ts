@@ -4,6 +4,6 @@ export default {
    BRANDS: "brands_test",
    CATEGORIES: "categories_test",
    BANNERS: "banners_test",
-   MODERN_CAPTURES: "modern-captures_test",
+   MODERN_CAPTURES: "modern_captures_test",
    FLASH_SALES: "flash_sales_test"
 };

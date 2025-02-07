@@ -76,7 +76,7 @@ export default function Product({ wImage, hImage, product, sale }: Props) {
             )}
          </div>
          <div className={styles.detail}>
-            <h2 className={`${styles.name} fw-600`}>{product?.name}</h2>
+            <h2 className={`${styles.name} fw-600`}>{`${product?.name.slice(0, 23)}...`}</h2>
             <p
                className={
                   styles.desc

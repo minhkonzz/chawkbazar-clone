@@ -1,10 +1,6 @@
 "use server";
 
-import {
-   hash,
-   compare as validateCurrentPassword
-} from "@/shared/helpers/hash";
-
+import { hash, compare as validateCurrentPassword } from "@/shared/helpers/hash";
 import { createTransport } from "nodemailer";
 import { env } from "@/configs";
 import type { User } from "@/shared/types/entities";

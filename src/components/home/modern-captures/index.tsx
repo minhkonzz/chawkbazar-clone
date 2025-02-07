@@ -12,7 +12,7 @@ export default async function ModernCaptures() {
          {captures.map((e: { image: string }, i: number) => (
             <a
                key={i}
-               className="posrel d-flex jc-center at-center"
+               className="posrel flex-center"
                href="#"
                target="_blank">
                <Image

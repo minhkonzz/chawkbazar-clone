@@ -1,8 +1,8 @@
 "use client";
 
-import { type ReactNode, useState, createContext, useContext } from "react";
-
+import { type ReactNode, useState, createContext } from "react";
 import { constants } from "@/configs";
+import context from "../use-context-wrapper";
 import Toast from "@/shared/components/toast";
 
 type MessageType = "success" | "error" | "warning";
@@ -40,4 +40,4 @@ export default function ToastProvider({ children }: { children: ReactNode }) {
    );
 }
 
-export const useToast = () => useContext(ToastContext);
+export const useToast = context(ToastContext, "useToast must be used within a ToastProvider");

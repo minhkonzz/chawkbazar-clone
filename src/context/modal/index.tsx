@@ -1,6 +1,7 @@
 "use client";
 
-import { type ReactNode, useState, createContext, useContext } from "react";
+import { type ReactNode, useState, createContext } from "react";
+import context from "../use-context-wrapper";
 import AuthModal from "@/components/@modals/auth";
 import Cart from "@/components/@modals/cart";
 import SideNav from "@/components/nav/aside";
@@ -42,4 +43,4 @@ export default function PopupProvider({ children }: { children: ReactNode }) {
    );
 }
 
-export const useModalContext = () => useContext(ModalContext);
+export const useModal = context(ModalContext, "useModal must be used within a ModalProvider");
