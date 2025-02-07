@@ -15,7 +15,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 import { useRouter } from "next/navigation";
-import { useToast } from "@/context";
+import { useToast, useModal } from "@/context";
 import { createOrder } from "@/lib/firebase/firestore/order";
 import { CheckoutDetail } from "../form/types";
 import type { OnCloseModal } from "@/shared/types/ui";
@@ -39,11 +39,13 @@ export default forwardRef(function StripePayment({
    const router = useRouter();
    const elements = useElements();
    const [processing, setProcessing] = useState(false);
+   const { setCurrentModal } = useModal()!;
 
    const onSubmit: FormEventHandler<HTMLFormElement> = async (
       e: ChangeEvent<HTMLFormElement>
    ) => {
       e.preventDefault();
+      setProcessing(true);
       if (!stripe || !elements) {
          console.warn("Stripe or Elements not ready");
          return;
@@ -53,7 +55,7 @@ export default forwardRef(function StripePayment({
          elements,
          redirect: "if_required",
          confirmParams: {
-            return_url: `${window.location.origin}/order-success`,
+            return_url: `${window.location.origin}/orders`,
             payment_method_data: {
                billing_details: {
                   email: billingDetails.email!,
@@ -98,7 +100,8 @@ export default forwardRef(function StripePayment({
          payment_intent_client_secret: res.paymentIntent.client_secret ?? ""
       });
       setProcessing(false);
-      router.push("/order-success?" + params.toString());
+      setCurrentModal("none");
+      router.push("/orders?" + params.toString());
       return;
    };
 

@@ -1,5 +1,5 @@
 import { useState, useEffect, type KeyboardEvent } from "react";
-import { useToast, useCartContext } from "@/context";
+import { useToast, useCart } from "@/context";
 import type { SelectedProductVariation } from "../types";
 import type { Product } from "../types/entities";
 import { constants } from "@/configs";
@@ -20,7 +20,7 @@ export default function useProductOptions(product: Product) {
       addonsErr?: string;
    }>();
 
-   const { addCart } = useCartContext()!;
+   const { addCart } = useCart()!;
 
    useEffect(() => {
       const addonsErr = !!errors && errors.addonsErr;
@@ -42,9 +42,9 @@ export default function useProductOptions(product: Product) {
          "";
       if (!amountErr && !addonsErr) return;
       return {
-         ...((errors && { errors }) || {}),
-         ...((amountErr && { amountErr }) || {}),
-         ...((addonsErr && { addonsErr }) || {})
+         ...(errors && { errors } || {}),
+         ...(amountErr && { amountErr } || {}),
+         ...(addonsErr && { addonsErr } || {})
       };
    };
 
@@ -54,9 +54,11 @@ export default function useProductOptions(product: Product) {
          setErrors({ ...errors, amountErr });
          return;
       }
+      const curAmount = Number(amount)
+      if (act == "DECREASE" && curAmount == 1) return; // avoid 0 quantity
       setAmount(
          (
-            Number(amount) +
+            curAmount +
             (act === "INCREASE" ? INCREASE_ONCE : DECREASE_ONCE)
          ).toString()
       );

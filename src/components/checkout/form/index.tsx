@@ -1,6 +1,6 @@
 "use client";
 
-import { forwardRef, useState, type MouseEvent, ForwardedRef } from "react";
+import { forwardRef, useState, type ForwardedRef } from "react";
 import { constants } from "@/configs";
 import { useInputsValidation } from "@/shared/hooks";
 import { createOrder } from "@/lib/firebase/firestore/order";
@@ -18,9 +18,9 @@ import PaymentOptions from "../payment-options";
 
 import {
    useToast,
-   useCartContext,
+   useCart,
    useFirebaseUser,
-   useModalContext
+   useModal
 } from "@/context";
 
 const { regex } = constants;
@@ -28,8 +28,8 @@ const { regex } = constants;
 export default function CheckoutForm() {
    const toast = useToast()!;
    const router = useRouter();
-   const { setCurrentModal } = useModalContext()!;
-   const { cart } = useCartContext()!;
+   const { setCurrentModal } = useModal()!;
+   const { cart } = useCart()!;
    const { user } = useFirebaseUser()!;
    const [processing, setProcessing] = useState<boolean>(false);
    const [cod, setCod] = useState<boolean>(true);
@@ -75,7 +75,7 @@ export default function CheckoutForm() {
       if (!cod) {
          // user select online payment
          const clientSecret = await createPaymentIntent({
-            amount: cart.totalPrice * 100,
+            amount: Math.round(cart.totalPrice * 100),
             currency: "USD"
          });
          if (!clientSecret) {
@@ -108,7 +108,7 @@ export default function CheckoutForm() {
          return;
       }
 
-      router.push(`/order-success?id=${orderId}`);
+      router.push(`/orders?id=${orderId}`);
    };
 
    const { errors, handleAfterValidate: placeOrder } = useInputsValidation(
@@ -155,7 +155,7 @@ export default function CheckoutForm() {
    return (
       <div className={styles.wrapper}>
          <h2 className={styles.heading}>Shipping Address</h2>
-         <div>
+         <div className={`${styles.form} d-flex fd-col`}>
             <div className={`${styles.dinp} d-flex`}>
                <div className={styles.inpWrapper}>
                   <TextInput

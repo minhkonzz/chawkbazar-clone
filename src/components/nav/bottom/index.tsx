@@ -1,12 +1,12 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useModalContext } from "@/context";
+import { useModal } from "@/context";
 import styles from "./styles.module.css";
 
 export default function BottomNav() {
    const router = useRouter();
-   const { setCurrentModal } = useModalContext()!;
+   const { setCurrentModal } = useModal()!;
 
    return (
       <div

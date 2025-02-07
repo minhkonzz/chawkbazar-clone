@@ -6,9 +6,12 @@
    color: var(--primary-color);
 }
 
+.form {
+   row-gap: 1.75rem;
+}
+
 .dinp {
    flex-direction: column;
-   margin-top: 1rem;
    gap: .75rem;
 }
 
@@ -18,7 +21,6 @@
 
 .btn,
 .btnLoading {
-   margin-top: 40px;
    width: 100%;
    height: 55px;
    font-size: 14px;

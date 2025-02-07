@@ -1,6 +1,6 @@
 "use client";
 
-import { useCartContext } from "@/context";
+import { useCart } from "@/context";
 import { constants } from "@/configs";
 import { fixDecimal } from "@/shared/helpers/number";
 import type { SelectedProduct } from "@/shared/types";
@@ -11,7 +11,7 @@ const { INCREASE_ONCE, DECREASE_ONCE } = constants;
 
 export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
    const { name, qty, images, lastPrice, selectedVariation: { size, color } } = cartItem;
-   const { adjustAmount, removeFromCart } = useCartContext()!;
+   const { adjustAmount, removeFromCart } = useCart()!;
 
    const changeAmount = (type: number) => {
       adjustAmount({ itemAdjust: cartItem, type });
@@ -28,7 +28,7 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
                alt="product-image"
             />
             <span
-               className={`${styles.imageBackdrop} d-flex jc-center at-center posab top-0 left-0 bottom-0 right-0`}
+               className={`${styles.imageBackdrop} flex-center posab top-0 left-0 bottom-0 right-0`}
                onClick={() => removeFromCart(cartItem)}>
                <svg
                   stroke="currentColor"
@@ -42,12 +42,12 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
                </svg>
             </span>
          </div>
-         <div className="d-flex fd-col">
+         <div className={`${styles.metadata} d-flex fd-col`}>
             <a
                href="#"
-               className={
-                  styles.name
-               }>{`${name} - ${size}, ${color?.name}`}</a>
+               className={styles.name}>
+               {`${name} - ${size}, ${color?.name}`}
+            </a>
             <span className={styles.unitPrice}>
                Unit price: ${fixDecimal(lastPrice, 2)}
             </span>
@@ -56,7 +56,7 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
                   className={`${styles.quantityControl} d-flex at-center o-h`}>
                   <button
                      onClick={() => changeAmount(DECREASE_ONCE)}
-                     className={`${styles.quantityButton} d-flex jc-center at-center h-100pc text-white`}>
+                     className={`${styles.quantityButton} flex-center h-100pc text-white`}>
                      <svg width="10px" height="2px" viewBox="0 0 12 1.5">
                         <rect
                            data-name="Rectangle 970"
@@ -66,12 +66,12 @@ export default function CartItem({ cartItem }: { cartItem: SelectedProduct }) {
                      </svg>
                   </button>
                   <span
-                     className={`${styles.quantityText} d-flex jc-center at-center h-100pc text-white fw-600`}>
+                     className={`${styles.quantityText} flex-center h-100pc text-white fw-600`}>
                      {qty}
                   </span>
                   <button
                      onClick={() => changeAmount(INCREASE_ONCE)}
-                     className={`${styles.quantityButton} d-flex jc-center at-center h-100pc text-white`}>
+                     className={`${styles.quantityButton} flex-center h-100pc text-white`}>
                      <svg
                         data-name="plus (2)"
                         width="10px"

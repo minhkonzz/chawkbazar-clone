@@ -53,7 +53,7 @@ export default function Auth() {
             <button
                className={`${styles.switchButton} fw-600`}
                onClick={() => setAuthForm(authForm === "login" && "register" || "login")}>
-               {authForm === "login" && "Login" || "Register"}
+               {authForm === "login" && "Register" || "Login"}
             </button>
          </div></>}
       </>

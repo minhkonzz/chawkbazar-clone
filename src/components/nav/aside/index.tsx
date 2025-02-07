@@ -2,14 +2,14 @@
 
 import { useRef } from "react";
 import { useRouter } from "next/navigation";
-import { useModalContext } from "@/context";
+import { useModal } from "@/context";
 import Image from "next/image";
 import styles from "./styles.module.css";
 
 export default function AsideNav() {
    const router = useRouter();
    const submenuRef = useRef<HTMLUListElement>(null);
-   const { setCurrentModal } = useModalContext()!;
+   const { setCurrentModal } = useModal()!;
 
    const touchSubmenu = () => {
       if (!submenuRef.current) return;

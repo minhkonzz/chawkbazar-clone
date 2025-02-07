@@ -2,7 +2,7 @@
 
 import { type ForwardedRef, useCallback, forwardRef } from "react";
 import { fixDecimal } from "@/shared/helpers/number";
-import { useCartContext, useModalContext } from "@/context";
+import { useCart, useModal } from "@/context";
 import { useRouter } from "next/navigation";
 import { Bag } from "@/components/@svgs";
 import type { OnCloseModal } from "@/shared/types/ui";
@@ -14,8 +14,8 @@ export default forwardRef(function Cart(
    ref: ForwardedRef<HTMLDivElement | null>
 ) {
    const router = useRouter();
-   const { setCurrentModal } = useModalContext()!;
-   const { cart: { items, totalPrice }} = useCartContext()!;
+   const { setCurrentModal } = useModal()!;
+   const { cart: { items, totalPrice }} = useCart()!;
 
    const toCheckout = useCallback(() => {
       setCurrentModal("none");
@@ -29,7 +29,7 @@ export default forwardRef(function Cart(
          <header className={`${styles.header} d-flex jc-sb at-center`}>
             <h2 className={`${styles.heading} fw-700`}>Shopping cart</h2>
             <button
-               className={`${styles.closeButton} d-flex jc-center at-center`}
+               className={`${styles.closeButton} flex-center`}
                aria-label="close"
                onClick={e => onClose(e, true)}>
                <svg
@@ -62,7 +62,7 @@ export default forwardRef(function Cart(
                onClick={toCheckout}
                className={`
                   ${styles.checkoutButton} 
-                  d-flex w-100pc jc-sb at-center dark-v
+                  d-flex w-100pc jc-sb at-center dark-v fw-600
                   ${items.length > 0 ? "" : ` ${styles.disabled}`}
                `}>
                <span className={styles.checkoutButtonText}>

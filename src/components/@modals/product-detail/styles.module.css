@@ -27,7 +27,7 @@
    opacity: .6;
 }
 
-.prices h2:last-child {
+.prices h2.line {
    margin-left: 16px;
    opacity: .5;
    text-decoration: line-through;
@@ -60,6 +60,10 @@
 .qtyBtn {
    width: 28%;
    color: black;
+}
+
+.qtyBtn:hover {
+   opacity: .5;
 }
 
 .qtyBtn,

@@ -2,12 +2,12 @@
 
 import { fixDecimal } from "@/shared/helpers/number";
 import type { SelectedProduct } from "@/shared/types";
-import { useCartContext } from "@/context/cart";
+import { useCart } from "@/context/cart";
 import styles from "./styles.module.css";
 import Image from "next/image";
 
-export default function CheckoutOrderDetail() {
-   const { cart: { items, totalPrice }} = useCartContext()!;
+export default function CheckoutOrder() {
+   const { cart: { items, totalPrice }} = useCart()!;
    const shipFee: number = 2.99;
 
    return (

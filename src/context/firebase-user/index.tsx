@@ -1,21 +1,22 @@
 "use client";
 
 import {
-   type ReactNode,
+   type ReactNode as AppComponentsTree,
    type Dispatch,
    type SetStateAction,
    useState,
    useEffect,
-   createContext,
-   useContext,
+   createContext
 } from "react";
 
 import type { User } from "@/shared/types/entities";
+import context from "../use-context-wrapper";
 import BaseAPI from "@/shared/api";
 
 type CurrentUser = User | undefined;
 
 type FirebaseUserContextType = {
+   loading: boolean,
    user: CurrentUser,
    setUser: Dispatch<SetStateAction<CurrentUser>>
 } | null;
@@ -30,16 +31,17 @@ const FirebaseUserContext = createContext<FirebaseUserContextType>(null);
 export default function FirebaseUserProvider({
    children
 }: {
-   children: ReactNode;
+   children: AppComponentsTree;
 }) {
    const [user, setUser] = useState<User>();
+   const [loading, setLoading] = useState<boolean>(true);
 
    useEffect(() => {
       (async () => {
          try {
             const { authenticated, user } = await BaseAPI.get<SessionCheckResponse>("/check-session");
-            if (!authenticated || !user) return;
-            setUser(user);
+            setUser(authenticated && user || undefined);
+            setLoading(false);
          } catch (err) {
             console.error("Error occurred when checking session");
          }
@@ -47,18 +49,13 @@ export default function FirebaseUserProvider({
    }, []);
 
    return (
-      <FirebaseUserContext.Provider value={{ user, setUser }}>
+      <FirebaseUserContext.Provider value={{ loading, user, setUser }}>
          {children}
       </FirebaseUserContext.Provider>
    );
 };
 
-export const useFirebaseUser = () => {
-   const ctx = useContext(FirebaseUserContext);
-   if (ctx === undefined) {
-      throw new Error(
-         "useFirebaseUser must be used within a FirebaseUserProvider"
-      );
-   }
-   return ctx;
-};
+export const useFirebaseUser = context(
+   FirebaseUserContext, 
+   "useFirebaseUser must be used within a FirebaseUserProvider"
+);

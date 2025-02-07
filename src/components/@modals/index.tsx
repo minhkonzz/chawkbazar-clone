@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef, useEffect, type MouseEvent } from "react";
-import { useModalContext, MODALS } from "@/context/modal";
+import { useModal, MODALS } from "@/context/modal";
 
 export default function AppModal() {
-   const { modal: name, setCurrentModal } = useModalContext()!;
+   const { modal: name, setCurrentModal } = useModal()!;
    const Modal = MODALS[name]?.component;
 
    const backdropRef = useRef<HTMLDivElement | null>(null);
